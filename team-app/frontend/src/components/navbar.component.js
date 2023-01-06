@@ -28,6 +28,12 @@ export default class Navbar extends Component {
             Create User
           </Link>
         </div>
+
+        <div className="p-4">
+          <Link to="/createActivity" className="">
+            Create Activity
+          </Link>
+        </div>
       </div>
     );
   }
