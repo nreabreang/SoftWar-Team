@@ -18,10 +18,12 @@ connection.once("open", () => {
 });
 
 // require file and use the file
+const activityRouter = require("./routes/activities");
 const exercisesRouter = require("./routes/exercises");
 const userRouter = require("./routes/users");
 
 // use file and add path
+app.use("/activity",activityRouter);
 app.use("/exercises", exercisesRouter); // go to exercises.js file /exercises
 app.use("/users", userRouter); //go to users.js file /users
 
