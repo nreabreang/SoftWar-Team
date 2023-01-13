@@ -2,11 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/navbar.component";
-import ExercisesList from "./components/exercises-list.component";
-import EditExercise from "./components/edit-exercise.component";
-import CreateExercises from "./components/create-exercise.component";
-import CreateUser from "./components/create-user.component";
 import CreateActivity from "./components/create-activity.component";
+import ActivityList from "./components/activity-list.component";
+import EditActivity from "./components/edit-activity.component";
 
 function Test() {
   return (
@@ -14,11 +12,10 @@ function Test() {
       <Navbar />
       <br />
       <Routes>
-        <Route path="/" exact component={ExercisesList} />
-        <Route path="/edit/:id" component={EditExercise} />
-        <Route path="/create" element={<CreateExercises />} />
-        <Route path="/user" component={CreateUser} />
+        <Route path="/" exact element={<ActivityList/>} />
+        <Route path="/edit/:id" element={<EditActivity/>} />
         <Route path="/createActivity" element={<CreateActivity />} />
+        <Route path="/activityList" element={<ActivityList/>}/>
       </Routes>
     </Router>
   );

@@ -1,14 +1,11 @@
 import React, { Component } from "react";
+import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default class CreateActivity extends Component {
   constructor(props) {
     super(props);
-
-    // this.onChangeUsername = this.onChangeUsername.bind(this);
-    // this.onChangeDescription = this.onChangeDescription.bind(this);
-    // this.onChangeDuration = this.onChangeDuration.bind(this);
-    // this.onChangeDate = this.onChangeDate.bind(this);
-    // this.onSubmit = this.onSubmit.bind(this);
 
     this.onChangeActName = this.onChangeActName.bind(this);
     this.onChangeActDescription = this.onChangeActDescription.bind(this);
@@ -16,74 +13,18 @@ export default class CreateActivity extends Component {
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    // this.state = {
-    //   username: "",
-    //   description: "",
-    //   duration: "",
-    //   date: new Date(),
-    //   users: [],
-    // };
-
     this.state = {
       actName: "",
       actDescription: "",
-      virtualMoney: [],
+      virtualMoney: "",
       date: new Date(),
       users: [],
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     users: ["test user"],
-  //     username: "test user",
-  //   });
-  // }
   componentDidMount() {
-    this.setState({
-      users: ["test user"],
-      actName: "test activity name",
-    });
+    // this.setState({actName:"test"});
   }
-
-  // onChangeUsername(e) {
-  //   this.setState({
-  //     username: e.target.value,
-  //   });
-  // }
-
-  // onChangeDescription(e) {
-  //   this.setState({
-  //     description: e.target.value,
-  //   });
-  // }
-
-  // onChangeDuration(e) {
-  //   this.setState({
-  //     duration: e.target.value,
-  //   });
-  // }
-
-  // onChangeDate(date) {
-  //   this.setState({
-  //     date: date,
-  //   });
-  // }
-
-  // onSubmit(e) {
-  //   e.preventDefault();
-
-  //   const exercise = {
-  //     username: this.state.username,
-  //     description: this.state.description,
-  //     duration: this.state.duration,
-  //     date: this.state.date,
-  //   };
-
-  //   console.log(exercise);
-
-  //   window.location = "/"; //relocation to homepage
-  // }
 
   onChangeActName(e) {
     this.setState({
@@ -103,7 +44,6 @@ export default class CreateActivity extends Component {
     });
   }
 
-
   onChangeDate(date) {
     this.setState({
       date: date,
@@ -122,49 +62,72 @@ export default class CreateActivity extends Component {
 
     console.log(activity);
 
-    window.location = "/"; //relocation to homepage
+    axios
+      .post("http://localhost:5000/activity/add", activity)
+      .then((res) => console.log(res.data));
+
+    window.location = "/createActivity"; //relocation to homepage
   }
 
   render() {
     return (
       <div>
-        <form class="w-full max-w-sm" onSubmit={this.onSubmit}>
+        <form className="w-full max-w-sm" onSubmit={this.onSubmit}>
           <div>
             <div className="mx-8">
               <label>Activity Name</label>
               <input
+                required
                 type="text"
                 id="actName"
                 name="actName"
                 className="m-4 border-2 border-black"
+                value={this.state.actName}
+                onChange={this.onChangeActName}
               />
             </div>
             <div className="mx-8 my-4 flex items-stretch">
               <label className="self-center">Description</label>
               <textarea
+                required
                 id="actDes"
                 name="actDes"
                 className="m-4 border-2 border-black"
+                value={this.state.actDescription}
+                onChange={this.onChangeActDescription}
               />
             </div>
             <div className="mx-8">
-              <label for="virtualMoney">Virtual Money:</label>
-              <select id="virtualMoney" name="virtualMoney" className="m-4">
-                <option value="dolls">dolls</option>
-                <option value="gold chocolate">gold chocolate</option>
+              <label htmlFor="virtualMoney">Virtual Money:</label>
+              <select
+                required
+                id="virtualMoney"
+                name="virtualMoney"
+                className="m-4"
+                value={this.state.virtualMoney}
+                onChange={this.onChangeVirtualMoney}
+              >
+                <option value="dolls" required>
+                  dolls
+                </option>
+                <option value="gold chocolate" required>
+                  gold chocolate
+                </option>
               </select>
             </div>
             <div className="mx-8">
               <label>Date : </label>
-              <input
-                type="date"
-                id="actDate"
-                name="actDate"
-                className="m-4 border-2 border-black"
+              <DatePicker
+                selected={this.state.date}
+                onChange={this.onChangeDate}
               />
             </div>
             <div className="mx-8">
-              <input type="submit" value="Submit" className="p-4 rounded-xl px-8"/>
+              <input
+                type="submit"
+                value="Submit"
+                className="p-4 rounded-xl px-8"
+              />
             </div>
           </div>
         </form>

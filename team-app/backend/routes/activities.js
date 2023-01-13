@@ -9,7 +9,7 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/add").post((req, res) => {
-  // /exercises/add
+  // /activity/add
   const actName = req.body.actName;
   const actDescription = req.body.actDescription;
   const virtualMoney = req.body.virtualMoney;
@@ -54,9 +54,9 @@ router.route("/update/:id").post((req, res) => {
       activity
         .save()
         .then(() => res.json("Activity updated!"))
-        .catch((err) => res.status(400).json("Error : " + err));
+        .catch(err => res.status(400).json("Error : " + err));
     })
-    .catch((err) => res.status(400).json("Error : " + err));
+    .catch(err => res.status(400).json("Error : " + err));
 });
 
 module.exports = router;
