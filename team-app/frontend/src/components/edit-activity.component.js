@@ -25,8 +25,10 @@ export default class EditActivity extends Component {
 
   componentDidMount() {
     console.log(this.props);
+    const arr = window.location.href.split('/');
+    console.log(arr);
     axios
-      .get("http://localhost:5000/activity/"+this.props.match.params.id)
+      .get("http://localhost:5000/activity/"+ arr[arr.length-1])
       .then((response) => {
         this.setState({
           actName: response.data.actName,
@@ -76,10 +78,9 @@ export default class EditActivity extends Component {
     };
 
     console.log(activity);
-
-    
+    const arr = window.location.href.split('/');
     axios
-      .post("http://localhost:5000/activity/update/"+this.props.match.params.id, activity)
+      .post("http://localhost:5000/activity/update/"+arr[arr.length-1], activity)
       .then((res) => console.log(res.data));
 
     window.location = "/activityList"; //relocation to homepage
