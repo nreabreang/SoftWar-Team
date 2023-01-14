@@ -11,12 +11,12 @@ export default class navbar extends Component {
           <div className="navbar-container">
 
             <div className="logo-container">
-              <Link to="/createActivity" className="text-16px">GARLICWAK</Link>
+              <Link to="/" className="text-16px">GARLICWAK</Link>
             </div>
 
             <div className="menu-container">
               <Link to="/createActivity" className="text-16px">Create Activity</Link>
-              <Link to="/createActivity" className="text-16px">Create Activity</Link>
+              <Link to="/activityList" className="text-16px">Activity</Link>
             </div>
 
           </div>

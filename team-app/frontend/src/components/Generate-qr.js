@@ -12,3 +12,7 @@ export default function GenerateQR(props){
         </div>
     );
 }
+
+export default function ReadQR(){
+    
+}
