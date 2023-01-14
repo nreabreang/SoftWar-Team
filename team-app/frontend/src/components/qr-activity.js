@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Component } from 'react'
 
 export default function GenerateQR(props){
     const getUrls = props.url
@@ -11,8 +12,4 @@ export default function GenerateQR(props){
             <img src={urls} alt="" />
         </div>
     );
-}
-
-export default function ReadQR(){
-    
 }
