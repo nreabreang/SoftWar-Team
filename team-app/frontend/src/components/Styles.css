@@ -1,0 +1,171 @@
+/*///////////////////////// Button Styles /////////////////////////*/
+
+.button-navy {
+    border-radius: 2rem;
+    margin: 10px 10px;
+    padding: 5px 15px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    font-size: 16px;
+    font-family: 'Metro-M';
+    background-color: #263159;
+    color: #FAE7E7;
+    border: 2px solid #263159;
+}
+
+.button-navy:hover {
+    background-color: transparent;
+    color: #263159;
+}
+
+.button-lightpink {
+    border-radius: 2rem;
+    margin: 10px 10px;
+    padding: 5px 15px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    font-size: 16px;
+    font-family: 'Metro-M';
+    background-color: #FCC5C0;
+    color: #263159;
+    border: 2px solid #FCC5C0;
+}
+
+.button-lightpink:hover {
+    background-color: transparent;
+    color: #FCC5C0;
+}
+
+.button-lightpink-liner {
+    color: #E22637;
+}
+
+.button-lightpink-liner:hover {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #FCC5C0;
+}
+
+/*/////////////////////////////////////////////////////////////////*/
+
+/*////////////////////////// Text Styles //////////////////////////*/
+
+.text-48px {
+    font-size: 3rem;
+    /* 48px */
+    line-height: 1;
+    margin: 10px;
+    font-family: 'Metro-B';
+    color: #E22637;
+}
+
+.text-36px {
+    font-size: 2.25rem;
+    /* 36px */
+    line-height: 2.5rem;
+    /* 40px */
+    margin: 10px;
+    font-family: 'Metro-B';
+    color: #263159;
+}
+
+.text-24px {
+    font-size: 1.5rem;
+    /* 24px */
+    line-height: 2rem;
+    /* 32px */
+    margin: 10px;
+    font-family: 'Metro-M';
+    color: #263159;
+}
+
+.text-20px {
+    font-size: 1.25rem;
+    /* 20px */
+    line-height: 1.75rem;
+    /* 28px */
+    margin: 10px;
+    font-family: 'Metro-M';
+    color: #263159;
+}
+
+.text-18px {
+    font-size: 1.125rem;
+    /* 18px */
+    line-height: 1.75rem;
+    /* 28px */
+    margin: 10px;
+    font-family: 'Metro-M';
+    color: #263159;
+}
+
+.text-16px {
+    font-size: 1rem;
+    /* 16px */
+    line-height: 1.5rem;
+    /* 24px */
+    margin: 10px;
+    font-family: 'Metro-R';
+    color: #263159;
+}
+
+.text-14px {
+    font-size: 0.875rem;
+    /* 14px */
+    line-height: 1.25rem;
+    /* 20px */
+    font-family: 'Metro-R';
+    margin: 10px;
+    color: #263159;
+}
+
+.text-12px {
+    font-size: 0.75rem;
+    /* 12px */
+    line-height: 1rem;
+    /* 16px */
+    font-family: 'Metro-R';
+    margin: 10px;
+    color: #1E1E1E;
+}
+
+.text-12px a {
+    color: #FCC5C0;
+}
+
+/*/////////////////////////////////////////////////////////////////*/
+
+/*////////////////////////// Input Types //////////////////////////*/
+
+.input-code {
+    display: inline-block;
+    border: none;
+    appearance: auto;
+    outline: none;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    text-align: center;
+    font-family: 'Metro-M';
+    font-size: 14px;
+    color: #263159;
+    cursor: pointer;
+    padding: 10px 30px;
+    margin: 10px 10px;
+    background-color: #FAE7E7;
+    background-image: url(./images/right-arrow.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: right 25px center;
+}
+
+.input-code::placeholder {
+    color: #1E1E1E;
+    opacity: 75%;
+}
+
+.input-code:focus::placeholder {
+    color: transparent;
+}
+
+/*/////////////////////////////////////////////////////////////////*/

@@ -1,0 +1,19 @@
+.navbar-container {
+    display: flex;
+    font-family: 'Metro-B';
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+  }
+  
+  .logo-container a {
+    text-decoration: none;
+    padding: 10px;
+    color: #263159;
+  }
+  
+  .menu-container a {
+    text-decoration: none;
+    padding-right: 2rem;
+    color: #263159;
+  }
