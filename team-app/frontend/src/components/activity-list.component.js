@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import GenerateQR from "./qr-activity";
 
 const Activity = (props) => (
   <tr>
@@ -27,9 +28,9 @@ export default class ActivityList extends Component {
     super(props);
     this.deleteActivity = this.deleteActivity.bind(this);
 
-    this.state = { 
-      activity: [], 
-      qr:[]
+    this.state = {
+      activity: [],
+      qr: [],
     };
   }
 
@@ -42,8 +43,6 @@ export default class ActivityList extends Component {
       .catch((error) => {
         console.log(error);
       });
-
-    
   }
 
   deleteActivity(id) {
@@ -56,25 +55,11 @@ export default class ActivityList extends Component {
     });
   }
 
-  renderQR() {
-    const arr = window.location.href.split("/");
-    console.log(arr);
-    axios
-      .get("http://localhost:3000/activity/" + arr[arr.length - 1])
-      .then((response) => {
-        this.setState({
-          qr: response.data.qr,
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
+  renderQR() { 
+    axios.get("http://localhost:5000/activity/"+)
     const Qr =
-      "http://api.qrserver.com/v1/create-qr-code/?data=[" +
-      this.state.qr +
-      "]&size=[60]x[60]";
-    
+    "http://api.qrserver.com/v1/create-qr-code/?data="+ this.qr() + "&size=[60]x[60]";
+
     return (
       <div>
         <h3>
