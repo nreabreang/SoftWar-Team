@@ -11,7 +11,18 @@ const userSchema = new Schema({
         minlength:3
     },
     password:{
-    }
+        type:String,
+        required:true,
+        unique:true,
+        trim:true,
+        minlength:8
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true,
+        trim:false
+    },
 },{
     timestamps:true,
 });
