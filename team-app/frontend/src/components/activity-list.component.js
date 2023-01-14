@@ -27,7 +27,10 @@ export default class ActivityList extends Component {
     super(props);
     this.deleteActivity = this.deleteActivity.bind(this);
 
-    this.state = { activity: [] };
+    this.state = { 
+      activity: [], 
+      qr:[]
+    };
   }
 
   componentDidMount() {
@@ -39,6 +42,8 @@ export default class ActivityList extends Component {
       .catch((error) => {
         console.log(error);
       });
+
+    
   }
 
   deleteActivity(id) {
@@ -49,6 +54,34 @@ export default class ActivityList extends Component {
     this.setState({
       activity: this.state.activity.filter((el) => el.id !== id),
     });
+  }
+
+  renderQR() {
+    const arr = window.location.href.split("/");
+    console.log(arr);
+    axios
+      .get("http://localhost:3000/activity/" + arr[arr.length - 1])
+      .then((response) => {
+        this.setState({
+          qr: response.data.qr,
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    const Qr =
+      "http://api.qrserver.com/v1/create-qr-code/?data=[" +
+      this.state.qr +
+      "]&size=[60]x[60]";
+    
+    return (
+      <div>
+        <h3>
+          <img id="id" alt="" src={Qr}></img>
+        </h3>
+      </div>
+    );
   }
 
   activityList() {
@@ -79,6 +112,7 @@ export default class ActivityList extends Component {
           </thead>
           <tbody>{this.activityList()}</tbody>
         </table>
+        <div>{this.renderQR()}</div>
       </div>
     );
   }

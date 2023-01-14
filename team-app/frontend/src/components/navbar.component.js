@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './Navbar.css';
-import './Styles.css';
+import './navbar.component.css';
+import './styles.css';
 
-export default class Navbar extends Component {
+export default class navbar extends Component {
   render() {
     return (
       <div>
@@ -11,12 +11,12 @@ export default class Navbar extends Component {
           <div className="navbar-container">
 
             <div className="logo-container">
-              <Link to="/createActivity" className="text-16px">GARLICWAK</Link>
+              <Link to="/" className="text-16px">GARLICWAK</Link>
             </div>
 
             <div className="menu-container">
               <Link to="/createActivity" className="text-16px">Create Activity</Link>
-              <Link to="/createActivity" className="text-16px">Create Activity</Link>
+              <Link to="/activityList" className="text-16px">Activity</Link>
             </div>
 
           </div>
