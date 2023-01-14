@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './Navbar.css';
-import './Styles.css';
+import './navbar.component.css';
+import './styles.css';
 
-export default class Navbar extends Component {
+export default class navbar extends Component {
   render() {
     return (
       <div>
