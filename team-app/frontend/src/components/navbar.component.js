@@ -16,7 +16,7 @@ export default class Navbar extends Component {
 
             <div className="menu-container">
               <Link to="/createActivity" className="text-16px">Create Activity</Link>
-              <Link to="/createActivity" className="text-16px">Create Activity</Link>
+              <Link to="/activityList" className="text-16px">Activity</Link>
             </div>
 
           </div>
