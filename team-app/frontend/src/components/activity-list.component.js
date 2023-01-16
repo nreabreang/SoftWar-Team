@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import GenerateQR from "./qr-activity";
 
 const Activity = (props) => (
   <tr>
@@ -55,15 +54,24 @@ export default class ActivityList extends Component {
     });
   }
 
-  renderQR() { 
-    axios.get("http://localhost:5000/activity/"+)
-    const Qr =
-    "http://api.qrserver.com/v1/create-qr-code/?data="+ this.qr() + "&size=[60]x[60]";
+  renderQR() {
+    const arr = window.location.href.split("/");
+    axios
+      .get("http://localhost:3000/activity/" + arr[arr.length - 1])
+      .then((res) =>
+        console.log(res),
+      );
+
+     
+    // const Qr =
+    //   "http://api.qrserver.com/v1/create-qr-code/?data=http://localhost:3000/activity/" +
+    //   this.qr +
+    //   "&size=[60]x[60]";
 
     return (
       <div>
         <h3>
-          <img id="id" alt="" src={Qr}></img>
+          <img id="id" alt="" src=""></img>
         </h3>
       </div>
     );
