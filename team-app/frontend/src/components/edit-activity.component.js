@@ -10,6 +10,7 @@ export default class EditActivity extends Component {
     this.onChangeActName = this.onChangeActName.bind(this);
     this.onChangeActDescription = this.onChangeActDescription.bind(this);
     this.onChangeVirtualMoney = this.onChangeVirtualMoney.bind(this);
+    this.onChangeUnitMoney = this.onChangeUnitMoney.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
@@ -17,6 +18,7 @@ export default class EditActivity extends Component {
       actName: "",
       actDescription: "",
       virtualMoney: "",
+      unitMoney:"",
       date: new Date(),
     };
   }
@@ -34,6 +36,7 @@ export default class EditActivity extends Component {
           actName: response.data.actName,
           actDescription: response.data.actDescription,
           virtualMoney: response.data.virtualMoney,
+          unitMoney:response.data.unitMoney,
           date: new Date(response.data.date),
         });
       })
@@ -58,6 +61,12 @@ export default class EditActivity extends Component {
   onChangeVirtualMoney(e) {
     this.setState({
       virtualMoney: e.target.value,
+    });
+  }
+
+  onChangeUnitMoney(e) {
+    this.setState({
+      unitMoney: e.target.value,
     });
   }
 
@@ -89,7 +98,6 @@ export default class EditActivity extends Component {
   render() {
     return (
       <div>
-        <h3 className="p-8">Edit Activity</h3>
         <form className="w-full max-w-sm" onSubmit={this.onSubmit}>
           <div>
             <div className="mx-8">
@@ -117,22 +125,28 @@ export default class EditActivity extends Component {
             </div>
             <div className="mx-8">
               <label htmlFor="virtualMoney">Virtual Money:</label>
-              <select
+              <input
                 required
                 id="virtualMoney"
                 name="virtualMoney"
                 className="m-4"
                 value={this.state.virtualMoney}
                 onChange={this.onChangeVirtualMoney}
-              >
-                <option value="dolls" required>
-                  dolls
-                </option>
-                <option value="gold chocolate" required>
-                  gold chocolate
-                </option>
-              </select>
+              ></input>
             </div>
+
+            <div className="mx-8">
+              <label htmlFor="unitMoney">หน่วยเงิน :</label>
+              <input
+                required
+                id="unitMoney"
+                name="unitMoney"
+                className="m-4"
+                value={this.state.unitMoney}
+                onChange={this.onChangeUnitMoney}
+              ></input>
+            </div>
+
             <div className="mx-8">
               <label>Date : </label>
               <DatePicker
@@ -140,6 +154,7 @@ export default class EditActivity extends Component {
                 onChange={this.onChangeDate}
               />
             </div>
+
             <div className="mx-8">
               <input
                 type="submit"
