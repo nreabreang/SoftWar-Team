@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 export default function GenerateQR(props){
     const getUrls = props.url
     const pixels = 500
