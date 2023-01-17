@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import './navbar.component.css';
 import './Styles.css';
 
+
 export default class navbar extends Component {
+
   render() {
     return (
       <div>
