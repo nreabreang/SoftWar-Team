@@ -12,8 +12,13 @@ const activitySchema = new Schema({
         required:true,
     },
     virtualMoney:{
+        type:Number,
+        required:true,
+        minlength:3
+    },
+    unitMoney:{
         type:String,
-        required:true
+        require:true,
     },
     date:{
         type:Date,

@@ -13,12 +13,14 @@ router.route("/add").post((req, res) => {
   const actName = req.body.actName;
   const actDescription = req.body.actDescription;
   const virtualMoney = req.body.virtualMoney;
+  const unitMoney = req.body.unitMoney;
   const date = Date.parse(req.body.date);
 
   const newActivity = new Activity({
     actName,
     actDescription,
     virtualMoney,
+    unitMoney,
     date,
   });
 
@@ -49,6 +51,7 @@ router.route("/update/:id").post((req, res) => {
       activity.actName = req.body.actName;
       activity.actDescription = req.body.actDescription;
       activity.virtualMoney = req.body.virtualMoney;
+      activity.unitMoney = req.body.unitMoney;
       activity.date = Date.parse(req.body.date);
 
       activity
