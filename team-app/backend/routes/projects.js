@@ -29,3 +29,24 @@ router.route("/add").get((req,resp)=>{
     .catch((error)=>res.status(400).json("Error: " + error))
 })
 
+router.route("/:nameproject").get((req,resp)=>{
+    Projects.find(req.params.nameproject)
+    .then((Proj)=>resp.status(200).json(Proj))
+    .catch((error)=>resp.status(400).json("Error: " + error))
+})
+
+router.route("/update/:nameproject").post((req,resp)=>{
+    Projects.find(req.params.nameproject)
+    .then((Project)=>{
+        Project.projectname = req.body.projectname
+        Project.description = req.body.description
+        Project.date = Date.parse(req.body.date)
+        Project.comment = req.body.comment
+
+        Project.save()
+        .then(()=>resp.status(200).json("Projecy is update"))
+        .catch((err)=>resp.status(400).json("Error: " + err))
+    })
+    .catch((error)=>resp.status(400).json("Error: " + error))
+})
+
