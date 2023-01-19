@@ -6,7 +6,7 @@ router.route("/").get((req,resp)=>{
     Projects.find()
     .then((Projects)=>resp.status(200).json(Projects))
     .catch((error)=>resp.status(400).json("Error: " + error))
-})
+});
 
 router.route("/add").get((req,resp)=>{
     const projName = req.body.projectname;
@@ -27,13 +27,13 @@ router.route("/add").get((req,resp)=>{
     .save()
     .then(()=>resp.json("Add Project is successed."))
     .catch((error)=>res.status(400).json("Error: " + error))
-})
+});
 
 router.route("/:nameproject").get((req,resp)=>{
     Projects.find(req.params.nameproject)
     .then((Proj)=>resp.status(200).json(Proj))
     .catch((error)=>resp.status(400).json("Error: " + error))
-})
+});
 
 router.route("/update/:nameproject").post((req,resp)=>{
     Projects.find(req.params.nameproject)
@@ -48,5 +48,5 @@ router.route("/update/:nameproject").post((req,resp)=>{
         .catch((err)=>resp.status(400).json("Error: " + err))
     })
     .catch((error)=>resp.status(400).json("Error: " + error))
-})
+});
 
