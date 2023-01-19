@@ -4,7 +4,7 @@ let User = require('../models/user.model'); // call mongoose models
 const SECRET = ""
 
 // first route & handle HTTP Get & Get request
-router.route("/").get((req, res) => {
+router.route("/").get(async(req, res) => {
   // "/users/"
   User.find()
     .then((users) => res.json(users))
@@ -22,7 +22,7 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/register").post((req,resp)=>{
+router.route("/register").post(async (req,resp)=>{
   const username = req.body.username
   const password = req.body.password
   const email = req.body.email
@@ -48,7 +48,7 @@ router.route("/register").post((req,resp)=>{
   }
 });
 
-router.route("/log-in").get((req,resp)=>{
+router.route("/log-in").get(async (req,resp)=>{
   const usernameLogIn = req.body.username
   const passwordLogIn = req.body.password
   //check matching in table
