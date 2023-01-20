@@ -1,6 +1,5 @@
 const router = require('express').Router();
 let Projects = require('../models/project.model');
-let Commenty = require('../models/comment.model');
 
 router.route("/").get((req,resp)=>{
     Projects.find()
