@@ -18,9 +18,6 @@ const projectScheme = new schema({
         trim:false,
         minlength:5,
     },
-    comment:{
-        type:Comments,
-    }
 },{
     timestamps:true,
 });

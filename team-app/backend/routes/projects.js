@@ -11,15 +11,11 @@ router.route("/").get((req,resp)=>{
 router.route("/add").get((req,resp)=>{
     const projName = req.body.projectname;
     const descript = req.body.description;
-    const comment = new Commenty({
-
-    });
     const timing = Date.parse(req.body.date);
 
     const newProject = new Projects({
         projName,
         descript,
-        comment,
         timing,
     });
 
@@ -41,7 +37,6 @@ router.route("/update/:nameproject").post((req,resp)=>{
         Project.projectname = req.body.projectname
         Project.description = req.body.description
         Project.date = Date.parse(req.body.date)
-        Project.comment = req.body.comment
 
         Project.save()
         .then(()=>resp.status(200).json("Projecy is update"))

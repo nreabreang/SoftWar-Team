@@ -22,7 +22,7 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/register").post(async (req,resp)=>{
+router.route("/register").post((req,resp)=>{
   const username = req.body.username
   const password = req.body.password
   const email = req.body.email
@@ -31,8 +31,8 @@ router.route("/register").post(async (req,resp)=>{
   const findPasswordInTable = User.find(password)
   const findEmailInTable = User.find(email)
   //check matching in tables
-  if(findUsernameInTable == null || findPasswordInTable == null || findEmailInTable == null){
-    resp.status(400).json("")
+  if(findUsernameInTable || findPasswordInTable || findEmailInTable){
+    resp.status(400).json("Cannot be used.")
   }else{
     const newUser = new User({
     username,
@@ -42,7 +42,8 @@ router.route("/register").post(async (req,resp)=>{
 
   newUser
   .save()
-  .then(()=>resp.json("Register is successed.")).catch((err)=>{
+  .then(()=>resp.json("Register is successed."))
+  .catch((err)=>{
     resp.status("400").json("Error: " + err)
   })
   }
@@ -51,9 +52,12 @@ router.route("/register").post(async (req,resp)=>{
 router.route("/log-in").get(async (req,resp)=>{
   const usernameLogIn = req.body.username
   const passwordLogIn = req.body.password
-  //check matching in table
-  if(true){
 
+  const findUsername = User.find(usernameLogIn)
+  const findPassword = User.find(passwordLogIn)
+  //check matching in table
+  if(findUsername || findPassword){
+      resp.json("Login is successed.")
   }
 });
 
