@@ -27,6 +27,7 @@ app.use("/activity",activityRouter);
 app.use("/exercises", exercisesRouter); // go to exercises.js file /exercises
 app.use("/users", userRouter); //go to users.js file /users
 
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
