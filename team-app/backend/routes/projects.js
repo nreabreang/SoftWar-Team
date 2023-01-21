@@ -44,3 +44,4 @@ router.route("/update/:nameproject").post((req,resp)=>{
     .catch((error)=>resp.status(400).json("Error: " + error))
 });
 
+module.exports = router;
