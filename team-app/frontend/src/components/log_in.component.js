@@ -10,7 +10,7 @@ export default class CreateActivity extends Component {
         this.password = password
         
         this.state = {
-            username: ""
+            username: "",
             password: ""
         }
     }

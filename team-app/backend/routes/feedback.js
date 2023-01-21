@@ -2,6 +2,7 @@ const router = require('express').Router();
 let Feedback = require('../models/feedback.model');
 
 //It must be change path, Now I write for a simple form.
+// https://localhost:5000/feedback/id/add
 router.route("/:id/add").post(async(req,resp)=>{
     const virtualMoney = req.body.virtualmoney
     const commentFeedback = req.body.comments
