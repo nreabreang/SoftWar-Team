@@ -75,7 +75,7 @@ export default class CreateActivity extends Component {
       .post("http://localhost:5000/activity/add", activity)
       .then((res) => console.log(res.data));
 
-    window.location = "/createActivity"; //relocation to homepage
+    window.location = "/activityList"; //relocation to homepage
   }
 
   render() {

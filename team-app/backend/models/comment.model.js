@@ -10,7 +10,7 @@ const commentSchema = new schema({
         trim:false,
     },
     i_wish:{
-        trype:String,
+        type:String,
         require:false,
         unique:false,
         trim:false,
@@ -30,6 +30,6 @@ const commentSchema = new schema({
 
 })
 
-const Comments = mongoose.model('Comments',commentSchema)
+const Comments = mongoose.model('Comments',commentSchema);
 
 module.exports = Comments;
