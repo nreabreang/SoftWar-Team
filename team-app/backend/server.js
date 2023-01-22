@@ -22,6 +22,7 @@ const activityRouter = require("./routes/activities");
 const exercisesRouter = require("./routes/exercises");
 const userRouter = require("./routes/users");
 const projectRouter = require("./routes/projects");
+const GUESTROUTER = require("./routes/guests");
 // const feedbackRouter = require("./routes/feedback");
 
 // use file and add path
@@ -30,6 +31,7 @@ app.use("/exercises", exercisesRouter); // go to exercises.js file /exercises
 app.use("/users", userRouter); //go to users.js file /users
 app.use("/project",projectRouter); // cannot be successes
 // app.use("/feedback",feedbackRouter); // cannot be successes
+app.use("/guest",GUESTROUTER);
 
 
 app.listen(port, () => {

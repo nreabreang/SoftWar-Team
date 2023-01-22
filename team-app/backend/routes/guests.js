@@ -32,7 +32,8 @@ router.route("/delete").delete(async(req,resp)=>{
 router.route("/delete/:id").delete(async(req,resp)=>{
     Guest.remove(req.params.id)
     .then(()=>resp.status(200).json("Delete successe."))
-    .catch()
+    .catch((err)=>resp.status(400).json("Error: " + err))
 });
+
 
 module.exports = router;
