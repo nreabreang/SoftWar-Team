@@ -14,12 +14,3 @@
 ## Author
 
 👤 **https://softwarteam.notion.site/SoftWar-Team-857879d5ff3e4f9b992106f56d4fc144**
-
-* Github: [@https:\/\/github.com\/limthelimn\/SoftWar-Team.git](https://github.com/https:\/\/github.com\/limthelimn\/SoftWar-Team.git)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
