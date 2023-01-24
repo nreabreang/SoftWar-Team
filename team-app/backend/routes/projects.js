@@ -1,13 +1,13 @@
 const router = require('express').Router();
 let Projects = require('../models/project.model');
 
-router.route("/").get((req,resp)=>{
+router.route("/").get((req,res)=>{
     Projects.find()
-    .then((Projects)=>resp.status(200).json(Projects))
-    .catch((error)=>resp.status(400).json("Error: " + error))
+    .then((Projects)=>res.status(200).json(Projects))
+    .catch((error)=>res.status(400).json("Error: " + error))
 });
 
-router.route("/add").get((req,resp)=>{
+router.route("/add").get((req,res)=>{
     const projName = req.body.projectname;
     const descript = req.body.description;
     const timing = Date.parse(req.body.date);
@@ -20,17 +20,17 @@ router.route("/add").get((req,resp)=>{
 
     newProject
     .save()
-    .then(()=>resp.json("Add Project is successed."))
+    .then(()=>res.json("Add Project is successed."))
     .catch((error)=>res.status(400).json("Error: " + error))
 });
 
-router.route("/:nameproject").get((req,resp)=>{
+router.route("/:nameproject").get((req,res)=>{
     Projects.find(req.params.nameproject)
-    .then((Proj)=>resp.status(200).json(Proj))
-    .catch((error)=>resp.status(400).json("Error: " + error))
+    .then((Proj)=>res.status(200).json(Proj))
+    .catch((error)=>res.status(400).json("Error: " + error))
 });
 
-router.route("/update/:nameproject").post((req,resp)=>{
+router.route("/update/:nameproject").post((req,res)=>{
     Projects.find(req.params.nameproject)
     .then((Project)=>{
         Project.projectname = req.body.projectname
@@ -38,8 +38,8 @@ router.route("/update/:nameproject").post((req,resp)=>{
         Project.date = Date.parse(req.body.date)
 
         Project.save()
-        .then(()=>resp.status(200).json("Projecy is update"))
-        .catch((err)=>resp.status(400).json("Error: " + err))
+        .then(()=>res.status(200).json("Projecy is update"))
+        .catch((err)=>res.status(400).json("Error: " + err))
     })
     .catch((error)=>resp.status(400).json("Error: " + error))
 });
