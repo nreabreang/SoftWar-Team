@@ -37,7 +37,6 @@ router.route("/add").post((req, res) => {
     // /activity/add
     const virtualMoney = req.body.virtualMoney;
     const comments = req.body.comments;
-    
   
     const newFeedback = new Feedback({
       virtualMoney,
@@ -48,6 +47,24 @@ router.route("/add").post((req, res) => {
     .save()
     .then(() => res.json("Feedback added!"))
     .catch((err) => res.status(400).json("Error : " + err));
+});
+
+router.route("/:id").get(async(req,res)=>{
+  Feedback.findById(req.params.id)
+  .then((feedback)=>res.status(200).json(feedback))
+  .catch((err)=>res.status(400).json("Error: "+err))
+});
+
+router.route("/:id").post(async(req,res)=>{
+  Feedback.findByIdAndDelete(req.params.id)
+  .then(()=>res.status(200).json("Delete is successefull."))
+  .catch((err)=>res.status(400).json("Error: "+err))
+})
+
+router.route("/update/:id").post(async(req,res)=>{
+  Feedback.findByIdAndUpdate(req.params.id,res.body.virtualMoney,res.body.comments)
+  .then(()=>res.status(200).json("Update success"))
+  .catch((err)=>res.status(400).json("Error: "+err))
 })
 
 module.exports = router;
