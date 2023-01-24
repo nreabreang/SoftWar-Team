@@ -25,14 +25,14 @@ let Feedback = require('../models/feedback.model');
 //     }
 // });
 
+// http://localhost:5000/feedback/
 router.route("/").get((req,res)=>{
     Feedback.find() // mongoose command
     .then((Feedback) => res.status(200).json(Feedback))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-
-
+// http://localhost:5000/feedback/add
 router.route("/add").post((req, res) => {
     // /activity/add
     const virtualMoney = req.body.virtualMoney;
@@ -49,18 +49,21 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error : " + err));
 });
 
+// http://localhost:5000/feedback/:id get by id
 router.route("/:id").get(async(req,res)=>{
   Feedback.findById(req.params.id)
   .then((feedback)=>res.status(200).json(feedback))
   .catch((err)=>res.status(400).json("Error: "+err))
 });
 
+// http://localhost:5000/feedback/:id up to database
 router.route("/:id").post(async(req,res)=>{
   Feedback.findByIdAndDelete(req.params.id)
-  .then(()=>res.status(200).json("Delete is successefull."))
+  .then(()=>res.status(200).json("Delete is successfull."))
   .catch((err)=>res.status(400).json("Error: "+err))
 })
 
+// http://localhost:5000/feedback/:id update to database
 router.route("/update/:id").post(async(req,res)=>{
   Feedback.findByIdAndUpdate(req.params.id,res.body.virtualMoney,res.body.comments)
   .then(()=>res.status(200).json("Update success"))
