@@ -4,17 +4,17 @@ import { Component } from "react";
 export default class guestLogin extends Component {
   constructor(props) {
     super(props);
-    this.onChangeGuestName = this.onChangeGuestName.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      guestName: "",
+      username : "",
     };
   }
 
-  onChangeGuestName(e) {
+  onChangeUsername(e) {
     this.setState({
-      guestName: e.target.value,
+      username: e.target.value,
     });
   }
 
@@ -22,13 +22,14 @@ export default class guestLogin extends Component {
     e.preventDefault();
 
     const guestInfo = {
-      guestName: this.state.guestName,
+      username: this.state.username,
     };
 
     axios
       .post("http://localhost:5000/guest/add", guestInfo)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log("Error: " + err));
+      .then((res) => console.log(res.data));
+
+      window.location = "/";
   }
 
   render() {
@@ -45,12 +46,12 @@ export default class guestLogin extends Component {
                 id="guestName"
                 name="guestName"
                 className=""
-                value={this.state.guestName}
-                onChange={this.onChangeGuestName}
+                value={this.state.username}
+                onChange={this.onChangeUsername}
               />
             </div>
             <div className="">
-              <input type="submit" value="Submit" />
+              <input type="submit" value="Submit"/>
             </div>
           </div>
         </form>
