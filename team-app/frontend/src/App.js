@@ -5,6 +5,8 @@ import Homepage from "./components/homepage.component";
 import CreateActivity from "./components/create-activity.component";
 import ActivityList from "./components/activity-list.component";
 import EditActivity from "./components/edit-activity.component";
+import GuestActivityList from "./components/guest-view/guest-activity-list.component";
+import ActivityId from "./components/guest-view/activity-id.component";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/activityList" element={<ActivityList />}></Route>
           <Route path="/activityList/:id" element={<ActivityList/>}></Route>
           <Route path="/Edit/:id" element={<EditActivity/>}></Route>
+          <Route path="/guestActivityList" element={<GuestActivityList/>}></Route>
+          <Route path="/guestActivityList/:id" element={<ActivityId/>}></Route>
         </Routes>
       </div>
     </Router>
