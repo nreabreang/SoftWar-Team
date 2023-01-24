@@ -10,6 +10,9 @@ const feedbackSchema = new schema({
         trim:false,
         minlength:3,
     },
+    comments:{
+        type:mongoose.Schema.Types.ObjectId, ref:'Comments'
+    },
     
 });
 
