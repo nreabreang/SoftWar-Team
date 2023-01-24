@@ -3,13 +3,13 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema;
 
 const commentSchema = new schema({
-    i_like:{
+    iLike:{
         type:String,
         require:false,
         unique:false,
         trim:false,
     },
-    i_wish:{
+    iWish:{
         type:String,
         require:false,
         unique:false,
