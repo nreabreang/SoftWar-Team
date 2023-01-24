@@ -1,5 +1,6 @@
 import Comments from "../../../backend/models/comment.model";
 import DatePicker from 'react-datepicker'
+import axios from "axios";
 
 export default class GuestLogIn extends Comments{
 
@@ -28,7 +29,16 @@ export default class GuestLogIn extends Comments{
     }
 
     onSubmit(e){
+        e.preventDefault();
 
+        const guestInfo = {
+            guestName: this.state.guestName,
+            date: this.state.date
+        }
+
+        axios.post("",guestInfo)
+        .then((resp)=>console.log(resp.data))
+        .catch((err)=>console.log("Error: "+err))
     }
 
     render(){
