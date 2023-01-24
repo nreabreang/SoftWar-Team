@@ -1,6 +1,7 @@
 const router = require("express").Router();
 let Activity = require("../models/activity.model");
 
+// http://localhost:5000/activity/
 router.route("/").get((req, res) => {
   // /activity/
   Activity.find() // mongoose command
@@ -8,6 +9,7 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+// http://localhost:5000/activity/add
 router.route("/add").post((req, res) => {
   // /activity/add
   const actName = req.body.actName;
@@ -31,6 +33,7 @@ router.route("/add").post((req, res) => {
 });
 
 // get data by id
+// http://localhost:5000/activity/:id
 router.route("/:id").get((req, res) => {
   Activity.findById(req.params.id)
     .then((Activity) => res.json(Activity))
@@ -38,6 +41,7 @@ router.route("/:id").get((req, res) => {
 });
 
 // delete by id
+// http://localhost:5000/activity/:id
 router.route("/:id").delete((req, res) => {
   Activity.findByIdAndDelete(req.params.id)
     .then((Activity) => res.json("Activity deleted."))
@@ -45,6 +49,7 @@ router.route("/:id").delete((req, res) => {
 });
 
 //Update by id
+// http://localhost:5000/activity/update/:id
 router.route("/update/:id").post((req, res) => {
   Activity.findById(req.params.id)
     .then((activity) => {
