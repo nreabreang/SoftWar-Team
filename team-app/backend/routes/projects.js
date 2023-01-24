@@ -1,12 +1,14 @@
 const router = require('express').Router();
 let Projects = require('../models/project.model');
 
+// http://localhost:5000/project/
 router.route("/").get((req,res)=>{
     Projects.find()
     .then((Projects)=>res.status(200).json(Projects))
     .catch((error)=>res.status(400).json("Error: " + error))
 });
 
+// http://localhost:5000/project/add 
 router.route("/add").get((req,res)=>{
     const projName = req.body.projectname;
     const descript = req.body.description;
@@ -24,12 +26,14 @@ router.route("/add").get((req,res)=>{
     .catch((error)=>res.status(400).json("Error: " + error))
 });
 
+// http://localhost:5000/project/:nameProject 
 router.route("/:nameproject").get((req,res)=>{
     Projects.find(req.params.nameproject)
     .then((Proj)=>res.status(200).json(Proj))
     .catch((error)=>res.status(400).json("Error: " + error))
 });
 
+// http://localhost:5000/project/update/:nameProject 
 router.route("/update/:nameproject").post((req,res)=>{
     Projects.find(req.params.nameproject)
     .then((Project)=>{
