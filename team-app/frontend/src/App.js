@@ -7,6 +7,7 @@ import ActivityList from "./components/activity-list.component";
 import EditActivity from "./components/edit-activity.component";
 import GuestActivityList from "./components/guest-view/guest-activity-list.component";
 import ActivityId from "./components/guest-view/activity-id.component";
+import GuestLogin from "./components/guest-view/guest-login.component";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Edit/:id" element={<EditActivity/>}></Route>
           <Route path="/guestActivityList" element={<GuestActivityList/>}></Route>
           <Route path="/guestActivityList/:id" element={<ActivityId/>}></Route>
+          <Route path="/guestLogin" element={<GuestLogin/>}></Route>
         </Routes>
       </div>
     </Router>
