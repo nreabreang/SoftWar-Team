@@ -78,16 +78,6 @@ export default class ActivityList extends Component {
     });
   } 
 
-  showQRcode(){
-    const idActivity = ""
-    axios.get('http://localhost:5000/activity/').then((res)=>idActivity = res.data._id).catch((err)=>console.log("Error: "+err))
-    const urls = 'http://localhost:3000/activity/' + idActivity
-    console.log(urls)
-    return(
-      <GenerateQR url={urls} />
-    )
-  }
-
   render() {
     return (
       <div className="pl-4 font-sans font-bold text-xl">
