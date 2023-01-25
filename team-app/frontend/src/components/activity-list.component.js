@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import GenerateQR from "./qr-activity";
 
 const Activity = (props) => (
   <div class="m-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -75,6 +76,16 @@ export default class ActivityList extends Component {
         />
       );
     });
+  } 
+
+  showQRcode(){
+    const [ idActivity, setIdActivity] = useState("")
+    axios.get('http://localhost:5000/activity/').then((res)=>setIdActivity(res.data._id)).catch((err)=>console.log("Error: "+err))
+    const urls = 'http://localhost:3000/activity/' + idActivity
+    console.log(urls)
+    return(
+      <GenerateQR url={urls} />
+    )
   }
 
   render() {
@@ -82,6 +93,7 @@ export default class ActivityList extends Component {
       <div className="pl-4 font-sans font-bold text-xl">
         <h3 className="pl-4 flex justify-center">Activity</h3>
         <div className="flex justify-auto m-4 p-4">{this.activityList()}</div>
+        <div>{this.showQRcode}</div>
       </div>
     );
   }
