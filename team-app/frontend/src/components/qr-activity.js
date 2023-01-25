@@ -6,6 +6,9 @@ export default function GenerateQR(props){
         <div className="">
             <QRCode 
                 value={urls}
+                size={256}
+                //style={{width:"",height:"",maxWidth:"",maxHeight:""}} //other choice
+                //level=''  option => 'L'=Low , 'M'=mediam , 'Q'=Quality, 'H'=height
             />
         </div>
     );
