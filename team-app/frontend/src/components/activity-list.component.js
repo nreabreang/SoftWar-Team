@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import GenerateQR from "./qr-activity";
@@ -79,8 +79,8 @@ export default class ActivityList extends Component {
   } 
 
   showQRcode(){
-    const [ idActivity, setIdActivity] = useState("")
-    axios.get('http://localhost:5000/activity/').then((res)=>setIdActivity(res.data._id)).catch((err)=>console.log("Error: "+err))
+    const idActivity = ""
+    axios.get('http://localhost:5000/activity/').then((res)=>idActivity = res.data._id).catch((err)=>console.log("Error: "+err))
     const urls = 'http://localhost:3000/activity/' + idActivity
     console.log(urls)
     return(
