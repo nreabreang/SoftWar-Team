@@ -1,7 +1,6 @@
 import React, { Component} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import GenerateQR from "./qr-activity";
 
 const Activity = (props) => (
   <div class="m-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
