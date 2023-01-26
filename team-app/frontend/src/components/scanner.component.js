@@ -43,4 +43,32 @@ export default class scannerCode extends Component{
         </div>
     )  
     }
+   
+
+  }
+
+  onHandleError(err) {
+    console.error("Error: " + err);
+  }
+
+  render() {
+    const preview = {
+      height: 500,
+      width: 500,
+    };
+
+    return (
+      <div>
+        <QrReader
+          delay={this.state.delay}
+          style={preview}
+          onError={this.onHandleError}
+          onScan={this.handleScan}
+          // legacyMode={true}
+        />
+
+        {/* <p>test : {this.state.result.split(",")}</p>            */}
+      </div>
+    );
+  }
 }
