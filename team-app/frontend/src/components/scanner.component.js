@@ -5,7 +5,7 @@ export default class scannerCode extends Component{
     constructor(props){
         super(props);
         this.state={
-            result:"No result",
+            result:"",
         }
 
         this.handleScan = this.handleScan.bind(this)
@@ -17,6 +17,7 @@ export default class scannerCode extends Component{
                 this.setState({
                     result:data,
                 })
+                window.location=data
             }
     };
 
