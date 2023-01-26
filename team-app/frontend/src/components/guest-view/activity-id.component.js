@@ -1,5 +1,6 @@
 import axios from "axios";
 import GenerateQR from "../creator-view/qr-activity";
+import Scanner from "../scanner.component"
 const { Component } = require("react");
 
 // const ActivityList = (props) => (
@@ -70,6 +71,7 @@ export default class activityId extends Component {
           
         </div>
         <GenerateQR urls={window.location.href} actName={this.state.actName} />
+        <Scanner />
       </div>
     );
   }
