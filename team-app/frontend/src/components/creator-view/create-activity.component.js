@@ -18,7 +18,7 @@ export default class CreateActivity extends Component {
       actName: "",
       actDescription: "",
       virtualMoney: "",
-      unitMoney:"",
+      unitMoney: "",
       date: new Date(),
       users: [],
     };
@@ -65,7 +65,7 @@ export default class CreateActivity extends Component {
       actName: this.state.actName,
       actDescription: this.state.actDescription,
       virtualMoney: this.state.virtualMoney,
-      unitMoney:this.state.unitMoney,
+      unitMoney: this.state.unitMoney,
       date: this.state.date,
     };
 
@@ -80,69 +80,79 @@ export default class CreateActivity extends Component {
 
   render() {
     return (
-      <div>
+      <div className="flex justify-center font-semibold font-sans">
         <form className="w-full max-w-sm" onSubmit={this.onSubmit}>
           <div>
-            <div className="mx-8">
+            <div className="">
               <label>Activity Name</label>
-              <input
-                required
-                type="text"
-                id="actName"
-                name="actName"
-                className="m-4 border-2 border-black"
-                value={this.state.actName}
-                onChange={this.onChangeActName}
-              />
+              <div>
+                <input
+                  required
+                  type="text"
+                  id="actName"
+                  name="actName"
+                  className="mb-4 mt-2 border-2 border-red-400 rounded-md"
+                  value={this.state.actName}
+                  onChange={this.onChangeActName}
+                />
+              </div>
             </div>
-            <div className="mx-8 my-4 flex items-stretch">
+            <div className=" my-2 items-stretch">
               <label className="self-center">Description</label>
-              <textarea
-                required
-                id="actDes"
-                name="actDes"
-                className="m-4 border-2 border-black"
-                value={this.state.actDescription}
-                onChange={this.onChangeActDescription}
-              />
+              <div>
+                <textarea
+                  required
+                  id="actDes"
+                  name="actDes"
+                  className="mb-4 mt-2 border-2 border-red-400 rounded-md"
+                  value={this.state.actDescription}
+                  onChange={this.onChangeActDescription}
+                />
+              </div>
             </div>
-            <div className="mx-8">
-              <label htmlFor="virtualMoney">Virtual Money:</label>
-              <input
-                required
-                id="virtualMoney"
-                name="virtualMoney"
-                className="m-4"
-                value={this.state.virtualMoney}
-                onChange={this.onChangeVirtualMoney}
-              ></input>
-            </div>
-
-            <div className="mx-8">
-              <label htmlFor="unitMoney">หน่วยเงิน :</label>
-              <input
-                required
-                id="unitMoney"
-                name="unitMoney"
-                className="m-4"
-                value={this.state.unitMoney}
-                onChange={this.onChangeUnitMoney}
-              ></input>
+            <div className="">
+              <label htmlFor="virtualMoney">Virtual Money</label>
+              <div>
+                <input
+                  required
+                  id="virtualMoney"
+                  name="virtualMoney"
+                  className="mb-4  mt-2 rounded-md border-2 border-red-400"
+                  value={this.state.virtualMoney}
+                  onChange={this.onChangeVirtualMoney}
+                ></input>
+              </div>
             </div>
 
-            <div className="mx-8">
-              <label>Date : </label>
+            <div className="">
+              <label htmlFor="unitMoney">Money Unit</label>
+              <div>
+                <input
+                  required
+                  id="unitMoney"
+                  name="unitMoney"
+                  className="mb-4 mt-2 rounded-md border-2 border-red-400"
+                  value={this.state.unitMoney}
+                  onChange={this.onChangeUnitMoney}
+                ></input>
+              </div>
+            </div>
+
+            <div className="">
+              <label>Date</label>
+
               <DatePicker
                 selected={this.state.date}
                 onChange={this.onChangeDate}
+                className="rounded-md p-2 mt-2 mb-4 border-2 border-red-400"
               />
             </div>
 
-            <div className="mx-8">
+            <div className="mt-2">
               <input
                 type="submit"
                 value="Submit"
-                className="p-4 rounded-xl px-8"
+                className="p-2 mb-4 px-8 rounded-xl bg-red-500 text-gray-200"
               />
             </div>
           </div>
