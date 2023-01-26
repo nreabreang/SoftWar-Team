@@ -1,6 +1,8 @@
 import axios from "axios";
 import { Component } from "react";
 
+
+
 export default class guestLogin extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +10,7 @@ export default class guestLogin extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username : "",
+      username : [],
     };
   }
 
@@ -29,7 +31,10 @@ export default class guestLogin extends Component {
       .post("http://localhost:5000/guest/add", guestInfo)
       .then((res) => console.log(res.data));
 
-      window.location = "/";
+      
+      
+    
+        // window.location = "";
   }
 
   render() {
@@ -45,16 +50,17 @@ export default class guestLogin extends Component {
                 required
                 id="guestName"
                 name="guestName"
-                className=""
+                className="mt-2 rounded-md"
                 value={this.state.username}
                 onChange={this.onChangeUsername}
               />
             </div>
             <div className="">
-              <input type="submit" value="Submit"/>
+              <input type="submit" value="Submit" className="p-2 rounded-md bg-red-400 text-white"/>
             </div>
           </div>
         </form>
+        
       </div>
     );
   }

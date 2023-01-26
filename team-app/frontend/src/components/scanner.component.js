@@ -6,7 +6,7 @@ export default class scannerCode extends Component {
     super(props);
 
     this.state = {
-      delay: 10,
+      delay: 500,
       result: "No result",
     };
 
@@ -24,6 +24,10 @@ export default class scannerCode extends Component {
     console.log("QR URL : " + test.text);
     if(test!==null){
         window.location = test.text;
+        
+    }
+    else if(test===null){
+        window.location = "dd";
     }
    
 
@@ -46,6 +50,7 @@ export default class scannerCode extends Component {
           style={preview}
           onError={this.onHandleError}
           onScan={this.handleScan}
+          
           // legacyMode={true}
         />
 
