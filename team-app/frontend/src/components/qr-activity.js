@@ -5,7 +5,7 @@ export default function GenerateQR(props){
     const actName = props.actName
     return(
         <div className="">
-            <label >Scane or Code</label>
+            <label >Scan or Code</label>
             <QRCode 
                 value={urls}
                 size={64}
