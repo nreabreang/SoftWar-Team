@@ -78,8 +78,9 @@ export default class ActivityList extends Component {
     });
   } 
 
+  
   showQRcode(){
-    const [ idActivity, setIdActivity] = useState("")
+    const [ idActivity, setIdActivity] = useState("");
     axios.get('http://localhost:5000/activity/').then((res)=>setIdActivity(res.data._id)).catch((err)=>console.log("Error: "+err))
     const urls = 'http://localhost:3000/activity/' + idActivity
     console.log(urls)
