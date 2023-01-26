@@ -69,7 +69,7 @@ export default class activityId extends Component {
           </p>
           
         </div>
-        <GenerateQR urls={window.location.href} />
+        <GenerateQR urls={window.location.href} actName={this.state.actName} />
       </div>
     );
   }
