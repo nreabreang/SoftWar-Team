@@ -1,46 +1,56 @@
 import { Component } from "react";
-import QrReader from 'react-qr-scanner'
+import QrReader from "react-qr-scanner";
 
-export default class scannerCode extends Component{
-    constructor(props){
-        super(props)
+export default class scannerCode extends Component {
+  constructor(props) {
+    super(props);
 
-        this.state={
-            delay:100,
-            result:'No result',
-        }
-
-        this.handleScan = this.handleScan.bind(this)
+    this.state = {
+      delay: 10,
+      result: "No result",
     };
 
-    handleScan(data){
-        console.log(data)
-        this.setState({
-            result:data,
-        })
-    };
+    this.handleScan = this.handleScan.bind(this);
+  }
 
-    onHandleError(err){
-        console.error("Error: "+err)
-    };
+  handleScan(data) {
+    this.setState({
+      result: data,
+    });
 
-    render(){
-        const preview = {
-            height:500,
-            width:500
-        }
+    const test = Object(data);
 
-    return(
-        <div>
-            <QrReader
-                delay={this.state.delay}
-                style={preview}
-                onError={this.onHandleError}
-                onScan={this.handleScan}
-                // legacyMode={true}
-            />
-            {/* <p>{this.state.result}</p>            */}
-        </div>
-    )  
+    // console.log("fff" + test.split(","));
+    console.log("QR URL : " + test.text);
+    if(test!==null){
+        window.location = test.text;
     }
+   
+
+  }
+
+  onHandleError(err) {
+    console.error("Error: " + err);
+  }
+
+  render() {
+    const preview = {
+      height: 500,
+      width: 500,
+    };
+
+    return (
+      <div>
+        <QrReader
+          delay={this.state.delay}
+          style={preview}
+          onError={this.onHandleError}
+          onScan={this.handleScan}
+          // legacyMode={true}
+        />
+
+        {/* <p>test : {this.state.result.split(",")}</p>            */}
+      </div>
+    );
+  }
 }
