@@ -1,26 +1,26 @@
 import { Component } from "react";
-import QrReader from 'react-qr-scanner'
+import QrReader from 'modern-react-qr-reader'
 
 export default class scannerCode extends Component{
     constructor(props){
-        super(props)
-
+        super(props);
         this.state={
-            delay:100,
-            result:'No result',
+            result:"No result",
         }
 
         this.handleScan = this.handleScan.bind(this)
+        this.handleError = this.handleError.bind(this)
     };
 
     handleScan(data){
-        console.log(data)
-        this.setState({
-            result:data,
-        })
+            if(data){
+                this.setState({
+                    result:data,
+                })
+            }
     };
 
-    onHandleError(err){
+    handleError(err){
         console.error("Error: "+err)
     };
 
@@ -33,13 +33,13 @@ export default class scannerCode extends Component{
     return(
         <div>
             <QrReader
-                delay={this.state.delay}
+                delay={300}
                 style={preview}
-                onError={this.onHandleError}
+                onError={this.handleError}
                 onScan={this.handleScan}
                 // legacyMode={true}
             />
-            {/* <p>{this.state.result}</p>            */}
+            <p>{this.state.result}</p>           
         </div>
     )  
     }
