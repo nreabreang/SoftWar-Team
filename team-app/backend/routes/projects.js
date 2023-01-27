@@ -47,5 +47,9 @@ router.route("/update/:nameproject").post((req,res)=>{
     })
     .catch((error)=>resp.status(400).json("Error: " + error))
 });
+router.route("/delete/:id").delete((req,res)=>{
+    Projects.findByIdAndDelete(req.params.id)
+    .then(()=>console.log("Delete successe.")).catch((err)=>console.log("Error: "+err))
+})
 
 module.exports = router;
