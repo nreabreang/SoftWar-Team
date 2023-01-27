@@ -7,7 +7,7 @@ export default class scannerCode extends Component{
         this.state={
             result:"",
         }
-
+        
         this.handleScan = this.handleScan.bind(this)
         this.handleError = this.handleError.bind(this)
     };
@@ -27,8 +27,8 @@ export default class scannerCode extends Component{
 
     render(){
         const preview = {
-            height:500,
-            width:500
+            height:this.props.height,
+            width:this.props.width
         }
 
     return(
@@ -40,7 +40,7 @@ export default class scannerCode extends Component{
                 onScan={this.handleScan}
                 // legacyMode={true}
             />
-            <p>{this.state.result}</p>           
+            {/* <p>{this.state.result}</p>            */}
         </div>
     )  
     }
