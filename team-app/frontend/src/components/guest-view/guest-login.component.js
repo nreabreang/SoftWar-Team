@@ -29,11 +29,8 @@ export default class guestLogin extends Component {
 
     axios
       .post("http://localhost:5000/guest/add", guestInfo)
-      .then((res) => console.log(res.data));
-
-      
-      
-    
+      .then((res) => console.log(res.data))
+      .catch((err)=>alert("You cannot use this Username!!!."))
         // window.location = "";
   }
 
