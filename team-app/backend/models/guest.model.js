@@ -7,7 +7,7 @@ const guestSchema = new schema({
         require:true,
         unique:true,
         trim:false,
-        minlength:3
+        minlength:1,
     },
 },{
     timestamps:true
