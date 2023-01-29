@@ -71,9 +71,7 @@ export default class activityId extends Component {
           
         </div>
         <GenerateQR urls={window.location.href} actName={this.state.actName} />
-        <div className="flex p-8 bg-white ">
-          <Scanner width={256} height={256} />
-        </div>
+        
       </div>
     );
   }
