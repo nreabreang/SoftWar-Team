@@ -18,6 +18,7 @@ export default class scannerCode extends Component{
                     result:data,
                 })
                 window.location=data
+                
                 while(this.state.result === data){}
             }
     };
