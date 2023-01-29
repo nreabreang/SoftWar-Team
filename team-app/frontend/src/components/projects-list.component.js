@@ -3,8 +3,10 @@ import { Component } from "react";
 
 const Projects = (props) =>{
     return(
-        <div>
-
+        <div className="">
+            <h1 className=" text-[20px]">{this.props.projectName}</h1>
+            <p className="text-[16px]">{this.props.projectDescription}</p>
+            <p className="text-[16px]">{this.props.projectComments}</p>
         </div>
     )
 }
@@ -37,8 +39,12 @@ export default class projectList extends Component{
     showProjectList(){
         return this.state.projects.map((resdata)=>{
             return(
-                <div>
-
+                <div className="bg-sky-500">
+                    <Projects
+                    projectName={resdata.projectName}
+                    projectDescription={resdata.description}
+                    projectComments={resdata.comments}
+                    />
                 </div>
             )
         })
@@ -46,7 +52,7 @@ export default class projectList extends Component{
 
     render(){
         return(
-            <div>
+            <div className="flex ">
                 {this.showProjectList()}
             </div>
         )
