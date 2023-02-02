@@ -4,19 +4,17 @@ const Comments = require('./comment.model');
 const schema = mongoose.Schema;
 
 const projectScheme = new schema({
-    projectname:{
+    projectName:{
         type:String,
         require:true,
-        unique:true,
         trim:false,
-        minlength:3,
+        minlength:1,
     },
-    describtion:{
+    description:{
         type:String,
         require:true,
-        unique:false,
         trim:false,
-        minlength:5,
+        minlength:1,
     },
 },{
     timestamps:true,
