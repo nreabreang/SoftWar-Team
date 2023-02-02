@@ -9,47 +9,47 @@ router.route("/").get((req,res)=>{
 });
 
 // http://localhost:5000/project/add 
-router.route("/add").get((req,res)=>{
-    const projName = req.body.projectname;
-    const descript = req.body.description;
-    const timing = Date.parse(req.body.date);
+router.route("/add").post((req,res)=>{
+    const projectName = req.body.projectName;
+    const description = req.body.description;
 
     const newProject = new Projects({
-        projName,
-        descript,
-        timing,
+        projectName,
+        description,
     });
 
     newProject
     .save()
-    .then(()=>res.json("Add Project is successed."))
+    .then(()=>res.json("Add Project is successfully."))
     .catch((error)=>res.status(400).json("Error: " + error))
 });
 
-// http://localhost:5000/project/:nameProject 
-router.route("/:nameproject").get((req,res)=>{
-    Projects.find(req.params.nameproject)
+// http://localhost:5000/project/:id
+router.route("/:id").get((req,res)=>{
+    Projects.findById(req.params.id)
     .then((Proj)=>res.status(200).json(Proj))
     .catch((error)=>res.status(400).json("Error: " + error))
 });
 
-// http://localhost:5000/project/update/:nameProject 
-router.route("/update/:nameproject").post((req,res)=>{
-    Projects.find(req.params.nameproject)
+// http://localhost:5000/project/update/:id
+router.route("/update/:id").post((req,res)=>{
+    Projects.findById(req.params.id)
     .then((Project)=>{
-        Project.projectname = req.body.projectname
+        Project.projectName = req.body.projectName
         Project.description = req.body.description
-        Project.date = Date.parse(req.body.date)
 
-        Project.save()
-        .then(()=>res.status(200).json("Projecy is update"))
+        Project
+        .save()
+        .then(()=>res.status(200).json("Project is updated"))
         .catch((err)=>res.status(400).json("Error: " + err))
     })
-    .catch((error)=>resp.status(400).json("Error: " + error))
+    .catch((error)=>res.status(400).json("Error: " + error))
 });
+
+
 router.route("/delete/:id").delete((req,res)=>{
     Projects.findByIdAndDelete(req.params.id)
-    .then(()=>console.log("Delete successe.")).catch((err)=>console.log("Error: "+err))
+    .then(()=>console.log("Delete successfully.")).catch((err)=>console.log("Error: "+err))
 })
 
 module.exports = router;
