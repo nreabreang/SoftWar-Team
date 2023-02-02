@@ -25,7 +25,7 @@ export default class guestEnter extends Component{
     }
 
     changePage(){
-        window.location
+        
     }
 
     render(){
