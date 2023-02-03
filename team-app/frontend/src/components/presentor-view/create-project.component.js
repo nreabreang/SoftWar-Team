@@ -6,7 +6,6 @@ import "react-quill/dist/quill.snow.css";
 export default class createProject extends Component {
   constructor(props) {
     super(props);
-
     this.onchangeProjectName = this.onchangeProjectName.bind(this);
     this.onchangeDescription = this.onchangeDescription.bind(this);
     this.sendForm = this.sendForm.bind(this);
@@ -16,6 +15,35 @@ export default class createProject extends Component {
       description: "",
     };
   }
+
+  modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image"],
+      // ['clean']
+    ],
+  };
+
+  formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+  ];
 
   componentDidMount() {
     // this.setState({actName:"test"});
@@ -46,9 +74,9 @@ export default class createProject extends Component {
       .then((res) => console.log(res.data), alert("Successfully"));
 
     this.setState({
-        projectName:'',
-        description:''
-    })
+      projectName: "",
+      description: "",
+    });
   }
 
   render() {
@@ -60,11 +88,12 @@ export default class createProject extends Component {
               <label className="text-[24px]">Project Name.</label>
               <div>
                 <input
+                className="mt-2 italic"
                   type="text"
                   required
                   id="projectName"
                   name="projectName"
-                  placeholder=""
+                  placeholder="ใส่ชื่อโครงการของคุณที่นี้"
                   value={this.state.projectName}
                   onChange={this.onchangeProjectName}
                 />
@@ -73,20 +102,17 @@ export default class createProject extends Component {
 
             <div className="my-4">
               <label>Project Description</label>
-              <div>
+              <div className="">
                 <ReactQuill
                   theme="snow"
-                  className="mt-2"
+                  className="my-2 bg-gray-100 border-red-500 "
                   value={this.state.description}
                   onChange={this.onchangeDescription}
+                  modules={this.modules}
+                  formats={this.formats}
+                  placeholder="ใส่รายละเอียดโครงการของคุณที่นี้"
+                  
                 />
-                {/* <input type="text"
-                                    id="Description" 
-                                    name="Description"
-                                    placeholder=""
-                                    value={this.state.description}
-                                    onChange={this.onchangeDescription}
-                                /> */}
               </div>
             </div>
 
@@ -99,6 +125,7 @@ export default class createProject extends Component {
             </div>
           </div>
         </form>
+        
       </div>
     );
   }
