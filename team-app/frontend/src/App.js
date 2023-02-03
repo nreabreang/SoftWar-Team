@@ -11,6 +11,7 @@ import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
 import CreateProject from "./components/presentor-view/create-project.component";
+import ProjectLists from "./components/projects-list.component";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/guestEnter" element={<GuestEnter/>}></Route>
           <Route path="/creatorLogin" element={<CreatorLogin/>}></Route>
           <Route path="/createProject" element={<CreateProject/>}></Route>
+          <Route path="/projectList" element={<ProjectLists/>}></Route>
         </Routes>
       </div>
     </Router>
