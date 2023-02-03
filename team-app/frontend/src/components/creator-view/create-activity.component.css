@@ -1,9 +1,8 @@
 .create-activity-header {
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 1.875rem 1.875rem;
+    padding: 2rem 2rem 0rem 2rem;
 }
 
 .create-activity{
@@ -12,9 +11,9 @@
 }
 
 .create-activity-container {
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin: 0.625rem 0.625rem;
 }
+

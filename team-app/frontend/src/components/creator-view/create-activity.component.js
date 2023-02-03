@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import './create-activity.component.css';
+import '../styles.css'
+import date from '../images/calendar.png';
 
 export default class CreateActivity extends Component {
     constructor(props) {
@@ -85,17 +87,76 @@ export default class CreateActivity extends Component {
 
             <main>
                 <div className="create-activity-header">
-                    <p>Create Activity</p>
+                    <p className="text-36px">Create Activity</p>
                 </div>
 
                 <div className="create-activity">
-                    <div className="create-activity-container">
-                        <p></p>
 
-                    </div>
+                    <form onSubmit={this.onSubmit}>
 
-                </div>
-            </main>
+                        <div className="flex justify-center">
+                            <div>
+
+                                {/* input activity name */}
+                                <div className="m-5">
+                                    <label className="lable-container">Activity Name</label>
+                                    <input required
+                                        type="text"
+                                        id="actName"
+                                        name="actName" value={this.state.actName}
+                                        onChange={this.onChangeActName}
+                                        placeholder="Activity Name" className="input"></input>
+                                </div>
+
+                                {/* input description */}
+                                <div className="m-5">
+                                    <label className="lable-container">Description</label>
+                                    <textarea
+                                        rows="5"
+                                        required
+                                        id="actDes"
+                                        name="actDes"
+                                        value={this.state.actDescription}
+                                        onChange={this.onChangeActDescription}
+                                        placeholder="Description" className="input" />
+                                </div>
+
+                                {/* input date */}
+                                <div class="m-5">
+                                    <label className="lable-container">Date</label>
+
+                                    <DatePicker
+                                        selected={this.state.date}
+                                        onChange={this.onChangeDate}
+                                        placeholder="Select a Date"
+                                        className="input icon"
+                                    />
+
+
+
+                                </div>
+
+                                {/* <div className="m-5">
+                                    <label className="lable-container">Date</label>
+
+                                    <DatePicker
+                                        selected={this.state.date}
+                                        onChange={this.onChangeDate}
+                                        className="input"
+                                    />
+
+                                    <div className="absolute">
+                                        <img src={date} className="images-icon" />
+                                    </div>
+                                </div> */}
+
+                            </div>
+                        </div>
+                    </form>
+                </div >
+
+            </main >
+
             // <div className="flex justify-center font-semibold font-sans">
             //   <form className="w-full max-w-sm" onSubmit={this.onSubmit}>
             //     <div>
@@ -103,14 +164,14 @@ export default class CreateActivity extends Component {
             //         <label>Activity Name</label>
             //         <div>
             //           <input
-            //             required
-            //             type="text"
-            //             id="actName"
-            //             name="actName"
-            //             className="mb-4 mt-2 border-2 border-red-400 rounded-md"
-            //             value={this.state.actName}
-            //             onChange={this.onChangeActName}
-            //           />
+            //              required
+            //                  type="text"
+            //                  id="actName"
+            //                  name="actName"
+            //                  className="mb-4 mt-2 border-2 border-red-400 rounded-md"
+            //                  value={this.state.actName}
+            //                  onChange={this.onChangeActName}
+            //                     />
             //         </div>
             //       </div>
             //       <div className=" my-2 items-stretch">

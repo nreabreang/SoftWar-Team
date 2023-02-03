@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './homepage.component.css'
-import './Styles.css';
+import './styles.css';
 import rightarrow from './images/right-arrow.png'
 import qr from './images/qr-code - 1.png'
 
