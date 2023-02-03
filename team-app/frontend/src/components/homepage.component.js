@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./homepage.component.css";
 import "./Styles.css";
 import rightarrow from "./images/right-arrow.png";
