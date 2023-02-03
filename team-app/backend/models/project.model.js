@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Comments = require('./comment.model');
 
 const schema = mongoose.Schema;
 
@@ -7,12 +6,14 @@ const projectScheme = new schema({
     projectName:{
         type:String,
         require:true,
+        unique:false,
         trim:false,
         minlength:1,
     },
     description:{
         type:String,
         require:true,
+        unique:false,
         trim:false,
         minlength:1,
     },

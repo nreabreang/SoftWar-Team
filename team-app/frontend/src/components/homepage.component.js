@@ -4,50 +4,128 @@ import './homepage.component.css'
 import './styles.css';
 import rightarrow from './images/right-arrow.png'
 import qr from './images/qr-code - 1.png'
+import "./homepage.component.css";
+import "./styles.css";
+import axios from "axios";
+import { Buffer } from "buffer";
 
 export default class homepage extends Component {
-    render() {
-        return (
-            <main>
-                <div className="banner">
-                    <div className="banner-container">
-                        <p className="text-36px">Welcome</p>
-                        <p className="text-20px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente dignissimos non quis illo provident officiis inventore esse, dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi voluptas, a expedita optio?
-                        </p>
-                    </div>
-                </div>
+  constructor(props) {
+    super(props);
 
-                <div className="button">
-                    <div className="container">
-                        <Link to="/createActivity" className="button-navy">Get Started!</Link>
-                        <Link to="/guestLogin" className="button-lightpink">Sign Up</Link>
-                    </div>
-                </div>
+    this.onChangeCode = this.onChangeCode.bind(this);
+    this.onEnterCode = this.onEnterCode.bind(this);
 
-                <div className="banner">
-                    <div className="banner-container text-18px">
-                        <p>For Guest Joining The Activity</p>
-                    </div>
-                </div>
+    this.state = {
+      code: "#",
+    };
+  }
 
-                <div className="container">
-                    <div className="joining-container">
-                        <p className="text-20px">Joining an Activity</p>
+  componentDidMount() {}
 
-                        <label for="inputCode"></label>
-                        <input type="text" placeholder="Enter Code" minlength="8" maxlength="8" className="input-code"></input>
+  onChangeCode(e) {
+    this.setState({
+      code: e.target.value,
+    });
+  }
 
-                        <div className="icon-container">
-                            <Link to="/guestLogin"><img src={rightarrow} className="images-icon" /></Link>
-                        </div>
+  onEnterCode(e) {
+    const encodeString = (str) => {
+      return Buffer.from(str)
+        .toString("base64")
+        .slice(0, 8).toLocaleUpperCase();
+    };
+    console.log(encodeString("hhhhhh"));
 
-                        <p className="text-20px">Or</p>
+    const code = {
+      code: this.state.code,
+    };
 
-                        <Link to="/guestLogin"><img src={qr} className="images-icon mx-2.5" /></Link>
+    console.log(code);
 
-                    </div>
-                </div>
-            </main>
-        );
-    }
+    axios.get("http://localhost:5000/activity/").then((res) => {
+      let isTrue = true;
+      console.log(code.code);
+      //   console.log(res.data[0].actName);
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].actName === code.code) {
+          isTrue = true;
+          break;
+        } else {
+          isTrue = false;
+        }
+      }
+
+      if (isTrue) {
+        console.log("good");
+      } else {
+        console.log("not good");
+      }
+    });
+  }
+
+  render() {
+    return (
+      <main>
+        <div className="banner">
+          <div className="banner-container">
+            <p className="text-36px">Welcome</p>
+            <p className="text-20px">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
+              dignissimos non quis illo provident officiis inventore esse,
+              dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
+              voluptas, a expedita optio?
+            </p>
+          </div>
+        </div>
+
+        <div className="button">
+          <div className="container">
+            <Link to="/createActivity" className="button-navy">
+              Get Started!
+            </Link>
+            <Link to="/guestLogin" className="button-lightpink">
+              Sign Up
+            </Link>
+          </div>
+        </div>
+
+        <div className="banner">
+          <div className="banner-container text-18px">
+            <p>For Guest Joining The Activity</p>
+          </div>
+        </div>
+
+        <div className="container">
+          <div className="joining-container">
+            <p className="text-20px">Joining an Activity</p>
+
+            <label for="inputCode"></label>
+            <input
+              onChange={this.onChangeCode}
+              type="text"
+              placeholder="Enter Code"
+              minlength="8"
+              maxlength="8"
+              className="input-code"
+            ></input>
+
+            <div className="icon-container">
+              <img
+                src={rightarrow}
+                className="images-icon"
+                onClick={this.onEnterCode}
+              />
+            </div>
+
+            <p className="text-20px">Or</p>
+
+            <Link to="/guestLogin">
+              <img src={qr} className="images-icon mx-2.5" />
+            </Link>
+          </div>
+        </div>
+      </main>
+    );
+  }
 }

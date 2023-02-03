@@ -12,6 +12,7 @@ import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
 import CreateProject from "./components/presentor-view/create-project.component";
+import ProjectLists from "./components/projects-list.component";
 
 function App() {
   return (
@@ -22,19 +23,22 @@ function App() {
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/createActivity" element={<CreateActivity />}></Route>
           <Route path="/activityList" element={<ActivityList />}></Route>
-          <Route path="/activityList/:id" element={<ActivityList/>}></Route>
-          <Route path="/Edit/:id" element={<EditActivity/>}></Route>
-          <Route path="/guestActivityList" element={<GuestActivityList/>}></Route>
-          <Route path="/guestActivityList/:id" element={<ActivityId/>}></Route>
-          <Route path="/guestLogin" element={<GuestLogin/>}></Route>
-          <Route path="/guestEnter" element={<GuestEnter/>}></Route>
-          <Route path="/creatorLogin" element={<CreatorLogin/>}></Route>
-          <Route path="/createProject" element={<CreateProject/>}></Route>
+          <Route path="/activityList/:id" element={<ActivityList />}></Route>
+          <Route path="/Edit/:id" element={<EditActivity />}></Route>
+          <Route
+            path="/guestActivityList"
+            element={<GuestActivityList />}
+          ></Route>
+          <Route path="/guestActivityList/:id" element={<ActivityId />}></Route>
+          <Route path="/guestLogin" element={<GuestLogin />}></Route>
+          <Route path="/guestEnter" element={<GuestEnter />}></Route>
+          <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
+          <Route path="/createProject" element={<CreateProject />}></Route>
+          <Route path="/projectList" element={<ProjectLists />}></Route>
         </Routes>
-
-        <Footer />
         
       </div>
+      <Footer />
     </Router>
   );
 }
