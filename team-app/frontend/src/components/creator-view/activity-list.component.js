@@ -12,9 +12,10 @@ const encodeNumber = (str) => {
 };
 
 const Activity = (props) => (
-  <div class="m-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+  <div class="m-4 max-w-sm p-6 bg-white border font-mono border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="text text-xl font-mono">Project Name</div>
     <a href="#">
-      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 class="mb-2 text-2xl font-medium italic border-2 rounded-md py-2 px-4 w-52 my-2 tracking-tight text-gray-900 dark:text-white">
         {props.activity.actName}
       </h5>
     </a>
@@ -23,29 +24,37 @@ const Activity = (props) => (
       {props.activity.actDescription}
     </p> */}
     <h5 className="font-bold">Date</h5>
-    <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
+    <p class="mb-3 font-medium text-gray-700 dark:text-gray-400 italic border-2 rounded-md py-2 px-4 w-52 my-2">
       {props.activity.date.substring(0, 10)}
     </p>
     <div className="mb-4">
       <p>Code Number</p>
-      <div className=" text-base font-sans font-medium text-gray-700">
+      <div className="font-medium italic border-2 rounded-md py-2 px-4 w-52 my-2 text-base font-sans  text-gray-700">
         {encodeNumber(props.activity.actName)}
       </div>
     </div>
 
-    <div className="font-sans">
-      <Link to={"/edit/" + props.activity._id} className="text-blue-500">
-        Edit
-      </Link>
-      <a
-        className="m-2 text-red-500"
-        href="#"
-        onClick={() => {
-          props.deleteActivity(props.activity._id);
-        }}
-      >
-        Delete
-      </a>
+    <div className="font-sans flex justify-center mt-8">
+      <div>
+        <Link
+          to={"/edit/" + props.activity._id}
+          className="text-blue-500 font-medium italic border-2 rounded-md py-2 px-4 w-52 my-2"
+        >
+          Edit
+        </Link>
+      </div>
+
+      <div>
+        <a
+          className="m-2 text-red-500 font-medium italic border-2 rounded-md py-2 px-4 w-52 my-2"
+          href="#"
+          onClick={() => {
+            props.deleteActivity(props.activity._id);
+          }}
+        >
+          Delete
+        </a>
+      </div>
     </div>
   </div>
 );
