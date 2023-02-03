@@ -19,6 +19,10 @@
 
 body {
     margin: 0;
-    background-color: #FAE7E7;
+    background-color: #E22637;
     font-family: 'Metro-R';
+}
+
+html {
+    font-size: calc(60% + 0.8vmin);
 }

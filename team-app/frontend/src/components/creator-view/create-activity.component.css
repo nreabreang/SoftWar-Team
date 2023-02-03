@@ -1,0 +1,20 @@
+.create-activity-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.875rem 1.875rem;
+}
+
+.create-activity{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.create-activity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0.625rem 0.625rem;
+}

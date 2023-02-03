@@ -2,7 +2,7 @@
     display: flex;
     font-family: 'Metro-B';
     justify-content: space-between;
-    height: 70px;
+    height: 4.375rem; /* 70 px */
     align-items: center;
   }
   

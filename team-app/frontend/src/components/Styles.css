@@ -1,3 +1,38 @@
+* {
+    margin: 0;
+}
+
+header {
+    background-color: #E22637;
+}
+
+main {
+    background-color: #FAE7E7;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    height: calc(100vh - 7.5rem);
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    height: 3.125rem;  /*50 px*/
+    background-color: #FAE7E7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*///////////////////////// Button Styles /////////////////////////*/
 
 .button-navy {
@@ -5,6 +40,7 @@
     margin: 10px 10px;
     padding: 5px 15px;
     text-decoration: none;
+    width: 150px;
     transition-duration: 0.4s;
     font-size: 16px;
     font-family: 'Metro-M';
@@ -24,6 +60,7 @@
     padding: 5px 15px;
     text-decoration: none;
     transition-duration: 0.4s;
+    width: 150px;
     font-size: 16px;
     font-family: 'Metro-M';
     background-color: #FCC5C0;
@@ -135,37 +172,18 @@
 
 /*/////////////////////////////////////////////////////////////////*/
 
-/*////////////////////////// Input Types //////////////////////////*/
+/*////////////////////////// images size //////////////////////////*/
 
-.input-code {
-    display: inline-block;
-    border: none;
-    appearance: auto;
-    outline: none;
-    border-radius: 2rem;
-    text-transform: uppercase;
-    vertical-align: middle;
-    text-align: center;
-    font-family: 'Metro-M';
-    font-size: 14px;
-    color: #263159;
-    cursor: pointer;
-    padding: 10px 30px;
-    margin: 10px 10px;
-    background-color: #FAE7E7;
-    background-image: url(./images/right-arrow.png);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    background-position: right 25px center;
-}
-
-.input-code::placeholder {
-    color: #1E1E1E;
-    opacity: 75%;
-}
-
-.input-code:focus::placeholder {
-    color: transparent;
+.images-icon {
+    width: 25px;
+    height: 25px;
 }
 
 /*/////////////////////////////////////////////////////////////////*/
+
+.background-container {
+    background-color: #FAE7E7;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    height: 100%;
+}
