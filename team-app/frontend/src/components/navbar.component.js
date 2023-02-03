@@ -6,25 +6,25 @@ import './Styles.css';
 
 export default class navbar extends Component {
 
-  render() {
-    return (
-      <div>
-        <div className="navbar">
-          <div className="navbar-container">
+    render() {
+        return (
+            <header>
+                <div className="navbar">
+                    <div className="navbar-container">
 
-            <div className="logo-container">
-              <Link to="/" className="text-16px">GARLICWAK</Link>
-            </div>
+                        <div className="logo-container">
+                            <Link to="/" className="text-16px">GARLICWAK</Link>
+                        </div>
 
-            <div className="menu-container">
-              <Link to="/createActivity" className="text-16px">Create Activity</Link>
-              <Link to="/activityList" className="text-16px">Activity</Link>
-              <Link to="/guestActivityList" className="text-16px">Guest Activity View</Link>
-            </div>
+                        <div className="menu-container">
+                            <Link to="/createActivity" className="text-16px">Create Activity</Link>
+                            <Link to="/activityList" className="text-16px">Activity</Link>
+                            <Link to="/guestActivityList" className="text-16px">Guest Activity View</Link>
+                        </div>
 
-          </div>
-        </div>
-      </div>
-    );
-  }
+                    </div>
+                </div>
+            </header>
+        );
+    }
 }
