@@ -54,7 +54,9 @@ export default class ProjectLists extends Component{
     render(){
         return(
             <div className="flex ">
+                <div className="glid glid-cols-4 gap-4">
                 {this.showProjectList()}
+                </div>
             </div>
         )
     }
