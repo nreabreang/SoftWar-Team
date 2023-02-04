@@ -2,11 +2,12 @@ import axios from "axios";
 import { Component } from "react";
 
 const Project = (props) =>{
+    const des = "Description: "+ props.projectDescription
     return(
-        <div className="flex flex-col bg-white p-3 ">
-            <h1 className=" text-[20px]">ชื่อ: {props.projectName}</h1>
-            <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p>
-            <div dangerouslySetInnerHTML={{__html:props.projectDescription}}></div>
+        <div className="flex flex-col bg-white p-3 m-4">
+            <h1 className=" text-[20px]">Name Project: {props.projectName}</h1>
+            {/* <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p> */}
+            <div dangerouslySetInnerHTML={{__html:des}}></div>
             <p>สมาชิก: </p>
         </div>
     )
@@ -53,7 +54,7 @@ export default class ProjectLists extends Component{
 
     render(){
         return(
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
+            <div className="grid grid-cols-1 md:grid-cols-4">
                 {this.showProjectList()}
             </div>
         )
