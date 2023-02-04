@@ -9,10 +9,20 @@ export default function GenerateQR(props) {
     saveAs(openAPI, `${actName}.png`);
   };
   return (
-    <div className="">
-      <label>Scane or Code</label>
-      <img alt = {actName} src={openAPI} width="100" height="100" />
-      <button onClick={downloadQR}>Download</button>
+    <div className="font-bold text-xl my-4">
+      <img
+        alt={actName}
+        src={openAPI}
+        width="100"
+        height="100"
+        className="border-2 bg-red-500 rounded-md"
+      />
+      <div className="flex justify-center mt-2 text-red-50">
+        <button onClick={downloadQR} className="text-base flex justify-center hover:text-gray-900 underline uppercase">
+          Download
+        </button>
+      </div>
+
       {/* <p>{actName}</p> */}
     </div>
   );
