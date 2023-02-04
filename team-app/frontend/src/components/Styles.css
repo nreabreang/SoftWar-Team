@@ -10,27 +10,14 @@ main {
     background-color: #FAE7E7;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    height: calc(100vh - 7.5rem);
+    height: calc(height - (100vh + 8rem));
 }
 
 footer {
-    position: absolute;
     width: 100%;
-    height: 3.125rem;  /*50 px*/
+    height: 3rem;  /*50 px*/
     background-color: #FAE7E7;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*///////////////////////// Button Styles /////////////////////////*/
@@ -181,9 +168,45 @@ footer {
 
 /*/////////////////////////////////////////////////////////////////*/
 
-.background-container {
-    background-color: #FAE7E7;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    height: 100%;
+.lable-container {
+    display: block;
+    margin: 0rem 0.6rem;
 }
+
+.input {
+    display: block;
+    border: none;
+    appearance: auto;
+    outline: none;
+    border-radius: 1rem;
+    font-family: 'Metro-M';
+    font-size: 14px;
+    color: #263159;
+    cursor: pointer;
+    padding: 10px 30px;
+    margin: 0.6rem 0.6rem;
+    height: auto;
+    width: 60vh ;
+    background-color: #D9D9D9;
+}
+
+.input::placeholder {
+    color: #1E1E1E;
+    opacity: 75%;
+}
+
+.input:focus::placeholder {
+    color: transparent;
+}
+
+.icon {
+    background-position: right 25px center;
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+}
+
+.input.icon {
+    background-image: url(./images/calendar.png);
+}
+
+
