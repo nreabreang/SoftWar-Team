@@ -3,7 +3,6 @@ import { Component } from "react";
 export default class GiveComment extends Component{
     constructor(props){
         super(props)
-        
 
         this.state = {
             iLike:"",
@@ -13,10 +12,14 @@ export default class GiveComment extends Component{
         }
     }
 
+    showComment(){
+        
+    }
+
     render(){
         return(
             <div>
-
+                
             </div>
         )
     }

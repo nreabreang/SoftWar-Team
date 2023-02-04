@@ -1,6 +1,6 @@
 import axios from "axios";
 import GenerateQR from "../creator-view/qr-activity";
-import ProjectLists from "../guest-projects-list.component";
+import ProjectLists from "../projects-list.component";
 const { Component } = require("react");
 
 // const ActivityList = (props) => (
