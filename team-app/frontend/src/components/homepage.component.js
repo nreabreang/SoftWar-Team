@@ -15,7 +15,6 @@ const encodeNumber = (str) => {
     .toLocaleUpperCase();
 };
 
-
 export default class homepage extends Component {
   constructor(props) {
     super(props);
@@ -41,17 +40,18 @@ export default class homepage extends Component {
       code: this.state.code,
     };
 
-    console.log(code);
+    // console.log(code);
 
     axios.get("http://localhost:5000/activity/").then((res) => {
       let isTrue = true;
       //   console.log(res.data[0].actName);
-      let resData
+      let resData;
       for (let i = 0; i < res.data.length; i++) {
-        console.log(encodeNumber(res.data[i].actName));
+        // console.log(encodeNumber(res.data[i].actName));
         if (code.code === encodeNumber(res.data[i].actName)) {
           isTrue = true;
           resData = res.data[i].actName;
+          window.location = "/guestActivityList/" + res.data[i]._id;
           break;
         } else {
           isTrue = false;
@@ -59,9 +59,9 @@ export default class homepage extends Component {
       }
 
       if (isTrue) {
-        console.log("good", resData);
+        console.log("can res", resData);
       } else {
-        console.log("not good");
+        console.log("not res");
       }
     });
   }
