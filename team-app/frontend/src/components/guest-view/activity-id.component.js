@@ -1,6 +1,6 @@
 import axios from "axios";
 import GenerateQR from "../creator-view/qr-activity";
-import ProjectLists from "../projects-list.component";
+import ProjectLists from "../guest-projects-list.component";
 const { Component } = require("react");
 
 // const ActivityList = (props) => (
@@ -50,6 +50,7 @@ export default class activityId extends Component {
       .catch(function(error) {
         console.log(error);
       });
+      Parse.User
   }
 
   render() {
