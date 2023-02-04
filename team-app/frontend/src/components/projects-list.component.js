@@ -2,11 +2,12 @@ import axios from "axios";
 import { Component } from "react";
 
 const Project = (props) =>{
+    const des = "Description: "+ props.projectDescription
     return(
         <div className="flex flex-col bg-white p-3 ">
-            <h1 className=" text-[20px]">ชื่อ: {props.projectName}</h1>
-            <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p>
-            <div dangerouslySetInnerHTML={{__html:props.projectDescription}}></div>
+            <h1 className=" text-[20px]">Name Project: {props.projectName}</h1>
+            {/* <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p> */}
+            <div dangerouslySetInnerHTML={{__html:des}}></div>
             <p>สมาชิก: </p>
         </div>
     )
