@@ -1,6 +1,6 @@
 import axios from "axios";
 import GenerateQR from "../creator-view/qr-activity";
-import {Link} from "react-router-dom"
+import ProjectLists from "../projects-list.component";
 const { Component } = require("react");
 
 // const ActivityList = (props) => (
@@ -54,7 +54,8 @@ export default class activityId extends Component {
 
   render() {
     return (
-      <div className="flex justify-center">
+      <div className="div">
+        <div className="flex justify-center">
         <div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
           <h5 class="mb-2 text-2xl mx-4 font-bold tracking-tight text-gray-900 dark:text-white">
             <p>ชื่อกิจกรรม : {this.state.actName} </p>
@@ -71,11 +72,10 @@ export default class activityId extends Component {
           
         </div>
         <GenerateQR urls={window.location.href} actName={this.state.actName} />
-
-        <div>
-          <Link to="/projectList" >ProjectList</Link>
-        </div>
       </div>
+      <ProjectLists />
+      </div>
+      
     );
   }
 }
