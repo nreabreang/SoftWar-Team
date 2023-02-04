@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './homepage.component.css'
-import './styles.css';
-import rightarrow from './images/right-arrow.png'
-import qr from './images/qr-code - 1.png'
 import "./homepage.component.css";
-import "./styles.css";
+import rightarrow from "./images/right-arrow.png";
+import qr from "./images/qr-code - 1.png";
+import "./homepage.component.css";
+import "./Styles.css";
 import axios from "axios";
 import { Buffer } from "buffer";
+
+const encodeNumber = (str) => {
+  return Buffer.from(str)
+    .toString("base64")
+    .slice(0, 8)
+    .toLocaleUpperCase();
+};
+
 
 export default class homepage extends Component {
   constructor(props) {
@@ -30,13 +37,6 @@ export default class homepage extends Component {
   }
 
   onEnterCode(e) {
-    const encodeString = (str) => {
-      return Buffer.from(str)
-        .toString("base64")
-        .slice(0, 8).toLocaleUpperCase();
-    };
-    console.log(encodeString("hhhhhh"));
-
     const code = {
       code: this.state.code,
     };
@@ -45,11 +45,13 @@ export default class homepage extends Component {
 
     axios.get("http://localhost:5000/activity/").then((res) => {
       let isTrue = true;
-      console.log(code.code);
       //   console.log(res.data[0].actName);
+      let resData
       for (let i = 0; i < res.data.length; i++) {
-        if (res.data[i].actName === code.code) {
+        console.log(encodeNumber(res.data[i].actName));
+        if (code.code === encodeNumber(res.data[i].actName)) {
           isTrue = true;
+          resData = res.data[i].actName;
           break;
         } else {
           isTrue = false;
@@ -57,7 +59,7 @@ export default class homepage extends Component {
       }
 
       if (isTrue) {
-        console.log("good");
+        console.log("good", resData);
       } else {
         console.log("not good");
       }

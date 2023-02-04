@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './navbar.component.css';
-import './styles.css';
+import './Styles.css';
 
 
 export default class navbar extends Component {

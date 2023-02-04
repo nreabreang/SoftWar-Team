@@ -11,7 +11,7 @@ import ActivityId from "./components/guest-view/activity-id.component";
 import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
-import CreateProject from "./components/presentor-view/create-project.component";
+import CreateProject from "./components/presenter-view/create-project.component";
 import ProjectLists from "./components/projects-list.component";
 
 function App() {
