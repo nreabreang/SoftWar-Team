@@ -3,9 +3,10 @@ import { Component } from "react";
 
 const Project = (props) =>{
     return(
-        <div className=" bg-white">
-            <h1 className=" text-[20px]">{props.projectName}</h1>
-            <p className="text-[16px]">{props.projectDescription}</p>
+        <div className="flex flex-col bg-white p-3 ">
+            <h1 className=" text-[20px]">ชื่อ: {props.projectName}</h1>
+            <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p>
+            <p>สมาชิก: </p>
         </div>
     )
 }
@@ -41,22 +42,18 @@ export default class ProjectLists extends Component{
     showProjectList(){
         return this.state.projects.map((resdata,index)=>{
             return(
-                <div className="bg-sky-500">
                     <Project
                     projectName={resdata.projectName}
                     projectDescription={resdata.description}
                     />
-                </div>
             )
         })
     }
 
     render(){
         return(
-            <div className="flex ">
-                <div className="glid glid-cols-4 gap-4">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
                 {this.showProjectList()}
-                </div>
             </div>
         )
     }
