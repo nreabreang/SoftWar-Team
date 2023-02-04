@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './footer.component.css'
-import './styles.css';
+import './Styles.css'
 import copyright from './images/copyright.png'
 
 export default class footer extends Component {
