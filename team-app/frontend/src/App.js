@@ -8,6 +8,7 @@ import ActivityList from "./components/creator-view/activity-list.component";
 import EditActivity from "./components/creator-view/edit-activity.component";
 import GuestActivityList from "./components/guest-view/guest-activity-list.component";
 import ActivityId from "./components/guest-view/activity-id.component";
+import CreatorActivityId from "./components/creator-view/activity-id.component";
 import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
@@ -30,13 +31,13 @@ function App() {
             element={<GuestActivityList />}
           ></Route>
           <Route path="/guestActivityList/:id" element={<ActivityId />}></Route>
+          <Route path="/creatorActivityList/:id" element={<CreatorActivityId/>}></Route>
           <Route path="/guestLogin" element={<GuestLogin />}></Route>
           <Route path="/guestEnter" element={<GuestEnter />}></Route>
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
           <Route path="/createProject" element={<CreateProject />}></Route>
           <Route path="/projectList" element={<ProjectLists />}></Route>
         </Routes>
-        
       </div>
       <Footer />
     </Router>
