@@ -50,35 +50,32 @@ export default class activityId extends Component {
       .catch(function(error) {
         console.log(error);
       });
-      
   }
 
   render() {
     return (
       <div className="div">
         <div className="flex justify-center">
-        <div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-            <h5 className="font-bold">Project' Name</h5>
-            {this.state.actName}
-          </p>
+          <div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
+              <h5 className="font-bold">Project' Name</h5>
+              {this.state.actName}
+            </p>
 
-          <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-          <h5 className="font-bold">Date</h5>
-            {this.state.date.toISOString().substring(0, 10)}
-          </p>
+            <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
+              <h5 className="font-bold">Date</h5>
+              {this.state.date.toISOString().substring(0, 10)}
+            </p>
 
-          <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
-            <h5 className="font-bold">Description</h5>
-            {this.state.actDescription}
-          </p>
-          
+            <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
+              <h5 className="font-bold">Description</h5>
+              {this.state.actDescription}
+            </p>
+          </div>
+          {/* <GenerateQR urls={window.location.href} actName={this.state.actName} /> */}
         </div>
-        {/* <GenerateQR urls={window.location.href} actName={this.state.actName} /> */}
+        <ProjectLists />
       </div>
-      <ProjectLists />
-      </div>
-      
     );
   }
 }
