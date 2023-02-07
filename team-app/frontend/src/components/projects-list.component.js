@@ -45,6 +45,11 @@ export default class ProjectLists extends Component{
         })
     };
 
+    updateProject(id,data){
+        axios.post("http://localhost:5000/project/update/"+id,data)
+        
+    }
+
     showProjectList(){
         return this.state.projects.map((resdata,index)=>{
             return(
@@ -53,6 +58,7 @@ export default class ProjectLists extends Component{
                     projectName={resdata.projectName}
                     projectDescription={resdata.description}
                     deleteProject={this.deleteProject}
+                    updateProject={this.updateProject}
                     />
             )
         })
