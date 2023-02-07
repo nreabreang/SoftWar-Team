@@ -4,10 +4,23 @@ import { Component } from "react";
 export default class projectID extends Component{
     constructor(props){
         super(props)
+        this.commentILikeOnChange = this.commentILikeOnChange.bind(this)
+        this.commentIWishOnChange = this.commentIWishOnChange.bind(this)
+        this.commentQuestionOnChange = this.commentQuestionOnChange.bind(this)
+        this.commentIdeaOnChange = this.commentIdeaOnChange.bind(this)
+        this.virtualMoneyOnChange = this.virtualMoneyOnChange.bind(this)
+        this.onSubmitAction = this.onSubmitAction.bind(this)
+
         this.state={
             projectName:"",
             description:"",
-            comensts:[]
+            storeVirtualMoney:"",
+            ILike:"",
+            IWish:"",
+            Quest:"",
+            Idea:"",
+            virtualMoney:[],
+            comenstA:[]
         }
     }
 
@@ -22,52 +35,95 @@ export default class projectID extends Component{
 
         })
         .catch((err)=>console.log("Error: "+err))
+        axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
+            this.setState({
+                virtualMoney:resp.data.virtualMoney,
+                comenstA:resp.data.comments
+            })
+        }).catch((err)=>console.log("Error: "+err))
     }
 
     virtualMoneyOnChange(number){
-        console.log(number)
+        this.setState({
+            storeVirtualMoney:number
+        })
     }
 
     commentILikeOnChange(texts){
-        console.log(texts)
+        this.setState({
+            ILike:texts.target.value
+        })
     }
 
     commentIWishOnChange(texts){
-        console.log(texts)
+        this.setState({
+                IWish:texts.target.value
+        })
     }
 
     commentQuestionOnChange(texts){
-        console.log(texts)
+        this.setState({
+                Quest:texts.target.value
+        })
     }
 
     commentIdeaOnChange(texts){
-        console.log(texts)
+        this.setState({
+                Idea:texts.target.value
+        })
     }
 
-    onSubmitAction(){
-        axios.post().then().catch()
+    onSubmitAction(e){
+        e.preventDefault();
+        const arr = window.location.href.split("/")
+        const test = {
+            iLike:this.state.ILike,
+            iWish:this.state.IWish,
+            iQuest:this.state.Quest,
+            iDea:this.state.Idea
+        }
+        const data = {
+            virtualMoney:this.state.storeVirtualMoney,
+            comments:test,
+            idProject:arr[arr.length -1]};
+
+        axios.post("http://localhost:5000/feedback/add",data)
+        .then(()=>console.log("Success"))
+        .catch((err)=>console.log("Error: "+err))
+    }
+
+    showCalculateVirtualMoney(){
+        const allVirtualMoney = this.state.virtualMoney.reduce((collect,add)=>collect + Number(add),0)
+        return(
+            <div>
+                <div>{allVirtualMoney}</div>
+            </div>
+        )
     }
 
     render(){
         return(
             <div className="m-2 bg-white flex  flex-col">
+                <label htmlFor="">Project Name: </label>
                 <div>{this.state.projectName}</div>
                 <div dangerouslySetInnerHTML={{__html:"Description: " + this.state.description}}></div>
                 <div>Comment</div>
-                <form action="" onSubmit={this.onSubmitAction}>
+                <div className="">
+            <form  onSubmit={this.onSubmitAction}>
                     <div className="">
-                    <p>Virtual Money</p>
+                    <label>Virtual Money:</label>
                     <input type="number" onChange={(e)=>this.virtualMoneyOnChange(e.target.value)}/>
                 </div>
                 <div className="">
-                    <input type="text" placeholder="I like ..." id="ILike" name="ILike" onChange={(e)=>this.commentILikeOnChange(e.target.value)}/>
-                    <input type="text" placeholder="I wish ..." id="IWish" name="IWish" onChange={(e)=>this.commentIWishOnChange(e.target.value)}/>
-                    <input type="text" placeholder="Question?" id="Question" name="Question" onChange={(e)=>this.commentQuestionOnChange(e.target.value)}/>
-                    <input type="text" placeholder="Idea?" id="Ideas" name="Ideas" onChange={(e)=>this.commentIdeaOnChange(e.target.value)}/>
+                    <input type="text" placeholder="I like ..." id="ILike" name="ILike" value={this.state.ILike} onChange={this.commentILikeOnChange}/>
+                    <input type="text" placeholder="I wish ..." id="IWish" name="IWish" value={this.state.IWish} onChange={this.commentIWishOnChange}/>
+                    <input type="text" placeholder="Question?" id="Question" name="Question" value={this.state.Quest} onChange={this.commentQuestionOnChange}/>
+                    <input type="text" placeholder="Idea?" id="Ideas" name="Ideas" value={this.state.Idea} onChange={this.commentIdeaOnChange}/>
                 </div>
                 <input type="submit" value="Submit"/>
                 </form>
-                
+                <div>{this.showCalculateVirtualMoney}</div>
+        </div>
             </div>
         )
     }
