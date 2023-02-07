@@ -37,10 +37,12 @@ router.route("/add").post((req, res) => {
     // /activity/add
     const virtualMoney = req.body.virtualMoney;
     const comments = req.body.comments;
+    const idProject = req.body.idProject;
   
     const newFeedback = new Feedback({
       virtualMoney,
       comments,
+      idProject,
     });
 
     newFeedback
@@ -69,6 +71,13 @@ router.route("/update/:id").post(async(req,res)=>{
   .then(()=>res.status(200).json("Update success"))
   .catch((err)=>res.status(400).json("Error: "+err))
 })
+
+router.route("/project/:idProject").get(async(req,res)=>{
+  Feedback.find({idProject:req.params.idProject})
+  .then((respond)=>res.status(200).json(respond))
+  .catch((err)=>res.status(400).json("Error: "+err))
+})
+
 
 module.exports = router;
 
