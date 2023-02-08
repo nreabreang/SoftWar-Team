@@ -9,6 +9,7 @@
     "axios": "^1.2.2",
     "buffer": "^6.0.3",
     "file-saver": "^2.0.5",
+    "flowbite": "^1.6.3",
     "modern-react-qr-reader": "^1.0.12",
     "postcss-cli": "^7.1.2",
     "postcss-flexbugs-fixes": "^5.0.2",

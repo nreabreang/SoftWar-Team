@@ -4,7 +4,7 @@ import "./homepage.component.css";
 import rightarrow from "./images/right-arrow.png";
 import qr from "./images/qr-code - 1.png";
 import "./homepage.component.css";
-import "./Styles.css";
+import "./styles.css";
 import axios from "axios";
 import { Buffer } from "buffer";
 
