@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link } from "react-router-dom";
 import './create-activity.component.css';
 import '../styles.css'
 import date from '../images/calendar.png';

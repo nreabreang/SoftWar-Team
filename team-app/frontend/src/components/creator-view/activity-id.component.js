@@ -1,6 +1,6 @@
 import axios from "axios";
-import GenerateQR from "../creator-view/qr-activity";
-import ProjectLists from "../projects-list.component";
+import GenerateQR from "./qr-activity";
+// import ProjectLists from "../projects-list.component";
 const { Component } = require("react");
 
 // const ActivityList = (props) => (
@@ -20,7 +20,7 @@ const { Component } = require("react");
 //   </div>
 // );
 
-export default class activityId extends Component {
+export default class creatorActivityId extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,32 +50,34 @@ export default class activityId extends Component {
       .catch(function(error) {
         console.log(error);
       });
+    
   }
 
   render() {
     return (
       <div className="div">
         <div className="flex justify-center">
-          <div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-              <h5 className="font-bold">Project' Name</h5>
-              {this.state.actName}
-            </p>
+        <div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <h5 class="mb-2 font-medium mx-4 tracking-tight text-gray-900 dark:text-white">
+            <p className="font-bold">Project Name</p>
+            {this.state.actName}
+          </h5>
+          <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
+          <h5 className="font-bold">Date</h5>
+            {this.state.date.toISOString().substring(0, 10)}
+          </p>
 
-            <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-              <h5 className="font-bold">Date</h5>
-              {this.state.date.toISOString().substring(0, 10)}
-            </p>
-
-            <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
-              <h5 className="font-bold">Description</h5>
-              {this.state.actDescription}
-            </p>
-          </div>
-          {/* <GenerateQR urls={window.location.href} actName={this.state.actName} /> */}
+          <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
+            <h5 className="font-bold">Description</h5>
+            {this.state.actDescription}
+          </p>
+          
         </div>
-        <ProjectLists />
+        <GenerateQR urls={window.location.href} actName={this.state.actName} />
       </div>
+      {/* <ProjectLists /> */}
+      </div>
+      
     );
   }
 }

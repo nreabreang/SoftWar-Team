@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import './footer.component.css'
 import './styles.css'
 import copyright from './images/copyright.png'

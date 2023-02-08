@@ -29,6 +29,9 @@ const feedbackSchema = new schema(
       //   type: mongoose.Schema.Types.ObjectId,
       //   ref: "Comments",
     },
+      idProject:{
+        type:String,
+      }
   },
   {
     timestamps: true,

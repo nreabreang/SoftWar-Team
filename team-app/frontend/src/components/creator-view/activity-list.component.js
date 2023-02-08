@@ -13,7 +13,7 @@ const encodeNumber = (str) => {
 
 const Activity = (props) => (
   <div class="m-4 max-w-sm p-6 bg-white border font-mono border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-    <div className="text text-xl font-mono">Project Name</div>
+    <div className="text text-xl font-mono">Activity Name</div>
     <a href="#">
       <h5 class="mb-2 text-2xl font-medium italic border-2 rounded-md py-2 px-4 w-52 my-2 tracking-tight text-gray-900 dark:text-white">
         {props.activity.actName}
@@ -34,7 +34,18 @@ const Activity = (props) => (
       </div>
     </div>
 
+    <div className="flex justify-center">
+      <Link
+        to={"/creatorActivityList/" + props.activity._id}
+        className="font-sans bg-blue-500 text-white rounded-md p-2 text-xs"
+      >
+        See Project
+      </Link>
+    </div>
+
     <div className="font-sans flex justify-center mt-8">
+      {/* Link to each Activity */}
+
       <div>
         <Link
           to={"/edit/" + props.activity._id}

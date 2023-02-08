@@ -114,6 +114,7 @@ export default class homepage extends Component {
 
             <div className="icon-container">
               <img
+                alt=""
                 src={rightarrow}
                 className="images-icon"
                 onClick={this.onEnterCode}
@@ -123,7 +124,7 @@ export default class homepage extends Component {
             <p className="text-20px">Or</p>
 
             <Link to="/guestLogin">
-              <img src={qr} className="images-icon mx-2.5" />
+              <img src={qr} className="images-icon mx-2.5" alt=""/>
             </Link>
           </div>
         </div>
