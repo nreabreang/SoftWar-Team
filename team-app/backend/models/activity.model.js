@@ -7,6 +7,7 @@ const activitySchema = new Schema(
     actName: {
       type: String,
       required: true,
+      unique:true,
     },
     actDescription: {
       type: String,
