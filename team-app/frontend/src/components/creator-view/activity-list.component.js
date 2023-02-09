@@ -15,7 +15,7 @@ const Activity = (props) => (
   <div class="m-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <div className="text text-xl">Activity Name</div>
     <a href="#">
-      <h5 class="mb-2 font-medium text-base italic border-2 rounded-md py-2 px-4 w-52 my-2 tracking-tight text-gray-900 dark:text-white">
+      <h5 class="mb-2 font-medium text-base italic border-2 rounded-md py-2 px-4 w-52 tracking-tight text-gray-900 dark:text-white">
         {props.activity.actName}
       </h5>
     </a>
@@ -24,32 +24,32 @@ const Activity = (props) => (
       {props.activity.actDescription}
     </p> */}
     <h5 className="mt-4">Date</h5>
-    <p class="mb-3 font-medium text-base text-gray-700 dark:text-gray-400 italic border-2 rounded-md py-2 px-4 w-52 my-2">
+    <p class=" font-medium text-base text-gray-700 dark:text-gray-400 italic border-2 rounded-md py-2 px-4 w-52">
       {props.activity.date.substring(0, 10)}
     </p>
     <div className="mb-4 mt-4">
       <p>Code Number</p>
-      <div className="font-medium text-base italic border-2 rounded-md py-2 px-4 w-52 my-2 text-gray-700">
+      <div className="font-medium text-base italic border-2 rounded-md py-2 px-4 w-52 text-gray-700">
         {encodeNumber(props.activity.actName)}
       </div>
     </div>
 
-    <div className="flex justify-start">
+    <div className="flex justify-end">
       <Link
         to={"/creatorActivityList/" + props.activity._id}
-        className="font-sans text-blue-800 text-lg underline rounded-md"
+        className="font-normal text-lg underline italic"
       >
         See Project
       </Link>
     </div>
 
-    <div className="font-sans flex justify-start mt-2">
+    <div className="font-sans flex justify-center mt-2">
       {/* Link to each Activity */}
 
       <div>
         <Link
           to={"/edit/" + props.activity._id}
-          className="text-blue-500 font-medium underline py-2 w-52 my-2"
+          className="text-blue-500 font-normal underline py-2 w-52 my-2"
         >
           Edit
         </Link>
@@ -57,7 +57,7 @@ const Activity = (props) => (
 
       <div>
         <a
-          className="m-2 text-red-500 font-medium underline  py-2 px-2 w-52 my-2"
+          className="m-2 text-red-500 font-normal underline  py-2 px-2 w-52 my-2"
           href="#"
           onClick={() => {
             props.deleteActivity(props.activity._id);
@@ -115,7 +115,7 @@ export default class ActivityList extends Component {
 
   render() {
     return (
-      <div className="pl-4 font-sans font-semibold text-xl">
+      <div className="pl-4 font-medium text-xl">
         <div className="flex justify-center">
         <h3 className="pl-4 flex justify-center font-sans font-semibold text-4xl text-white">
           Activity Dashboard
