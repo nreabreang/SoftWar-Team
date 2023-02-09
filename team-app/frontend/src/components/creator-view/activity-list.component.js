@@ -116,7 +116,12 @@ export default class ActivityList extends Component {
   render() {
     return (
       <div className="pl-4 font-sans font-bold text-xl">
-        <h3 className="pl-4 flex justify-center">Activity</h3>
+        <div className="flex justify-center">
+        <h3 className="pl-4 flex justify-center font-sans font-semibold text-4xl text-white">
+          Activity Dashboard
+        </h3>
+        <a href="/createActivity" className="mx-4 border-2 p-2 rounded-full border-blue-400 text-white">Add +</a>
+        </div>
         <div className="flex justify-auto m-4 p-4">{this.activityList()}</div>
         <div></div>
       </div>
