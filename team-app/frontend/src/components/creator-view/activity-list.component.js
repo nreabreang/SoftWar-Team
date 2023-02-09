@@ -28,7 +28,7 @@ const Activity = (props) => (
       {props.activity.date.substring(0, 10)}
     </p>
     <div className="mb-4 mt-4">
-      <p>Code Number</p>
+      <p>Access Code</p>
       <div className="font-medium text-base italic border-2 rounded-md py-2 px-4 w-52 text-gray-700">
         {encodeNumber(props.activity.actName)}
       </div>
@@ -122,7 +122,7 @@ export default class ActivityList extends Component {
         </h3>
         <a href="/createActivity" className="mx-4 border-2 p-2 rounded-full border-blue-400 text-white">Add +</a>
         </div>
-        <div className="flex justify-auto m-4 p-4">{this.activityList()}</div>
+        <div className="flex justify-auto m-4 p-4 grid grid-cols-4 gap-4">{this.activityList()}</div>
         <div></div>
       </div>
     );
