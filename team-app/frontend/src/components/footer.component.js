@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './footer.component.css'
-import './Styles.css'
+import './styles.css'
 import copyright from './images/copyright.png'
 
 export default class footer extends Component {

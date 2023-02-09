@@ -3,7 +3,8 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './create-activity.component.css';
-import '../Styles.css'
+import '../styles.css'
+import date from '../images/calendar.png';
 
 export default class CreateActivity extends Component {
     constructor(props) {
@@ -88,147 +89,101 @@ export default class CreateActivity extends Component {
                     <p className="text-36px">Create Activity</p>
                 </div>
 
-                <div className="create-activity">
+                <form onSubmit={this.onSubmit}>
 
-                    <form onSubmit={this.onSubmit}>
+                    <div className="create-activity">
 
                         <div className="flex justify-center">
-                            <div>
+                            <div className="w-9/12">
 
                                 {/* input activity name */}
-                                <div className="m-5">
-                                    <label className="lable-container">Activity Name</label>
-                                    <input required
-                                        type="text"
+                                <div className="input-container w-full md md:mb-0">
+                                    <label className="">Activity Name</label>
+                                    <input className="input w-full"
                                         id="actName"
-                                        name="actName" value={this.state.actName}
+                                        name="actName"
+                                        type="text"
+                                        value={this.state.actName}
                                         onChange={this.onChangeActName}
-                                        placeholder="Activity Name" className="input"></input>
+                                        placeholder="Enter Activity Name" />
                                 </div>
 
-                                {/* input description */}
-                                <div className="m-5">
-                                    <label className="lable-container">Description</label>
-                                    <textarea
-                                        rows="5"
-                                        required
-                                        id="actDes"
-                                        name="actDes"
-                                        value={this.state.actDescription}
-                                        onChange={this.onChangeActDescription}
-                                        placeholder="Description" className="input" />
+                                {/* input virtual money and unit */}
+                                <div className="flex">
+
+                                    {/* virtual money container */}
+                                    <div className="input-container w-full md:w-2/3 md:mb-0">
+                                        <label className="">Virtual Money</label>
+                                        <input className="input w-full"
+                                            id="virtualMoney"
+                                            name="virtualMoney"
+                                            type="text"
+                                            value={this.state.virtualMoney}
+                                            onChange={this.onChangeVirtualMoney}
+                                            placeholder="Enter Virtual Money" />
+                                    </div>
+
+                                    {/* unit container */}
+                                    <div class="input-container w-full md:w-1/3">
+                                        <label className="" for="grid-last-name">Unit</label>
+                                        <input className="input w-full"
+                                            required
+                                            id="unitMoney"
+                                            name="unitMoney"
+                                            type="text"
+                                            value={this.state.unitMoney}
+                                            onChange={this.onChangeUnitMoney}
+                                            placeholder="Enter Unit" />
+                                    </div>
+
                                 </div>
 
                                 {/* input date */}
-                                <div class="m-5">
-                                    <label className="lable-container">Date</label>
+                                <div className="input-container w-full md md:mb-0">
+                                    <label className="">DATE</label>
 
-                                    <DatePicker
+                                    <DatePicker className="input w-full"
                                         selected={this.state.date}
                                         onChange={this.onChangeDate}
-                                        placeholder="Select a Date"
-                                        className="input icon"
                                     />
-
-
-
                                 </div>
-
-                                {/* <div className="m-5">
-                                    <label className="lable-container">Date</label>
-
-                                    <DatePicker
-                                        selected={this.state.date}
-                                        onChange={this.onChangeDate}
-                                        className="input"
-                                    />
-
-                                    <div className="absolute">
-                                        <img src={date} className="images-icon" />
-                                    </div>
-                                </div> */}
 
                             </div>
                         </div>
-                    </form>
-                </div >
+
+                        <div className="flex justify-center">
+                            <div className="w-9/12">
+
+                                {/* input description */}
+                                <div className="input-container w-full md md:mb-0">
+                                    <label className="">Description</label>
+                                    <textarea
+                                        rows="7"
+                                        required
+                                        id="actName"
+                                        name="actName"
+                                        value={this.state.actDescription}
+                                        onChange={this.onChangeActDescription}
+                                        placeholder="Description" className="input w-full" />
+                                </div>
+
+                                <div className="">
+                                    <input
+                                        type="submit"
+                                        value="Submitted"
+                                        className="button-navy" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div >
+                </form>
 
             </main >
 
-            // <div className="flex justify-center font-semibold font-sans">
-            //   <form className="w-full max-w-sm" onSubmit={this.onSubmit}>
-            //     <div>
-            //       <div className="">
-            //         <label>Activity Name</label>
-            //         <div>
-            //           <input
-            //              required
-            //                  type="text"
-            //                  id="actName"
-            //                  name="actName"
-            //                  className="mb-4 mt-2 border-2 border-red-400 rounded-md"
-            //                  value={this.state.actName}
-            //                  onChange={this.onChangeActName}
-            //                     />
-            //         </div>
-            //       </div>
-            //       <div className=" my-2 items-stretch">
-            //         <label className="self-center">Description</label>
-            //         <div>
-            //           <textarea
-            //             required
-            //             id="actDes"
-            //             name="actDes"
-            //             className="mb-4 mt-2 border-2 border-red-400 rounded-md"
-            //             value={this.state.actDescription}
-            //             onChange={this.onChangeActDescription}
-            //           />
-            //         </div>
-            //       </div>
-            //       <div className="">
-            //         <label htmlFor="virtualMoney">Virtual Money</label>
-            //         <div>
-            //           <input
-            //             required
-            //             id="virtualMoney"
-            //             name="virtualMoney"
-            //             className="mb-4  mt-2 rounded-md border-2 border-red-400"
-            //             value={this.state.virtualMoney}
-            //             onChange={this.onChangeVirtualMoney}
-            //           ></input>
-            //         </div>
-            //       </div>
 
-            //       <div className="">
-            //         <label htmlFor="unitMoney">Money Unit</label>
-            //         <div>
-            //           <input
-            //             required
-            //             id="unitMoney"
-            //             name="unitMoney"
-            //             className="mb-4 mt-2 rounded-md border-2 border-red-400"
-            //             value={this.state.unitMoney}
-            //             onChange={this.onChangeUnitMoney}
-            //           ></input>
-            //         </div>
-            //       </div>
 
-            //       <div className="">
-            //         <label>Date</label>
-
-            //         <DatePicker
-            //           selected={this.state.date}
-            //           onChange={this.onChangeDate}
-            //           className="rounded-md p-2 mt-2 mb-4 border-2 border-red-400"
-            //         />
-            //       </div>
-
-            //       <div className="mt-2">
-            //         <input
-            //           type="submit"
-            //           value="Submit"
-            //           className="p-2 mb-4 px-8 rounded-xl bg-red-500 text-gray-200"
-            //         />
+            //       
             //       </div>
             //     </div>
             //   </form>

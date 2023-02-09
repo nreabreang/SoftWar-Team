@@ -10,13 +10,15 @@ main {
     background-color: #FAE7E7;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    height: calc(height - (100vh + 8rem));
+    height: calc(100vh - (8rem));
 }
 
 footer {
     width: 100%;
-    height: 3rem;  /*50 px*/
+    height: 3rem;
+    /*50 px*/
     background-color: #FAE7E7;
+
 }
 
 
@@ -173,40 +175,37 @@ footer {
     margin: 0rem 0.6rem;
 }
 
-.input {
-    display: block;
+.checkbox {
+    display: flex;
+    text-align: center;
     border: none;
-    appearance: auto;
-    outline: none;
     border-radius: 1rem;
-    font-family: 'Metro-M';
-    font-size: 14px;
     color: #263159;
-    cursor: pointer;
     padding: 10px 30px;
     margin: 0.6rem 0.6rem;
     height: auto;
-    width: 60vh ;
+    width: max-content;
     background-color: #D9D9D9;
 }
 
-.input::placeholder {
-    color: #1E1E1E;
-    opacity: 75%;
+.input-container {
+    padding: 0.75rem 0.75rem;
+    
 }
 
-.input:focus::placeholder {
-    color: transparent;
+.input {
+    display: block;
+    border: none;
+    appearance: none;
+    border-radius: 2rem;
+    color: #263159;
+    cursor: pointer;
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    background-color: #D9D9D9;
 }
 
-.icon {
-    background-position: right 25px center;
-    background-repeat: no-repeat;
-    background-size: 25px auto;
+.input:focus {
+    outline: none;
 }
-
-.input.icon {
-    background-image: url(./images/calendar.png);
-}
-
 
