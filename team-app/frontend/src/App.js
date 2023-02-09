@@ -15,6 +15,7 @@ import CreatorLogin from "./components/creator-view/creator-login.component";
 import CreateProject from "./components/presenter-view/create-project.component";
 import ProjectLists from "./components/projects-list.component";
 import ProjectID from "./components/project-id.component";
+import Access from "./components/access.component";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/createProject" element={<CreateProject />}></Route>
           <Route path="/projectList" element={<ProjectLists />}></Route>
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
+          <Route path="/access" element={<Access/>}></Route>
         </Routes>
       </div>
       <Footer />
