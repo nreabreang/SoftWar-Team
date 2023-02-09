@@ -19,8 +19,7 @@ export default class projectID extends Component{
             IWish:"",
             Quest:"",
             Idea:"",
-            virtualMoney:[],
-            comenstA:[]
+            
         }
     }
 
@@ -32,15 +31,8 @@ export default class projectID extends Component{
                 projectName:res.data.projectName,
                 description:res.data.description
             })
-
         })
-        .catch((err)=>console.log("Error: "+err))
-        axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
-            this.setState({
-                virtualMoney:resp.data.virtualMoney,
-                comenstA:resp.data.comments
-            })
-        }).catch((err)=>console.log("Error: "+err))
+    
     }
 
     virtualMoneyOnChange(number){
@@ -90,15 +82,8 @@ export default class projectID extends Component{
         axios.post("http://localhost:5000/feedback/add",data)
         .then(()=>console.log("Success"))
         .catch((err)=>console.log("Error: "+err))
-    }
 
-    showCalculateVirtualMoney(){
-        const allVirtualMoney = this.state.virtualMoney.reduce((collect,add)=>collect + Number(add),0)
-        return(
-            <div>
-                <div>{allVirtualMoney}</div>
-            </div>
-        )
+        window.location ="/"
     }
 
     render(){
@@ -108,6 +93,7 @@ export default class projectID extends Component{
                 <div>{this.state.projectName}</div>
                 <div dangerouslySetInnerHTML={{__html:"Description: " + this.state.description}}></div>
                 <div>Comment</div>
+                <div>{this.showCommentAll}</div>
                 <div className="">
             <form  onSubmit={this.onSubmitAction}>
                     <div className="">
@@ -122,9 +108,41 @@ export default class projectID extends Component{
                 </div>
                 <input type="submit" value="Submit"/>
                 </form>
-                <div>{this.showCalculateVirtualMoney}</div>
+                <Feedback />
+                
         </div>
             </div>
+        )
+    }
+}
+
+class Feedback extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            feedBack:[],
+        }
+    }
+
+    componentDidMount(){
+        const arr = window.location.href.split("/")
+        axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
+            this.setState({feedBack:resp.data})
+        },[])
+    }
+
+    componentDidUpdate(prevProps,prevState){
+        const arr = window.location.href.split("/")
+        if(prevProps !== prevState){
+            axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
+            this.setState({feedBack:resp.data})
+        },[])
+        }
+    }
+
+    render(){
+        return(
+            <div>{this.state.feedBack.length}</div>
         )
     }
 }
