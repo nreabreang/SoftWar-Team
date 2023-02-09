@@ -33,5 +33,6 @@ const activitySchema = new Schema(
 );
 
 const Activity = mongoose.model("Activity", activitySchema);
+Activity.createIndexes();
 
 module.exports = Activity;
