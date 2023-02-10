@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
 import { Buffer } from "buffer";
+import Swal from "sweetalert2";
 
 const encodeNumber = (str) => {
   return Buffer.from(str)
@@ -37,21 +38,40 @@ export default class guestLogin extends Component {
     let arr = previousPath.split("/");
     const index = arr[arr.length - 1];
 
-    axios.get("http://localhost:5000/activity/").then((res) => {
-      // console.log(code.code);
-      let i;
-      for (i = 0; i < res.data.length; i++) {
-        if (index === encodeNumber(res.data[i].actName)) {
-          window.location = "/guestActivityList/" + res.data[i]._id;
-          break;
-        }
-      }
-    });
-
     axios
       .post("http://localhost:5000/guest/add", guestInfo)
-      .then((res) => console.log("Guest Added !"))
-      .catch((err) => alert("You cannot use this Username !"));
+      .then(
+        (res) =>
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your name has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          }),
+
+        axios.get("http://localhost:5000/activity/").then((res) => {
+          let i;
+          for (i = 0; i < res.data.length; i++) {
+            if (index === encodeNumber(res.data[i].actName)) {
+              window.location = "/guestActivityList/" + res.data[i]._id;
+              break;
+            } else {
+            }
+          }
+        })
+      )
+      .catch((err) => error(), console.log("test"));
+    // alert("You cannot use this Username !")
+
+    function error() {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You cannot use this Username !",
+        // footer: '<a href="">Why do I have this issue?</a>'
+      });
+    }
   }
 
   render() {

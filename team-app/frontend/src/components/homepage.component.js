@@ -7,6 +7,7 @@ import "./homepage.component.css";
 import "./Styles.css";
 import axios from "axios";
 import { Buffer } from "buffer";
+import Swal from "sweetalert2";
 
 const encodeNumber = (str) => {
   return Buffer.from(str)
@@ -60,7 +61,14 @@ export default class homepage extends Component {
       }
 
       if (i >= res.data.length && code.code.length === 8) {
-        alert("Wrong Code !");
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: "Wrong Code",
+          showConfirmButton: false,
+          timer: 1500,
+        }
+        )
       }
     });
   }
