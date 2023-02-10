@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+import { Buffer } from "buffer";
 
 const encodeNumber = (str) => {
   return Buffer.from(str)
