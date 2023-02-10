@@ -44,6 +44,8 @@ export default class homepage extends Component {
     if (code.code.length < 8) {
       alert("Please Enter Code !");
     }
+
+    
     axios.get("http://localhost:5000/activity/").then((res) => {
       // console.log(code.code);
       let i;
@@ -52,7 +54,7 @@ export default class homepage extends Component {
           // isTrue = true;
           // resData = res.data[i].actName;
           // window.location = "/guestActivityList/" + res.data[i]._id;
-          window.location = "/access";
+          window.location = "/access/"+code.code;
           break;
         }
       }

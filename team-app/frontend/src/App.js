@@ -40,7 +40,7 @@ function App() {
           <Route path="/createProject" element={<CreateProject />}></Route>
           <Route path="/projectList" element={<ProjectLists />}></Route>
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
-          <Route path="/access" element={<Access/>}></Route>
+          <Route path="/access/:id" element={<Access/>}></Route>
         </Routes>
       </div>
       <Footer />
