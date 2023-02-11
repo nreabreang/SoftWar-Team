@@ -17,6 +17,7 @@ import ProjectLists from "./components/projects-list.component";
 import ProjectID from "./components/project-id.component";
 import Access from "./components/access.component";
 import PresenterLogin from "./components/presenter-view/login.component";
+import PresenterSignup from "./components/presenter-view/signUp.component";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
           <Route path="/access/:id" element={<Access />}></Route>
           <Route path="/presenterLogin" element={<PresenterLogin/>}></Route>
+          <Route path="/presenterSignup" element={<PresenterSignup/>}></Route>
         </Routes>
       </div>
       <Footer />
