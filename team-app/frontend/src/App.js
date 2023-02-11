@@ -32,15 +32,21 @@ function App() {
             path="/guestActivityList"
             element={<GuestActivityList />}
           ></Route>
-          <Route path="/guestActivityList/:id" element={<ActivityId />}></Route>
-          <Route path="/creatorActivityList/:id" element={<CreatorActivityId/>}></Route>
+          <Route
+            path="/guestActivityList/:id/:id"
+            element={<ActivityId />}
+          ></Route>
+          <Route
+            path="/creatorActivityList/:id"
+            element={<CreatorActivityId />}
+          ></Route>
           <Route path="/guestLogin" element={<GuestLogin />}></Route>
           <Route path="/guestEnter" element={<GuestEnter />}></Route>
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
           <Route path="/createProject" element={<CreateProject />}></Route>
           <Route path="/projectList" element={<ProjectLists />}></Route>
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
-          <Route path="/access/:id" element={<Access/>}></Route>
+          <Route path="/access/:id" element={<Access />}></Route>
         </Routes>
       </div>
       <Footer />
