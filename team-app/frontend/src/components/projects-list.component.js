@@ -2,6 +2,8 @@ import axios from "axios";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
+
+"<p>name</p>"
 const Project = (props) =>{
     const des = "Description: "+ props.projectDescription
     return(
@@ -28,12 +30,10 @@ export default class ProjectLists extends Component{
     };
 
     componentDidMount(){
-        const arr = this.props.actId
-
+        const arr = window.location.href.split("/")
         axios.get("http://localhost:5000/project/"+arr[arr.lenght-1])
         .then((res)=>{
             this.setState({projects: res.data})
-            console.log(res.data.idActivity)
         })
         .catch((err)=>console.log(err))
     };  
