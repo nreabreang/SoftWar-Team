@@ -6,19 +6,22 @@ import "./Styles.css";
 
 
 const Project = (props) =>{
-    const des = "Description: "+ props.projectDescription
+    const des = props.projectDescription
     return(
     
         <div className="overflow-hidden flex flex-col bg-white p-3 m-4 shadow sm:rounded-lg" >
             <h1 className=" text-20px">Project Name: {props.projectName}</h1>
-            <div className="border-t border-gray-200">
-        </div>
+            <div className="border-t border-gray-200"></div>
             {/* <p className="text-16px">ข้อมูล: {props.projectDescription}</p> */}
-            <div dangerouslySetInnerHTML={{__html:des}}></div>
-            <div>
+            <div className="border-t border-gray-200">
+            <dl>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 ">
+            <dt className="text-sm font-medium text-gray-500">Description</dt>
+            <div className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0" dangerouslySetInnerHTML={{__html:des}}></div>
+            </div></dl></div>
                 <Link to={"/projectList/"+ props.projectID} >See</Link>
-            </div>
         </div>
+        
         
     )
 }
