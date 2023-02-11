@@ -75,7 +75,7 @@ export default class creatorActivityId extends Component {
         </div>
         <GenerateQR urls={window.location.href} actName={this.state.actName} />
       </div>
-      <ProjectLists actId={window.location.href.split("/")} />
+      <ProjectLists  />
       </div>
       
     );
