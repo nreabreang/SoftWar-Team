@@ -17,6 +17,8 @@ import ProjectLists from "./components/guest-view/projects-list.component";
 import ProjectID from "./components/guest-view/project-id.component";
 import Access from "./components/access.component";
 import PresenterLogin from "./components/presenter-view/login.component";
+import CreatorProjectLists from "./components/creator-view/project-list.component";
+import CreatorProjectID from "./components/creator-view/project-id.component";
 
 function App() {
   return (
@@ -49,6 +51,9 @@ function App() {
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
           <Route path="/access/:id" element={<Access />}></Route>
           <Route path="/presenterLogin" element={<PresenterLogin/>}></Route>
+          <Route path="/activityCreatorList/:id" element={<CreatorProjectLists />}></Route>
+          <Route path="/creatorprojectList/:id" element={<CreatorProjectID />}></Route>
+
         </Routes>
       </div>
       <Footer />
