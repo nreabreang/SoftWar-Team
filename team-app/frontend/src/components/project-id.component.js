@@ -83,7 +83,7 @@ export default class projectID extends Component{
         .then(()=>console.log("Success"))
         .catch((err)=>console.log("Error: "+err))
 
-        window.location ="/"
+        window.location =""
     }
 
     render(){
@@ -119,11 +119,7 @@ export default class projectID extends Component{
 const TaskComment = (props)=>{
     return(
         <div>
-            <label >VirtualMoney: <div>{props.moneyVir}</div></label>
-            <label>I like: <div>{props.letComments.iLike}</div></label>
-            <label >I wish: <div>{props.letComments.iWish}</div></label>
-            <label >Question: <div>{props.letComments.iQuest}</div></label>
-            <label >Idea: <div>{props.letComments.iDea}</div></label>
+            
         </div>
     )
 }
@@ -133,7 +129,6 @@ class Feedback extends Component{
         super(props)
         this.state={
             feedBacks:[],
-            totalVirtual:[],
         }
     }
 
@@ -147,13 +142,9 @@ class Feedback extends Component{
 
     showLenghtOfList(){
        return this.state.feedBacks.map((data,index)=>{
-        
         return(
-            
             <TaskComment 
-                moneyVir = {data.virtualMoney}
-                letComments = {data.comments}
-
+            
             />
         )
        })

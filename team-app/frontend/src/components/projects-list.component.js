@@ -6,7 +6,7 @@ const Project = (props) =>{
     const des = "Description: "+ props.projectDescription
     return(
         <div className="flex flex-col bg-white p-3 m-4" >
-            <h1 className=" text-[20px]">Name Project: {props.projectName}</h1>
+            <h1 className=" text-[20px]">Name Project : {props.projectName}</h1>
             {/* <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p> */}
             <div dangerouslySetInnerHTML={{__html:des}}></div>
             <p>สมาชิก: </p>

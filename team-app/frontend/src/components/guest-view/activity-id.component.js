@@ -102,7 +102,7 @@ export default class activityId extends Component {
             <div className="text-white mr-2 px-2 text-center">
               <p className="font-bold text-lg">Virtual Money</p>
               <p className="text-base font-light text-white border-2 rounded-lg p-2 mt-2">
-                {this.getVirtual()}
+                Value : {this.getVirtual()}<p>Unit : {this.state.unitMoney}</p>
               </p>
             </div>
           </div>
