@@ -116,33 +116,46 @@ export default class projectID extends Component{
     }
 }
 
+const TaskComment = (props)=>{
+    return(
+        <div>
+            
+        </div>
+    )
+}
+
 class Feedback extends Component{
     constructor(props){
         super(props)
         this.state={
-            feedBack:[],
+            feedBacks:[],
         }
     }
 
     componentDidMount(){
         const arr = window.location.href.split("/")
-        axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
-            this.setState({feedBack:resp.data})
-        },[])
+        axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1])
+        .then((resp)=>{
+            this.setState({feedBacks:resp.data})
+        }).catch((err)=>console.log("Error: "+err))
     }
 
-    componentDidUpdate(prevProps,prevState){
-        const arr = window.location.href.split("/")
-        if(prevProps !== prevState){
-            axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
-            this.setState({feedBack:resp.data})
-        },[])
-        }
+    showLenghtOfList(){
+       return this.state.feedBacks.map((data,index)=>{
+        return(
+            <TaskComment 
+            
+            />
+        )
+       })
+        // const arr2 =  arr.then((data)=>data.map((fete)=>fete))
+         
+        // const sum =  moneyAll.reduce((correct,data)=>correct + Number(data),0)
     }
 
     render(){
         return(
-            <div>{this.state.feedBack.length}</div>
+            <div>{this.showLenghtOfList()}</div>
         )
     }
 }
