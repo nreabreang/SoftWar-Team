@@ -119,7 +119,11 @@ export default class projectID extends Component{
 const TaskComment = (props)=>{
     return(
         <div>
-            
+            <label >virtualMoney: <div>{props.moneyVir}</div></label>
+            <label >I like: <div>{props.letComments.iLike}</div></label>
+            <label >I wish: <div>{props.letComments.iWish}</div></label>
+            <label >Question: <div>{props.letComments.iQuest}</div></label>
+            <label >Idea: <div>{props.letComments.iDea}</div></label>
         </div>
     )
 }
@@ -144,18 +148,25 @@ class Feedback extends Component{
        return this.state.feedBacks.map((data,index)=>{
         return(
             <TaskComment 
-            
+            letComments={data.comments}
+            moneyVir={data.virtualMoney}
             />
         )
        })
         // const arr2 =  arr.then((data)=>data.map((fete)=>fete))
-         
         // const sum =  moneyAll.reduce((correct,data)=>correct + Number(data),0)
+    }
+
+    showCalculateVirtual(){
+        return this.state.feedBacks.reduce((corr,data)=>corr+Number(data.virtualMoney),0)
     }
 
     render(){
         return(
+            <div>
+                <label >{this.showCalculateVirtual()}</label>
             <div>{this.showLenghtOfList()}</div>
+            </div>
         )
     }
 }
