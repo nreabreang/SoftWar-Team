@@ -3,6 +3,8 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import "../Styles.css";
 
+
+
 const Project = (props) =>{
     const des = props.projectDescription
     return(

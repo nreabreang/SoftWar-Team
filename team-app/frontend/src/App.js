@@ -19,6 +19,7 @@ import Access from "./components/access.component";
 import PresenterLogin from "./components/presenter-view/login.component";
 import CreatorProjectLists from "./components/creator-view/project-list.component";
 import CreatorProjectID from "./components/creator-view/project-id.component";
+import PresenterSignup from "./components/presenter-view/signUp.component";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/activityCreatorList/:id" element={<CreatorProjectLists />}></Route>
           <Route path="/creatorprojectList/:id" element={<CreatorProjectID />}></Route>
 
+          <Route path="/presenterSignup" element={<PresenterSignup/>}></Route>
         </Routes>
       </div>
       <Footer />

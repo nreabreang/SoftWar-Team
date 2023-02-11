@@ -93,7 +93,7 @@ export default class CreateActivity extends Component {
   render() {
     return (
       <main>
-        <div className="create-activity-header">
+        <div className="header-container">
           <p className="text-36px">Create Activity</p>
         </div>
 
