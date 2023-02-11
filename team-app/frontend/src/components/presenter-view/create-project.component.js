@@ -83,7 +83,7 @@ export default class createProject extends Component {
     return (
       <div className="flex justify-center">
         <form onSubmit={this.sendForm}>
-          <div className="text-base font-semibold text-white my-2">
+          <div className="text-base font-semibold text-black my-2">
             <div className="my-4">
               <label className="text-[24px]">Project Name.</label>
               <div>
