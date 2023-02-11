@@ -17,14 +17,14 @@ const Project = (props) =>{
             <dt className="text-sm font-medium text-gray-500">Description</dt>
             <div className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0" dangerouslySetInnerHTML={{__html:des}}></div>
             </div></dl></div>
-                <Link to={"/projectList/"+ props.projectID} >See</Link>
+                <Link to={"/creatorprojectList/"+ props.projectID} >See</Link>
         </div>
         
         
     )
 }
 
-export default class ProjectLists extends Component{
+export default class CreatorProjectLists extends Component{
     constructor(props){
         super(props)
 
@@ -36,7 +36,7 @@ export default class ProjectLists extends Component{
 
     componentDidMount(){
         const arr = window.location.href.split("/")
-        axios.get("http://localhost:5000/project/activity/"+arr[arr.length-2])
+        axios.get("http://localhost:5000/project/activity/"+arr[arr.length-1])
         .then((res)=>{
             this.setState({projects: res.data})
         })
