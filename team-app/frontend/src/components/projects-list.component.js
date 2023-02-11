@@ -3,7 +3,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 
 
-"<p>name</p>"
+
 const Project = (props) =>{
     const des = "Description: "+ props.projectDescription
     return(
