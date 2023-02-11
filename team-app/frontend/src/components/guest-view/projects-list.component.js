@@ -37,8 +37,8 @@ export default class ProjectLists extends Component{
     };
 
     componentDidMount(){
-        // const arr = window.location.href.split("/")
-        axios.get("http://localhost:5000/project/")
+        const arr = window.location.href.split("/")
+        axios.get("http://localhost:5000/project/activity/"+arr[arr.length-2])
         .then((res)=>{
             this.setState({projects: res.data})
         })
