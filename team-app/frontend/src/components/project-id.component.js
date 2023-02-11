@@ -83,7 +83,7 @@ export default class projectID extends Component{
         .then(()=>console.log("Success"))
         .catch((err)=>console.log("Error: "+err))
 
-        window.location ="/"
+        window.location =""
     }
 
     render(){
