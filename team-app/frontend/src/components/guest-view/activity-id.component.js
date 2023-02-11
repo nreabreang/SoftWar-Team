@@ -32,12 +32,21 @@ export default class activityId extends Component {
     };
   }
 
+  name() {
+    const nameArr = window.location.href.split("/");
+    const name = nameArr[nameArr.length - 1];
+    console.log("username : ", nameArr[5]);
+    return name;
+  }
+
   componentDidMount() {
     const arr = window.location.href.split("/");
-    console.log(arr);
+    // console.log(arr);
+    // window.location = "/"
+    // console.log("ggg:",arr);
 
     axios
-      .get("http://localhost:5000/activity/" + arr[arr.length - 1])
+      .get("http://localhost:5000/activity/" + arr[arr.length - 2])
       .then((response) => {
         this.setState({
           actName: response.data.actName,
@@ -50,6 +59,11 @@ export default class activityId extends Component {
       .catch(function(error) {
         console.log(error);
       });
+  }
+
+  getVirtual() {
+    let virtualMoney = this.state.virtualMoney;
+    return virtualMoney;
   }
 
   render() {
@@ -73,6 +87,25 @@ export default class activityId extends Component {
             </p>
           </div>
           {/* <GenerateQR urls={window.location.href} actName={this.state.actName} /> */}
+          <div className="m-4 grid content-center font-semibold ">
+            <div className="text-white mr-2 mb-2 border-2 text-center rounded-full p-2">
+              Profile
+            </div>
+            <div className="text-white mr-2 px-2 text-center">
+              <p className="font-bold text-lg">Your name</p>
+              <p className="text-base font-light italic underline">
+                {this.name()}
+              </p>
+            </div>
+          </div>
+          <div className="m-4 grid content-center font-semibold ">
+            <div className="text-white mr-2 px-2 text-center">
+              <p className="font-bold text-lg">Virtual Money</p>
+              <p className="text-base font-light text-white border-2 rounded-lg p-2 mt-2">
+                {this.getVirtual()}
+              </p>
+            </div>
+          </div>
         </div>
         <ProjectLists />
       </div>
