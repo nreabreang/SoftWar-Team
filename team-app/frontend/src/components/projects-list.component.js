@@ -28,10 +28,12 @@ export default class ProjectLists extends Component{
     };
 
     componentDidMount(){
-        axios.get("http://localhost:5000/project/")
+        const arr = this.props.actId
+
+        axios.get("http://localhost:5000/project/"+arr[arr.lenght-1])
         .then((res)=>{
             this.setState({projects: res.data})
-            
+            console.log(res.data.idActivity)
         })
         .catch((err)=>console.log(err))
     };  
