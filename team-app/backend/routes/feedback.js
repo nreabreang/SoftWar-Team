@@ -73,11 +73,10 @@ router.route("/update/:id").post(async(req,res)=>{
 })
 
 router.route("/project/:idProject").get(async(req,res)=>{
-  Feedback.find({idProject:req.params.idProject})
+  Feedback.find(req.params.idProject)
   .then((respond)=>res.status(200).json(respond))
   .catch((err)=>res.status(400).json("Error: "+err))
 })
-
 
 module.exports = router;
 

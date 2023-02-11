@@ -2,9 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+<<<<<<< HEAD
+import './create-activity.component.css';
+import '../Styles.css'
+import date from '../images/calendar.png';
+=======
 import "./create-activity.component.css";
 import "../Styles.css";
 import date from "../images/calendar.png";
+>>>>>>> 2c3489ffe01ca7cad9f58d3058a9af6225525aa2
 
 export default class CreateActivity extends Component {
   constructor(props) {
