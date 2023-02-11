@@ -11,6 +11,7 @@ export default class presenterLogin extends Component {
             <div className="mt-4">
               <p>Email address</p>
               <input
+              placeholder="example@email.com"
                 type="text"
                 className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
               ></input>
@@ -18,6 +19,7 @@ export default class presenterLogin extends Component {
             <div className="mt-4">
               <p>Password</p>
               <input
+              placeholder="password"
                 className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
                 type="password"
               ></input>
