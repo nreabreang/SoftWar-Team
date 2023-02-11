@@ -13,8 +13,13 @@ import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
 import CreateProject from "./components/presenter-view/create-project.component";
-import ProjectLists from "./components/projects-list.component";
-import ProjectID from "./components/project-id.component";
+import ProjectLists from "./components/guest-view/projects-list.component";
+import ProjectID from "./components/guest-view/project-id.component";
+import Access from "./components/access.component";
+import PresenterLogin from "./components/presenter-view/login.component";
+import CreatorProjectLists from "./components/creator-view/project-list.component";
+import CreatorProjectID from "./components/creator-view/project-id.component";
+import PresenterSignup from "./components/presenter-view/signUp.component";
 
 function App() {
   return (
@@ -31,14 +36,26 @@ function App() {
             path="/guestActivityList"
             element={<GuestActivityList />}
           ></Route>
-          <Route path="/guestActivityList/:id" element={<ActivityId />}></Route>
-          <Route path="/creatorActivityList/:id" element={<CreatorActivityId/>}></Route>
+          <Route
+            path="/guestActivityList/:id/:id"
+            element={<ActivityId />}
+          ></Route>
+          <Route
+            path="/creatorActivityList/:id"
+            element={<CreatorActivityId />}
+          ></Route>
           <Route path="/guestLogin" element={<GuestLogin />}></Route>
           <Route path="/guestEnter" element={<GuestEnter />}></Route>
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
           <Route path="/createProject" element={<CreateProject />}></Route>
           <Route path="/projectList" element={<ProjectLists />}></Route>
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
+          <Route path="/access/:id" element={<Access />}></Route>
+          <Route path="/presenterLogin" element={<PresenterLogin/>}></Route>
+          <Route path="/activityCreatorList/:id" element={<CreatorProjectLists />}></Route>
+          <Route path="/creatorprojectList/:id" element={<CreatorProjectID />}></Route>
+
+          <Route path="/presenterSignup" element={<PresenterSignup/>}></Route>
         </Routes>
       </div>
       <Footer />

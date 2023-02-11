@@ -7,6 +7,7 @@ const activitySchema = new Schema(
     actName: {
       type: String,
       required: true,
+      unique:true,
     },
     actDescription: {
       type: String,
@@ -32,5 +33,6 @@ const activitySchema = new Schema(
 );
 
 const Activity = mongoose.model("Activity", activitySchema);
+Activity.createIndexes();
 
 module.exports = Activity;

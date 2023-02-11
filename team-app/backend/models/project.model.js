@@ -17,6 +17,9 @@ const projectScheme = new schema({
         trim:false,
         minlength:1,
     },
+    idActivity:{
+        type:String
+    }
 },{
     timestamps:true,
 });

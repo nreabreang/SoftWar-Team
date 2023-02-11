@@ -1,7 +1,14 @@
 import axios from "axios";
 import { Component } from "react";
+import { Buffer } from "buffer";
+import Swal from "sweetalert2";
 
-
+const encodeNumber = (str) => {
+  return Buffer.from(str)
+    .toString("base64")
+    .slice(0, 8)
+    .toLocaleUpperCase();
+};
 
 export default class guestLogin extends Component {
   constructor(props) {
@@ -10,7 +17,7 @@ export default class guestLogin extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username : [],
+      username: [],
     };
   }
 
@@ -27,11 +34,44 @@ export default class guestLogin extends Component {
       username: this.state.username,
     };
 
+    const previousPath = document.referrer;
+    let arr = previousPath.split("/");
+    const index = arr[arr.length - 1];
+
     axios
       .post("http://localhost:5000/guest/add", guestInfo)
-      .then((res) =>   window.location = "/guestEnter")
-      .catch((err)=>alert("You cannot use this Username !"))
-       
+      .then((res) => {
+        if (res.status === 200) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your name has been saved",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+
+          axios.get("http://localhost:5000/activity/").then((res) => {
+            let i;
+            for (i = 0; i < res.data.length; i++) {
+              if (index === encodeNumber(res.data[i].actName)) {
+                window.location =
+                  "/guestActivityList/" + res.data[i]._id + "/" + this.state.username;
+                break;
+              } else {
+              }
+            }
+          });
+        } else {
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "You cannot use this name !",
+          // footer: '<a href="">Why do I have this issue?</a>'
+        });
+      }, console.log("test"));
   }
 
   render() {
@@ -40,7 +80,7 @@ export default class guestLogin extends Component {
         <form className="flex justify-center" onSubmit={this.onSubmit}>
           <div className="">
             <div className="mb-4">
-              <label>Username</label>
+              <label className="text-white text-2xl">Name</label>
               <br></br>
               <input
                 type="text"
@@ -53,11 +93,14 @@ export default class guestLogin extends Component {
               />
             </div>
             <div className="">
-              <input type="submit" value="Submit" className="p-2 rounded-md bg-red-400 text-white"/>
+              <input
+                type="submit"
+                value="Submit"
+                className="p-2 rounded-md bg-red-400 text-white mb-6"
+              />
             </div>
           </div>
         </form>
-        
       </div>
     );
   }

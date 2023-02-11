@@ -1,23 +1,30 @@
 import axios from "axios";
 import { Component } from "react";
 import { Link } from "react-router-dom";
+import "../Styles.css";
 
 const Project = (props) =>{
-    const des = "Description: "+ props.projectDescription
+    const des = props.projectDescription
     return(
-        <div className="flex flex-col bg-white p-3 m-4" >
-            <h1 className=" text-[20px]">Name Project: {props.projectName}</h1>
-            {/* <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p> */}
-            <div dangerouslySetInnerHTML={{__html:des}}></div>
-            <p>สมาชิก: </p>
-            <div>
-                <Link to={"/projectList/"+ props.projectID} >See</Link>
-            </div>
+    
+        <div className="overflow-hidden flex flex-col bg-white p-3 m-4 shadow sm:rounded-lg" >
+            <h1 className=" text-20px">Project Name: {props.projectName}</h1>
+            <div className="border-t border-gray-200"></div>
+            {/* <p className="text-16px">ข้อมูล: {props.projectDescription}</p> */}
+            <div className="border-t border-gray-200">
+            <dl>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 ">
+            <dt className="text-sm font-medium text-gray-500">Description</dt>
+            <div className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0" dangerouslySetInnerHTML={{__html:des}}></div>
+            </div></dl></div>
+                <Link to={"/creatorprojectList/"+ props.projectID} >See</Link>
         </div>
+        
+        
     )
 }
 
-export default class ProjectLists extends Component{
+export default class CreatorProjectLists extends Component{
     constructor(props){
         super(props)
 
@@ -28,10 +35,10 @@ export default class ProjectLists extends Component{
     };
 
     componentDidMount(){
-        axios.get("http://localhost:5000/project/")
+        const arr = window.location.href.split("/")
+        axios.get("http://localhost:5000/project/activity/"+arr[arr.length-1])
         .then((res)=>{
             this.setState({projects: res.data})
-            
         })
         .catch((err)=>console.log(err))
     };  

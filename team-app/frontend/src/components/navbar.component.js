@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './navbar.component.css';
-import './styles.css';
+import './Styles.css';
 
 
 export default class navbar extends Component {
@@ -20,6 +20,7 @@ export default class navbar extends Component {
                             <Link to="/createActivity" className="text-16px">Create Activity</Link>
                             <Link to="/activityList" className="text-16px">Creator Activity View</Link>
                             <Link to="/guestActivityList" className="text-16px">Guest Activity View</Link>
+                            <Link to="/createProject" className="text-16px">Presenter View</Link>
                         </div>
 
                     </div>
