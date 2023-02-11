@@ -40,38 +40,38 @@ export default class guestLogin extends Component {
 
     axios
       .post("http://localhost:5000/guest/add", guestInfo)
-      .then(
-        (res) =>
+      .then((res) => {
+        if (res.status === 200) {
           Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Your name has been saved",
             showConfirmButton: false,
-            timer: 1500,
-          }),
+            timer: 3000,
+          });
 
-        axios.get("http://localhost:5000/activity/").then((res) => {
-          let i;
-          for (i = 0; i < res.data.length; i++) {
-            if (index === encodeNumber(res.data[i].actName)) {
-              window.location = "/guestActivityList/" + res.data[i]._id;
-              break;
-            } else {
+          axios.get("http://localhost:5000/activity/").then((res) => {
+            let i;
+            for (i = 0; i < res.data.length; i++) {
+              if (index === encodeNumber(res.data[i].actName)) {
+                window.location =
+                  "/guestActivityList/" + res.data[i]._id + "/" + this.state.username;
+                break;
+              } else {
+              }
             }
-          }
-        })
-      )
-      .catch((err) => error(), console.log("test"));
-    // alert("You cannot use this Username !")
-
-    function error() {
-      return Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "You cannot use this Username !",
-        // footer: '<a href="">Why do I have this issue?</a>'
-      });
-    }
+          });
+        } else {
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "You cannot use this name !",
+          // footer: '<a href="">Why do I have this issue?</a>'
+        });
+      }, console.log("test"));
   }
 
   render() {

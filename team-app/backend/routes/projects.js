@@ -12,10 +12,12 @@ router.route("/").get((req,res)=>{
 router.route("/add").post((req,res)=>{
     const projectName = req.body.projectName;
     const description = req.body.description;
+    const idActivity = req.body.idActivity;
 
     const newProject = new Projects({
         projectName,
         description,
+        idActivity,
     });
 
     newProject
@@ -46,10 +48,16 @@ router.route("/update/:id").post((req,res)=>{
     .catch((error)=>res.status(400).json("Error: " + error))
 });
 
-
 router.route("/delete/:id").delete((req,res)=>{
     Projects.findByIdAndDelete(req.params.id)
     .then(()=>console.log("Delete successfully.")).catch((err)=>console.log("Error: "+err))
+})
+
+// http://localhost:5000/project/activity/:id
+router.route("/activity/:id").get(async(req,res)=>{
+    Projects.find(req.params.id)
+    .then((resp)=>resp.status(200).json(resp))
+    .catch((err)=>res.status(400).json("Error: "+err))
 })
 
 module.exports = router;

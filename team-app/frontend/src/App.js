@@ -16,6 +16,7 @@ import CreateProject from "./components/presenter-view/create-project.component"
 import ProjectLists from "./components/projects-list.component";
 import ProjectID from "./components/project-id.component";
 import Access from "./components/access.component";
+import PresenterLogin from "./components/presenter-view/login.component";
 
 function App() {
   return (
@@ -32,15 +33,22 @@ function App() {
             path="/guestActivityList"
             element={<GuestActivityList />}
           ></Route>
-          <Route path="/guestActivityList/:id" element={<ActivityId />}></Route>
-          <Route path="/creatorActivityList/:id" element={<CreatorActivityId/>}></Route>
+          <Route
+            path="/guestActivityList/:id/:id"
+            element={<ActivityId />}
+          ></Route>
+          <Route
+            path="/creatorActivityList/:id"
+            element={<CreatorActivityId />}
+          ></Route>
           <Route path="/guestLogin" element={<GuestLogin />}></Route>
           <Route path="/guestEnter" element={<GuestEnter />}></Route>
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
           <Route path="/createProject" element={<CreateProject />}></Route>
           <Route path="/projectList" element={<ProjectLists />}></Route>
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
-          <Route path="/access/:id" element={<Access/>}></Route>
+          <Route path="/access/:id" element={<Access />}></Route>
+          <Route path="/presenterLogin" element={<PresenterLogin/>}></Route>
         </Routes>
       </div>
       <Footer />

@@ -3,6 +3,8 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Styles.css";
 
+
+
 const Project = (props) =>{
     const des = "Description: "+ props.projectDescription
     return(
@@ -32,10 +34,10 @@ export default class ProjectLists extends Component{
     };
 
     componentDidMount(){
+        // const arr = window.location.href.split("/")
         axios.get("http://localhost:5000/project/")
         .then((res)=>{
             this.setState({projects: res.data})
-            
         })
         .catch((err)=>console.log(err))
     };  

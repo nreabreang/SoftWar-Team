@@ -83,17 +83,17 @@ export default class createProject extends Component {
     return (
       <div className="flex justify-center">
         <form onSubmit={this.sendForm}>
-          <div>
+          <div className="text-base font-semibold text-white my-2">
             <div className="my-4">
               <label className="text-[24px]">Project Name.</label>
               <div>
                 <input
-                className="mt-2 italic"
+                className="mt-2 italic p-2 border rounded-lg"
                   type="text"
                   required
                   id="projectName"
                   name="projectName"
-                  placeholder="ใส่ชื่อโครงการของคุณที่นี้"
+                  placeholder="Put your Project Name"
                   value={this.state.projectName}
                   onChange={this.onchangeProjectName}
                 />
@@ -110,7 +110,7 @@ export default class createProject extends Component {
                   onChange={this.onchangeDescription}
                   modules={this.modules}
                   formats={this.formats}
-                  placeholder="ใส่รายละเอียดโครงการของคุณที่นี้"
+                  placeholder="Put your Project Description here"
                   
                 />
               </div>

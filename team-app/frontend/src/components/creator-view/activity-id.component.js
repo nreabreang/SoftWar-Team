@@ -1,6 +1,6 @@
 import axios from "axios";
 import GenerateQR from "./qr-activity";
-// import ProjectLists from "../projects-list.component";
+import ProjectLists from "../projects-list.component";
 const { Component } = require("react");
 
 // const ActivityList = (props) => (
@@ -75,7 +75,7 @@ export default class creatorActivityId extends Component {
         </div>
         <GenerateQR urls={window.location.href} actName={this.state.actName} />
       </div>
-      {/* <ProjectLists /> */}
+      <ProjectLists  />
       </div>
       
     );
