@@ -67,9 +67,9 @@ export default class activityId extends Component {
               {this.state.date.toISOString().substring(0, 10)}
             </p>
 
-            <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
-              <h5 className="font-bold">Description</h5>
-              {this.state.actDescription}
+            <p class="mb-3 font-medium text-gray-700 w-52 dark:text-gray-400 break-words">
+              <h5 className="font-bold ">Description</h5>
+              <p className="break-words">{this.state.actDescription}</p>
             </p>
           </div>
           {/* <GenerateQR urls={window.location.href} actName={this.state.actName} /> */}

@@ -7,6 +7,7 @@ import "./homepage.component.css";
 import "./Styles.css";
 import axios from "axios";
 import { Buffer } from "buffer";
+import Swal from "sweetalert2";
 
 const encodeNumber = (str) => {
   return Buffer.from(str)
@@ -23,7 +24,7 @@ export default class homepage extends Component {
     this.onEnterCode = this.onEnterCode.bind(this);
 
     this.state = {
-      code: "#",
+      code: "",
     };
   }
 
@@ -40,28 +41,34 @@ export default class homepage extends Component {
       code: this.state.code,
     };
 
-    // console.log(code);
+    console.log(code.code.length);
+    if (code.code.length < 8) {
+      alert("Please Enter Code !");
+    }
 
+    
     axios.get("http://localhost:5000/activity/").then((res) => {
-      let isTrue = true;
-      //   console.log(res.data[0].actName);
-      let resData;
-      for (let i = 0; i < res.data.length; i++) {
-        // console.log(encodeNumber(res.data[i].actName));
+      // console.log(code.code);
+      let i;
+      for (i = 0; i < res.data.length; i++) {
         if (code.code === encodeNumber(res.data[i].actName)) {
-          isTrue = true;
-          resData = res.data[i].actName;
-          window.location = "/guestActivityList/" + res.data[i]._id;
+          // isTrue = true;
+          // resData = res.data[i].actName;
+          // window.location = "/guestActivityList/" + res.data[i]._id;
+          window.location = "/access/"+code.code;
           break;
-        } else {
-          isTrue = false;
         }
       }
 
-      if (isTrue) {
-        console.log("can res", resData);
-      } else {
-        console.log("not res");
+      if (i >= res.data.length && code.code.length === 8) {
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: "Wrong Code",
+          showConfirmButton: false,
+          timer: 1500,
+        }
+        )
       }
     });
   }
@@ -124,7 +131,7 @@ export default class homepage extends Component {
             <p className="text-20px">Or</p>
 
             <Link to="/guestLogin">
-              <img src={qr} className="images-icon mx-2.5" alt=""/>
+              <img src={qr} className="images-icon mx-2.5" alt="" />
             </Link>
           </div>
         </div>

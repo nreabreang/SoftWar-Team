@@ -67,9 +67,9 @@ export default class creatorActivityId extends Component {
             {this.state.date.toISOString().substring(0, 10)}
           </p>
 
-          <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
+          <p class="mb-3 font-medium text-gray-700 dark:text-gray-400 " >
             <h5 className="font-bold">Description</h5>
-            {this.state.actDescription}
+            <div Style="word-wrap: break-word;white-space:pre-wrap;">{this.state.actDescription}</div>
           </p>
           
         </div>
