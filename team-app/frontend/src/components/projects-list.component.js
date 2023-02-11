@@ -1,19 +1,23 @@
 import axios from "axios";
 import { Component } from "react";
 import { Link } from "react-router-dom";
+import "./Styles.css";
 
 const Project = (props) =>{
     const des = "Description: "+ props.projectDescription
     return(
-        <div className="flex flex-col bg-white p-3 m-4" >
-            <h1 className=" text-[20px]">Name Project: {props.projectName}</h1>
-            {/* <p className="text-[16px]">ข้อมูล: {props.projectDescription}</p> */}
+    
+        <div className="overflow-hidden flex flex-col bg-white p-3 m-4 shadow sm:rounded-lg" >
+            <h1 className=" text-20px">Project Name: {props.projectName}</h1>
+            <div className="border-t border-gray-200">
+        </div>
+            {/* <p className="text-16px">ข้อมูล: {props.projectDescription}</p> */}
             <div dangerouslySetInnerHTML={{__html:des}}></div>
-            <p>สมาชิก: </p>
             <div>
                 <Link to={"/projectList/"+ props.projectID} >See</Link>
             </div>
         </div>
+        
     )
 }
 
