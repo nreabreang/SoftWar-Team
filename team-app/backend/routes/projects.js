@@ -55,9 +55,9 @@ router.route("/delete/:id").delete((req,res)=>{
 
 // http://localhost:5000/project/activity/:id
 router.route("/activity/:id").get(async(req,res)=>{
-    Projects.find(req.params.id)
-    .then((resp)=>resp.status(200).json(resp))
-    .catch((err)=>res.status(400).json("Error: "+err))
+    Projects.find({idActivity:req.params.id})
+    .then((resp)=>res.status(200).json(resp))
+    .catch((err)=>console.log("Error: "+err))
 })
 
 module.exports = router;

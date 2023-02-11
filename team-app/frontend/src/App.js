@@ -13,8 +13,8 @@ import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
 import CreateProject from "./components/presenter-view/create-project.component";
-import ProjectLists from "./components/projects-list.component";
-import ProjectID from "./components/project-id.component";
+import ProjectLists from "./components/guest-view/projects-list.component";
+import ProjectID from "./components/guest-view/project-id.component";
 import Access from "./components/access.component";
 import PresenterLogin from "./components/presenter-view/login.component";
 
