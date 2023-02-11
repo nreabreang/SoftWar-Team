@@ -78,6 +78,5 @@ router.route("/project/:idProject").get(async(req,res)=>{
   .catch((err)=>res.status(400).json("Error: "+err))
 })
 
-
 module.exports = router;
 

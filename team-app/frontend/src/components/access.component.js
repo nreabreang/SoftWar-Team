@@ -1,5 +1,4 @@
 import { Component } from "react";
-import axios from "axios";
 
 export default class access extends Component {
 
@@ -11,7 +10,7 @@ export default class access extends Component {
           Enter to the Activity
         </p>
         <div className="text-lg text-white my-2 flex justify-center p-2">
-          <a href="/#" className="border-2 border-white rounded-full p-2 m-2">Presenter</a>
+          <a href="/presenterLogin" className="border-2 border-white rounded-full p-2 m-2">Presenter</a>
           <a href="/guestLogin" className="border-2 border-white rounded-full p-2 m-2">Guest</a>
         </div>
       </div>

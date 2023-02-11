@@ -83,7 +83,7 @@ export default class projectID extends Component{
         .then(()=>console.log("Success"))
         .catch((err)=>console.log("Error: "+err))
 
-        window.location ="/"
+        window.location =""
     }
 
     render(){
@@ -116,33 +116,57 @@ export default class projectID extends Component{
     }
 }
 
+const TaskComment = (props)=>{
+    return(
+        <div>
+            <label >virtualMoney: <div>{props.moneyVir}</div></label>
+            <label >I like: <div>{props.letComments.iLike}</div></label>
+            <label >I wish: <div>{props.letComments.iWish}</div></label>
+            <label >Question: <div>{props.letComments.iQuest}</div></label>
+            <label >Idea: <div>{props.letComments.iDea}</div></label>
+        </div>
+    )
+}
+
 class Feedback extends Component{
     constructor(props){
         super(props)
         this.state={
-            feedBack:[],
+            feedBacks:[],
         }
     }
 
     componentDidMount(){
         const arr = window.location.href.split("/")
-        axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
-            this.setState({feedBack:resp.data})
-        },[])
+        axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1])
+        .then((resp)=>{
+            this.setState({feedBacks:resp.data})
+        }).catch((err)=>console.log("Error: "+err))
     }
 
-    componentDidUpdate(prevProps,prevState){
-        const arr = window.location.href.split("/")
-        if(prevProps !== prevState){
-            axios.get("http://localhost:5000/feedback/project/"+arr[arr.length-1]).then((resp)=>{
-            this.setState({feedBack:resp.data})
-        },[])
-        }
+    showLenghtOfList(){
+       return this.state.feedBacks.map((data,index)=>{
+        return(
+            <TaskComment 
+            letComments={data.comments}
+            moneyVir={data.virtualMoney}
+            />
+        )
+       })
+        // const arr2 =  arr.then((data)=>data.map((fete)=>fete))
+        // const sum =  moneyAll.reduce((correct,data)=>correct + Number(data),0)
+    }
+
+    showCalculateVirtual(){
+        return this.state.feedBacks.reduce((corr,data)=>corr+Number(data.virtualMoney),0)
     }
 
     render(){
         return(
-            <div>{this.state.feedBack.length}</div>
+            <div>
+                <label >{this.showCalculateVirtual()}</label>
+            <div>{this.showLenghtOfList()}</div>
+            </div>
         )
     }
 }
