@@ -43,8 +43,8 @@ export default class presenterSignup extends Component {
                 className="p-2 rounded-lg bg-red-400 text-white"
               ></input>
             </div>
-            <div className="flex justify-end mt-4 underline text-blue-400">
-                <a href="/presenterSignup">Sign-Up</a></div>
+            <div className="flex justify-end mt-4 text-xs">
+                <p className=" mr-2 ">Already have an account?</p> <a className="underline text-blue-400" href="/presenterLogin">Log In</a></div>
           </div>
         </form>
       </div>
