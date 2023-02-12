@@ -5,34 +5,35 @@ export default class presenterSignup extends Component {
   render() {
     return (
       <div className="flex justify-center">
-        <form>
+        <form className=" ">
           <div className="grid justify-center mb-4 text-gray-500 p-4 w-64 font-bold bg-red-50 rounded-lg">
-            <div className="flex justify-center">Sign up</div>
+            <div className="flex justify-center text-24px">Sign up</div>
+            <div className="flex justify-center text-sm ">Let's get's you Sign Up</div>
             <div className="mt-4">
-              <p>Firstname</p>
+              <p>First name</p>
               <input
                 type="name"
-                className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
+                className="mt-2 text-black p-1 rounded-md border-2 border-red-300" placeholder="First name"
               ></input>
             </div>
             <div className="mt-4">
-              <p>Lastname</p>
+              <p>Last name</p>
               <input
                 type="Surname"
-                className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
+                className="mt-2 text-black p-1 rounded-md border-2 border-red-300" placeholder="Last name"
               ></input>
             </div>
             <div className="mt-4">
               <p>Email address</p>
               <input
                 type="email"
-                className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
+                className="mt-2 text-black p-1 rounded-md border-2 border-red-300" placeholder="example@email.com"
               ></input>
             </div>
             <div className="mt-4">
               <p>Password</p>
               <input
-                className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
+                className="mt-2 text-black p-1 rounded-md border-2 border-red-300" placeholder="Password"
                 type="password"
               ></input>
             </div>
@@ -48,52 +49,6 @@ export default class presenterSignup extends Component {
           </div>
         </form>
       </div>
-//     <div className="bg-white"> 
-//     <form>
-//     <h3>Sign Up</h3>
-
-//     <div className="mb-3">
-//       <label>First name</label>
-//       <input
-//         type="text"
-//         className="form-control"
-//         placeholder="First name"
-//       />
-//     </div>
-
-//     <div className="mb-3">
-//       <label>Last name</label>
-//       <input type="text" className="form-control" placeholder="Last name" />
-//     </div>
-
-//     <div className="mb-3">
-//       <label>Email address</label>
-//       <input
-//         type="email"
-//         className="form-control"
-//         placeholder="Enter email"
-//       />
-//     </div>
-
-//     <div className="mb-3">
-//       <label>Password</label>
-//       <input
-//         type="password"
-//         className="form-control"
-//         placeholder="Enter password"
-//       />
-//     </div>
-
-//     <div className="d-grid">
-//       <button type="submit" className="btn btn-primary">
-//         Sign Up
-//       </button>
-//     </div>
-//     <p className="forgot-password text-right">
-//       Already registered <a href="/sign-in">sign in?</a>
-//     </p>
-//   </form>
-// </div>
     );
   }
 }

@@ -90,11 +90,8 @@ export default class homepage extends Component {
 
         <div className="button">
           <div className="container">
-            <Link to="/createActivity" className="button-navy">
-              Get Started!
-            </Link>
-            <Link to="/guestLogin" className="button-lightpink">
-              Sign Up
+            <Link to="/creatorLogin" className="button-navy">
+            Create Activity
             </Link>
           </div>
         </div>

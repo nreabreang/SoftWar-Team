@@ -7,6 +7,7 @@ import "../Styles.css";
 import rightarrow from "../images/right-arrow.png";
 import del from "../images/delete.png";
 import edit from "../images/edit-1.png";
+import Swal from "sweetalert2"
 
 const encodeNumber = (str) => {
     const code = Buffer.from(str)
@@ -35,7 +36,18 @@ const Activity = (props) => (
                 {/* delete icon */}
                 <a href="#"
                     onClick={() => {
-                        props.deleteActivity(props.activity._id);
+                        Swal.fire({
+                            title: 'Do you want to delete the Activity?',
+                            showCancelButton: true,
+                            confirmButtonText: 'Confirm',
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                Swal.fire('Deleted!', '', 'success').then((result) => {
+                                    props.deleteActivity(props.activity._id);
+                                })
+                            }
+                        })
                     }}>
                     <img src={del} className="images-20px" />
                 </a>
@@ -69,7 +81,7 @@ const Activity = (props) => (
                     to={"/creatorActivityList/" + props.activity._id}>
                     <img src={rightarrow} className="images-16px" />
                 </Link>
-                
+
             </div>
         </div>
     </div >
