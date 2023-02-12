@@ -6,7 +6,7 @@ export default class creatorLogin extends Component {
     return (
       <div>
         <div className="flex justify-center">Get started</div>
-        <form>
+        <form action="/users/log-in" method="post" name="form1">
           <div class="grid grid-cols-3 gap-0">
 
             <div></div>
@@ -39,7 +39,7 @@ export default class creatorLogin extends Component {
               <div></div>
 
               <button
-                type="button"
+                type="submit"
                 class="px-8 py-4 bg-blue-500 text-white font-bold text-base leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
                 Login
               </button>

@@ -9,34 +9,47 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: false }); // if use newCreateIndex code will cannot complier because mongoose no longer supported it
 
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-});
+const start = async () => {
+  const uri = process.env.ATLAS_URI;
 
-// require file and use the file
-const activityRouter = require("./routes/activities");
-const exercisesRouter = require("./routes/exercises");
-const userRouter = require("./routes/users");
-const projectRouter = require("./routes/projects");
-const guestRouter = require("./routes/guests");
-const feedbackRouter = require("./routes/feedback");
+  console.log('mongodb url = ' + uri);
+  console.log('before connect db');
 
-// use file and add path
-app.use("/activity",activityRouter);
-app.use("/exercises", exercisesRouter); // go to exercises.js file /exercises
-app.use("/users", userRouter); //go to users.js file /users
-app.use("/project",projectRouter); // cannot be successes
-app.use("/feedback",feedbackRouter); // cannot be successes
-app.use("/guest",guestRouter);
+  // if use newCreateIndex code will cannot complier because mongoose no longer supported it
+  await mongoose.connect(uri, { useNewUrlParser: false })
+    //mongoose.connect(uri)
+    .then(() => console.log('connected'))
+    .catch(e => console.log(e));
 
+  console.log('after connect db');
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+  const connection = mongoose.connection;
+  connection.once("open", () => {
+    console.log("MongoDB database connection established successfully");
+  });
 
+  // require file and use the file
+  const activityRouter = require("./routes/activities");
+  const exercisesRouter = require("./routes/exercises");
+  const userRouter = require("./routes/users");
+  const projectRouter = require("./routes/projects");
+  const guestRouter = require("./routes/guests");
+  const feedbackRouter = require("./routes/feedback");
 
+  // use file and add path
+  app.use("/activity", activityRouter);
+  app.use("/exercises", exercisesRouter); // go to exercises.js file /exercises
+  app.use("/users", userRouter); //go to users.js file /users
+  app.use("/project", projectRouter); // cannot be successes
+  app.use("/feedback", feedbackRouter); // cannot be successes
+  app.use("/guest", guestRouter);
+
+  app.listen(port, () => {
+    console.log(`Server is running on port: ${port}`);
+  });
+
+};
+
+start();
 
