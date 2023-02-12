@@ -1,5 +1,5 @@
 import axios from "axios";
-import GenerateQR from "../creator-view/qr-activity";
+// import GenerateQR from "../creator-view/qr-activity";
 import ProjectLists from "./projects-list.component";
 const { Component } = require("react");
 
@@ -63,6 +63,14 @@ export default class activityId extends Component {
 
   getVirtual() {
     let virtualMoney = this.state.virtualMoney;
+    if(document.cookie){
+      let valueVir = document.cookie.split("=")
+      // console.log(document.cookie)
+      return valueVir[valueVir.length-1]
+    }else{
+      document.cookie = `virtualmoney=${virtualMoney}`  
+    }
+    
     return virtualMoney;
   }
 

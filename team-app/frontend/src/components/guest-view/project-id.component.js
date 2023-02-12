@@ -83,6 +83,19 @@ export default class projectID extends Component{
         .then(()=>console.log("Success"))
         .catch((err)=>console.log("Error: "+err))
 
+        let getCookies = document.cookie.split("=");
+        let calculate = Number(getCookies[getCookies.length-1])-Number(this.state.storeVirtualMoney)
+        if(calculate<0){
+            this.setState({
+                storeVirtualMoney:"",
+                ILike:"",
+                IWish:"",
+                Quest:"",
+                Idea:"",
+            })
+        }else{
+            document.cookie = `virtualmoney=${calculate}`
+        }
         window.location =""
   }
 
