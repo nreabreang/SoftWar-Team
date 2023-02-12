@@ -20,7 +20,7 @@ import PresenterLogin from "./components/presenter-view/login.component";
 import CreatorProjectLists from "./components/creator-view/project-list.component";
 import CreatorProjectID from "./components/creator-view/project-id.component";
 import PresenterSignup from "./components/presenter-view/signUp.component";
-
+import PresenterDashboard from "./components/presenter-view/dashboard.component";
 function App() {
   return (
     <Router>
@@ -51,11 +51,21 @@ function App() {
           <Route path="/projectList" element={<ProjectLists />}></Route>
           <Route path="/projectList/:id" element={<ProjectID />}></Route>
           <Route path="/access/:id" element={<Access />}></Route>
-          <Route path="/presenterLogin" element={<PresenterLogin/>}></Route>
-          <Route path="/activityCreatorList/:id" element={<CreatorProjectLists />}></Route>
-          <Route path="/creatorprojectList/:id" element={<CreatorProjectID />}></Route>
+          <Route path="/presenterLogin" element={<PresenterLogin />}></Route>
+          <Route
+            path="/activityCreatorList/:id"
+            element={<CreatorProjectLists />}
+          ></Route>
+          <Route
+            path="/creatorprojectList/:id"
+            element={<CreatorProjectID />}
+          ></Route>
 
-          <Route path="/presenterSignup" element={<PresenterSignup/>}></Route>
+          <Route path="/presenterSignup" element={<PresenterSignup />}></Route>
+          <Route
+            path="/presenterDashboard"
+            element={<PresenterDashboard />}
+          ></Route>
         </Routes>
       </div>
       <Footer />

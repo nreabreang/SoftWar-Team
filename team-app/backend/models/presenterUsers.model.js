@@ -4,10 +4,10 @@ const PresenterUsersSchema = new mongoose.Schema(
   {
     fname: String,
     lname: String,
-    email: String,
+    email: { type: String, unique: true },
     password: String,
   },
-  { collection: "presenterUsers" }
+  { collection: "presenterUsers", timestamps: true }
 );
 
 const presenterUsers = mongoose.model("presenterUsers", PresenterUsersSchema);

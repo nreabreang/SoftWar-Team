@@ -1,24 +1,52 @@
 const router = require("express").Router();
 const presenterUsers = require("../models/presenterUsers.model");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const JWT_SECRET = "kfqbntpwvbuypbw4va.,/ffdlt0bw7uv8bsv./z/m,mzn;dgpvq[t]";
 
 router.route("/").get(async (req, res) => {
-    res.status;
+  res.status;
 });
 
 router.route("/presenterReg").post(async (req, res) => {
   const { fname, lname, email, password } = req.body;
 
+  const encryptedPassword = await bcrypt.hash(password, 10);
   try {
+    const oldPresenterUsers = await presenterUsers.findOne({ email });
+    if (oldPresenterUsers) {
+      return res.json({ error: "Presenter Users Exists" });
+    }
     await presenterUsers.create({
       fname,
       lname,
       email,
-      password,
+      password: encryptedPassword,
     });
     res.send({ status: "ok" });
   } catch (error) {
     res.send({ status: "error" });
   }
+});
+
+router.route("/login-presenter").post(async (req, res) => {
+  const { email, password } = req.body;
+
+  const presenterUser = await presenterUsers.findOne({ email });
+  if (!presenterUser) {
+    return res.json({ error: "Presenter User Not Found" });
+  }
+
+  if (await bcrypt.compare(password, presenterUser.password)) {
+    const token = jwt.sign({}, JWT_SECRET);
+    if (res.status(201)) {
+      return res.json({ status: "ok", data: token });
+    } else {
+      return res.json({ status: "error" });
+    }
+  }
+  res.json({ status: "error", error: "Invalid Password" });
 });
 
 module.exports = router;

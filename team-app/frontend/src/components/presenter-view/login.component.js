@@ -1,27 +1,61 @@
 import { Component } from "react";
 
-
 export default class presenterLogin extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: "",
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    const { email, password } = this.state;
+    console.log(email, password);
+
+    fetch("http://localhost:5000/presenterUsers/login-presenter", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "presenterReg");
+      });
+  }
   render() {
     return (
       <div className="flex justify-center">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="grid justify-center mb-4 text-gray-500 p-4 w-64 font-bold bg-red-50 rounded-lg">
             <div className="flex justify-center">Log in</div>
             <div className="mt-4">
               <p>Email address</p>
               <input
-              placeholder="example@email.com"
+                placeholder="example@email.com"
                 type="text"
                 className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
+                onChange={(e) => this.setState({ email: e.target.value })}
               ></input>
             </div>
             <div className="mt-4">
               <p>Password</p>
               <input
-              placeholder="password"
+                placeholder="password"
                 className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
                 type="password"
+                onChange={(e) => this.setState({ password: e.target.value })}
               ></input>
             </div>
             <div className="flex justify-center mt-4">
@@ -31,9 +65,12 @@ export default class presenterLogin extends Component {
                 className="p-2 rounded-lg bg-red-400 text-white"
               ></input>
             </div>
-                <div className="flex justify-end mt-4 text-xs">
-                <p className=" mr-2 ">Don't have an account yet?</p> <a className="underline text-blue-400" href="/presenterSignup">Sign Up</a></div>
-          
+            <div className="flex justify-end mt-4 text-xs">
+              <p className=" mr-2 ">Don't have an account yet?</p>{" "}
+              <a className="underline text-blue-400" href="/presenterSignup">
+                Sign Up
+              </a>
+            </div>
           </div>
         </form>
       </div>
