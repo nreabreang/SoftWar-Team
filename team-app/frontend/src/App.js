@@ -63,7 +63,7 @@ function App() {
             element={<CreatorProjectID />}
           ></Route>
 
-          <Route path="/creatorSignup" element={<creatorSignup />}></Route>
+          <Route path="/creatorSignup" element={<CreatorSignup />}></Route>
           <Route path="/presenterSignup" element={<PresenterSignup />}></Route>
           <Route
             path="/presenterDashboard"
