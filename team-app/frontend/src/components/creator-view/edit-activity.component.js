@@ -108,7 +108,7 @@ export default class EditActivity extends Component {
             <div className="flex justify-center">
               <div className="w-9/12">
                 {/* input activity name */}
-                <div className="input-container w-full md md:mb-0">
+                <div className="input-container w-full">
                   <label className="">Activity Name</label>
                   <input
                     className="input w-full"
@@ -124,7 +124,7 @@ export default class EditActivity extends Component {
                 {/* input virtual money and unit */}
                 <div className="flex">
                   {/* virtual money container */}
-                  <div className="input-container w-full md:w-2/3 md:mb-0">
+                  <div className="input-container w-full">
                     <label className="">Virtual Money</label>
                     <input
                       className="input w-full"
@@ -138,7 +138,7 @@ export default class EditActivity extends Component {
                   </div>
 
                   {/* unit container */}
-                  <div class="input-container w-full md:w-1/3">
+                  <div class="input-container w-1/3">
                     <label className="" for="grid-last-name">
                       Unit
                     </label>

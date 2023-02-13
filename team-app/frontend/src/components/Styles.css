@@ -10,7 +10,7 @@ main {
     background-color: #FAE7E7;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
-    height: 100vh;
+    height: max-content;
 }
 
 footer {
@@ -45,6 +45,10 @@ footer {
 
 .button-navy.small {
     width: max-content;
+}
+
+.button-navy.large {
+    width: 50%;
 }
 
 .button-lightpink {
@@ -125,6 +129,10 @@ footer {
 
 .text-20px.bold {
     font-family: 'Metro-B';
+}
+
+.text-20px.m4 {
+    margin-left: 3rem;
 }
 
 .text-18px {
@@ -215,8 +223,10 @@ footer {
 }
 
 .input-container {
+    display: block;
+    justify-content: center;
+    align-items: center;
     padding: 0.75rem 0.75rem;
-    
 }
 
 .input {
@@ -254,4 +264,10 @@ footer {
     border-bottom-width: 0.1rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+}
+
+.line.new {
+    margin-left: auto;
+    margin-right: auto;
+    border-color: #1E1E1E;
 }

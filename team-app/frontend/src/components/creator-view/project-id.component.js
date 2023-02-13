@@ -20,7 +20,6 @@ export default class projectID extends Component{
                 description:res.data.description
             })
         })
-    
     }
     
     render(){
