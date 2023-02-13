@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Swal from "sweetalert2";
 
 export default class presenterSignup extends Component {
   constructor(props) {
@@ -36,7 +37,14 @@ export default class presenterSignup extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "presenterReg");
+        Swal.fire({
+          title: "Sign-Up Successfully",
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location = "/presenterLogin";
+          }
+        });
       });
   }
 

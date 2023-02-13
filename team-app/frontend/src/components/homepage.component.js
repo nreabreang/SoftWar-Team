@@ -127,7 +127,7 @@ export default class homepage extends Component {
 
             <p className="text-20px">Or</p>
 
-            <Link to="/guestLogin">
+            <Link to="/scanner">
               <img src={qr} className="images-icon mx-2.5" alt="" />
             </Link>
           </div>

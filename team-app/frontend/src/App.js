@@ -23,6 +23,7 @@ import CreatorProjectID from "./components/creator-view/project-id.component";
 import PresenterSignup from "./components/presenter-view/signUp.component";
 import PresenterDashboard from "./components/presenter-view/dashboard.component";
 import PresenterActivityId from "./components/presenter-view/activity-list.component";
+import ScannerCode from "./components/scanner.component";
 function App() {
   return (
     <Router>
@@ -73,6 +74,7 @@ function App() {
             path="/presenterActivityId/:id"
             element={<PresenterActivityId />}
           ></Route>
+          <Route path="/scanner" element={<ScannerCode/>}></Route>
         </Routes>
       </div>
       <Footer />
