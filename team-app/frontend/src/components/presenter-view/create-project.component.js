@@ -2,6 +2,7 @@ import axios from "axios";
 import { Component } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import Swal from "sweetalert2";
 
 export default class createProject extends Component {
   constructor(props) {
@@ -72,9 +73,20 @@ export default class createProject extends Component {
       idActivity: window.localStorage.getItem("idActivity"),
     };
 
-    axios
-      .post("http://localhost:5000/project/add", reqData)
-      .then((res) => console.log(res.data), alert("Successfully"));
+    axios.post("http://localhost:5000/project/add", reqData).then((res) => {
+      if (res.status === 200) {
+        Swal.fire({
+          title: "Created Project Successfully",
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location =
+              "./presenterActivityId/" +
+              window.localStorage.getItem("idActivity");
+          }
+        });
+      }
+    });
 
     this.setState({
       projectName: "",
