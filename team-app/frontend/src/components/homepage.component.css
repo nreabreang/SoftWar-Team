@@ -15,17 +15,15 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 75%;
+    width: 100%;
     margin: auto auto;
 }
 
 .joining-container {
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
-    margin: 0px 0px 30px 30px;
     border-radius: 2rem;
+    width: max-content;
     background-color: #E22637;
 }
 
@@ -63,7 +61,9 @@
     align-items: center;
     padding: 8px 10px;
     margin: 0px 10px 0px 0px;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    width: max-content;
+    height: max-content;
     background-color: #FAE7E7;
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Buffer } from "buffer";
-import "./activity-list.component.css";
+import "../list.component.css";
 import "../Styles.css";
 import rightarrow from "../images/right-arrow.png";
 import del from "../images/delete.png";
@@ -29,7 +29,7 @@ const Activity = (props) => (
 
                 {/* edit icon */}
                 <Link to={"/edit/" + props.activity._id}>
-                    <img src={edit} className="images-20px mx-1" />
+                    <img src={edit} className="images-16px mx-2" />
                 </Link>
 
                 {/* delete icon */}
@@ -37,23 +37,23 @@ const Activity = (props) => (
                     onClick={() => {
                         props.deleteActivity(props.activity._id);
                     }}>
-                    <img src={del} className="images-20px" />
+                    <img src={del} className="images-16px" />
                 </a>
             </div>
         </div>
 
         {/* description */}
-        <div className="mt-4">
+        <div className="mt-2">
 
             {/* date */}
             <div className="items-container">
-                <p className="text-16px bold">DATE: </p>
+                <p className="text-16px bold">DATE : </p>
                 <p className="text-16px italic">{props.activity.date.substring(0, 10)}</p>
             </div>
 
             {/* access code */}
             <div className="items-container">
-                <p className="text-16px bold">ACCESS CODE: </p>
+                <p className="text-16px bold">ACCESS CODE : </p>
                 <div className="text-16px italic">{encodeNumber(props.activity.actName)}</div>
             </div>
 
@@ -62,7 +62,7 @@ const Activity = (props) => (
                 <Link
                     to={"/creatorActivityList/" + props.activity._id}
                     className="text-14px underline italic">
-                    See Project
+                    MORE
                 </Link>
 
                 <Link

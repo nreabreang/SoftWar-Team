@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./create-activity.component.css"
+import "../Styles.css"
 
 export default class EditActivity extends Component {
   constructor(props) {
@@ -96,74 +98,105 @@ export default class EditActivity extends Component {
 
   render() {
     return (
-      <div>
-        <form className="w-full max-w-sm" onSubmit={this.onSubmit}>
-          <div>
-            <div className="mx-8">
-              <label>Activity Name</label>
-              <input
-                required
-                type="text"
-                id="actName"
-                name="actName"
-                className="m-4 border-2 border-black"
-                value={this.state.actName}
-                onChange={this.onChangeActName}
-              />
-            </div>
-            <div className="mx-8 my-4 flex items-stretch">
-              <label className="self-center">Description</label>
-              <textarea
-                required
-                id="actDes"
-                name="actDes"
-                className="m-4 border-2 border-black"
-                value={this.state.actDescription}
-                onChange={this.onChangeActDescription}
-              />
-            </div>
-            <div className="mx-8">
-              <label htmlFor="virtualMoney">Virtual Money:</label>
-              <input
-                required
-                id="virtualMoney"
-                name="virtualMoney"
-                className="m-4"
-                value={this.state.virtualMoney}
-                onChange={this.onChangeVirtualMoney}
-              ></input>
+      <main>
+        <div className="header-container">
+          <p className="text-36px">Create Activity</p>
+        </div>
+
+        <form onSubmit={this.onSubmit}>
+          <div className="create-activity">
+            <div className="flex justify-center">
+              <div className="w-9/12">
+                {/* input activity name */}
+                <div className="input-container w-full md md:mb-0">
+                  <label className="">Activity Name</label>
+                  <input
+                    className="input w-full"
+                    id="actName"
+                    name="actName"
+                    type="text"
+                    value={this.state.actName}
+                    onChange={this.onChangeActName}
+                    placeholder="Enter Activity Name"
+                  />
+                </div>
+
+                {/* input virtual money and unit */}
+                <div className="flex">
+                  {/* virtual money container */}
+                  <div className="input-container w-full md:w-2/3 md:mb-0">
+                    <label className="">Virtual Money</label>
+                    <input
+                      className="input w-full"
+                      id="virtualMoney"
+                      name="virtualMoney"
+                      type="text"
+                      value={this.state.virtualMoney}
+                      onChange={this.onChangeVirtualMoney}
+                      placeholder="Enter Virtual Money"
+                    />
+                  </div>
+
+                  {/* unit container */}
+                  <div class="input-container w-full md:w-1/3">
+                    <label className="" for="grid-last-name">
+                      Unit
+                    </label>
+                    <input
+                      className="input w-full"
+                      required
+                      id="unitMoney"
+                      name="unitMoney"
+                      type="text"
+                      value={this.state.unitMoney}
+                      onChange={this.onChangeUnitMoney}
+                      placeholder="Enter Unit"
+                    />
+                  </div>
+                </div>
+
+                {/* input date */}
+                <div className="input-container w-full md md:mb-0">
+                  <label className="">DATE</label>
+
+                  <DatePicker
+                    className="input w-full"
+                    selected={this.state.date}
+                    onChange={this.onChangeDate}
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="mx-8">
-              <label htmlFor="unitMoney">หน่วยเงิน :</label>
-              <input
-                required
-                id="unitMoney"
-                name="unitMoney"
-                className="m-4"
-                value={this.state.unitMoney}
-                onChange={this.onChangeUnitMoney}
-              ></input>
-            </div>
+            <div className="flex justify-center">
+              <div className="w-9/12">
+                {/* input description */}
+                <div className="input-container w-full md md:mb-0">
+                  <label className="">Description</label>
+                  <textarea
+                    rows="7"
+                    required
+                    id="actName"
+                    name="actName"
+                    value={this.state.actDescription}
+                    onChange={this.onChangeActDescription}
+                    placeholder="Description"
+                    className="input w-full"
+                  />
+                </div>
 
-            <div className="mx-8">
-              <label>Date : </label>
-              <DatePicker
-                selected={this.state.date}
-                onChange={this.onChangeDate}
-              />
-            </div>
-
-            <div className="mx-8">
-              <input
-                type="submit"
-                value="Submit"
-                className="p-4 rounded-xl px-8"
-              />
+                <div className="">
+                  <input
+                    type="submit"
+                    value="Submitted"
+                    className="button-navy"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </form>
-      </div>
+      </main>
     );
   }
 }

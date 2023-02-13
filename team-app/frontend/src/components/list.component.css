@@ -4,8 +4,6 @@
     text-align: center;
     border-radius: 2rem;
     width: 20rem;
-    /* margin-bottom: 3rem; */
-    /* padding: 0rem 2rem 2rem 2rem; */
     background-color: #fe5262;
 }
 
@@ -23,7 +21,8 @@
 
 .items-container {
     display: flex;
-    padding-left: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .enter-container {

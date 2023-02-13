@@ -22,7 +22,6 @@ footer {
 }
 
 
-
 /*///////////////////////// Button Styles /////////////////////////*/
 
 .button-navy {
@@ -247,4 +246,12 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+
+.line {
+    border-top-width: 0rem;
+    border-bottom-width: 0.1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }

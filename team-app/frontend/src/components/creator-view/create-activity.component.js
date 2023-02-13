@@ -191,12 +191,6 @@ export default class CreateActivity extends Component {
           </div>
         </form>
       </main>
-
-      //
-      //       </div>
-      //     </div>
-      //   </form>
-      // </div>
     );
   }
 }

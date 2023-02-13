@@ -10,129 +10,144 @@ import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 
 const encodeNumber = (str) => {
-  return Buffer.from(str)
-    .toString("base64")
-    .slice(0, 8)
-    .toLocaleUpperCase();
+	return Buffer.from(str)
+		.toString("base64")
+		.slice(0, 8)
+		.toLocaleUpperCase();
 };
 
 export default class homepage extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.onChangeCode = this.onChangeCode.bind(this);
-    this.onEnterCode = this.onEnterCode.bind(this);
+		this.onChangeCode = this.onChangeCode.bind(this);
+		this.onEnterCode = this.onEnterCode.bind(this);
 
-    this.state = {
-      code: "",
-    };
-  }
+		this.state = {
+			code: "",
+		};
+	}
 
-  componentDidMount() {}
+	componentDidMount() { }
 
-  onChangeCode(e) {
-    this.setState({
-      code: e.target.value,
-    });
-  }
+	onChangeCode(e) {
+		this.setState({
+			code: e.target.value,
+		});
+	}
 
-  onEnterCode(e) {
-    const code = {
-      code: this.state.code,
-    };
+	onEnterCode(e) {
+		const code = {
+			code: this.state.code,
+		};
 
-    console.log(code.code.length);
-    if (code.code.length < 8) {
-      alert("Please Enter Code !");
-    }
+		console.log(code.code.length);
+		if (code.code.length < 8) {
+			alert("Please Enter Code !");
+		}
 
-    
-    axios.get("http://localhost:5000/activity/").then((res) => {
-      // console.log(code.code);
-      let i;
-      for (i = 0; i < res.data.length; i++) {
-        if (code.code === encodeNumber(res.data[i].actName)) {
-          // isTrue = true;
-          // resData = res.data[i].actName;
-          // window.location = "/guestActivityList/" + res.data[i]._id;
-          window.location = "/access/"+code.code;
-          break;
-        }
-      }
 
-      if (i >= res.data.length && code.code.length === 8) {
-        Swal.fire({
-          position: "top",
-          icon: "error",
-          title: "Wrong Code",
-          showConfirmButton: false,
-          timer: 1500,
-        }
-        )
-      }
-    });
-  }
+		axios.get("http://localhost:5000/activity/").then((res) => {
+			// console.log(code.code);
+			let i;
+			for (i = 0; i < res.data.length; i++) {
+				if (code.code === encodeNumber(res.data[i].actName)) {
+					// isTrue = true;
+					// resData = res.data[i].actName;
+					// window.location = "/guestActivityList/" + res.data[i]._id;
+					window.location = "/access/" + code.code;
+					break;
+				}
+			}
 
-  render() {
-    return (
-      <main>
-        <div className="banner">
-          <div className="banner-container">
-            <p className="text-36px">Welcome</p>
-            <p className="text-20px">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-              dignissimos non quis illo provident officiis inventore esse,
-              dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
-              voluptas, a expedita optio?
-            </p>
-          </div>
-        </div>
+			if (i >= res.data.length && code.code.length === 8) {
+				Swal.fire({
+					position: "top",
+					icon: "error",
+					title: "Wrong Code",
+					showConfirmButton: false,
+					timer: 1500,
+				}
+				)
+			}
+		});
+	}
 
-        <div className="button">
-          <div className="container">
-            <Link to="/creatorLogin" className="button-navy">
-            Create Activity
-            </Link>
-          </div>
-        </div>
+	render() {
+		return (
+			<main>
+				<div className="banner">
+					<div className="banner-container">
+						<p className="text-36px">Welcome</p>
+						<p className="text-20px">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
+							dignissimos non quis illo provident officiis inventore esse,
+							dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
+							voluptas, a expedita optio?
+						</p>
+					</div>
+				</div>
 
-        <div className="banner">
-          <div className="banner-container text-18px">
-            <p>For Guest Joining The Activity</p>
-          </div>
-        </div>
+				<div className="button">
+					<div className="container">
+						<Link to="/creatorLogin" className="button-navy">
+							Create Activity
+						</Link>
+					</div>
+				</div>
 
-        <div className="container">
-          <div className="joining-container">
-            <p className="text-20px">Joining an Activity</p>
+				<div className="banner">
+					<div className="banner-container text-18px">
+						<p>For Guest Joining The Activity</p>
+					</div>
+				</div>
 
-            <label for="inputCode"></label>
-            <input
-              onChange={this.onChangeCode}
-              type="text"
-              placeholder="Enter Code"
-              minlength="8"
-              maxlength="8"
-              className="input-code"
-            ></input>
+				<div className="container">
 
-            <div className="icon-container">
-              <img
-                alt=""
-                src={rightarrow}
-                className="images-icon"
-                onClick={this.onEnterCode}
-              />
-            </div>
+					<div className="joining-container
+									xs:block px-2.5
+									sm:block px-2.5
+									md:block px-8
+									lg:flex px-8
+									xl:flex px-8">
 
-            <p className="text-20px">Or</p>
+						<p className="	text-20px
+										phone:text-red-500
+                          				tablet:text-green-500
+										labtop:text-blue-500">
+							Joining an Activity</p>
 
-            <Link to="/guestLogin">
-              <img src={qr} className="images-icon mx-2.5" alt="" />
-            </Link>
-          </div>
-        </div>
-      </main>
-    );
-  }
+						<div className="flex items-center justify-center">
+							<input
+								onChange={this.onChangeCode}
+								type="text"
+								placeholder="Enter Code"
+								minlength="8"
+								maxlength="8"
+								className="input-code"
+							></input>
+
+							<div className="icon-container">
+								<img
+									alt=""
+									src={rightarrow}
+									className="images-icon"
+									onClick={this.onEnterCode}
+								/>
+							</div>
+
+							<p className="text-20px">Or</p>
+
+							<Link to="/guestLogin">
+								<img src={qr} className="images-icon mx-2.5" alt="" />
+							</Link>
+						</div>
+
+
+
+					</div>
+				</div>
+			</main>
+		);
+	}
 }
