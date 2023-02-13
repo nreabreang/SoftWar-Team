@@ -1,6 +1,6 @@
 const router = require("express").Router();
 //import creatorUsers from '../models/creatorUsers.model'
-const presenterUsers = require("../models/presenterUsers.model");
+const creatorUsers = require("../models/creatorUsers.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
