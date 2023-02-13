@@ -12,6 +12,14 @@ export default class presenterLogin extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount() {
+    const previousPath = document.referrer;
+    let arr = previousPath.split("/");
+    const index = arr[arr.length - 1];
+    console.log("previous path :", index);
+    window.localStorage.setItem("actCode", index);
+  }
   handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
@@ -34,9 +42,15 @@ export default class presenterLogin extends Component {
       .then((data) => {
         console.log(data, "presenterReg");
         if (data.status === "ok") {
-          Swal.fire("Login Successfully");
-          window.localStorage.setItem("token", data.data);
-          window.location.href = "./presenterDashboard";
+          Swal.fire({
+            title: "Login Successfully",
+            showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.localStorage.setItem("token", data.data);
+              window.location.href = "./presenterDashboard";
+            }
+          });
         }
       });
   }

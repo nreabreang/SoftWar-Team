@@ -29,7 +29,7 @@ export default class presenterDashboard extends Component {
 
   render() {
     return (
-      <div className="bg-white rounded-md p-4">
+      <div className="bg-white rounded-md p-4 mb-2">
         <div className="flex justify-between font-medium text-white mb-2">
           <div className="grid content-center text-red-400 text-2xl font-semibold">
             Dashboard
