@@ -15,7 +15,9 @@ export default class presenterSignup extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     const { fname, lname, email, password } = this.state;
+
     console.log(fname, lname, email, password);
     fetch("http://localhost:5000/presenterUsers/presenterReg", {
       method: "POST",

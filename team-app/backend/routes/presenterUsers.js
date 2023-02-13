@@ -23,6 +23,7 @@ router.route("/presenterReg").post(async (req, res) => {
       lname,
       email,
       password: encryptedPassword,
+      
     });
     res.send({ status: "ok" });
   } catch (error) {
