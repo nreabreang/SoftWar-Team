@@ -12,6 +12,7 @@ import CreatorActivityId from "./components/creator-view/activity-id.component";
 import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
+import CreatorSignup from "./components/creator-view/creator-signup.component";
 import CreateProject from "./components/presenter-view/create-project.component";
 import ProjectLists from "./components/guest-view/projects-list.component";
 import ProjectID from "./components/guest-view/project-id.component";
@@ -62,6 +63,7 @@ function App() {
             element={<CreatorProjectID />}
           ></Route>
 
+          <Route path="/creatorSignup" element={<creatorSignup />}></Route>
           <Route path="/presenterSignup" element={<PresenterSignup />}></Route>
           <Route
             path="/presenterDashboard"
