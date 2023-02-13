@@ -13,6 +13,7 @@ export default class createProject extends Component {
     this.state = {
       projectName: "",
       description: "",
+      idActivity: "",
     };
   }
 
@@ -47,6 +48,7 @@ export default class createProject extends Component {
 
   componentDidMount() {
     // this.setState({actName:"test"});
+    console.log("test id : ", window.localStorage.getItem("idActivity"));
   }
 
   onchangeProjectName(data) {
@@ -67,6 +69,7 @@ export default class createProject extends Component {
     const reqData = {
       projectName: this.state.projectName,
       description: this.state.description,
+      idActivity: window.localStorage.getItem("idActivity"),
     };
 
     axios
@@ -76,6 +79,7 @@ export default class createProject extends Component {
     this.setState({
       projectName: "",
       description: "",
+      idActivity: "",
     });
   }
 
@@ -88,7 +92,7 @@ export default class createProject extends Component {
               <label className="text-[24px]">Project Name.</label>
               <div>
                 <input
-                className="mt-2 italic p-2 border rounded-lg"
+                  className="mt-2 italic p-2 border rounded-lg"
                   type="text"
                   required
                   id="projectName"
@@ -111,7 +115,6 @@ export default class createProject extends Component {
                   modules={this.modules}
                   formats={this.formats}
                   placeholder="Put your Project Description here"
-                  
                 />
               </div>
             </div>
@@ -125,7 +128,6 @@ export default class createProject extends Component {
             </div>
           </div>
         </form>
-        
       </div>
     );
   }

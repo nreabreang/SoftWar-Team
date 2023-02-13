@@ -2,6 +2,14 @@ import { Component } from "react";
 
 export default class access extends Component {
 
+  componentDidMount(){
+    
+    const arr = window.location.href.split("/");
+    console.log("url : ",arr[arr.length-1]);
+    const index = arr[arr.length - 1];
+    window.localStorage.setItem("ActCode",index);
+    // console.log("hh : ",window.localStorage.getItem("ActName"));
+  }
   
   render() {
     return (

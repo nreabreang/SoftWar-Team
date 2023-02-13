@@ -1,150 +1,85 @@
-
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { Buffer } from "buffer";
-// import "./activity-list.component.css";
-import "../Styles.css";
-import rightarrow from "../images/right-arrow.png";
-import del from "../images/delete.png";
-import edit from "../images/edit-1.png";
-import Swal from "sweetalert2"
+import { Link } from "react-router-dom";
+import CreatorProjectLists from "../creator-view/project-list.component";
+const { Component } = require("react");
+const ActivityInfo = (props) => {
+  const url = window.location.href.split("/");
+  window.localStorage.setItem("idActivity", url[url.length - 1]);
+  return (
+    <div className="flex justify-center">
+      <div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <h5 class="mb-2 font-medium mx-4 tracking-tight text-gray-900 dark:text-white">
+          <p className="font-bold">Activity Name</p>
+          {props.actName}
+        </h5>
+        <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
+          <h5 className="font-bold">Date</h5>
+          {props.date.toISOString().substring(0, 10)}
+        </p>
 
-const encodeNumber = (str) => {
-    const code = Buffer.from(str)
-        .toString("base64")
-        .slice(0, 8)
-        .toLocaleUpperCase();
-    return <div>{code}</div>;
+        <p class="mb-3 font-medium text-gray-700 dark:text-gray-400 ">
+          <h5 className="font-bold">Description</h5>
+          <div Style="word-wrap: break-word;white-space:pre-wrap;">
+            {props.descript}
+          </div>
+        </p>
+      </div>
+      {/* <GenerateQR urls={props.urls} actName={props.actName} /> */}
+      <div className="grid content-center">
+        <Link to="/createProject">
+          <button className=" bg-white rounded-md p-2 text-red-600">
+            Add Project
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
-const Activity = (props) => (
-    <div className="list-container">
+export default class creatorActivityId extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      actName: "",
+      actDescription: "",
+      virtualMoney: "",
+      unitMoney: "",
+      date: new Date(),
+    };
+  }
 
-        {/* header */}
-        <div className="list-header-container text-24px bold">
-            <div className="flex ellipsis w-3/4">
-                {props.activity.actName}
-            </div>
+  componentDidMount() {
+    const arr = window.location.href.split("/");
+    console.log(arr[arr.length - 1]);
 
-            <div className="flex">
-
-                {/* edit icon */}
-                <Link to={"/edit/" + props.activity._id}>
-                    <img src={edit} className="images-20px mx-1" />
-                </Link>
-
-                {/* delete icon */}
-                <a href="#"
-                    onClick={() => {
-                        Swal.fire({
-                            title: 'Do you want to delete the Activity?',
-                            showCancelButton: true,
-                            confirmButtonText: 'Confirm',
-                        }).then((result) => {
-                            /* Read more about isConfirmed, isDenied below */
-                            if (result.isConfirmed) {
-                                Swal.fire('Deleted!', '', 'success').then((result) => {
-                                    props.deleteActivity(props.activity._id);
-                                })
-                            }
-                        })
-                    }}>
-                    <img src={del} className="images-20px" />
-                </a>
-            </div>
-        </div>
-
-        {/* description */}
-        <div className="mt-4">
-
-            {/* date */}
-            <div className="items-container">
-                <p className="text-16px bold">DATE: </p>
-                <p className="text-16px italic">{props.activity.date.substring(0, 10)}</p>
-            </div>
-
-            {/* access code */}
-            <div className="items-container">
-                <p className="text-16px bold">ACCESS CODE: </p>
-                <div className="text-16px italic">{encodeNumber(props.activity.actName)}</div>
-            </div>
-
-            {/* see project */}
-            <div className="enter-container">
-                <Link
-                    to={"/creatorActivityList/" + props.activity._id}
-                    className="text-14px underline italic">
-                    See Project
-                </Link>
-
-                <Link
-                    to={"/creatorActivityList/" + props.activity._id}>
-                    <img src={rightarrow} className="images-16px" />
-                </Link>
-
-            </div>
-        </div>
-    </div >
-);
-
-export default class ActivityList extends Component {
-    constructor(props) {
-        super(props);
-        this.deleteActivity = this.deleteActivity.bind(this);
-
-        this.state = {
-            activity: [],
-        };
-    }
-
-    componentDidMount() {
-        axios
-            .get("http://localhost:5000/activity/")
-            .then((response) => {
-                this.setState({ activity: response.data });
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
-
-    deleteActivity(id) {
-        axios
-            .delete("http://localhost:5000/activity/" + id)
-            .then((res) => console.log(res.data));
-        window.location = "/activityList";
+    axios
+      .get("http://localhost:5000/activity/" + arr[arr.length - 1])
+      .then((response) => {
         this.setState({
-            activity: this.state.activity.filter((el) => el.id !== id),
+          actName: response.data.actName,
+          actDescription: response.data.actDescription,
+          virtualMoney: response.data.virtualMoney,
+          unitMoney: response.data.unitMoney,
+          date: new Date(response.data.date),
         });
-    }
+        // console.log("res :",response.data.actName);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
 
-    activityList() {
-        return this.state.activity.map((currentactivity) => {
-            return (
-                <Activity
-                    activity={currentactivity}
-                    deleteActivity={this.deleteActivity}
-                    key={currentactivity._id}
-                />
-            );
-        });
-    }
-
-    render() {
-        return (
-            <main>
-                <div className="flex header-container">
-                    <p className="text-36px">Activity Dashboard</p>
-                    <a href="/createActivity" className="button-navy small">Add +</a>
-                </div>
-
-                <div className="px-32">
-                    <div className="show-container">{this.activityList()}</div>
-                </div>
-
-            </main>
-
-        );
-    }
+  render() {
+    return (
+      <div className="div">
+        <ActivityInfo
+          urls={window.location.href}
+          actName={this.state.actName}
+          date={this.state.date}
+          descript={this.state.actDescription}
+        />
+        <CreatorProjectLists />
+      </div>
+    );
+  }
 }
