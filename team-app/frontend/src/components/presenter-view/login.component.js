@@ -17,8 +17,9 @@ export default class presenterLogin extends Component {
     const previousPath = document.referrer;
     let arr = previousPath.split("/");
     const index = arr[arr.length - 1];
-    console.log("previous path :", index);
+    // console.log("previous path :", index);
     window.localStorage.setItem("actCode", index);
+    console.log("prevPath :", window.localStorage.getItem("actCode"));
   }
   handleSubmit(e) {
     e.preventDefault();
@@ -48,7 +49,8 @@ export default class presenterLogin extends Component {
           }).then((result) => {
             if (result.isConfirmed) {
               window.localStorage.setItem("token", data.data);
-              window.location.href = "./presenterDashboard";
+              window.location.href = "./";
+              // console.log(window.localStorage.getItem("token"));
             }
           });
         }

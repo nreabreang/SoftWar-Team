@@ -21,6 +21,7 @@ import CreatorProjectLists from "./components/creator-view/project-list.componen
 import CreatorProjectID from "./components/creator-view/project-id.component";
 import PresenterSignup from "./components/presenter-view/signUp.component";
 import PresenterDashboard from "./components/presenter-view/dashboard.component";
+import PresenterActivityList from "./components/presenter-view/activity-list.component";
 function App() {
   return (
     <Router>
@@ -65,6 +66,10 @@ function App() {
           <Route
             path="/presenterDashboard"
             element={<PresenterDashboard />}
+          ></Route>
+          <Route
+            path="/presenterActivityList"
+            element={<PresenterActivityList />}
           ></Route>
         </Routes>
       </div>
