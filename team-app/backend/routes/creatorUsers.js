@@ -1,6 +1,6 @@
 const router = require("express").Router();
-import creatorUsers from '../models/creatorUsers.model'
-// const presenterUsers = require("../models/presenterUsers.model");
+//import creatorUsers from '../models/creatorUsers.model'
+const creatorUsers = require("../models/creatorUsers.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -55,7 +55,7 @@ router.route("/creatorUserData").post(async (req, res) => {
   try {
     const creatorUser = jwt.verify(token, JWT_SECRET);
     const creatorUserEmail = creatorUser.email;
-    presenterUsers
+    creatorUsers
       .findOne({ email: creatorUserEmail })
       .then((data) => {
         res.send({ status: "ok", data: data });
