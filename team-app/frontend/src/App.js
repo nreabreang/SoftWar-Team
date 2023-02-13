@@ -12,6 +12,7 @@ import CreatorActivityId from "./components/creator-view/activity-id.component";
 import GuestLogin from "./components/guest-view/guest-login.component";
 import GuestEnter from "./components/guest-view/guest-enter";
 import CreatorLogin from "./components/creator-view/creator-login.component";
+import CreatorSignup from "./components/creator-view/creator-signup.component";
 import CreateProject from "./components/presenter-view/create-project.component";
 import ProjectLists from "./components/guest-view/projects-list.component";
 import ProjectID from "./components/guest-view/project-id.component";
@@ -21,7 +22,8 @@ import CreatorProjectLists from "./components/creator-view/project-list.componen
 import CreatorProjectID from "./components/creator-view/project-id.component";
 import PresenterSignup from "./components/presenter-view/signUp.component";
 import PresenterDashboard from "./components/presenter-view/dashboard.component";
-import PresenterActivityList from "./components/presenter-view/activity-list.component";
+import PresenterActivityId from "./components/presenter-view/activity-list.component";
+import ScannerCode from "./components/scanner.component";
 function App() {
   return (
     <Router>
@@ -62,15 +64,17 @@ function App() {
             element={<CreatorProjectID />}
           ></Route>
 
+          <Route path="/creatorSignup" element={<CreatorSignup />}></Route>
           <Route path="/presenterSignup" element={<PresenterSignup />}></Route>
           <Route
             path="/presenterDashboard"
             element={<PresenterDashboard />}
           ></Route>
           <Route
-            path="/presenterActivityList"
-            element={<PresenterActivityList />}
+            path="/presenterActivityId/:id"
+            element={<PresenterActivityId />}
           ></Route>
+          <Route path="/scanner" element={<ScannerCode/>}></Route>
         </Routes>
       </div>
       <Footer />

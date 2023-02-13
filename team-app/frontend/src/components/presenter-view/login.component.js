@@ -1,5 +1,15 @@
 import { Component } from "react";
 import Swal from "sweetalert2";
+import { Buffer } from "buffer";
+import axios from "axios";
+
+const encodeNumber = (str) => {
+  const code = Buffer.from(str, "utf-8")
+    .toString("base64")
+    .slice(0, 8)
+    .toLocaleUpperCase();
+  return code;
+};
 
 export default class presenterLogin extends Component {
   constructor(props) {
@@ -14,15 +24,18 @@ export default class presenterLogin extends Component {
   }
 
   componentDidMount() {
-    const previousPath = document.referrer;
-    let arr = previousPath.split("/");
-    const index = arr[arr.length - 1];
-    // console.log("previous path :", index);
-    window.localStorage.setItem("actCode", index);
-    console.log("prevPath :", window.localStorage.getItem("actCode"));
+    // const previousPath = document.referrer;
+    // let arr = previousPath.split("/");
+    // const index = arr[arr.length - 1];
+    // let code = encodeNumber(index);
+    // var code = window.localStorage.getItem("ActCode");
+    // console.log("Code : ", code);
+    // window.localStorage.setItem("actCode", code);
+    // console.log("prevPath :", window.localStorage.getItem("actCode"));
   }
   handleSubmit(e) {
     e.preventDefault();
+
     const { email, password } = this.state;
     console.log(email, password);
 
@@ -49,7 +62,19 @@ export default class presenterLogin extends Component {
           }).then((result) => {
             if (result.isConfirmed) {
               window.localStorage.setItem("token", data.data);
-              window.location.href = "./";
+
+              var code = window.localStorage.getItem("ActCode");
+              console.log("Codell : ", code);
+              axios.get("http://localhost:5000/activity/").then((res) => {
+                let i;
+                for (i = 0; i < res.data.length; i++) {
+                  if (code === encodeNumber(res.data[i].actName)) {
+                    window.location = "/presenterActivityId/" + res.data[i]._id;
+                    break;
+                  } else {
+                  }
+                }
+              });
               // console.log(window.localStorage.getItem("token"));
             }
           });

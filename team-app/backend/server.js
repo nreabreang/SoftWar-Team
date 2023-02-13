@@ -38,6 +38,7 @@ const start = async () => {
   const guestRouter = require("./routes/guests");
   const feedbackRouter = require("./routes/feedback");
   const presenterUsersRouter = require("./routes/presenterUsers")
+  const creatorUsersRouter = require("./routes/creatorUsers")
 
   // use file and add path
   app.use("/activity", activityRouter);
@@ -47,6 +48,7 @@ const start = async () => {
   app.use("/feedback", feedbackRouter); // cannot be successes
   app.use("/guest", guestRouter);
   app.use("/presenterUsers",presenterUsersRouter);
+  app.use("/creatorUsers",creatorUsersRouter);
 
   app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
