@@ -1,5 +1,5 @@
 const router = require("express").Router();
-import presenterUsers from '../models/presenterUsers.model'
+import creatorUsers from '../models/creatorUsers.model'
 // const presenterUsers = require("../models/presenterUsers.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -10,16 +10,16 @@ router.route("/").get(async (req, res) => {
   res.status;
 });
 
-router.route("/presenterReg").post(async (req, res) => {
+router.route("/creatorReg").post(async (req, res) => {
   const { fname, lname, email, password } = req.body;
 
   const encryptedPassword = await bcrypt.hash(password, 10);
   try {
-    const oldPresenterUsers = await presenterUsers.findOne({ email });
-    if (oldPresenterUsers) {
-      return res.json({ error: "Presenter Users Exists" });
+    const oldCreatorUsers = await creatorUsers.findOne({ email });
+    if (oldCreatorUsers) {
+      return res.json({ error: "Creator Users Exists" });
     }
-    await presenterUsers.create({
+    await creatorUsers.create({
       fname,
       lname,
       email,
@@ -31,16 +31,16 @@ router.route("/presenterReg").post(async (req, res) => {
   }
 });
 
-router.route("/login-presenter").post(async (req, res) => {
+router.route("/login-creator").post(async (req, res) => {
   const { email, password } = req.body;
 
-  const presenterUser = await presenterUsers.findOne({ email });
-  if (!presenterUser) {
-    return res.json({ error: "Presenter User Not Found" });
+  const creatorUser = await creatorUsers.findOne({ email });
+  if (!creatorUsers) {
+    return res.json({ error: "Creator User Not Found" });
   }
 
-  if (await bcrypt.compare(password, presenterUser.password)) {
-    const token = jwt.sign({email:presenterUser.email}, JWT_SECRET);
+  if (await bcrypt.compare(password, creatorUser.password)) {
+    const token = jwt.sign({email:creatorUser.email}, JWT_SECRET);
     if (res.status(201)) {
       return res.json({ status: "ok", data: token });
     } else {
@@ -50,13 +50,13 @@ router.route("/login-presenter").post(async (req, res) => {
   res.json({ status: "error", error: "Invalid Password" });
 });
 
-router.route("/presenterUserData").post(async (req, res) => {
+router.route("/creatorUserData").post(async (req, res) => {
   const { token } = req.body;
   try {
-    const presenterUser = jwt.verify(token, JWT_SECRET);
-    const presenterUserEmail = presenterUser.email;
+    const creatorUser = jwt.verify(token, JWT_SECRET);
+    const creatorUserEmail = creatorUser.email;
     presenterUsers
-      .findOne({ email: presenterUserEmail })
+      .findOne({ email: creatorUserEmail })
       .then((data) => {
         res.send({ status: "ok", data: data });
       })
