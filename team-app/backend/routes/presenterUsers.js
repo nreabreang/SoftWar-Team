@@ -23,7 +23,6 @@ router.route("/presenterReg").post(async (req, res) => {
       lname,
       email,
       password: encryptedPassword,
-      
     });
     res.send({ status: "ok" });
   } catch (error) {
@@ -40,7 +39,7 @@ router.route("/login-presenter").post(async (req, res) => {
   }
 
   if (await bcrypt.compare(password, presenterUser.password)) {
-    const token = jwt.sign({}, JWT_SECRET);
+    const token = jwt.sign({email:presenterUser.email}, JWT_SECRET);
     if (res.status(201)) {
       return res.json({ status: "ok", data: token });
     } else {
@@ -48,6 +47,22 @@ router.route("/login-presenter").post(async (req, res) => {
     }
   }
   res.json({ status: "error", error: "Invalid Password" });
+});
+
+router.route("/presenterUserData").post(async (req, res) => {
+  const { token } = req.body;
+  try {
+    const presenterUser = jwt.verify(token, JWT_SECRET);
+    const presenterUserEmail = presenterUser.email;
+    presenterUsers
+      .findOne({ email: presenterUserEmail })
+      .then((data) => {
+        res.send({ status: "ok", data: data });
+      })
+      .catch((error) => {
+        res.send({ status: "error", data: error });
+      });
+  } catch (error) {}
 });
 
 module.exports = router;

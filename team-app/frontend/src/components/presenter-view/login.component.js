@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Swal from "sweetalert2";
 
 export default class presenterLogin extends Component {
   constructor(props) {
@@ -32,6 +33,11 @@ export default class presenterLogin extends Component {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "presenterReg");
+        if (data.status === "ok") {
+          Swal.fire("Login Successfully");
+          window.localStorage.setItem("token", data.data);
+          window.location.href = "./presenterDashboard";
+        }
       });
   }
   render() {
