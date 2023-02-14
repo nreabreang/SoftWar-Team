@@ -1,9 +1,28 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { Buffer } from "buffer";
+import axios from "axios";
 import "../Styles.css"
 
-export default class creatorLogin extends Component {
+const encodeNumber = (str) => {
+  const code = Buffer.from(str, "utf-8")
+    .toString("base64")
+    .slice(0, 8)
+    .toLocaleUpperCase();
+  return code;
+};
 
+export default class creatorLogin extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: "",
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  
 	render() {
 		return (
 			<main>
@@ -13,7 +32,7 @@ export default class creatorLogin extends Component {
 
 				<div className="flex justify-center">
 					<div className="w-9/12">
-
+          <form onSubmit={this.handleSubmit}>
 						{/* input username*/}
 						<div className="input-container w-1/2 mx-auto">
 							<label className="">Username</label>
@@ -22,6 +41,7 @@ export default class creatorLogin extends Component {
 								id="actName"
 								name="actName"
 								type="text"
+                required onChange={(e) => this.setState({ username: e.target.value })}
 							// value={this.state.actName}
 							// onChange={this.onChangeActName}
 							// placeholder="Enter Activity Name"
@@ -36,6 +56,7 @@ export default class creatorLogin extends Component {
 								id="actName"
 								name="actName"
 								type="text"
+                required onChange={(e) => this.setState({ password: e.target.value })}
 							// value={this.state.actName}
 							// onChange={this.onChangeActName}
 							// placeholder="Enter Activity Name"
@@ -64,9 +85,9 @@ export default class creatorLogin extends Component {
 							<p className="text-14px justify-center">Don't have account yet?</p>
 							<a href="/creatorSignup" className="button-lightpink-liner">Sign-up</a>
 						</div>
-
+            </form>
 					</div>
-
+          
 				</div>
 
 			</main>
