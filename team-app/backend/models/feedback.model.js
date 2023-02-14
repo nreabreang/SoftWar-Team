@@ -8,7 +8,7 @@ const feedbackSchema = new schema(
       require: false,
       unique: false,
       trim: false,
-      minlength: 3,
+      // minlength: 3,
     },
     comments: {
       iLike: {
