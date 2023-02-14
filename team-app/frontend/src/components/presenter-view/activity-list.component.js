@@ -13,7 +13,17 @@ const ActivityInfo = (props) => {
       <div>
         <div className="flex justify-end text-white mx-4">
           <div className="grid content-center mx-4">
-            <p className="rounded-md border-2 p-1">{props.fname} </p>
+            <div className="rounded-md border-2 p-2">
+              <div className="flex justify-start">
+                <div className="mr-2">{props.presenter.fname}</div>
+                <div>{props.presenter.lname}</div>
+              </div>
+              <div className="flex justify-start">
+                <label>Email :</label>
+                <p className="mx-2">{props.presenter.email}</p>
+              </div>
+            </div>
+            <div className="flex justify-end"></div>
           </div>
           <a href="" className="grid content-center underline">
             Log out
@@ -39,7 +49,7 @@ const ActivityInfo = (props) => {
             <h5 className="font-bold">Description</h5>
             <div
               Style="word-wrap: break-word;white-space:pre-wrap;"
-              className="w-52 h-32 overflow-auto"
+              className="w-52 overflow-auto"
             >
               <p className="text text-blue-900 mt-4 border-l p-2">
                 {props.descript}
@@ -89,7 +99,7 @@ export default class creatorActivityId extends Component {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.data.fname, data.data.lname);
-        this.setState({ presenterUserData: data.data});
+        this.setState({ presenterUserData: data.data });
       });
 
     const arr = window.location.href.split("/");
@@ -103,7 +113,6 @@ export default class creatorActivityId extends Component {
       .catch((err) => {
         console.log("ddd");
       });
-
 
     axios
       .get("http://localhost:5000/activity/" + arr[arr.length - 1])
@@ -130,7 +139,7 @@ export default class creatorActivityId extends Component {
           actName={this.state.actName}
           date={this.state.date}
           descript={this.state.actDescription}
-          fname={this.state.presenterUserData.fname}
+          presenter={this.state.presenterUserData}
         />
         <CreatorProjectLists />
       </div>
