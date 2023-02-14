@@ -64,7 +64,7 @@ export default class presenterLogin extends Component {
               window.localStorage.setItem("token", data.data);
 
               var code = window.localStorage.getItem("ActCode");
-              console.log("Codell : ", code);
+              console.log("Code : ", code);
               axios.get("http://localhost:5000/activity/").then((res) => {
                 let i;
                 for (i = 0; i < res.data.length; i++) {
@@ -83,54 +83,71 @@ export default class presenterLogin extends Component {
   }
   render() {
     return (
-    <div class="h-screen">
-    <div className="px-24 ">
-      <div className="row" class="flex justify-center w-auto bg-white">
-
-      <div className="column bg-FAE7E7" >
-      <div class="center">
-      <br></br> <br></br><br></br> 
-        <div className="text-36px">be a presenter in</div>
-        <div className="text-48px">GARLICWAK?</div>
-        <br></br>
-        <div className="text-24px">&nbsp;You must log in first!</div>
-      </div>
-      </div>
-
-      <div className="column" >
-      <div class="vl"></div>
-      <div class="forms">
-      <div class="form-content"> 
-        <div class="signup-form">
-          <div class="title">Log In</div>
-    <form onSubmit={this.handleSubmit}>
-      <div class="input-boxes">
-
-            <div class="input-box">
-              <input type="text" placeholder="Enter your email" required
-              onChange={(e) => this.setState({ email: e.target.value })}></input>
+      <div class="h-screen">
+        <div className="px-24 ">
+          <div className="row" class="flex justify-center w-auto bg-white">
+            <div className="column bg-FAE7E7">
+              <div class="center">
+                <br></br> <br></br>
+                <br></br>
+                <div className="text-36px">be a presenter in</div>
+                <div className="text-48px">GARLICWAK?</div>
+                <br></br>
+                <div className="text-24px">&nbsp;You must log in first!</div>
+              </div>
             </div>
 
-        <div class="input-box">
-              <input type="password" placeholder="Enter your password" required
-              onChange={(e) => this.setState({ password: e.target.value })}></input>
-            </div>
+            <div className="column">
+              <div class="vl"></div>
+              <div class="forms">
+                <div class="form-content">
+                  <div class="signup-form">
+                    <div class="title">Log In</div>
+                    <form onSubmit={this.handleSubmit}>
+                      <div class="input-boxes">
+                        <div class="input-box">
+                          <input
+                            type="text"
+                            placeholder="Enter your email"
+                            required
+                            onChange={(e) =>
+                              this.setState({ email: e.target.value })
+                            }
+                          ></input>
+                        </div>
 
-            <div class="button input-box">
-              <input type="submit" value="Sumbit"></input></div>
-              <div class="text sign-up-text">Don't have an account yet?&nbsp;<a className="underline text-blue-400" href="/presenterSignup">Sign up now</a></div>
-        </div>
-    </form>
-        </div>
+                        <div class="input-box">
+                          <input
+                            type="password"
+                            placeholder="Enter your password"
+                            required
+                            onChange={(e) =>
+                              this.setState({ password: e.target.value })
+                            }
+                          ></input>
+                        </div>
+
+                        <div class="button input-box">
+                          <input type="submit" value="Sumbit"></input>
+                        </div>
+                        <div class="text sign-up-text">
+                          Don't have an account yet?&nbsp;
+                          <a
+                            className="underline text-blue-400"
+                            href="/presenterSignup"
+                          >
+                            Sign up now
+                          </a>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-      </div>
-      </div>
-      </div>
-  </div>
-
- 
-      
     );
   }
 }
