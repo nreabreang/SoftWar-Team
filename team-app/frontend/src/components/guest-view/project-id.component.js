@@ -74,22 +74,24 @@ export default class projectID extends Component {
       iDea: this.state.Idea,
     };
     
-    const namee = window.localStorage.getItem("name")
-    var getName
-    axios.get("http://localhost:5000/guest/getName/"+namee).then((res)=>getName=res).catch((err)=>console.log("Error: "+err))
-    if(getName.virtualMoney){
-      var calculate = Number(getName.virtualMoney) - Number(this.state.storeVirtualMoney)
+    var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney")
+    if(findVirtualMoney){
+      var calculate = Number(window.localStorage.guestVirtualMoney) - Number(this.state.storeVirtualMoney)
       if(calculate>=0){
+        //not over
         const data = {
-          virtualMoney: calculate,
+          virtualMoney: this.state.storeVirtualMoney,
           comments: test,
           idProject: arr[arr.length - 1],
         };
-      axios
+        axios
       .post("http://localhost:5000/feedback/add", data)
       .then(() => console.log("Success"))
       .catch((err) => console.log("Error: " + err));
+       window.localStorage.guestVirtualMoney = Number(window.localStorage.guestVirtualMoney) - this.state.storeVirtualMoney
       }else{
+        //it over
+      console.log("It cannot use this value.")  
         this.setState({
                   storeVirtualMoney:"",
                   ILike:"",
@@ -99,9 +101,8 @@ export default class projectID extends Component {
               })
       }
     }else{
-
+      //it not login
     }
-
     // let getCookies = document.cookie.split("=");
     // let calculate = Number(getCookies[getCookies.length-1])-Number(this.state.storeVirtualMoney)
     // if(calculate<0){
