@@ -73,16 +73,34 @@ export default class projectID extends Component {
       iQuest: this.state.Quest,
       iDea: this.state.Idea,
     };
-    const data = {
-      virtualMoney: this.state.storeVirtualMoney,
-      comments: test,
-      idProject: arr[arr.length - 1],
-    };
-
-    axios
+    
+    const namee = window.localStorage.getItem("name")
+    var getName
+    axios.get("http://localhost:5000/guest/getName/"+namee).then((res)=>getName=res).catch((err)=>console.log("Error: "+err))
+    if(getName.virtualMoney){
+      var calculate = Number(getName.virtualMoney) - Number(this.state.storeVirtualMoney)
+      if(calculate>=0){
+        const data = {
+          virtualMoney: calculate,
+          comments: test,
+          idProject: arr[arr.length - 1],
+        };
+      axios
       .post("http://localhost:5000/feedback/add", data)
       .then(() => console.log("Success"))
       .catch((err) => console.log("Error: " + err));
+      }else{
+        this.setState({
+                  storeVirtualMoney:"",
+                  ILike:"",
+                  IWish:"",
+                  Quest:"",
+                  Idea:"",
+              })
+      }
+    }else{
+
+    }
 
     // let getCookies = document.cookie.split("=");
     // let calculate = Number(getCookies[getCookies.length-1])-Number(this.state.storeVirtualMoney)
@@ -97,6 +115,8 @@ export default class projectID extends Component {
     // }else{
     //     document.cookie = `virtualmoney=${calculate}`
     // }
+
+    
     window.location = "";
   }
 

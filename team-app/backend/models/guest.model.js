@@ -9,6 +9,9 @@ const guestSchema = new schema({
         trim:false,
         minlength:1,
     },
+    virtualMoney:{
+        type:String,
+    }
 },{
     timestamps:true
 });
