@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Buffer } from "buffer";
-import "./activity-list.component.css";
+import "../list.component.css";
 import "../Styles.css";
 import rightarrow from "../images/right-arrow.png";
 import del from "../images/delete.png";

@@ -34,6 +34,7 @@ export default class homepage extends Component {
     this.setState({
       code: e.target.value,
     });
+    
   }
 
   onEnterCode(e) {
@@ -46,7 +47,6 @@ export default class homepage extends Component {
       alert("Please Enter Code !");
     }
 
-    
     axios.get("http://localhost:5000/activity/").then((res) => {
       // console.log(code.code);
       let i;
@@ -55,7 +55,7 @@ export default class homepage extends Component {
           // isTrue = true;
           // resData = res.data[i].actName;
           // window.location = "/guestActivityList/" + res.data[i]._id;
-          window.location = "/access/"+code.code;
+          window.location = "/access/" + code.code;
           break;
         }
       }
@@ -67,8 +67,7 @@ export default class homepage extends Component {
           title: "Wrong Code",
           showConfirmButton: false,
           timer: 1500,
-        }
-        )
+        });
       }
     });
   }
@@ -91,7 +90,7 @@ export default class homepage extends Component {
         <div className="button">
           <div className="container">
             <Link to="/creatorLogin" className="button-navy">
-            Create Activity
+              Create Activity
             </Link>
           </div>
         </div>
@@ -103,33 +102,50 @@ export default class homepage extends Component {
         </div>
 
         <div className="container">
-          <div className="joining-container">
-            <p className="text-20px">Joining an Activity</p>
+          <div
+            className="joining-container
+									xs:block px-2.5
+									sm:block px-2.5
+									md:block px-8
+									lg:flex px-8
+									xl:flex px-8"
+          >
+            <p
+              className="	text-20px
+										phone:text-red-500
+                          				tablet:text-green-500
+										labtop:text-blue-500"
+            >
+              Joining an Activity
+            </p>
 
-            <label for="inputCode"></label>
-            <input
-              onChange={this.onChangeCode}
-              type="text"
-              placeholder="Enter Code"
-              minlength="8"
-              maxlength="8"
-              className="input-code"
-            ></input>
 
-            <div className="icon-container">
-              <img
-                alt=""
-                src={rightarrow}
-                className="images-icon"
-                onClick={this.onEnterCode}
-              />
-            </div>
+            <form onSubmit={this.onEnterCode} className="flex items-center justify-center">
+              <input
+                onChange={this.onChangeCode}
+                type="text"
+                placeholder="Enter Code"
+                minlength="8"
+                maxlength="8"
+                className="input-code"
+              ></input>
 
-            <p className="text-20px">Or</p>
+              <div className="icon-container">
+                <img
+                  alt=""
+                  src={rightarrow}
+                  className="images-icon"
+                  onClick={this.onEnterCode}
+				  type='submit'
+                />
+              </div>
 
-            <Link to="/guestLogin">
-              <img src={qr} className="images-icon mx-2.5" alt="" />
-            </Link>
+              <p className="text-20px">Or</p>
+
+              <Link to="/scanner">
+                <img src={qr} className="images-icon mx-2.5" alt="" />
+              </Link>
+            </form>
           </div>
         </div>
       </main>

@@ -116,12 +116,12 @@ export default class createProject extends Component {
               </div>
             </div>
 
-            <div className="my-4">
+            <div className="my-4 mx-auto">
               <label>Project Description</label>
               <div className="">
                 <ReactQuill
                   theme="snow"
-                  className="my-2 bg-gray-100 border-red-500 "
+                  className="my-2 bg-gray-100 border-red-500 w-96 "
                   value={this.state.description}
                   onChange={this.onchangeDescription}
                   modules={this.modules}
