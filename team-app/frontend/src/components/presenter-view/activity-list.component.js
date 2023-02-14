@@ -37,9 +37,9 @@ const ActivityInfo = (props) => {
 
           <p class="mb-3 font-medium  dark:text-gray-400 ">
             <h5 className="font-bold">Description</h5>
-            <div Style="word-wrap: break-word;white-space:pre-wrap;" className="w-52 overflow-hidden">
+            <div Style="word-wrap: break-word;white-space:pre-wrap;" className="w-52 h-32 overflow-auto">
               <p className="text text-blue-900 mt-4 border-l p-2">
-                {props.descript}
+                {props.descript}fsaddfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffhhhhhhhhhhhhhhhhhhhh
               </p>
             </div>
           </p>
