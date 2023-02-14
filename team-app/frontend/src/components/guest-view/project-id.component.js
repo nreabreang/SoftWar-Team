@@ -110,12 +110,12 @@ export default class projectID extends Component {
           {this.state.projectName}
         </div>
         <div className="my-2 text-red-500 underline">Description</div>
-        <div className="rounded-md border-2 border-red-300 p-2">
+        <div className="rounded-md border-2 border-red-300 p-2 ">
           <div
             dangerouslySetInnerHTML={{
               __html: this.state.description,
             }}
-            className="my-2 w-52 text-red-500"
+            className="my-2 text-red-500 overflow-x-auto w-2/3 "
           ></div>
         </div>
         <div>{this.showCommentAll}</div>

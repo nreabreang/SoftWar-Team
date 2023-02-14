@@ -2,14 +2,14 @@ import axios from "axios";
 import { Component } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 export default class createProject extends Component {
-	constructor(props) {
-		super(props);
-		this.onchangeProjectName = this.onchangeProjectName.bind(this);
-		this.onchangeDescription = this.onchangeDescription.bind(this);
-		this.sendForm = this.sendForm.bind(this);
+  constructor(props) {
+    super(props);
+    this.onchangeProjectName = this.onchangeProjectName.bind(this);
+    this.onchangeDescription = this.onchangeDescription.bind(this);
+    this.sendForm = this.sendForm.bind(this);
 
     this.state = {
       projectName: "",
@@ -18,54 +18,54 @@ export default class createProject extends Component {
     };
   }
 
-	modules = {
-		toolbar: [
-			[{ header: [1, 2, false] }],
-			["bold", "italic", "underline", "strike", "blockquote"],
-			[
-				{ list: "ordered" },
-				{ list: "bullet" },
-				{ indent: "-1" },
-				{ indent: "+1" },
-			],
-			["link", "image"],
-			// ['clean']
-		],
-	};
+  modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image"],
+      // ['clean']
+    ],
+  };
 
-	formats = [
-		"header",
-		"bold",
-		"italic",
-		"underline",
-		"strike",
-		"blockquote",
-		"list",
-		"bullet",
-		"indent",
-		"link",
-		"image",
-	];
+  formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+  ];
 
   componentDidMount() {
     // this.setState({actName:"test"});
     console.log("test id : ", window.localStorage.getItem("idActivity"));
   }
 
-	onchangeProjectName(data) {
-		this.setState({
-			projectName: data.target.value,
-		});
-	}
+  onchangeProjectName(data) {
+    this.setState({
+      projectName: data.target.value,
+    });
+  }
 
-	onchangeDescription = (content, delta, source, editor) => {
-		this.setState({
-			description: editor.getHTML(),
-		});
-	};
+  onchangeDescription = (content, delta, source, editor) => {
+    this.setState({
+      description: editor.getHTML(),
+    });
+  };
 
-	sendForm(e) {
-		e.preventDefault();
+  sendForm(e) {
+    e.preventDefault();
 
     const reqData = {
       projectName: this.state.projectName,
@@ -116,12 +116,12 @@ export default class createProject extends Component {
               </div>
             </div>
 
-            <div className="my-4">
+            <div className="my-4 mx-auto">
               <label>Project Description</label>
               <div className="">
                 <ReactQuill
                   theme="snow"
-                  className="my-2 bg-gray-100 border-red-500 "
+                  className="my-2 bg-gray-100 border-red-500 w-96 "
                   value={this.state.description}
                   onChange={this.onchangeDescription}
                   modules={this.modules}

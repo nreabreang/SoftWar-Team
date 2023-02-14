@@ -14,11 +14,11 @@ const Project = (props) => {
         <div className=" border-gray-200 "></div>
         <div className="flex justify-start mt-4">
           <dl className="">
-            <div className="p-4 bg-white sm:grid sm:grid-cols-3 rounded-md w-56 mx-auto  border-2 break-words">
+            <div className="p-4 bg-white sm:grid sm:grid-cols-3 rounded-md w-80 mx-auto  border-2 break-words">
               <dt className="text-sm text-red-400 font-semibold border-b-2 mb-4">Description</dt>
               <div className="my-1"></div>
               <div
-                className=" text-sm text-gray-900 sm:col-span-2 sm:mt-0"
+                className=" text-sm text-gray-900 sm:col-span-2 sm:mt-0 overflow-x-auto h-32"
                 dangerouslySetInnerHTML={{ __html: des }}
               ></div>
             </div>
