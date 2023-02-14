@@ -74,24 +74,24 @@ export default class projectID extends Component {
       iQuest: this.state.Quest,
       iDea: this.state.Idea,
     };
-    
+    const data = {
+      virtualMoney: this.state.storeVirtualMoney,
+      comments: test,
+      idProject: arr[arr.length - 1],
+    };
+    console.log(data)
     var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney")
     if(findVirtualMoney){
       var calculate = Number(window.localStorage.guestVirtualMoney) - Number(this.state.storeVirtualMoney)
       if(calculate>=0){
         //not over
-        const data = {
-          virtualMoney: this.state.storeVirtualMoney,
-          comments: test,
-          idProject: arr[arr.length - 1],
-        };
         Swire.fire("Accept comments").then(()=>{
-        axios
-          .post("http://localhost:5000/feedback/add", data)
-          .then(() => console.log("Success"))
-          .catch((err) => console.log("Error: " + err));
-          window.localStorage.guestVirtualMoney = Number(window.localStorage.guestVirtualMoney) - this.state.storeVirtualMoney
-          window.location = "";
+        // axios.post("http://localhost:5000/feedback/add", data)
+        // .then(() => console.log("Success"))
+        // .catch((err) => console.log("Error: " + err));
+          axios.post("http://localhost:5000/feedback/add",data).then(()=>console.log("Success.")).catch((err)=>console.log("Error: "+err))    
+        window.localStorage.guestVirtualMoney = Number(window.localStorage.guestVirtualMoney) - this.state.storeVirtualMoney
+        window.location = "";
         })
       
       }else{
