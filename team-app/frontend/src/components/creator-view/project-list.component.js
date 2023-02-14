@@ -2,80 +2,125 @@ import axios from "axios";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import "../Styles.css";
+import "../list.component.css"
+import rightarrow from "../images/right-arrow.png"
 
-const Project = (props) =>{
+const Project = (props) => {
     const des = props.projectDescription
-    return(
-    
-        <div className="overflow-hidden flex flex-col bg-white p-3 m-4 shadow sm:rounded-lg" >
+    return (
+        <div className="list-container">
+
+            {/* header */}
+            <div className="list-header-container text-24px bold">
+                <div className="flex ellipsis">
+                    {props.projectName}
+                </div>
+            </div>
+
+            {/* description */}
+            <div className="mt-2">
+
+                {/* description head */}
+                <div className="items-container">
+                    <p className="text-16px bold">DESCRIPTION</p>
+                </div>
+
+                <div className="line" />
+
+                {/* description */}
+                <div className="items-container">
+                    {/* <p className="text-16px italic ellipsis">{props.projectDescription}</p> */}
+                    <div className="text-16px ellipsis break-normal" dangerouslySetInnerHTML={{ __html : des }}></div>
+                </div>
+
+                {/* see project */}
+
+                <Link to={"/creatorprojectList/" + props.projectID}>
+                    <div className="enter-container">
+                        <p className="text-14px underline italic">MORE</p>
+                        <img src={rightarrow} className="images-16px" />
+                    </div>
+                </Link>
+
+            </div>
+
+
+        </div >
+
+        /* <div className="overflow-hidden flex flex-col bg-white p-3 m-4 shadow sm:rounded-lg" >
             <h1 className=" text-20px">Project Name: {props.projectName}</h1>
             <div className="border-t border-gray-200"></div>
-            {/* <p className="text-16px">ข้อมูล: {props.projectDescription}</p> */}
+            <p className="text-16px">ข้อมูล: {props.projectDescription}</p>
             <div className="border-t border-gray-200">
-            <dl>
-          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 ">
-            <dt className="text-sm font-medium text-gray-500">Description</dt>
-            <div className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0" dangerouslySetInnerHTML={{__html:des}}></div>
-            </div></dl></div>
-                <Link to={"/creatorprojectList/"+ props.projectID} >See</Link>
-        </div>
-        
-        
+                <dl>
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 ">
+                        <dt className="text-sm font-medium text-gray-500">Description</dt>
+                        <div className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0" dangerouslySetInnerHTML={{ __html: des }}></div>
+                    </div></dl></div>
+            <Link to={"/creatorprojectList/" + props.projectID} >See</Link>
+        </div> */
+
     )
 }
 
-export default class CreatorProjectLists extends Component{
-    constructor(props){
+export default class CreatorProjectLists extends Component {
+    constructor(props) {
         super(props)
 
         this.deleteProject = this.deleteProject.bind(this)
-        this.state={
-            projects:[],
+        this.state = {
+            projects: [],
         }
     };
 
-    componentDidMount(){
+    componentDidMount() {
         const arr = window.location.href.split("/")
-        axios.get("http://localhost:5000/project/activity/"+arr[arr.length-1])
-        .then((res)=>{
-            this.setState({projects: res.data})
-        })
-        .catch((err)=>console.log(err))
-    };  
+        axios.get("http://localhost:5000/project/activity/" + arr[arr.length - 1])
+            .then((res) => {
+                this.setState({ projects: res.data })
+            })
+            .catch((err) => console.log(err))
+    };
 
 
-    deleteProject(id){
-        axios.post('http://localhost:5000/project/delete/'+id)
+    deleteProject(id) {
+        axios.post('http://localhost:5000/project/delete/' + id)
         window.location = "/project/"
         this.setState({
-            projects:this.state.projects.filter((val)=>val.id !== id)
+            projects: this.state.projects.filter((val) => val.id !== id)
         })
     };
 
-    updateProject(id,data){
-        axios.post("http://localhost:5000/project/update/"+id,data)
-        
+    updateProject(id, data) {
+        axios.post("http://localhost:5000/project/update/" + id, data)
+
     }
 
-    showProjectList(){
-        return this.state.projects.map((resdata,index)=>{
-            return(
-                    <Project
-                    projectID = {resdata._id}
+    showProjectList() {
+        return this.state.projects.map((resdata, index) => {
+            return (
+                <Project
+                    projectID={resdata._id}
                     projectName={resdata.projectName}
                     projectDescription={resdata.description}
                     deleteProject={this.deleteProject}
                     updateProject={this.updateProject}
-                    />
+                />
             )
         })
     }
 
-    render(){
-        return(
-            <div className="grid grid-cols-1 md:grid-cols-4">
-                {this.showProjectList()}
-            </div>
+    render() {
+        return (
+            <main>
+                <div className="flex header-container">
+                    <p className="text-24px bold ">Project Dashboard</p>
+                </div>
+
+                <div className="px-32">
+                    <div className="show-container">{this.showProjectList()}</div>
+                </div>
+            </main>
         )
     }
 };

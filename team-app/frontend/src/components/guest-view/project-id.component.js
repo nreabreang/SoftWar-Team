@@ -1,112 +1,170 @@
 import axios from "axios";
 import { Component } from "react";
 
-export default class projectID extends Component{
-    constructor(props){
-        super(props)
-        this.commentILikeOnChange = this.commentILikeOnChange.bind(this)
-        this.commentIWishOnChange = this.commentIWishOnChange.bind(this)
-        this.commentQuestionOnChange = this.commentQuestionOnChange.bind(this)
-        this.commentIdeaOnChange = this.commentIdeaOnChange.bind(this)
-        this.virtualMoneyOnChange = this.virtualMoneyOnChange.bind(this)
-        this.onSubmitAction = this.onSubmitAction.bind(this)
+export default class projectID extends Component {
+  constructor(props) {
+    super(props);
+    this.commentILikeOnChange = this.commentILikeOnChange.bind(this);
+    this.commentIWishOnChange = this.commentIWishOnChange.bind(this);
+    this.commentQuestionOnChange = this.commentQuestionOnChange.bind(this);
+    this.commentIdeaOnChange = this.commentIdeaOnChange.bind(this);
+    this.virtualMoneyOnChange = this.virtualMoneyOnChange.bind(this);
+    this.onSubmitAction = this.onSubmitAction.bind(this);
 
-        this.state={
-            projectName:"",
-            description:"",
-            storeVirtualMoney:"",
-            ILike:"",
-            IWish:"",
-            Quest:"",
-            Idea:"",
-            
-        }
+    this.state = {
+      projectName: "",
+      description: "",
+      storeVirtualMoney: "",
+      ILike: "",
+      IWish: "",
+      Quest: "",
+      Idea: "",
+    };
   }
 
-    componentDidMount(){
-        const arr = window.location.href.split("/")
-        axios.get("http://localhost:5000/project/"+arr[arr.length -1])
-        .then((res)=>{
+  componentDidMount() {
+    const arr = window.location.href.split("/");
+    axios
+      .get("http://localhost:5000/project/" + arr[arr.length - 1])
+      .then((res) => {
         this.setState({
-                projectName:res.data.projectName,
-                description:res.data.description
-            })
-        })
-    
+          projectName: res.data.projectName,
+          description: res.data.description,
+        });
+      });
   }
 
-    virtualMoneyOnChange(number){
+  virtualMoneyOnChange(number) {
     this.setState({
-            storeVirtualMoney:number
-        })
+      storeVirtualMoney: number,
+    });
   }
 
-    commentILikeOnChange(texts){
+  commentILikeOnChange(texts) {
     this.setState({
-            ILike:texts.target.value
-        })
+      ILike: texts.target.value,
+    });
   }
 
-    commentIWishOnChange(texts){
+  commentIWishOnChange(texts) {
     this.setState({
-                IWish:texts.target.value
-        })
+      IWish: texts.target.value,
+    });
   }
 
-    commentQuestionOnChange(texts){
+  commentQuestionOnChange(texts) {
     this.setState({
-                Quest:texts.target.value
-        })
+      Quest: texts.target.value,
+    });
   }
 
-    commentIdeaOnChange(texts){
+  commentIdeaOnChange(texts) {
     this.setState({
-                Idea:texts.target.value
-        })
+      Idea: texts.target.value,
+    });
   }
 
-    onSubmitAction(e){
+  onSubmitAction(e) {
     e.preventDefault();
-        const arr = window.location.href.split("/")
+    const arr = window.location.href.split("/");
     const test = {
-            iLike:this.state.ILike,
-            iWish:this.state.IWish,
-            iQuest:this.state.Quest,
-            iDea:this.state.Idea
-        }
+      iLike: this.state.ILike,
+      iWish: this.state.IWish,
+      iQuest: this.state.Quest,
+      iDea: this.state.Idea,
+    };
     const data = {
-            virtualMoney:this.state.storeVirtualMoney,
-            comments:test,
-            idProject:arr[arr.length -1]};
+      virtualMoney: this.state.storeVirtualMoney,
+      comments: test,
+      idProject: arr[arr.length - 1],
+    };
 
-        axios.post("http://localhost:5000/feedback/add",data)
-        .then(()=>console.log("Success"))
-        .catch((err)=>console.log("Error: "+err))
+    axios
+      .post("http://localhost:5000/feedback/add", data)
+      .then(() => console.log("Success"))
+      .catch((err) => console.log("Error: " + err));
 
-        window.location =""
+    // let getCookies = document.cookie.split("=");
+    // let calculate = Number(getCookies[getCookies.length-1])-Number(this.state.storeVirtualMoney)
+    // if(calculate<0){
+    //     this.setState({
+    //         storeVirtualMoney:"",
+    //         ILike:"",
+    //         IWish:"",
+    //         Quest:"",
+    //         Idea:"",
+    //     })
+    // }else{
+    //     document.cookie = `virtualmoney=${calculate}`
+    // }
+    window.location = "";
   }
 
-    render(){
-        return(
-      <div className="m-2 bg-white flex  flex-col">
-        <label htmlFor="">Project Name: </label>
-        <div>{this.state.projectName}</div>
-                <div dangerouslySetInnerHTML={{__html:"Description: " + this.state.description}}></div>
-        <div>Comment</div>
+  render() {
+    return (
+      <div className=" bg-white flex  flex-col m-4 p-4 rounded-md">
+        <div>
+          <label htmlFor="" className="text-red-500">
+            Project Name :{" "}
+          </label>
+          {this.state.projectName}
+        </div>
+        <div className="my-2 text-red-500 underline">Description</div>
+        <div className="rounded-md border-2 border-red-300 p-2">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.state.description,
+            }}
+            className="my-2 w-52 text-red-500"
+          ></div>
+        </div>
         <div>{this.showCommentAll}</div>
         <div className="">
-            <form  onSubmit={this.onSubmitAction}>
-            <div className="">
-              <label>Virtual Money:</label>
-                    <input type="number" onChange={(e)=>this.virtualMoneyOnChange(e.target.value)}/>
+          <form onSubmit={this.onSubmitAction}>
+            <div className="my-4 border-red-200 border-2 rounded-md p-2">
+              <label className="text-red-500">Give Virtual Money :</label>
+              <input
+                className="mx-2  text-red-500 border-red-200 border-2 rounded-md px-2"
+                type="number"
+                onChange={(e) => this.virtualMoneyOnChange(e.target.value)}
+              />
             </div>
-            <div className="">
-                    <input type="text" placeholder="I like ..." id="ILike" name="ILike" value={this.state.ILike} onChange={this.commentILikeOnChange}/>
-                    <input type="text" placeholder="I wish ..." id="IWish" name="IWish" value={this.state.IWish} onChange={this.commentIWishOnChange}/>
-                    <input type="text" placeholder="Question?" id="Question" name="Question" value={this.state.Quest} onChange={this.commentQuestionOnChange}/>
-                    <input type="text" placeholder="Idea?" id="Ideas" name="Ideas" value={this.state.Idea} onChange={this.commentIdeaOnChange}/>
+            <div className="mb-4 rounded-md border-2 border-red-300 p-2">
+              <div className="mb-2 text-red-500">Give Comment</div>
+              <input
+                type="text"
+                placeholder="I like ..."
+                id="ILike"
+                name="ILike"
+                value={this.state.ILike}
+                onChange={this.commentILikeOnChange}
+              />
+              <input
+                type="text"
+                placeholder="I wish ..."
+                id="IWish"
+                name="IWish"
+                value={this.state.IWish}
+                onChange={this.commentIWishOnChange}
+              />
+              <input
+                type="text"
+                placeholder="Question?"
+                id="Question"
+                name="Question"
+                value={this.state.Quest}
+                onChange={this.commentQuestionOnChange}
+              />
+              <input
+                type="text"
+                placeholder="Idea?"
+                id="Ideas"
+                name="Ideas"
+                value={this.state.Idea}
+                onChange={this.commentIdeaOnChange}
+              />
             </div>
-            <input type="submit" value="Submit" />
+            <button type="submit" className=" bg-green-400 p-2 rounded-md text-white mb-2" >Submit</button>
           </form>
           <Feedback />
         </div>
@@ -117,12 +175,11 @@ export default class projectID extends Component{
 
 const TaskComment = (props) => {
   return (
-    <div>
+    <div className="flex justify-between m-4">
+      <label>{/* virtualMoney: <div>{props.moneyVir}</div> */}</label>
       <label>
-        virtualMoney: <div>{props.moneyVir}</div>
-      </label>
-      <label>
-        I like: <div>{props.letComments.iLike}</div>
+        I like:
+        <div>{props.letComments.iLike}</div>
       </label>
       <label>
         I wish: <div>{props.letComments.iWish}</div>
@@ -155,7 +212,7 @@ class Feedback extends Component {
       .catch((err) => console.log("Error: " + err));
   }
 
-  showLenghtOfList() {
+  showLengthOfList() {
     return this.state.feedBacks.map((data, index) => {
       return (
         <TaskComment letComments={data.comments} moneyVir={data.virtualMoney} />
@@ -176,7 +233,7 @@ class Feedback extends Component {
     return (
       <div>
         <label>{this.showCalculateVirtual()}</label>
-        <div>{this.showLenghtOfList()}</div>
+        <div>{this.showLengthOfList()}</div>
       </div>
     );
   }

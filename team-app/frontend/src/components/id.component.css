@@ -1,0 +1,26 @@
+.id-container {
+    display: block;;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem 2rem;
+    margin: auto auto;
+    width: 75%;
+    background-color: #fe5262;
+}
+    
+
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem 2rem 0rem 2rem;
+
+}
+
+.des-container {
+    display: block;
+    padding: 0rem 2rem 2rem 2rem;
+
+}
+
+
+

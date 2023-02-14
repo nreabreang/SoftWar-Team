@@ -5,93 +5,93 @@ import "react-quill/dist/quill.snow.css";
 import Swal from "sweetalert2"
 
 export default class createProject extends Component {
-  constructor(props) {
-    super(props);
-    this.onchangeProjectName = this.onchangeProjectName.bind(this);
-    this.onchangeDescription = this.onchangeDescription.bind(this);
-    this.sendForm = this.sendForm.bind(this);
+	constructor(props) {
+		super(props);
+		this.onchangeProjectName = this.onchangeProjectName.bind(this);
+		this.onchangeDescription = this.onchangeDescription.bind(this);
+		this.sendForm = this.sendForm.bind(this);
 
     this.state = {
       projectName: "",
       description: "",
+      idActivity: "",
     };
   }
 
-  modules = {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link", "image"],
-      // ['clean']
-    ],
-  };
+	modules = {
+		toolbar: [
+			[{ header: [1, 2, false] }],
+			["bold", "italic", "underline", "strike", "blockquote"],
+			[
+				{ list: "ordered" },
+				{ list: "bullet" },
+				{ indent: "-1" },
+				{ indent: "+1" },
+			],
+			["link", "image"],
+			// ['clean']
+		],
+	};
 
-  formats = [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-  ];
+	formats = [
+		"header",
+		"bold",
+		"italic",
+		"underline",
+		"strike",
+		"blockquote",
+		"list",
+		"bullet",
+		"indent",
+		"link",
+		"image",
+	];
 
   componentDidMount() {
     // this.setState({actName:"test"});
+    console.log("test id : ", window.localStorage.getItem("idActivity"));
   }
 
-  onchangeProjectName(data) {
-    this.setState({
-      projectName: data.target.value,
-    });
-  }
+	onchangeProjectName(data) {
+		this.setState({
+			projectName: data.target.value,
+		});
+	}
 
-  onchangeDescription = (content, delta, source, editor) => {
-    this.setState({
-      description: editor.getHTML(),
-    });
-  };
+	onchangeDescription = (content, delta, source, editor) => {
+		this.setState({
+			description: editor.getHTML(),
+		});
+	};
 
-  sendForm(e) {
-    e.preventDefault();
+	sendForm(e) {
+		e.preventDefault();
 
     const reqData = {
       projectName: this.state.projectName,
       description: this.state.description,
+      idActivity: window.localStorage.getItem("idActivity"),
     };
 
-    axios
-      .post("http://localhost:5000/project/add", reqData)
-      .then((res) =>  { // console.log(res.data), alert("Successfully"));
-        if (res.status === 200) {
-          Swal.fire('Project Added !');
-        } else {
-          // alert("Cannot create this Activity !")
-          Swal.fire("Cannot create this Project !")
-        }
-        //relocation to homepage
-      })
-      .catch((err) => {
-        if (err) {
-          // Swal.fire("Cannot use this Activity Name!")
-          Swal.fire("Cannot create this Project !")
-        }
-      });
-      
+    axios.post("http://localhost:5000/project/add", reqData).then((res) => {
+      if (res.status === 200) {
+        Swal.fire({
+          title: "Created Project Successfully",
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location =
+              "./presenterActivityId/" +
+              window.localStorage.getItem("idActivity");
+          }
+        });
+      }
+    });
 
     this.setState({
       projectName: "",
       description: "",
+      idActivity: "",
     });
   }
 
@@ -104,7 +104,7 @@ export default class createProject extends Component {
               <label className="text-[24px]">Project Name.</label>
               <div>
                 <input
-                className="mt-2 italic p-2 border rounded-lg"
+                  className="mt-2 italic p-2 border rounded-lg"
                   type="text"
                   required
                   id="projectName"
@@ -127,7 +127,6 @@ export default class createProject extends Component {
                   modules={this.modules}
                   formats={this.formats}
                   placeholder="Put your Project Description here"
-                  
                 />
               </div>
             </div>
@@ -141,7 +140,6 @@ export default class createProject extends Component {
             </div>
           </div>
         </form>
-        
       </div>
     );
   }
