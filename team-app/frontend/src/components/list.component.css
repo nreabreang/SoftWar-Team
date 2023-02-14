@@ -35,7 +35,6 @@
 
 .show-container {
     display: grid;
-    grid-template-columns: auto auto auto;
     gap: 3rem;
     justify-items: center;
     align-items: center;

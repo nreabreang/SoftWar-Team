@@ -108,9 +108,17 @@ export default class CreateActivity extends Component {
 				</div>
 
 				<form onSubmit={this.onSubmit}>
-					<div className="create-activity">
+					<div className="create-activity
+									xs:grid-cols-1
+									sm:grid-cols-1
+									md:grid-cols-1
+									lg:grid-cols-2
+									xl:grid-cols-2">
+
 						<div className="flex justify-center">
+
 							<div className="w-9/12">
+
 								{/* input activity name */}
 								<div className="input-container w-full">
 									<label className="">Activity Name</label>
@@ -189,7 +197,7 @@ export default class CreateActivity extends Component {
 									/>
 								</div>
 
-								<div className="">
+								<div className="container justify-end">
 									<input
 										type="submit"
 										value="Submitted"
