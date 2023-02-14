@@ -25,7 +25,7 @@ const ActivityInformation = (props) => {
     <div className="flex justify-center">
       <div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
         <p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-          <h5 className="font-bold">Project' Name</h5>
+          <h5 className="font-bold">Activity Name</h5>
           {props.actName}
         </p>
 
