@@ -99,24 +99,24 @@ export default class activityId extends Component {
 
   getVirtual() {
     let virtualMoney = this.state.virtualMoney;
-    // let valueVir = document.cookie.split("=")
-    // if(valueVir[valueVir.length-1]){
-    //   return valueVir[valueVir.length-1]
-    // }else{
-    //   document.cookie = `virtualmoney=${virtualMoney}`
-    // }
-    const name = {username:this.name()}
-    window.localStorage.setItem("name",name)
-    var data1
-    axios.get("http://localhost:5000/guest/getName/"+name).then((res)=>data1 = res).catch((err)=>console.log("Error: "+err))
-    if(data1.virtualMoney){
-      return data1.virtualMoney;
+    var findVirtual = window.localStorage.getItem("guestVirtualMoney")
+    if(findVirtual){
+      return window.localStorage.guestVirtualMoney;
     }else{
-      const data = {username:this.name(),virtualMoney:virtualMoney};
-      axios.post("http://localhost:5000/guest/add/virtual",data)
-      return virtualMoney
+      window.localStorage.setItem("guestVirtualMoney",virtualMoney);
+      return virtualMoney;
     }
-    //return virtualMoney;
+    // var data1 = []
+    // axios.get("http://localhost:5000/guest/getName/"+getNameJa).then((res)=>data1.push(res.data)).catch((err)=>console.log("Error: "+err))
+    // if(data1.virtualMoney){
+    //   return data1.virtualMoney;
+    // }else{
+    //   console.log(false)
+    //   const data = {username:getNameJa,virtualMoney:virtualMoney};
+    //   axios.post("http://localhost:5000/guest/add/virtual",data)
+    //   return virtualMoney
+    // }
+    return virtualMoney;
   }
 
   render() {
