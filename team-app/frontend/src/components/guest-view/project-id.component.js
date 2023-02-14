@@ -73,17 +73,36 @@ export default class projectID extends Component {
       iQuest: this.state.Quest,
       iDea: this.state.Idea,
     };
-    const data = {
-      virtualMoney: this.state.storeVirtualMoney,
-      comments: test,
-      idProject: arr[arr.length - 1],
-    };
-
-    axios
+    
+    var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney")
+    if(findVirtualMoney){
+      var calculate = Number(window.localStorage.guestVirtualMoney) - Number(this.state.storeVirtualMoney)
+      if(calculate>=0){
+        //not over
+        const data = {
+          virtualMoney: this.state.storeVirtualMoney,
+          comments: test,
+          idProject: arr[arr.length - 1],
+        };
+        axios
       .post("http://localhost:5000/feedback/add", data)
       .then(() => console.log("Success"))
       .catch((err) => console.log("Error: " + err));
-
+       window.localStorage.guestVirtualMoney = Number(window.localStorage.guestVirtualMoney) - this.state.storeVirtualMoney
+      }else{
+        //it over
+      console.log("It cannot use this value.")  
+        this.setState({
+                  storeVirtualMoney:"",
+                  ILike:"",
+                  IWish:"",
+                  Quest:"",
+                  Idea:"",
+              })
+      }
+    }else{
+      //it not login
+    }
     // let getCookies = document.cookie.split("=");
     // let calculate = Number(getCookies[getCookies.length-1])-Number(this.state.storeVirtualMoney)
     // if(calculate<0){
@@ -97,6 +116,8 @@ export default class projectID extends Component {
     // }else{
     //     document.cookie = `virtualmoney=${calculate}`
     // }
+
+    
     window.location = "";
   }
 
@@ -110,12 +131,12 @@ export default class projectID extends Component {
           {this.state.projectName}
         </div>
         <div className="my-2 text-red-500 underline">Description</div>
-        <div className="rounded-md border-2 border-red-300 p-2">
+        <div className="rounded-md border-2 border-red-300 p-2 ">
           <div
             dangerouslySetInnerHTML={{
               __html: this.state.description,
             }}
-            className="my-2 w-52 text-red-500"
+            className="my-2 text-red-500 overflow-x-auto w-2/3 "
           ></div>
         </div>
         <div>{this.showCommentAll}</div>

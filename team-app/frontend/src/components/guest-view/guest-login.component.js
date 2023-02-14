@@ -37,6 +37,7 @@ export default class guestLogin extends Component {
     const previousPath = document.referrer;
     let arr = previousPath.split("/");
     const index = arr[arr.length - 1];
+    window.localStorage.setItem("guestName", this.state.username);
 
     axios
       .post("http://localhost:5000/guest/add", guestInfo)
@@ -54,8 +55,7 @@ export default class guestLogin extends Component {
             let i;
             for (i = 0; i < res.data.length; i++) {
               if (index === encodeNumber(res.data[i].actName)) {
-                window.location =
-                  "/guestActivityList/" + res.data[i]._id + "/" + this.state.username;
+                window.location = "/guestActivityList/" + res.data[i]._id;
                 break;
               } else {
               }
