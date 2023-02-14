@@ -11,11 +11,12 @@ const Project = (props) => {
         <h1 className=" text-2xl my-2 font-semibold text-red-400">
           Project Name: {props.projectName}
         </h1>
-        <div className=" border-gray-200"></div>
+        <div className=" border-gray-200 "></div>
         <div className="flex justify-start mt-4">
           <dl className="">
-            <div className="bg-gray-50 p-2 sm:grid sm:grid-cols-3 rounded-md w-56 mx-auto  border-2 break-words">
-              <dt className="text-sm font-medium text-gray-500">Description</dt>
+            <div className="p-4 bg-white sm:grid sm:grid-cols-3 rounded-md w-56 mx-auto  border-2 break-words">
+              <dt className="text-sm text-red-400 font-semibold border-b-2 mb-4">Description</dt>
+              <div className="my-1"></div>
               <div
                 className=" text-sm text-gray-900 sm:col-span-2 sm:mt-0"
                 dangerouslySetInnerHTML={{ __html: des }}
