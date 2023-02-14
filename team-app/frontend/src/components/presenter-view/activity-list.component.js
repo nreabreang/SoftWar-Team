@@ -7,13 +7,13 @@ const { Component } = require("react");
 const ActivityInfo = (props) => {
   const url = window.location.href.split("/");
   window.localStorage.setItem("idActivity", url[url.length - 1]);
-
+  console.log(props.fname);
   return (
     <div>
       <div>
         <div className="flex justify-end text-white mx-4">
           <div className="grid content-center mx-4">
-            <p className="rounded-md border-2 p-1">Panthon</p>
+            <p className="rounded-md border-2 p-1">{props.fname} </p>
           </div>
           <a href="" className="grid content-center underline">
             Log out
@@ -37,9 +37,12 @@ const ActivityInfo = (props) => {
 
           <p class="mb-3 font-medium  dark:text-gray-400 ">
             <h5 className="font-bold">Description</h5>
-            <div Style="word-wrap: break-word;white-space:pre-wrap;" className="w-52 h-32 overflow-auto">
+            <div
+              Style="word-wrap: break-word;white-space:pre-wrap;"
+              className="w-52 h-32 overflow-auto"
+            >
               <p className="text text-blue-900 mt-4 border-l p-2">
-                {props.descript}fsaddfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffhhhhhhhhhhhhhhhhhhhh
+                {props.descript}
               </p>
             </div>
           </p>
@@ -66,10 +69,29 @@ export default class creatorActivityId extends Component {
       virtualMoney: "",
       unitMoney: "",
       date: new Date(),
+      presenterUserData: [],
     };
   }
 
   componentDidMount() {
+    fetch("http://localhost:5000/presenterUsers/presenterUserData", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        token: window.localStorage.getItem("token"),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.data.fname, data.data.lname);
+        this.setState({ presenterUserData: data.data});
+      });
+
     const arr = window.location.href.split("/");
     // console.log(arr[arr.length - 1]);
 
@@ -81,6 +103,7 @@ export default class creatorActivityId extends Component {
       .catch((err) => {
         console.log("ddd");
       });
+
 
     axios
       .get("http://localhost:5000/activity/" + arr[arr.length - 1])
@@ -107,6 +130,7 @@ export default class creatorActivityId extends Component {
           actName={this.state.actName}
           date={this.state.date}
           descript={this.state.actDescription}
+          fname={this.state.presenterUserData.fname}
         />
         <CreatorProjectLists />
       </div>
