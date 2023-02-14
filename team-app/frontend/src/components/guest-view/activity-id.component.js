@@ -82,7 +82,7 @@ export default class activityId extends Component {
     // const name = nameArr[nameArr.length - 1];
 
     axios
-      .get("http://localhost:5000/activity/" + arr[arr.length - 2])
+      .get("http://localhost:5000/activity/" + arr[arr.length - 1])
       .then((response) => {
         this.setState({
           actName: response.data.actName,
