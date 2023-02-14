@@ -83,44 +83,54 @@ export default class presenterLogin extends Component {
   }
   render() {
     return (
-      <div className="flex justify-center">
-        <form onSubmit={this.handleSubmit}>
-          <div className="grid justify-center mb-4 text-gray-500 p-4 w-64 font-bold bg-red-50 rounded-lg">
-            <div className="flex justify-center">Log in</div>
-            <div className="mt-4">
-              <p>Email address</p>
-              <input
-                placeholder="example@email.com"
-                type="text"
-                className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
-                onChange={(e) => this.setState({ email: e.target.value })}
-              ></input>
-            </div>
-            <div className="mt-4">
-              <p>Password</p>
-              <input
-                placeholder="password"
-                className="mt-2 text-black p-1 rounded-md border-2 border-red-300"
-                type="password"
-                onChange={(e) => this.setState({ password: e.target.value })}
-              ></input>
-            </div>
-            <div className="flex justify-center mt-4">
-              <input
-                type="submit"
-                value="Submit"
-                className="p-2 rounded-lg bg-red-400 text-white"
-              ></input>
-            </div>
-            <div className="flex justify-end mt-4 text-xs">
-              <p className=" mr-2 ">Don't have an account yet?</p>{" "}
-              <a className="underline text-blue-400" href="/presenterSignup">
-                Sign Up
-              </a>
-            </div>
-          </div>
-        </form>
+    <div class="h-screen">
+    <div className="px-24 ">
+      <div className="row" class="flex justify-center w-auto bg-white">
+
+      <div className="column bg-FAE7E7" >
+      <div class="center">
+      <br></br> <br></br><br></br> 
+        <div className="text-36px">be a presenter in</div>
+        <div className="text-48px">GARLICWAK?</div>
+        <br></br>
+        <div className="text-24px">&nbsp;You must log in first!</div>
       </div>
+      </div>
+
+      <div className="column" >
+      <div class="vl"></div>
+      <div class="forms">
+      <div class="form-content"> 
+        <div class="signup-form">
+          <div class="title">Log In</div>
+    <form onSubmit={this.handleSubmit}>
+      <div class="input-boxes">
+
+            <div class="input-box">
+              <input type="text" placeholder="Enter your email" required
+              onChange={(e) => this.setState({ email: e.target.value })}></input>
+            </div>
+
+        <div class="input-box">
+              <input type="password" placeholder="Enter your password" required
+              onChange={(e) => this.setState({ password: e.target.value })}></input>
+            </div>
+
+            <div class="button input-box">
+              <input type="submit" value="Sumbit"></input></div>
+              <div class="text sign-up-text">Don't have an account yet?&nbsp;<a className="underline text-blue-400" href="/presenterSignup">Sign up now</a></div>
+        </div>
+    </form>
+        </div>
+          </div>
+      </div>
+      </div>
+      </div>
+      </div>
+  </div>
+
+ 
+      
     );
   }
 }

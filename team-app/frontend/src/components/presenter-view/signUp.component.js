@@ -99,7 +99,7 @@ export default class presenterSignup extends Component {
                 <div class="button input-box">
                   <input type="submit" value="Sumbit"></input>
                 </div>
-                <div class="text sign-up-text">Already have an account? <a className="underline text-blue-400" href="/presenterLogin">Login now</a></div>
+                <div class="text sign-up-text">Already have an account?&nbsp;<a className="underline text-blue-400" href="/presenterLogin">Login now</a></div>
             </div>
         </form>
             </div>

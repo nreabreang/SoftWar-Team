@@ -87,13 +87,7 @@ export default class homepage extends Component {
           </div>
         </div>
 
-        <div className="button">
-          <div className="container">
-            <Link to="/creatorLogin" className="button-navy">
-              Create Activity
-            </Link>
-          </div>
-        </div>
+        
 
 				<div className="button">
 					<div className="container justify-center">
