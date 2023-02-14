@@ -19,6 +19,7 @@ export default class access extends Component {
         </p>
         <div className="text-lg text-white my-2 flex justify-center p-2">
           <a href="/presenterLogin" className="border-2 border-white rounded-full p-2 m-2">Presenter</a>
+          <a href="/creatorLogin" className="border-2 border-white rounded-full p-2 m-2">Creator</a>
           <a href="/guestLogin" className="border-2 border-white rounded-full p-2 m-2">Guest</a>
         </div>
       </div>

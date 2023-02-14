@@ -23,6 +23,60 @@ export default class creatorLogin extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const { email, password } = this.state;
+    console.log('handleSubmit email=' + email + ' password=' + password);
+
+    fetch("http://localhost:5000/creatorUsers/login-creator", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "creatorReg");
+        if (data.status === "ok") {
+          Swal.fire({
+            title: "Login Successfully",
+            showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.localStorage.setItem("token", data.data);
+
+              window.location = "/activitylist/"
+              var code = window.localStorage.getItem("ActCode");
+              console.log("Codell : ", code);
+              axios.get("http://localhost:5000/activity/").then((res) => {
+                let i;
+                for (i = 0; i < res.data.length; i++) {
+                  if (code === encodeNumber(res.data[i].actName)) {
+                    window.location = "/creatorActivityId/" + res.data[i]._id;
+                    break;
+                  } else {
+                  }
+                }
+              });
+              // console.log(window.localStorage.getItem("token"));
+            }
+          });
+        } else if (data.status == "error"){
+          Swal.fire({
+            title: "Login Failed",
+            showConfirmButton: true,
+          })
+        }
+      });
+  }
 	render() {
 		return (
 			<main>
@@ -35,16 +89,11 @@ export default class creatorLogin extends Component {
           <form onSubmit={this.handleSubmit}>
 						{/* input username*/}
 						<div className="input-container w-1/2 mx-auto">
-							<label className="">Username</label>
+							<label className="">Email</label>
 							<input
 								className="input w-full"
-								id="actName"
-								name="actName"
 								type="text"
-                required onChange={(e) => this.setState({ username: e.target.value })}
-							// value={this.state.actName}
-							// onChange={this.onChangeActName}
-							// placeholder="Enter Activity Name"
+                required onChange={(e) => this.setState({ email: e.target.value })}
 							/>
 						</div>
 
@@ -53,13 +102,8 @@ export default class creatorLogin extends Component {
 							<label className="">Password</label>
 							<input
 								className="input w-full"
-								id="actName"
-								name="actName"
-								type="text"
+								type="password"
                 required onChange={(e) => this.setState({ password: e.target.value })}
-							// value={this.state.actName}
-							// onChange={this.onChangeActName}
-							// placeholder="Enter Activity Name"
 							/>
 						</div>
 
