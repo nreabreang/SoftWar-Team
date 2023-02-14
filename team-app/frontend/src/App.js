@@ -40,7 +40,7 @@ function App() {
             element={<GuestActivityList />}
           ></Route>
           <Route
-            path="/guestActivityList/:id/:id"
+            path="/guestActivityList/:id"
             element={<ActivityId />}
           ></Route>
           <Route
