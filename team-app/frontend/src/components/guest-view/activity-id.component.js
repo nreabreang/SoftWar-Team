@@ -112,8 +112,18 @@ export default class activityId extends Component {
     // }else{
     //   document.cookie = `virtualmoney=${virtualMoney}`  
     // }
-    
-    return virtualMoney;
+    const name = {username:this.name()}
+    window.localStorage.setItem("name",name)
+    var data1
+    axios.get("http://localhost:5000/guest/getName/"+name).then((res)=>data1 = res).catch((err)=>console.log("Error: "+err))
+    if(data1.virtualMoney){
+      return data1.virtualMoney;
+    }else{
+      const data = {username:this.name(),virtualMoney:virtualMoney};
+      axios.post("http://localhost:5000/guest/add/virtual",data)
+      return virtualMoney
+    }
+    //return virtualMoney;
   }
 
   render() {
