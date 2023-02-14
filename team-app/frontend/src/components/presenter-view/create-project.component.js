@@ -2,6 +2,7 @@ import axios from "axios";
 import { Component } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import Swal from "sweetalert2"
 
 export default class createProject extends Component {
   constructor(props) {
@@ -71,7 +72,22 @@ export default class createProject extends Component {
 
     axios
       .post("http://localhost:5000/project/add", reqData)
-      .then((res) => console.log(res.data), alert("Successfully"));
+      .then((res) =>  { // console.log(res.data), alert("Successfully"));
+        if (res.status === 200) {
+          Swal.fire('Project Added !');
+        } else {
+          // alert("Cannot create this Activity !")
+          Swal.fire("Cannot create this Project !")
+        }
+        //relocation to homepage
+      })
+      .catch((err) => {
+        if (err) {
+          // Swal.fire("Cannot use this Activity Name!")
+          Swal.fire("Cannot create this Project !")
+        }
+      });
+      
 
     this.setState({
       projectName: "",
