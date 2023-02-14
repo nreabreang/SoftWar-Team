@@ -23,7 +23,7 @@ const ActivityList = (props) => (
 			<div className="items-container">
 				<p className="text-16px bold">DESCRIPTION</p>
 			</div>
- 
+
 			<div className="line" />
 
 			{/* description */}
@@ -107,8 +107,13 @@ export default class guestActivityList extends Component {
 					<p className="text-36px">Activity Dashboard</p>
 				</div>
 
-				<div className="px-32">
-					<div className="show-container">{this.guestActivityList()}</div>
+				<div className="w-5/6 mx-auto">
+					<div className="show-container
+									xs:grid-cols-1
+									sm:grid-cols-2
+									md:grid-cols-2
+									lg:grid-cols-3
+									xl:grid-cols-3">{this.guestActivityList()}</div>
 				</div>
 
 			</main>

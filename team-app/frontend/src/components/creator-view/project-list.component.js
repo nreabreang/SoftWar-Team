@@ -117,8 +117,13 @@ export default class CreatorProjectLists extends Component {
                     <p className="text-24px bold ">Project Dashboard</p>
                 </div>
 
-                <div className="px-32">
-                    <div className="show-container">{this.showProjectList()}</div>
+                <div className="w-5/6 mx-auto">
+                    <div className="show-container
+                                    xs:grid-cols-1
+                                    sm:grid-cols-2
+                                    md:grid-cols-2
+                                    lg:grid-cols-3
+                                    xl:grid-cols-3">{this.showProjectList()}</div>
                 </div>
             </main>
         )

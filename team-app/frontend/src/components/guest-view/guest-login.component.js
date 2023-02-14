@@ -38,6 +38,7 @@ export default class guestLogin extends Component {
     let arr = previousPath.split("/");
     const index = arr[arr.length - 1];
     window.localStorage.setItem("guestName", this.state.username);
+    window.localStorage.removeItem("guestVirtualMoney")
 
     axios
       .post("http://localhost:5000/guest/add", guestInfo)

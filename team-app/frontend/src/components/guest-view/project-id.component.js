@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swire from "sweetalert2"
 import { Component } from "react";
 
 export default class projectID extends Component {
@@ -73,32 +74,38 @@ export default class projectID extends Component {
       iQuest: this.state.Quest,
       iDea: this.state.Idea,
     };
-    
+    const data = {
+      virtualMoney: this.state.storeVirtualMoney,
+      comments: test,
+      idProject: arr[arr.length - 1],
+    };
+    console.log(data)
     var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney")
     if(findVirtualMoney){
       var calculate = Number(window.localStorage.guestVirtualMoney) - Number(this.state.storeVirtualMoney)
       if(calculate>=0){
         //not over
-        const data = {
-          virtualMoney: this.state.storeVirtualMoney,
-          comments: test,
-          idProject: arr[arr.length - 1],
-        };
-        axios
-      .post("http://localhost:5000/feedback/add", data)
-      .then(() => console.log("Success"))
-      .catch((err) => console.log("Error: " + err));
-       window.localStorage.guestVirtualMoney = Number(window.localStorage.guestVirtualMoney) - this.state.storeVirtualMoney
+        Swire.fire("Accept comments").then(()=>{
+        // axios.post("http://localhost:5000/feedback/add", data)
+        // .then(() => console.log("Success"))
+        // .catch((err) => console.log("Error: " + err));
+          axios.post("http://localhost:5000/feedback/add",data).then(()=>console.log("Success.")).catch((err)=>console.log("Error: "+err))    
+        window.localStorage.guestVirtualMoney = Number(window.localStorage.guestVirtualMoney) - this.state.storeVirtualMoney
+        window.location = "";
+        })
+      
       }else{
         //it over
-      console.log("It cannot use this value.")  
-        this.setState({
-                  storeVirtualMoney:"",
-                  ILike:"",
-                  IWish:"",
-                  Quest:"",
-                  Idea:"",
-              })
+        Swire.fire("Your virtual money is not enough!").then(()=>{
+          this.setState({
+            storeVirtualMoney:"",
+            ILike:"",
+            IWish:"",
+            Quest:"",
+            Idea:"",
+        })
+        window.location = "";
+        })
       }
     }else{
       //it not login
@@ -116,9 +123,6 @@ export default class projectID extends Component {
     // }else{
     //     document.cookie = `virtualmoney=${calculate}`
     // }
-
-    
-    window.location = "";
   }
 
   render() {
