@@ -95,30 +95,30 @@ export default class homepage extends Component {
           </div>
         </div>
 
-        <div className="banner">
-          <div className="banner-container text-18px">
-            <p>For Guest Joining The Activity</p>
-          </div>
-        </div>
+				<div className="button">
+					<div className="container justify-center">
+						<Link to="/creatorLogin" className="button-navy">
+							Create Activity
+						</Link>
+					</div>
+				</div>
 
-        <div className="container">
-          <div
-            className="joining-container
-									xs:block px-2.5
-									sm:block px-2.5
-									md:block px-8
-									lg:flex px-8
-									xl:flex px-8"
-          >
-            <p
-              className="	text-20px
-										phone:text-red-500
-                          				tablet:text-green-500
-										labtop:text-blue-500"
-            >
-              Joining an Activity
-            </p>
+				<div className="banner">
+					<div className="banner-container text-18px">
+						<p>For Guest Joining The Activity</p>
+					</div>
+				</div>
 
+				<div className="container justify-center">
+
+					<div className="joining-container
+                          xs:block px-2.5
+                          sm:block px-2.5
+                          md:block px-8
+                          lg:flex px-8
+                          xl:flex px-8">
+
+						<p className="text-20px">Joining an Activity</p>
 
             <form onSubmit={this.onEnterCode} className="flex items-center justify-center">
               <input
