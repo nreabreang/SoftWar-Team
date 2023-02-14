@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../Styles.css"
 
 export default class creatorLogin extends Component {
+
 	render() {
 		return (
 			<main>
@@ -41,7 +42,7 @@ export default class creatorLogin extends Component {
 							/>
 						</div>
 
-						<div className="container p-4">
+						<div className="container p-4 flex justify-center">
 							<input
 								type="submit"
 								value="Login"
@@ -51,7 +52,7 @@ export default class creatorLogin extends Component {
 
 						<div className="line w-1/2 new" />
 
-						<div className="container p-4">
+						<div className="container p-4 flex justify-center">
 							<input
 								type="submit"
 								value="G-mail"
@@ -59,9 +60,9 @@ export default class creatorLogin extends Component {
 							/>
 						</div>
 
-						<div className="container">
+						<div className="container flex justify-center">
 							<p className="text-14px justify-center">Don't have account yet?</p>
-							<a href="#" className="button-lightpink-liner">Sign-up</a>
+							<a href="/creatorSignup" className="button-lightpink-liner">Sign-up</a>
 						</div>
 
 					</div>
