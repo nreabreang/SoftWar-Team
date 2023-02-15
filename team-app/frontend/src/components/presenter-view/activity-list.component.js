@@ -49,9 +49,9 @@ const ActivityInfo = (props) => {
             <h5 className="font-bold">Description</h5>
             <div
               Style="word-wrap: break-word;white-space:pre-wrap;"
-              className="w-52 overflow-auto"
+              className=" overflow-auto"
             >
-              <p className="text text-blue-900 mt-4 border-l p-2">
+              <p className="text text-blue-900 mt-4 border-l p-2 overflow-auto w-72 h-32">
                 {props.descript}
               </p>
             </div>
