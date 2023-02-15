@@ -76,11 +76,11 @@ router.route("/getbyemail/:email").get(async (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/get").get(async (req, res) => {
-  // console.log(req.params);
-  Activity.find()
-    .then((act) => res.status(200).json(act))
-    .catch((err) => res.status(400).json("Error : " + err));
+// http://localhost:5000/activity/get
+router.route("/name/:nameProject").get(async (req, res) => {
+  Activity.find({ actName: req.params.nameProject })
+  .then((resp) => res.status(200).json(resp))
+  .catch((err) => res.status(401).json("Error: " + err))
 });
 
 module.exports = router;

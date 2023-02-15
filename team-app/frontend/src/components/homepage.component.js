@@ -9,6 +9,7 @@ import axios from "axios";
 import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 
+
 const encodeNumber = (str) => {
   return Buffer.from(str)
     .toString("base64")
@@ -17,8 +18,8 @@ const encodeNumber = (str) => {
 };
 
 export default class homepage extends Component {
-  constructor(props) {
-    super(props);
+	constructor (props) {
+		super(props);
 
     this.onChangeCode = this.onChangeCode.bind(this);
     this.onEnterCode = this.onEnterCode.bind(this);
@@ -28,9 +29,13 @@ export default class homepage extends Component {
     };
   }
 
-  componentDidMount() {
-    // console.log(Buffer.from("QWN0IDE=",'base64').toString('ascii'));
-  }
+	componentDidMount() {
+		// const data = {acrName:"Act 2"}
+		// axios.get("http://localhost:5000/activity/name/"+data.acrName,{params:data}
+		// 	).then((resp)=>console.log(resp.data))
+
+		// const test = Buffer.from("QWN0IDE=",'base64').toString('ascii')
+	}
 
   onChangeCode(e) {
     this.setState({
@@ -38,45 +43,52 @@ export default class homepage extends Component {
     });
   }
 
-  onEnterCode(e) {
-    const code = {
-      code: this.state.code,
-    };
+	async onEnterCode(e) {
+		e.preventDefault()
+		const code = {
+			code: this.state.code,
+		};
+		if (code.code.length < 8) {
+			alert("Please Enter Code !");
+		}
+		const data = Buffer.from(code.code, 'base64').toString('ascii')
+		let checkLoader = await axios.get("http://localhost:5000/activity/name/" + data, { params: { actName: data } })
 
-    console.log(code.code.length);
-    if (code.code.length < 8) {
-      alert("Please Enter Code !");
-    }
+		if (checkLoader) {
+			window.location = "./access/" + code.code;
+		} else {
+			Swal.fire({
+				position: "top",
+				icon: "error",
+				title: "Wrong Code",
+				showConfirmButton: false,
+				timer: 1500,
+			});
+		}
+		// axios.get("http://localhost:5000/activity/").then((res) => {
+		//   console.log(res.data);
+		//   let i;
+		//   for (i = 0; i < res.data.length; i++) {
+		//     if (code.code === encodeNumber(res.data[i].actName)) {
+		//       // isTrue = true;
+		//       // resData = res.data[i].actName;
+		//       // window.location = "/guestActivityList/" + res.data[i]._id;
+		//       window.location = "./access/" + code.code;
+		//       break;
+		//     }
+		//   }
 
-    axios
-      .get("http://localhost:5000/activity/get/" + code.code)
-      .then((res) => console.log("res : ", res.data))
-      .catch((err) => console.log("error : ", err));
-
-    axios.get("http://localhost:5000/activity/").then((res) => {
-      console.log(res.data);
-      let i;
-      for (i = 0; i < res.data.length; i++) {
-        if (code.code === encodeNumber(res.data[i].actName)) {
-          // isTrue = true;
-          // resData = res.data[i].actName;
-          // window.location = "/guestActivityList/" + res.data[i]._id;
-          window.location = "./access/" + code.code;
-          break;
-        }
-      }
-
-      if (i >= res.data.length && code.code.length === 8) {
-        Swal.fire({
-          position: "top",
-          icon: "error",
-          title: "Wrong Code",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
-  }
+		// 		if (i >= res.data.length && code.code.length === 8) {
+		// 			Swal.fire({
+		// 				position: "top",
+		// 				icon: "error",
+		// 				title: "Wrong Code",
+		// 				showConfirmButton: false,
+		// 				timer: 1500,
+		// 			});
+		// 		}
+		// 	});
+	}
 
   render() {
     return (
