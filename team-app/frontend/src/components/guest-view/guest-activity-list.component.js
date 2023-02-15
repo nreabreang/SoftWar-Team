@@ -7,7 +7,7 @@ import rightarrow from "../images/right-arrow.png"
 
 const ActivityList = (props) => (
 
-	<div className="list-container">
+	<div className="list-container mx-auto w-80">
 
 		{/* header */}
 		<div className="list-header-container text-24px bold">
@@ -42,7 +42,7 @@ const ActivityList = (props) => (
 				<Link
 					to={"/guestActivityList/" + props.activity._id}
 					className="text-14px underline italic">
-					MORE
+					See project
 				</Link>
 
 				<Link

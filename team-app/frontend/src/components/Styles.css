@@ -8,8 +8,6 @@ header {
 
 main {
     background-color: #FAE7E7;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
     height: max-content;
 }
 
@@ -17,6 +15,8 @@ footer {
     width: 100%;
     height: 3rem;
     /*50 px*/
+    margin-top: 5rem;
+    bottom: 0;
     background-color: #FAE7E7;
 
 }
@@ -98,6 +98,14 @@ footer {
     /* 36px */
     line-height: 2.5rem;
     /* 40px */
+    margin: 10px;
+    font-family: 'Metro-B';
+    color: #263159;
+}
+
+.text-30px {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
     margin: 10px;
     font-family: 'Metro-B';
     color: #263159;

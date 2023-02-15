@@ -31,7 +31,9 @@ const ActivityInfo = (props) => {
           {/* date */}
           <div className="">
             <p className="text-20px bold">ACTIVITY NAME : </p>
-            <p className="text-20px italic m4">{props.actName}</p>
+            <p className="text-20px italic m4">
+            {props.actName}
+            </p>
           </div>
 
           {/* date */}
@@ -127,24 +129,6 @@ export default class creatorActivityId extends Component {
           <p className="text-36px">Activity : {this.state.actName}</p>
         </div>
         <div className="div">
-          {/* <div className="flex justify-center">
-						<div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-							<h5 class="mb-2 font-medium mx-4 tracking-tight text-gray-900 dark:text-white">
-								<p className="font-bold">Project Name</p>
-								{this.state.actName}
-							</h5>
-							<p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-								<h5 className="font-bold">Date</h5>
-								{this.state.date.toISOString().substring(0, 10)}
-							</p>
-							<p class="mb-3 font-medium text-gray-700 dark:text-gray-400 " >
-								<h5 className="font-bold">Description</h5>
-								<div Style="word-wrap: break-word;white-space:pre-wrap;">{this.state.actDescription}</div>
-							</p>
-
-						</div>
-						<GenerateQR urls={window.location.href} actName={this.state.actName} />
-					</div> */}
           <ActivityInfo
             urls={window.localStorage.getItem("access")}
             actName={this.state.actName}

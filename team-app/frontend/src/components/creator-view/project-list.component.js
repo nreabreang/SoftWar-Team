@@ -8,7 +8,12 @@ import rightarrow from "../images/right-arrow.png"
 const Project = (props) => {
     const des = props.projectDescription
     return (
-        <div className="list-container">
+        <div className="list-container mx-auto
+                        xs:w-80
+                        sm:w-80
+                        md:w-72
+                        lg:w-100
+                        xl:w-80">
 
             {/* header */}
             <div className="list-header-container text-24px bold">
@@ -114,15 +119,15 @@ export default class CreatorProjectLists extends Component {
         return (
             <main>
                 <div className="flex header-container">
-                    <p className="text-24px bold ">Project Dashboard</p>
+                    <p className="text-30px bold ">Project Dashboard</p>
                 </div>
 
-                <div className="w-5/6 mx-auto">
+                <div className="w-9/12 mx-auto">
                     <div className="show-container
                                     xs:grid-cols-1
                                     sm:grid-cols-2
                                     md:grid-cols-2
-                                    lg:grid-cols-3
+                                    lg:grid-cols-2
                                     xl:grid-cols-3">{this.showProjectList()}</div>
                 </div>
             </main>

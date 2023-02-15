@@ -18,7 +18,7 @@ const encodeNumber = (str) => {
 };
 
 const Activity = (props) => (
-	<div className="list-container mx-auto">
+	<div className="list-container mx-auto w-80">
 		{/* header */}
 		<div className="list-header-container text-24px bold">
 			<div className="flex ellipsis w-3/4">{props.activity.actName}</div>
