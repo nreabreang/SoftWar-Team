@@ -80,7 +80,7 @@ router.route("/getbyemail/:email").get(async (req, res) => {
 
 // http://localhost:5000/activity/get
 router.route("/name/:nameProject").get(async (req, res) => {
-  console.log(req.params.nameProject)
+  // console.log(req.params.nameProject)
   Activity.find({ code: req.params.nameProject })
   .then((resp) => res.status(200).json(resp))
   .catch((err) => res.status(401).json("Error: " + err))
