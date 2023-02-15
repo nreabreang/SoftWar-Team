@@ -81,7 +81,7 @@ export default class projectID extends Component {
     };
     console.log(data)
     var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney")
-    if(findVirtualMoney || this.storeVirtualMoney >= 0 ){
+    if(findVirtualMoney ){
       var calculate = Number(window.localStorage.guestVirtualMoney) - Number(this.state.storeVirtualMoney)
       if(calculate>=0){
         //not over
@@ -151,6 +151,7 @@ export default class projectID extends Component {
               <input
                 className="mx-2  text-red-500 border-red-200 border-2 rounded-md px-2"
                 type="number"
+                min="0"
                 onChange={(e) => this.virtualMoneyOnChange(e.target.value)}
               />
             </div>
