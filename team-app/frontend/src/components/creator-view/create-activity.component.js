@@ -115,7 +115,8 @@ export default class CreateActivity extends Component {
 									sm:grid-cols-1
 									md:grid-cols-1
 									lg:grid-cols-2
-									xl:grid-cols-2">
+									xl:grid-cols-2
+									2xl:grid-cols-2">
 
 						<div className="flex justify-center">
 
