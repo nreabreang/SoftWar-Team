@@ -28,6 +28,12 @@ export default class creatorLogin extends Component {
 
     const { email, password } = this.state;
     console.log('handleSubmit email=' + email + ' password=' + password);
+    if(window.localStorage.getItem("activityEmail")){
+      window.localStorage.removeItem("activityEmail");
+      window.localStorage.setItem("activityEmail",email)
+    }else{
+      window.localStorage.setItem("activityEmail",email)
+    }
 
     fetch("http://localhost:5000/creatorUsers/login-creator", {
       method: "POST",

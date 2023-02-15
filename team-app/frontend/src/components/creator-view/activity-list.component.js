@@ -98,8 +98,9 @@ export default class ActivityList extends Component {
 	}
 
 	componentDidMount() {
+		const emails = window.localStorage.activityEmail
 		axios
-			.get("http://localhost:5000/activity/")
+			.get("http://localhost:5000/activity/getbyemail/"+emails)
 			.then((response) => {
 				this.setState({ activity: response.data });
 			})

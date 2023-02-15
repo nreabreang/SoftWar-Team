@@ -23,6 +23,7 @@ export default class CreateActivity extends Component {
 			actDescription: "",
 			virtualMoney: "",
 			unitMoney: "",
+			email:"",
 			date: new Date(),
 			users: [],
 		};
@@ -67,12 +68,13 @@ export default class CreateActivity extends Component {
 
 	onSubmit(e) {
 		e.preventDefault();
-
+		const emails =  window.localStorage.activityEmail
 		const activity = {
 			actName: this.state.actName,
 			actDescription: this.state.actDescription,
 			virtualMoney: this.state.virtualMoney,
 			unitMoney: this.state.unitMoney,
+			email:emails,
 			date: this.state.date,
 		};
 
