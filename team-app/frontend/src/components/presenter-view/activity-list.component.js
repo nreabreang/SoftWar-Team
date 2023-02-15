@@ -103,7 +103,7 @@ export default class creatorActivityId extends Component {
       });
 
     const arr = window.location.href.split("/");
-    // console.log(arr[arr.length - 1]);
+    
 
     axios
       .get("http://localhost:5000/presenterUsers/")

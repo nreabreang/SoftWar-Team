@@ -62,20 +62,20 @@ export default class creatorLogin extends Component {
               window.location = "/activitylist/"
               var code = window.localStorage.getItem("ActCode");
               console.log("Codell : ", code);
-              axios.get("http://localhost:5000/activity/").then((res) => {
-                let i;
-                for (i = 0; i < res.data.length; i++) {
-                  if (code === encodeNumber(res.data[i].actName)) {
-                    window.location = "/creatorActivityId/" + res.data[i]._id;
-                    break;
-                  } else {
-                  }
-                }
-              });
+              // axios.get("http://localhost:5000/activity/").then((res) => {
+              //   let i;
+              //   for (i = 0; i < res.data.length; i++) {
+              //     if (code === encodeNumber(res.data[i].actName)) {
+              //       // window.location = "/creatorActivityId/" + res.data[i]._id;
+              //       break;
+              //     } else {
+              //     }
+              //   }
+              // });
               // console.log(window.localStorage.getItem("token"));
             }
           });
-        } else if (data.status == "error"){
+        } else if (data.status === "error"){
           Swal.fire({
             title: "Login Failed",
             showConfirmButton: true,
@@ -121,18 +121,18 @@ export default class creatorLogin extends Component {
 							/>
 						</div>
 
-						<div className="line w-1/2 new" />
+						{/* <div className="line w-1/2 new" /> */}
 
-						<div className="container p-4 flex justify-center">
+						{/* <div className="container p-4 flex justify-center">
 							<input
 								type="submit"
 								value="G-mail"
 								className="button-navy mx-auto"
 							/>
-						</div>
+						</div> */}
 
-						<div className="container flex justify-center">
-							<p className="text-14px justify-center">Don't have account yet?</p>
+						<div className="container flex justify-center pb-4">
+							<p className="text-14px justify-center ">Don't have account yet?</p>
 							<a href="/creatorSignup" className="button-lightpink-liner">Sign-up</a>
 						</div>
             </form>
