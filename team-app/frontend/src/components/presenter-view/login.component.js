@@ -83,15 +83,14 @@ export default class presenterLogin extends Component {
   }
   render() {
     return (
-      <div class="h-screen">
-        <div className="px-24 ">
-          <div className="row" class="flex justify-center w-auto bg-white">
-            <div className="column bg-FAE7E7">
+      // <div class="h-screen">
+        <div className="px-40 mt-24 ">
+          <div className="row" class="flex justify-center w-auto bg-white shadow">
+            <div className="column bg-FAE7E7 shadow">
               <div class="center">
-                <br></br> <br></br>
-                <br></br>
+                <br></br> <br></br><br></br>
                 <div className="text-36px">be a presenter in</div>
-                <div className="text-48px">GARLICWAK?</div>
+                <div class="text-48px color-E22637">GARLICWAK?</div>
                 <br></br>
                 <div className="text-24px">&nbsp;You must log in first!</div>
               </div>
@@ -145,9 +144,9 @@ export default class presenterLogin extends Component {
                 </div>
               </div>
             </div>
-          </div>
+          </div><div class="pt-9"></div>
         </div>
-      </div>
+      // </div>
     );
   }
 }

@@ -1,13 +1,24 @@
-.bg-FAE7E7{
+  .bg-FAE7E7{
     background: #FAE7E7;
   }
   .bg-263159{
     background: #263159;
   }
+  .bg-E22637{
+    background: #E22637;
+  }
+  .color-FAE7E7{
+    color: #FAE7E7;
+  }
+  .color-263159{
+    color: #263159;
+  }
+  .color-E22637{
+    color: #E22637;
+  }
 
   .center {
     margin: auto;
-    padding: 10px;
     width: 100%;
   }
   .vertical-center {
@@ -17,14 +28,17 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  
+  .shadow {
+    box-shadow: 0 0 15px 0.01px rgb(165, 165, 171);
+  }
+
   /* Create two equal columns that sits next to each other */
   .row {
     display: flex;
   }
   .column {
     flex: 50%;
-    padding: 10%;
+    padding: 3%;
   }
   
   .forms .form-content .title{
