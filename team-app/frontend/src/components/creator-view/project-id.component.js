@@ -1,5 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
+import "./project-id.component.css"
+import "../Styles.css"
 
 export default class projectID extends Component {
   constructor(props) {
@@ -25,55 +27,66 @@ export default class projectID extends Component {
 
   render() {
     return (
-      <div className="m-2 bg-white flex  flex-col">
-        <label htmlFor="">Project Name: </label>
-        <div>{this.state.projectName}</div>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: "Description: " + this.state.description,
-          }}
-        ></div>
-        <div>Comment</div>
-        <div>{this.showCommentAll}</div>
-        <div className="">
-          <Feedback />
+      <div class="centered-div ">
+      <section class="home-section ">
+      <div class = " home-content">
+   
+      <div class="overview-boxes " >
+        <div class="box">
+          <div class="right-side">
+          <div class="text-24px">{this.state.projectName}</div>
+             <div class="text-24px"> Description:<div class="text-16px" dangerouslySetInnerHTML={{__html: this.state.description,}}></div></div>
+          </div>
         </div>
       </div>
+
+      <div class="line-1"></div>
+      
+      
+        <div className="">
+          <Feedback />
+        </div></div>
+      </section>
+     </div>
+    
     );
   }
 }
 
 const TaskComment = (props) => {
   return (
+
     <div className="flex justify-between mx-8 my-2">
       {/* <label >virtualMoney: <div>{props.moneyVir}</div></label> */}
       <label className="">
         <div className="flex justify-start">
-          <p className="mx-2">I like : </p>
+          <div className="mx-2">I like : </div>
           {props.letComments.iLike}
         </div>
       </label>
       <label>
         <div className="flex justify-start">
-          <p className="mx-2">I wish : </p>
+          <div className="mx-2">I wish : </div>
           {props.letComments.iWish}
         </div>
       </label>
       <label>
         <div className="flex justify-start">
-          <p className="mx-2">Question : </p>
+          <div className="mx-2">Question : </div>
           {props.letComments.iQuest}
         </div>
       </label>
       <label>
         <div className="flex justify-start">
-          <p className="mx-2">Idea : </p>
+          <div className="mx-2">Idea : </div>
           {props.letComments.iDea}
         </div>
       </label>
     </div>
   );
 };
+
+
 
 class Feedback extends Component {
   constructor(props) {
@@ -119,8 +132,29 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        <label>{this.showCalculateVirtual()}</label>
+<div class="overview-boxes " >
+      <div class="vmbox">
+          <div class="right-side">
+            <div class="text-20px">Total Virtual Money</div>
+            <div class="text-24px">{this.showCalculateVirtual()}</div>
+
+            {/* <label>{this.showCalculateVirtual()}</label> */}
+
+              <span class="text-20px">credits</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="overview-boxes " >
+        <div class="box">
+          <div class="right-side">
+        <div class="text-24px">Comment</div>
+        <div class="text-20px flex">{this.showCommentAll}
         <div>{this.showLengthOfList()}</div>
+        </div></div></div></div>
+
+        
+        
       </div>
     );
   }
