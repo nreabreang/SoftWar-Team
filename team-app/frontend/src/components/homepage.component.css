@@ -1,22 +1,33 @@
 .banner {
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    text-align: left;
 }
 
 .banner-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 75%;
-    padding: 30px 30px;
-    margin: auto;
+    display: block;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 3rem 3rem;
 }
 
-.joining-container {
+.banner-container.left {
+    background-color: #FFF2F2;
+}
+
+.banner-container.right {
+    background-color: #1E1E1E;
+}
+
+/* .joining-container {
     justify-content: center;
     align-items: center;
     border-radius: 2rem;
     width: max-content;
     background-color: #E22637;
-}
+} */
 
 .input-code {
     display: inline-block;
