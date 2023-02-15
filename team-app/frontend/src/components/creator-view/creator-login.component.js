@@ -76,65 +76,63 @@ export default class creatorLogin extends Component {
   render() {
     return (
       <main>
-        <div className="flex header-container">
-          <p className="text-36px">Log in to your account</p>
-        </div>
+        <div className="px-40 mt-20 ">
+          <div className="row" class="flex justify-center w-auto bg-white shadow">
+            <div className="column bg-FAE7E7 shadow">
+              <div class="center">
+                <br></br> <br></br><br></br>
+                <div className="text-36px">want to create a</div>
+                <div class="text-48px color-E22637">NEW ACTIVITY?</div>         
+                <div className="text-24px">&nbsp;You must log in first!</div>
+              </div>
+            </div>
 
-        <div className="flex justify-center">
-          <div className="w-9/12">
-            <form onSubmit={this.handleSubmit}>
-              {/* input username*/}
-              <div className="input-container w-1/2 mx-auto">
-                <label className="">Email</label>
-                <input
-                  className="input w-full"
-                  type="text"
-                  autoComplete="off"
+            <div className="column">
+              <div class="vl"></div>
+              <div class="forms">
+                <div class="form-content">
+                  <div class="signup-form">
+                    <div class="title">Log In</div>
+                    <form onSubmit={this.handleSubmit}>
+                      <div class="input-boxes">
+                        <div class="input-box">
+                          <input
+                            type="text"
+                            placeholder="Enter your email"
+                            required
+                            onChange={(e) => 
+                              this.setState({ email: e.target.value })
+                            }
+                          ></input>
+                        </div>
+
+                        <div class="input-box">
+                          <input
+                            placeholder="Enter your password"
+                            
+                            type="password"
                   required
-                  onChange={(e) => 
-                    this.setState({ email: e.target.value })
-                  }
-                />
+                  onChange={(e) => this.setState({ password: e.target.value })}></input>
+                        </div>
+
+                        <div class="button input-box">
+                          <input type="submit" value="Submit"></input>
+                        </div>
+                        <div class="text sign-up-text">
+                          Don't have an account yet?&nbsp;
+                          <a
+                            className="underline text-blue-400"
+                            href="/creatorSignup"
+                          >
+                            Sign up now
+                          </a>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
-
-              {/* input password */}
-              <div className="input-container w-1/2 mx-auto">
-                <label className="">Password</label>
-                <input
-                  className="input w-full"
-                  type="password"
-                  required
-                  onChange={(e) => this.setState({ password: e.target.value })}
-                />
-              </div>
-
-              <div className="container p-4 flex justify-center">
-                <input
-                  type="submit"
-                  value="Login"
-                  className="button-navy mx-auto"
-                />
-              </div>
-
-              {/* <div className="line w-1/2 new" /> */}
-
-              {/* <div className="container p-4 flex justify-center">
-							<input
-								type="submit"
-								value="G-mail"
-								className="button-navy mx-auto"
-							/>
-						</div> */}
-
-              <div className="container flex justify-center pb-4">
-                <p className="text-14px justify-center ">
-                  Don't have account yet?
-                </p>
-                <a href="/creatorSignup" className="button-lightpink-liner">
-                  Sign-up
-                </a>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </main>

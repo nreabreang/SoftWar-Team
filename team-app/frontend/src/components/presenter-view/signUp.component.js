@@ -59,8 +59,8 @@ export default class presenterSignup extends Component {
           <div className="column bg-FAE7E7 shadow" >
           <div class="center">
           <br></br> <br></br><br></br> <br></br><br></br>
-            <div className="text-36px">Are you new to</div>
-            <div className="text-48px color-E22637">GARLICWAK?</div>
+            <div className="text-36px">Are you a new</div>
+            <div className="text-48px color-E22637">PRESENTERs?</div>
             <br></br>
             <div className="text-24px">&nbsp; Let's get you Sign up</div>
           </div>
