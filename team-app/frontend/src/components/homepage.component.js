@@ -53,9 +53,8 @@ export default class homepage extends Component {
 		}
 		const data = Buffer.from(code.code, 'base64').toString('ascii')
 		let checkLoader = await axios.get("http://localhost:5000/activity/name/" + data, { params: { actName: data } })
-		console.log(checkLoader.data)
-		if (checkLoader.data) {
-			// window.location = "./access/" + code.code;
+		if (checkLoader.data.length) {
+			window.location = "./access/" + code.code;
 		} else {
 			Swal.fire({
 				position: "top",
