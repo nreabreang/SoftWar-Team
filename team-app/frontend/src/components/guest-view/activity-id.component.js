@@ -192,8 +192,8 @@ export default class activityId extends Component {
               </div>
               <div className="flex justify-start">
                 <p className="mr-2">Virtual Money:</p>
-                <div> {window.localStorage.guestVirtualMoney}</div>
-              
+                {/* <div> {window.localStorage.guestVirtualMoney}</div> */}
+				<div>{this.getVirtual()}</div>
 			  </div>
             </div>
           </div>
