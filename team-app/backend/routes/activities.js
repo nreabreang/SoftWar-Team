@@ -16,6 +16,7 @@ router.route("/add").post((req, res) => {
   const actDescription = req.body.actDescription;
   const virtualMoney = req.body.virtualMoney;
   const unitMoney = req.body.unitMoney;
+  const email = req.body.email;
   const date = Date.parse(req.body.date);
 
   const newActivity = new Activity({
@@ -23,6 +24,7 @@ router.route("/add").post((req, res) => {
     actDescription,
     virtualMoney,
     unitMoney,
+    email,
     date,
   });
 
@@ -66,5 +68,11 @@ router.route("/update/:id").post((req, res) => {
     })
     .catch(err => res.status(400).json("Error : " + err));
 });
+// http://localhost:5000/activity/getbyemail/:email
+router.route("/getbyemail/:email").get(async(req,res)=>{
+  Activity.find({email:req.params.email})
+  .then((resp)=>res.status(200).json(resp))
+  .catch((err)=>res.status(400).json("Error: "+err))
+})
 
 module.exports = router;

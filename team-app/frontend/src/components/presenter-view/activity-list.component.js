@@ -106,7 +106,30 @@ const ActivityInfo = (props) => {
 		//     </div>
 		//   </div>
 		// </div>
-	);
+
+    //       <p class="mb-3 font-medium  dark:text-gray-400 ">
+    //         <h5 className="font-bold">Description</h5>
+    //         <div
+    //           Style="word-wrap: break-word;white-space:pre-wrap;"
+    //           className=" overflow-auto"
+    //         >
+    //           <p className="text text-blue-900 mt-4 border-l p-2 overflow-auto w-72 h-32">
+    //             {props.descript}
+    //           </p>
+    //         </div>
+    //       </p>
+    //     </div>
+    //     {/* <GenerateQR urls={props.urls} actName={props.actName} /> */}
+    //     <div className="grid content-center">
+    //       <Link to="/createProject">
+    //         <button className=" p-1 border-b text-white hover:text-gray-300 hover:border-gray-300">
+    //           Add Project
+    //         </button>
+    //       </Link>
+    //     </div>
+    //   </div>
+    // </div>
+  );
 };
 
 export default class creatorActivityId extends Component {

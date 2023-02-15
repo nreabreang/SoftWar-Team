@@ -119,8 +119,7 @@ export default class homepage extends Component {
                 onChange={this.onChangeCode}
                 type="text"
                 placeholder="Enter Code"
-                minlength="8"
-                maxlength="8"
+                maxLength="8"
                 className="input-code"
               ></input>
 
