@@ -257,7 +257,7 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        <label>{this.showCalculateVirtual()}</label>
+        {/* <label>{this.showCalculateVirtual()}</label> */}
         <div>{this.showLengthOfList()}</div>
       </div>
     );
