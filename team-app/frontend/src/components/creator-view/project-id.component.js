@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
-import "./project-id.component.css"
-import "../Styles.css"
+import "./project-id.component.css";
+import "../Styles.css";
 
 export default class projectID extends Component {
   constructor(props) {
@@ -28,63 +28,70 @@ export default class projectID extends Component {
   render() {
     return (
       <div class="centered-div ">
-      <section class="home-section ">
-      <div class = " home-content">
-   
-      <div class="overview-boxes " >
-        <div class="box">
-          <div class="right-side">
-          <div class="text-24px">{this.state.projectName}</div>
-             <div class="text-24px"> Description:<div class="text-16px" dangerouslySetInnerHTML={{__html: this.state.description,}}></div></div>
-          </div>
-        </div>
-      </div>
+        <section class="text rounded-md bg-red-200 m-4 p-4">
+          <div class=" home-content">
+            <div class="overview-boxes ">
+              <div class="box">
+                <div class="right-side">
+                  <div class="text-24px">{this.state.projectName}</div>
+                  <div class="text-24px">
+                    {" "}
+                    Description:
+                    <div
+                      class="text-16px w-120"
+                      dangerouslySetInnerHTML={{
+                        __html: this.state.description,
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      <div class="line-1"></div>
-        <div className="">
-          <Feedback />
-        </div></div>
-      </section>
-     </div>
-    
+            <div class="line-1"></div>
+            <div className="">
+              <Feedback />
+            </div>
+          </div>
+        </section>
+      </div>
     );
   }
 }
 
 const TaskComment = (props) => {
   return (
-<div > 
-    <div className="flex justify-between mx-8 my-2">
-      {/* <label >virtualMoney: <div>{props.moneyVir}</div></label> */}
-      <label className="">
-        <div className="flex justify-start">
-          <div className="mx-2">I like : </div>
-          {props.letComments.iLike}
-        </div>
-      </label>
-      <label>
-        <div className="flex justify-start">
-          <div className="mx-2">I wish : </div>
-          {props.letComments.iWish}
-        </div>
-      </label>
-      <label>
-        <div className="flex justify-start">
-          <div className="mx-2">Question : </div>
-          {props.letComments.iQuest}
-        </div>
-      </label>
-      <label>
-        <div className="flex justify-start">
-          <div className="mx-2">Idea : </div>
-          {props.letComments.iDea}
-        </div>
-      </label>
-    </div> </div>
+    <div>
+      <div className="flex justify-between mx-8 my-2">
+        {/* <label >virtualMoney: <div>{props.moneyVir}</div></label> */}
+        <label className="">
+          <div className="flex justify-start">
+            <div className="mx-2">I like : </div>
+            {props.letComments.iLike}
+          </div>
+        </label>
+        <label>
+          <div className="flex justify-start">
+            <div className="mx-2">I wish : </div>
+            {props.letComments.iWish}
+          </div>
+        </label>
+        <label>
+          <div className="flex justify-start">
+            <div className="mx-2">Question : </div>
+            {props.letComments.iQuest}
+          </div>
+        </label>
+        <label>
+          <div className="flex justify-start">
+            <div className="mx-2">Idea : </div>
+            {props.letComments.iDea}
+          </div>
+        </label>
+      </div>{" "}
+    </div>
   );
 };
-
-
 
 class Feedback extends Component {
   constructor(props) {
@@ -130,27 +137,37 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-<div class="overview-boxes " >
-      <div class="vmbox">
-          <div class="right-side">
-            <div class="text-20px">Total Virtual Money</div>
-            <div class="text-24px">{this.showCalculateVirtual()}</div>
-
-            {/* <label>{this.showCalculateVirtual()}</label> */}
-
-              <span class="text-20px">credits</span> {/*Please make it work, get VM unit form Activity Cretor */}
-              
+        <div class="overview-boxes ">
+          <div class="vmbox">
+            <div class="right-side">
+              <div class="text-20px">Total Virtual Money</div>
+              <div class="text-24px">{this.showCalculateVirtual()}</div>
+              {/* <label>{this.showCalculateVirtual()}</label> */}
+              <span class="text-20px">credits</span>{" "}
+              {/*Please make it work, get VM unit form Activity Cretor */}
             </div>
           </div>
         </div>
-        
-        <div class="overview-boxes " >
-        <div class="box">
-          <div class="right-side">
-        <div class="text-24px">Comment</div>
-        <div class="text-20px flex">{this.showCommentAll}
-        <div>{this.showLengthOfList()}</div>
-        </div></div></div></div>
+
+        <div class="overview-boxes ">
+          <div class="text rounded-md bg-white m-4 p-4">
+            <div class="right-side">
+              <div class="text-24px">Comment</div>
+              <div class="">
+                {this.showCommentAll}
+                <table>
+                  <tr>
+                    <th className="">I like</th>
+                    <th>I wish</th>
+                    <th>I Question</th>
+                    <th>Idea</th>
+                  </tr>
+                  <tr>{this.showLengthOfList()}</tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
