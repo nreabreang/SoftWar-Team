@@ -5,10 +5,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./create-activity.component.css";
 import "../Styles.css";
 import date from "../images/calendar.png";
+import { Buffer } from "buffer";
 import Swal from "sweetalert2"
 
 export default class CreateActivity extends Component {
-	constructor(props) {
+	constructor (props) {
 		super(props);
 
 		this.onChangeActName = this.onChangeActName.bind(this);
@@ -23,7 +24,8 @@ export default class CreateActivity extends Component {
 			actDescription: "",
 			virtualMoney: "",
 			unitMoney: "",
-			email:"",
+			email: "",
+			code: "",
 			date: new Date(),
 			users: [],
 		};
@@ -68,13 +70,20 @@ export default class CreateActivity extends Component {
 
 	onSubmit(e) {
 		e.preventDefault();
-		const emails =  window.localStorage.activityEmail
+		const emails = window.localStorage.activityEmail
+		const code = Buffer.from(this.state.actName, "utf-8")
+			.toString("base64")
+			.slice(0, 8)
+			.toLocaleUpperCase();
+
+		console.log(code)
 		const activity = {
 			actName: this.state.actName,
 			actDescription: this.state.actDescription,
 			virtualMoney: this.state.virtualMoney,
 			unitMoney: this.state.unitMoney,
-			email:emails,
+			code:code,
+			email: emails,
 			date: this.state.date,
 		};
 
