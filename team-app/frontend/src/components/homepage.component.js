@@ -28,7 +28,13 @@ export default class homepage extends Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    var data = { actName: "Act 2" };
+    axios
+      .get("http://localhost:5000/activity/get/", data)
+      .then((res) => console.log("res : ", res.data))
+      .catch((err) => console.log(err));
+  }
 
   onChangeCode(e) {
     this.setState({
@@ -48,13 +54,14 @@ export default class homepage extends Component {
 
     axios.get("http://localhost:5000/activity/").then((res) => {
       // console.log(code.code);
+      console.log(res.data);
       let i;
       for (i = 0; i < res.data.length; i++) {
         if (code.code === encodeNumber(res.data[i].actName)) {
           // isTrue = true;
           // resData = res.data[i].actName;
           // window.location = "/guestActivityList/" + res.data[i]._id;
-          window.location = "./access/" + code.code;
+          // window.location = "./access/" + code.code;
           break;
         }
       }
@@ -119,8 +126,7 @@ export default class homepage extends Component {
                 onChange={this.onChangeCode}
                 type="text"
                 placeholder="Enter Code"
-                minlength="8"
-                maxlength="8"
+                maxLength="8"
                 className="input-code"
               ></input>
 
