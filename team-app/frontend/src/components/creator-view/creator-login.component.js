@@ -121,18 +121,18 @@ export default class creatorLogin extends Component {
 							/>
 						</div>
 
-						<div className="line w-1/2 new" />
+						{/* <div className="line w-1/2 new" /> */}
 
-						<div className="container p-4 flex justify-center">
+						{/* <div className="container p-4 flex justify-center">
 							<input
 								type="submit"
 								value="G-mail"
 								className="button-navy mx-auto"
 							/>
-						</div>
+						</div> */}
 
-						<div className="container flex justify-center">
-							<p className="text-14px justify-center">Don't have account yet?</p>
+						<div className="container flex justify-center pb-4">
+							<p className="text-14px justify-center ">Don't have account yet?</p>
 							<a href="/creatorSignup" className="button-lightpink-liner">Sign-up</a>
 						</div>
             </form>
