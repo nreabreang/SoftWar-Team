@@ -62,20 +62,20 @@ export default class creatorLogin extends Component {
               window.location = "/activitylist/"
               var code = window.localStorage.getItem("ActCode");
               console.log("Codell : ", code);
-              axios.get("http://localhost:5000/activity/").then((res) => {
-                let i;
-                for (i = 0; i < res.data.length; i++) {
-                  if (code === encodeNumber(res.data[i].actName)) {
-                    window.location = "/creatorActivityId/" + res.data[i]._id;
-                    break;
-                  } else {
-                  }
-                }
-              });
+              // axios.get("http://localhost:5000/activity/").then((res) => {
+              //   let i;
+              //   for (i = 0; i < res.data.length; i++) {
+              //     if (code === encodeNumber(res.data[i].actName)) {
+              //       // window.location = "/creatorActivityId/" + res.data[i]._id;
+              //       break;
+              //     } else {
+              //     }
+              //   }
+              // });
               // console.log(window.localStorage.getItem("token"));
             }
           });
-        } else if (data.status == "error"){
+        } else if (data.status === "error"){
           Swal.fire({
             title: "Login Failed",
             showConfirmButton: true,
