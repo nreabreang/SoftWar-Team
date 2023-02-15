@@ -70,14 +70,16 @@ router.route("/update/:id").post((req, res) => {
 });
 // http://localhost:5000/activity/getbyemail/:email
 router.route("/getbyemail/:email").get(async (req, res) => {
+  // console.log(req.params.email);
   Activity.find({ email: req.params.email })
     .then((resp) => res.status(200).json(resp))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/get/").get(async (req, res) => {
-  Activity.find({ actName: req.body.actName })
-    .then((res) => res.status(200).json(res))
+router.route("/get").get(async (req, res) => {
+  // console.log(req.params);
+  Activity.find()
+    .then((act) => res.status(200).json(act))
     .catch((err) => res.status(400).json("Error : " + err));
 });
 
