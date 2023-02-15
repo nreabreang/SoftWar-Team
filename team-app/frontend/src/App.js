@@ -24,6 +24,8 @@ import PresenterDashboard from "./components/presenter-view/dashboard.component"
 import PresenterActivityId from "./components/presenter-view/activity-list.component";
 import ScannerCode from "./components/scanner.component";
 import CreatorLogin from "./components/creator-view/creator-login.component";
+import GuestProjectID from "./components/guest-view/project-id.component";
+
 function App() {
   return (
     <Router>
@@ -72,7 +74,7 @@ function App() {
             element={<PresenterActivityId />}
           ></Route>
           <Route path="/scanner" element={<ScannerCode />}></Route>
-
+          <Route path="/guestprojectList/:id" element={<GuestProjectID />}></Route>
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
         </Routes>
       </div>

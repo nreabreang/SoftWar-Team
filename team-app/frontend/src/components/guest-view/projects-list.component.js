@@ -50,7 +50,7 @@ const Project = (props) => {
 
 					{/* see project */}
 
-					<Link to={"/creatorprojectList/" + props.projectID}>
+					<Link to={"/guestprojectList/" + props.projectID}>
 						<div className="enter-container">
 							<p className="text-14px underline italic">MORE</p>
 							{/* <img src={rightarrow} className="images-16px" /> */}
