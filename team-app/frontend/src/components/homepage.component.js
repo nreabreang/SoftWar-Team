@@ -137,6 +137,7 @@ export default class homepage extends Component {
                     placeholder="Enter Code"
                     maxLength="8"
                     className="input-code"
+					autoComplete="off"
                   ></input>
 
                   <div className="icon-container">
