@@ -22,6 +22,8 @@ const Project = (props) => {
 					</div>
 				</div>
 
+				
+
 				{/* description */}
 				<div className="mt-2">
 
