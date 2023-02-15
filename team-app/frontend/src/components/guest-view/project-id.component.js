@@ -81,7 +81,7 @@ export default class projectID extends Component {
     };
     console.log(data)
     var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney")
-    if(findVirtualMoney){
+    if(findVirtualMoney || this.storeVirtualMoney >= 0 ){
       var calculate = Number(window.localStorage.guestVirtualMoney) - Number(this.state.storeVirtualMoney)
       if(calculate>=0){
         //not over
