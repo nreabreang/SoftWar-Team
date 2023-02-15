@@ -1,16 +1,6 @@
 import { Component } from "react";
 import Swal from "sweetalert2";
-import { Buffer } from "buffer";
-import axios from "axios";
 import "../Styles.css";
-
-const encodeNumber = (str) => {
-  const code = Buffer.from(str, "utf-8")
-    .toString("base64")
-    .slice(0, 8)
-    .toLocaleUpperCase();
-  return code;
-};
 
 export default class creatorLogin extends Component {
   constructor(props) {
@@ -99,8 +89,11 @@ export default class creatorLogin extends Component {
                 <input
                   className="input w-full"
                   type="text"
+                  autoComplete="off"
                   required
-                  onChange={(e) => this.setState({ email: e.target.value })}
+                  onChange={(e) => 
+                    this.setState({ email: e.target.value })
+                  }
                 />
               </div>
 

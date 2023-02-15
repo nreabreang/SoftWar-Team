@@ -46,18 +46,23 @@ export default class homepage extends Component {
 			alert("Please Enter Code !");
 		}
 
-		axios.get("http://localhost:5000/activity/").then((res) => {
-			// console.log(code.code);
-			let i;
-			for (i = 0; i < res.data.length; i++) {
-				if (code.code === encodeNumber(res.data[i].actName)) {
-					// isTrue = true;
-					// resData = res.data[i].actName;
-					// window.location = "/guestActivityList/" + res.data[i]._id;
-					window.location = "./access/" + code.code;
-					break;
-				}
-			}
+    axios
+      .get("http://localhost:5000/activity/get/" + code.code)
+      .then((res) => console.log("res : ", res.data))
+      .catch((err) => console.log("error : ", err));
+
+    axios.get("http://localhost:5000/activity/").then((res) => {
+      console.log(res.data);
+      let i;
+      for (i = 0; i < res.data.length; i++) {
+        if (code.code === encodeNumber(res.data[i].actName)) {
+          // isTrue = true;
+          // resData = res.data[i].actName;
+          // window.location = "/guestActivityList/" + res.data[i]._id;
+          window.location = "./access/" + code.code;
+          break;
+        }
+      }
 
 			if (i >= res.data.length && code.code.length === 8) {
 				Swal.fire({
