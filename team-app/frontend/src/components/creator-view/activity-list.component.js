@@ -10,157 +10,172 @@ import edit from "../images/edit-1.png";
 import Swal from "sweetalert2";
 
 const encodeNumber = (str) => {
-	const code = Buffer.from(str, "utf-8")
-		.toString("base64")
-		.slice(0, 8)
-		.toLocaleUpperCase();
-	return <div>{code}</div>;
+  const code = Buffer.from(str, "utf-8")
+    .toString("base64")
+    .slice(0, 8)
+    .toLocaleUpperCase();
+  return <div>{code}</div>;
 };
 
 const Activity = (props) => (
-	<div className="list-container mx-auto mb-8">
-		{/* header */}
-		<div className="list-header-container text-24px bold ">
-			<div className="flex ellipsis w-3/4">{props.activity.actName}</div>
+  <div className="list-container mx-auto mb-8">
+    {/* header */}
+    <div className="list-header-container text-24px bold ">
+      <div className="flex ellipsis w-3/4">{props.activity.actName}</div>
 
-			<div className="flex">
-				{/* edit icon */}
-				<Link to={"/edit/" + props.activity._id}>
-					<img src={edit} className="images-20px mx-1" />
-				</Link>
+      <div className="flex">
+        {/* edit icon */}
+        <Link to={"/edit/" + props.activity._id}>
+          <img src={edit} className="images-20px mx-1" />
+        </Link>
 
-				{/* delete icon */}
-				<a
-					href="#"
-					onClick={() => {
-						Swal.fire({
-							title: "Do you want to delete the Activity?",
-							showCancelButton: true,
-							confirmButtonText: "Confirm",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								Swal.fire("Deleted!", "", "success").then((result) => {
-									props.deleteActivity(props.activity._id);
-								});
-							}
-						});
-					}}
-				>
-					<img src={del} className="images-20px" />
-				</a>
-			</div>
-		</div>
+        {/* delete icon */}
+        <a
+          href="#"
+          onClick={() => {
+            Swal.fire({
+              title: "Do you want to delete the Activity?",
+              showCancelButton: true,
+              confirmButtonText: "Confirm",
+            }).then((result) => {
+              /* Read more about isConfirmed, isDenied below */
+              if (result.isConfirmed) {
+                Swal.fire("Deleted!", "", "success").then((result) => {
+                  props.deleteActivity(props.activity._id);
+                });
+              }
+            });
+          }}
+        >
+          <img src={del} className="images-20px" />
+        </a>
+      </div>
+    </div>
 
-		{/* description */}
-		<div className="mt-4">
-			{/* date */}
-			<div className="items-container">
-				<p className="text-16px bold">DATE: </p>
-				<p className="text-16px italic">
-					{props.activity.date.substring(0, 10)}
-				</p>
-			</div>
+    {/* description */}
+    <div className="mt-4">
+      {/* date */}
+      <div className="items-container">
+        <p className="text-16px bold">DATE: </p>
+        <p className="text-16px italic">
+          {props.activity.date.substring(0, 10)}
+        </p>
+      </div>
 
-			{/* access code */}
-			<div className="items-container">
-				<p className="text-16px bold">ACCESS CODE: </p>
-				<div className="text-16px italic">
-					{encodeNumber(props.activity.actName)}
-				</div>
-			</div>
+      {/* access code */}
+      <div className="items-container">
+        <p className="text-16px bold">ACCESS CODE: </p>
+        <div className="text-16px italic">
+          {encodeNumber(props.activity.actName)}
+        </div>
+      </div>
 
-			{/* see project */}
-			<div className="enter-container">
-				<Link
-					to={"/creatorActivityList/" + props.activity._id}
-					className="text-14px underline italic"
-				>
-					See Project
-				</Link>
+      {/* see project */}
+      <div className="enter-container">
+        <Link
+          to={"/creatorActivityList/" + props.activity._id}
+          className="text-14px underline italic"
+        >
+          See Project
+        </Link>
 
-				<Link to={"/creatorActivityList/" + props.activity._id}>
-					<img src={rightarrow} className="images-16px" />
-				</Link>
-			</div>
-		</div>
-	</div>
+        <Link to={"/creatorActivityList/" + props.activity._id}>
+          <img src={rightarrow} className="images-16px" />
+        </Link>
+      </div>
+    </div>
+  </div>
 );
 
 export default class ActivityList extends Component {
-	constructor (props) {
-		super(props);
-		this.deleteActivity = this.deleteActivity.bind(this);
+  constructor(props) {
+    super(props);
+    this.deleteActivity = this.deleteActivity.bind(this);
 
-		this.state = {
-			activity: [],
-		};
-	}
+    this.state = {
+      activity: [],
+    };
+  }
 
-	componentDidMount() {
-		const emails = window.localStorage.activityEmail
-		axios
-			.get("http://localhost:5000/activity/getbyemail/" + emails)
-			.then((response) => {
-				this.setState({ activity: response.data });
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-		const listName = []
-		axios.get("http://localhost:5000/creatorUsers/creatorUserbyemail/"+emails).then((res)=>{
-				listName.push(res.data)				
-			})
-		const creatorName = listName.fname + listName.lname
-		if (window.localStorage.getItem("Username")) {
-			window.localStorage.removeItem("Username")
-			window.localStorage.setItem("Username",creatorName)
-		} else {
-			window.localStorage.setItem("Username",creatorName) 
-		}
-	}
+  componentDidMount() {
+    const emails = window.localStorage.getItem("activityEmail");
+    axios
+      .get("http://localhost:5000/activity/getbyemail/" + emails)
+      .then((response) => {
+        this.setState({ activity: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // const listName = [];
+    axios
+      .get("http://localhost:5000/creatorUsers/creatorUserbyemail/" + emails)
+      .then((res) => {
+        window.localStorage.setItem(
+          "name",
+          res.data[0].fname + " " + res.data[0].lname
+        );
+      });
+    // const creatorName = listName.fname + listName.lname;
+    // if (window.localStorage.getItem("Username")) {
+    //   window.localStorage.removeItem("Username");
+    //   window.localStorage.setItem("Username", creatorName);
+    //   // console.log("dddddddddd");
+    // } else {
+    //   window.localStorage.setItem("Username", creatorName);
+    //   console.log("ddd");
+    //   console.log(window.localStorage.getItem("Username"));
+    // }
+  }
 
-	deleteActivity(id) {
-		axios
-			.delete("http://localhost:5000/activity/" + id)
-			.then((res) => console.log(res.data));
-		window.location = "/activityList";
-		this.setState({
-			activity: this.state.activity.filter((el) => el.id !== id),
-		});
-	}
+  deleteActivity(id) {
+    axios
+      .delete("http://localhost:5000/activity/" + id)
+      .then((res) => console.log(res.data));
+    window.location = "/activityList";
+    this.setState({
+      activity: this.state.activity.filter((el) => el.id !== id),
+    });
+  }
 
-	activityList() {
-		return this.state.activity.map((currentactivity) => {
-			return (
-				<Activity
-					activity={currentactivity}
-					deleteActivity={this.deleteActivity}
-					key={currentactivity._id}
-				/>
-			);
-		});
-	}
+  activityList() {
+    return this.state.activity.map((currentactivity) => {
+      return (
+        <Activity
+          activity={currentactivity}
+          deleteActivity={this.deleteActivity}
+          key={currentactivity._id}
+        />
+      );
+    });
+  }
 
-	render() {
-		return (
-			<main>
-				<div className="flex header-container">
-					<p className="text-36px">Activity Dashboard</p>
-					<a href="/createActivity" className="button-navy small">
-						Add +
-					</a>
-				</div>
-				<div>{window.localStorage.Username}</div>
-				<div className="w-5/6 mx-auto">
-					<div className="show-container
+  render() {
+    return (
+      <main>
+        <div className="flex justify-end">
+          {window.localStorage.getItem("name")}
+        </div>
+        <div className="flex header-container">
+          <p className="text-36px">Activity Dashboard</p>
+          <a href="/createActivity" className="button-navy small">
+            Add +
+          </a>
+        </div>
+
+        <div className="w-5/6 mx-auto">
+          <div
+            className="show-container
                           xs:grid-cols-1
 						  sm:grid-cols-2
 						  md:grid-cols-2
 						  lg:grid-cols-3
-						  xl:grid-cols-3">{this.activityList()}</div>
-				</div>
-			</main>
-		);
-	}
+						  xl:grid-cols-3"
+          >
+            {this.activityList()}
+          </div>
+        </div>
+      </main>
+    );
+  }
 }
