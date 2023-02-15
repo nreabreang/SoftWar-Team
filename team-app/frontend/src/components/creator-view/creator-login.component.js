@@ -28,8 +28,8 @@ export default class creatorLogin extends Component {
 
     const { email, password } = this.state;
     console.log('handleSubmit email=' + email + ' password=' + password);
-    if(window.localStorage.getItem("activityEmail")){
-      window.localStorage.removeItem("activityEmail");
+    if(window.localStorage.getItem("activityEmail")){ // check email in localstorage
+      window.localStorage.removeItem("activityEmail"); // remove old email
       window.localStorage.setItem("activityEmail",email)
     }else{
       window.localStorage.setItem("activityEmail",email)
