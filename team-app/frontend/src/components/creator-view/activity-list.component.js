@@ -156,11 +156,10 @@ export default class ActivityList extends Component {
                 <div>{window.localStorage.getItem("name")}</div>
               </div>
               <div className="flex justify-start">
-              <p className="mr-2">Email :</p>
-              <div> {window.localStorage.getItem("activityEmail")}</div>
+                <p className="mr-2">Email :</p>
+                <div> {window.localStorage.getItem("activityEmail")}</div>
+              </div>
             </div>
-            </div>
-            
           </div>
         </div>
 
