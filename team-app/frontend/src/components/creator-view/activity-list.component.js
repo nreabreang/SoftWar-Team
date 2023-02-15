@@ -116,16 +116,6 @@ export default class ActivityList extends Component {
           res.data[0].fname + " " + res.data[0].lname
         );
       });
-    // const creatorName = listName.fname + listName.lname;
-    // if (window.localStorage.getItem("Username")) {
-    //   window.localStorage.removeItem("Username");
-    //   window.localStorage.setItem("Username", creatorName);
-    //   // console.log("dddddddddd");
-    // } else {
-    //   window.localStorage.setItem("Username", creatorName);
-    //   console.log("ddd");
-    //   console.log(window.localStorage.getItem("Username"));
-    // }
   }
 
   deleteActivity(id) {
@@ -153,15 +143,22 @@ export default class ActivityList extends Component {
   render() {
     return (
       <main>
-        <div className="flex justify-end">
-          {window.localStorage.getItem("name")}
-        </div>
         <div className="flex header-container">
           <p className="text-36px">Activity Dashboard</p>
           <a href="/createActivity" className="button-navy small">
             Add +
           </a>
+
+          <div className=" justify-center grid content-center">
+          <div className="m-4  flex justify-end text-blue-900 font-semibold">
+            <div>
+              <p className="mr-2">Name :</p>
+            </div>
+            {window.localStorage.getItem("name")}
+          </div>
         </div>
+        </div>
+        
 
         <div className="w-5/6 mx-auto">
           <div
