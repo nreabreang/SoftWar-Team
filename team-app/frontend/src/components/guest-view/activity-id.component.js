@@ -25,6 +25,8 @@ const ActivityInformation = (props) => {
 
 		<div className="id-container">
 			<div className="info-container">
+
+				
 				{/* col1 */}
 				<div>
 					{/* date */}
@@ -43,13 +45,13 @@ const ActivityInformation = (props) => {
 				</div>
 
 				{/* col2 */}
-				<div>
+				{/* <div> */}
 					{/* profile */}
-					<div className="text-20px bold mr-2 mb-2 border-2 text-center rounded-full p-2">
+					{/* <div className="text-20px bold mr-2 mb-2 border-2 text-center rounded-full p-2">
 						Profile
 					</div>
 					<div className="text-white mr-2 px-2 text-center">
-						<p className="text-16px bold">Your account name : </p>
+						<p className="text-16px bold">Name : </p>
 						<p className="text-16px italic underline">
 							{props.myname}
 						</p>
@@ -61,7 +63,7 @@ const ActivityInformation = (props) => {
 							<p>Unit : {props.unitMoney}</p>
 						</p>
 					</div>
-				</div>
+				</div> */}
 				
 
 			</div>
@@ -179,7 +181,25 @@ export default class activityId extends Component {
 			<main>
 				<div className="flex header-container">
 					<p className="text-36px">Activity : {this.state.actName}</p>
-				</div>
+				
+          
+
+          <div className=" justify-center grid content-center">
+            <div className="m-4   text-blue-900 font-semibold justify-end border-b-2 border-red-400 pb-2 ">
+              <div className="flex justify-start">
+                <p className="mr-2">Name:</p>
+                <div>{window.localStorage.getItem("name")}</div>
+              </div>
+              <div className="flex justify-start">
+                <p className="mr-2">Virtual Money:</p>
+                <div> {window.localStorage.guestVirtualMoney}</div>
+              
+			  </div>
+            </div>
+          </div>
+
+        </div>
+
 				<div className="div">
 					<ActivityInformation
 						actName={this.state.actName}
