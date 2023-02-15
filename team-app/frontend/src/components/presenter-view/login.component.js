@@ -128,7 +128,7 @@ export default class presenterLogin extends Component {
                         </div>
 
                         <div class="button input-box">
-                          <input type="submit" value="Sumbit"></input>
+                          <input type="submit" value="Submit"></input>
                         </div>
                         <div class="text sign-up-text">
                           Don't have an account yet?&nbsp;

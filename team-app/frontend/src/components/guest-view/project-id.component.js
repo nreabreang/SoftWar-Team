@@ -96,7 +96,7 @@ export default class projectID extends Component {
       
       }else{
         //it over
-        Swire.fire("Your virtual money is not enough!").then(()=>{
+        Swire.fire(`Cannot You have ${window.localStorage.guestVirtualMoney}`).then(()=>{
           this.setState({
             storeVirtualMoney:"",
             ILike:"",
@@ -257,7 +257,7 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        <label>{this.showCalculateVirtual()}</label>
+        {/* <label>{this.showCalculateVirtual()}</label> */}
         <div>{this.showLengthOfList()}</div>
       </div>
     );

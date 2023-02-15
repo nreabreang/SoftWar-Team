@@ -41,8 +41,6 @@ export default class projectID extends Component {
       </div>
 
       <div class="line-1"></div>
-      
-      
         <div className="">
           <Feedback />
         </div></div>
@@ -55,7 +53,7 @@ export default class projectID extends Component {
 
 const TaskComment = (props) => {
   return (
-
+<div > 
     <div className="flex justify-between mx-8 my-2">
       {/* <label >virtualMoney: <div>{props.moneyVir}</div></label> */}
       <label className="">
@@ -82,7 +80,7 @@ const TaskComment = (props) => {
           {props.letComments.iDea}
         </div>
       </label>
-    </div>
+    </div> </div>
   );
 };
 
@@ -140,7 +138,8 @@ class Feedback extends Component {
 
             {/* <label>{this.showCalculateVirtual()}</label> */}
 
-              <span class="text-20px">credits</span>
+              <span class="text-20px">credits</span> {/*Please make it work, get VM unit form Activity Cretor */}
+              
             </div>
           </div>
         </div>
@@ -152,9 +151,6 @@ class Feedback extends Component {
         <div class="text-20px flex">{this.showCommentAll}
         <div>{this.showLengthOfList()}</div>
         </div></div></div></div>
-
-        
-        
       </div>
     );
   }
