@@ -95,10 +95,10 @@ export default class homepage extends Component {
 			<main>
 				<div className="banner">
 
-					{/* left side */}
+					{/* creator side */}
 					<div className="banner-container left">
 
-						<p className="text-48px">Welcome</p>
+						<p className="text-48px">Creator!</p>
 						<p className="text-20px">
 							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
 							dignissimos non quis illo provident officiis inventore esse,
@@ -113,6 +113,20 @@ export default class homepage extends Component {
 								</Link>
 							</div>
 						</div>
+
+
+					</div>
+
+
+					{/* presenter and guest side */}
+					<div className="banner-container right">
+						<p className="text-48px">Welcome</p>
+						<p className="text-20px">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
+							dignissimos non quis illo provident officiis inventore esse,
+							dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
+							voluptas, a expedita optio?
+						</p>
 
 						<p className="text-20px">Joining an Activity</p>
 
@@ -151,18 +165,6 @@ export default class homepage extends Component {
 								</form>
 							</div>
 						</div>
-					</div>
-
-
-					{/* right side */}
-					<div className="banner-container right">
-						<p className="text-36px">Welcome</p>
-						<p className="text-20px">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-							dignissimos non quis illo provident officiis inventore esse,
-							dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
-							voluptas, a expedita optio?
-						</p>
 					</div>
 				</div>
 

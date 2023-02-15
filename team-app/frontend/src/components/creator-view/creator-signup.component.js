@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Swal from "sweetalert2";
 
 export default class creatorSignup extends Component {
   constructor(props) {
@@ -36,6 +37,20 @@ export default class creatorSignup extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.status === "ok") {
+          Swal.fire({
+            title: "Sign Up Done !",
+            showLoaderOnConfirm: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location = "./creatorLogin";
+            }
+          });
+        } else {
+          Swal.fire({
+            title: "Cannot use this email !",
+          });
+        }
         console.log(data, "creatorReg");
       });
   }

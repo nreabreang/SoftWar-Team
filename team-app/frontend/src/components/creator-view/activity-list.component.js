@@ -18,10 +18,10 @@ const encodeNumber = (str) => {
 };
 
 const Activity = (props) => (
-	<div className="list-container mx-auto w-80">
-		{/* header */}
-		<div className="list-header-container text-24px bold ">
-			<div className="flex ellipsis w-3/4">{props.activity.actName}</div>
+  <div className="list-container mx-auto w-80">
+    {/* header */}
+    <div className="list-header-container text-24px bold ">
+      <div className="flex ellipsis w-3/4">{props.activity.actName}</div>
 
       <div className="flex">
         {/* edit icon */}
@@ -150,15 +150,19 @@ export default class ActivityList extends Component {
           </a>
 
           <div className=" justify-center grid content-center">
-          <div className="m-4  flex justify-end text-blue-900 font-semibold">
-            <div>
-              <p className="mr-2">Name :</p>
+            <div className="m-4   text-blue-900 font-semibold justify-end border-b-2 border-red-400 pb-2 ">
+              <div className="flex justify-start">
+                <p className="mr-2">Name :</p>
+                <div>{window.localStorage.getItem("name")}</div>
+              </div>
+              <div className="flex justify-start">
+              <p className="mr-2">Email :</p>
+              <div> {window.localStorage.getItem("activityEmail")}</div>
             </div>
-            {window.localStorage.getItem("name")}
+            </div>
+            
           </div>
         </div>
-        </div>
-        
 
         <div className="w-5/6 mx-auto">
           <div
