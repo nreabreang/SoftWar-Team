@@ -88,7 +88,7 @@ const Activity = (props) => (
 );
 
 export default class ActivityList extends Component {
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.deleteActivity = this.deleteActivity.bind(this);
 
@@ -100,13 +100,24 @@ export default class ActivityList extends Component {
 	componentDidMount() {
 		const emails = window.localStorage.activityEmail
 		axios
-			.get("http://localhost:5000/activity/getbyemail/"+emails)
+			.get("http://localhost:5000/activity/getbyemail/" + emails)
 			.then((response) => {
 				this.setState({ activity: response.data });
 			})
 			.catch((error) => {
 				console.log(error);
 			});
+		const listName = []
+		axios.get("http://localhost:5000/creatorUsers/creatorUserbyemail/"+emails).then((res)=>{
+				listName.push(res.data)				
+			})
+		const creatorName = listName.fname + listName.lname
+		if (window.localStorage.getItem("Username")) {
+			window.localStorage.removeItem("Username")
+			window.localStorage.setItem("Username",creatorName)
+		} else {
+			window.localStorage.setItem("Username",creatorName) 
+		}
 	}
 
 	deleteActivity(id) {
@@ -140,7 +151,7 @@ export default class ActivityList extends Component {
 						Add +
 					</a>
 				</div>
-
+				<div>{window.localStorage.Username}</div>
 				<div className="w-5/6 mx-auto">
 					<div className="show-container
                           xs:grid-cols-1
