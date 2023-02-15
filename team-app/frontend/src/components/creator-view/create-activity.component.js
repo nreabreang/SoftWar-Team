@@ -212,7 +212,7 @@ export default class CreateActivity extends Component {
 								<div className="container justify-end">
 									<input
 										type="submit"
-										value="Submitted"
+										value="Submit"
 										className="button-navy"
 									/>
 								</div>

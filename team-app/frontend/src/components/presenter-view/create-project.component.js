@@ -127,13 +127,13 @@ export default class createProject extends Component {
                 onChange={this.onchangeDescription}
                 modules={this.modules}
                 formats={this.formats}
-                placeholder="Put your Project Description here"
+                placeholder="Enter your Project Description "
               />
             </div>
           </div>
 
           <div className="container justify-end new">
-            <input type="submit" value="Submitted" className="button-navy" />
+            <input type="submit" value="Submit" className="button-navy" />
           </div>
         </form>
       </main>
