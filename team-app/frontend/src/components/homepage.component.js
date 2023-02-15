@@ -46,23 +46,23 @@ export default class homepage extends Component {
 			alert("Please Enter Code !");
 		}
 
-    axios
-      .get("http://localhost:5000/activity/get/" + code.code)
-      .then((res) => console.log("res : ", res.data))
-      .catch((err) => console.log("error : ", err));
+		axios
+			.get("http://localhost:5000/activity/get/" + code.code)
+			.then((res) => console.log("res : ", res.data))
+			.catch((err) => console.log("error : ", err));
 
-    axios.get("http://localhost:5000/activity/").then((res) => {
-      console.log(res.data);
-      let i;
-      for (i = 0; i < res.data.length; i++) {
-        if (code.code === encodeNumber(res.data[i].actName)) {
-          // isTrue = true;
-          // resData = res.data[i].actName;
-          // window.location = "/guestActivityList/" + res.data[i]._id;
-          window.location = "./access/" + code.code;
-          break;
-        }
-      }
+		axios.get("http://localhost:5000/activity/").then((res) => {
+			console.log(res.data);
+			let i;
+			for (i = 0; i < res.data.length; i++) {
+				if (code.code === encodeNumber(res.data[i].actName)) {
+					// isTrue = true;
+					// resData = res.data[i].actName;
+					// window.location = "/guestActivityList/" + res.data[i]._id;
+					window.location = "./access/" + code.code;
+					break;
+				}
+			}
 
 			if (i >= res.data.length && code.code.length === 8) {
 				Swal.fire({
@@ -81,10 +81,10 @@ export default class homepage extends Component {
 			<main>
 				<div className="banner">
 
-					{/* left side */}
+					{/* creator side */}
 					<div className="banner-container left">
 
-						<p className="text-48px">Welcome</p>
+						<p className="text-48px">Creator!</p>
 						<p className="text-20px">
 							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
 							dignissimos non quis illo provident officiis inventore esse,
@@ -100,13 +100,27 @@ export default class homepage extends Component {
 							</div>
 						</div>
 
+
+					</div>
+
+
+					{/* presenter and guest side */}
+					<div className="banner-container right">
+						<p className="text-48px">Welcome</p>
+						<p className="text-20px">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
+							dignissimos non quis illo provident officiis inventore esse,
+							dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
+							voluptas, a expedita optio?
+						</p>
+
 						<p className="text-20px">Joining an Activity</p>
 
 						<div className="container justify-start">
 							<div className="">
 
-								<form 	onSubmit={this.onEnterCode}
-										className="flex items-center justify-center">
+								<form onSubmit={this.onEnterCode}
+									className="flex items-center justify-center">
 
 									<input
 										onChange={this.onChangeCode}
@@ -137,18 +151,6 @@ export default class homepage extends Component {
 								</form>
 							</div>
 						</div>
-					</div>
-
-
-					{/* right side */}
-					<div className="banner-container right">
-						<p className="text-36px">Welcome</p>
-						<p className="text-20px">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-							dignissimos non quis illo provident officiis inventore esse,
-							dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
-							voluptas, a expedita optio?
-						</p>
 					</div>
 				</div>
 
