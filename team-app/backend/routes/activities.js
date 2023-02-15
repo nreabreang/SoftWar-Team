@@ -17,6 +17,7 @@ router.route("/add").post((req, res) => {
   const virtualMoney = req.body.virtualMoney;
   const unitMoney = req.body.unitMoney;
   const email = req.body.email;
+  const code = req.body.code;
   const date = Date.parse(req.body.date);
 
   const newActivity = new Activity({
@@ -24,6 +25,7 @@ router.route("/add").post((req, res) => {
     actDescription,
     virtualMoney,
     unitMoney,
+    code,
     email,
     date,
   });
@@ -78,7 +80,8 @@ router.route("/getbyemail/:email").get(async (req, res) => {
 
 // http://localhost:5000/activity/get
 router.route("/name/:nameProject").get(async (req, res) => {
-  Activity.find({ actName: req.params.nameProject })
+  console.log(req.params.nameProject)
+  Activity.find({ code: req.params.nameProject })
   .then((resp) => res.status(200).json(resp))
   .catch((err) => res.status(401).json("Error: " + err))
 });

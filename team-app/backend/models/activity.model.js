@@ -26,6 +26,9 @@ const activitySchema = new Schema(
       type: Date,
       required: true,
     },
+    code:{
+      type:String,
+    },
     email:{
       type:String,
       required:true,

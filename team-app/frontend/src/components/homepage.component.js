@@ -51,8 +51,8 @@ export default class homepage extends Component {
 		if (code.code.length < 8) {
 			alert("Please Enter Code !");
 		}
-		const data = Buffer.from(code.code, 'base64').toString('ascii')
-		let checkLoader = await axios.get("http://localhost:5000/activity/name/" + data, { params: { actName: data } })
+		let checkLoader = await axios.get("http://localhost:5000/activity/name/" + code.code, { params: { actName: code.code } })
+		console.log(checkLoader)
 		if (checkLoader.data.length) {
 			window.location = "./access/" + code.code;
 		} else {
