@@ -71,4 +71,10 @@ router.route("/creatorUserData").post(async (req, res) => {
     } catch (error) { }
 });
 
+router.route("/creatorUserbyemail/:email").get(async(req,res)=>{
+    creatorUsers.find({email:req.params.email})
+    .then((resp)=>res.status(200).json(resp))
+    .catch((err)=>res.status(400).json("Error: "+err))
+})
+
 module.exports = router;
