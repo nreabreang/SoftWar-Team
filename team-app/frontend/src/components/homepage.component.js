@@ -97,7 +97,7 @@ export default class homepage extends Component {
         <div className="banner">
           {/* creator side */}
           <div className="banner-container left">
-            <p className="text-48px">Creator!</p>
+            <p className="text-48px">Create Activity!</p>
             <p className="text-20px">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
               dignissimos non quis illo provident officiis inventore esse,
@@ -116,7 +116,7 @@ export default class homepage extends Component {
 
           {/* presenter and guest side */}
           <div className="banner-container right">
-            <p className="text-48px">Welcome</p>
+            <p className="text-48px">Join Activity!</p>
             <p className="text-20px">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
               dignissimos non quis illo provident officiis inventore esse,

@@ -1,6 +1,7 @@
 import axios from "axios";
-import Swire from "sweetalert2"
+import Swire from "sweetalert2";
 import { Component } from "react";
+import user from '../images/user.png'
 
 export default class projectID extends Component {
   constructor(props) {
@@ -79,35 +80,43 @@ export default class projectID extends Component {
       comments: test,
       idProject: arr[arr.length - 1],
     };
-    console.log(data)
-    var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney")
-    if(findVirtualMoney ){
-      var calculate = Number(window.localStorage.guestVirtualMoney) - Number(this.state.storeVirtualMoney)
-      if(calculate>=0){
+    console.log(data);
+    var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
+    if (findVirtualMoney) {
+      var calculate =
+        Number(window.localStorage.guestVirtualMoney) -
+        Number(this.state.storeVirtualMoney);
+      if (calculate >= 0) {
         //not over
-        Swire.fire("Accept comments").then(()=>{
-        // axios.post("http://localhost:5000/feedback/add", data)
-        // .then(() => console.log("Success"))
-        // .catch((err) => console.log("Error: " + err));
-          axios.post("http://localhost:5000/feedback/add",data).then(()=>console.log("Success.")).catch((err)=>console.log("Error: "+err))    
-        window.localStorage.guestVirtualMoney = Number(window.localStorage.guestVirtualMoney) - this.state.storeVirtualMoney
-        window.location = "";
-        })
-      
-      }else{
+        Swire.fire("Done !").then(() => {
+          // axios.post("http://localhost:5000/feedback/add", data)
+          // .then(() => console.log("Success"))
+          // .catch((err) => console.log("Error: " + err));
+          axios
+            .post("http://localhost:5000/feedback/add", data)
+            .then(() => console.log("Success."))
+            .catch((err) => console.log("Error: " + err));
+          window.localStorage.guestVirtualMoney =
+            Number(window.localStorage.guestVirtualMoney) -
+            this.state.storeVirtualMoney;
+          window.location = "";
+        });
+      } else {
         //it over
-        Swire.fire(`Cannot You have ${window.localStorage.guestVirtualMoney}`).then(()=>{
+        Swire.fire(
+          `Cannot You have ${window.localStorage.guestVirtualMoney}`
+        ).then(() => {
           this.setState({
-            storeVirtualMoney:"",
-            ILike:"",
-            IWish:"",
-            Quest:"",
-            Idea:"",
-        })
-        window.location = "";
-        })
+            storeVirtualMoney: "",
+            ILike: "",
+            IWish: "",
+            Quest: "",
+            Idea: "",
+          });
+          window.location = "";
+        });
       }
-    }else{
+    } else {
       //it not login
     }
     // let getCookies = document.cookie.split("=");
@@ -127,27 +136,29 @@ export default class projectID extends Component {
 
   render() {
     return (
-      <div className=" bg-white flex  flex-col m-4 p-4 rounded-md">
-        <div>
-          <label htmlFor="" className="text-red-500">
+      <div className=" bg-white flex mx-auto w-3/4 m-4  flex-col p-4 rounded-md">
+        <div className="text text-xl font-bold flex justify-center my-4 ">
+          <label htmlFor="" className="text-red-500 mr-2">
             Project Name :{" "}
           </label>
           {this.state.projectName}
         </div>
-        <div className="my-2 text-red-500 underline">Description</div>
+        <div className="my-2 text-red-500  font-semibold">Description</div>
         <div className="rounded-md border-2 border-red-300 p-2 border-collapse flex ">
           <div
             dangerouslySetInnerHTML={{
               __html: this.state.description,
             }}
-            className="my-2 text-grey-500 overflow-x-auto w-2/3 "
+            className="my-2 text-grey-500 overflow-x-auto p-2"
           ></div>
         </div>
         <div>{this.showCommentAll}</div>
         <div className="">
+          <p className="mx-4 mt-4 mb-2 text-base font-semibold text-red-400">Comments</p>
+        <Feedback />
           <form onSubmit={this.onSubmitAction}>
-            <div className="my-4 border-red-200 border-2 rounded-md p-2">
-              <label className="text-red-500">Give Virtual Money :</label>
+            <div className="my-4  border-red-300 border-2 rounded-md p-2">
+              <label className="text-red-500  font-semibold">Give Virtual Money :</label>
               <input
                 className="mx-2  text-red-500 border-red-200 border-2 rounded-md px-2"
                 type="number"
@@ -156,13 +167,14 @@ export default class projectID extends Component {
               />
             </div>
             <div className="mb-4 rounded-md border-2 border-red-300 p-2">
-              <div className="mb-2 text-red-500">Give Comment</div>
+              <div className="mb-2 text-red-500  font-semibold">Give Comment</div>
               <input
                 type="text"
                 placeholder="I like ..."
                 id="ILike"
                 name="ILike"
                 value={this.state.ILike}
+                required
                 onChange={this.commentILikeOnChange}
               />
               <input
@@ -171,6 +183,7 @@ export default class projectID extends Component {
                 id="IWish"
                 name="IWish"
                 value={this.state.IWish}
+                required
                 onChange={this.commentIWishOnChange}
               />
               <input
@@ -179,6 +192,7 @@ export default class projectID extends Component {
                 id="Question"
                 name="Question"
                 value={this.state.Quest}
+                required
                 onChange={this.commentQuestionOnChange}
               />
               <input
@@ -186,13 +200,19 @@ export default class projectID extends Component {
                 placeholder="Idea?"
                 id="Ideas"
                 name="Ideas"
+                required
                 value={this.state.Idea}
                 onChange={this.commentIdeaOnChange}
               />
             </div>
-            <button type="submit" className=" bg-green-400 p-2 rounded-md text-white mb-2" >Submit</button>
+            <button
+              type="submit"
+              className=" bg-green-400 p-2 rounded-md text-white mb-2"
+            >
+              Submit
+            </button>
           </form>
-          <Feedback />
+          
         </div>
       </div>
     );
@@ -201,20 +221,23 @@ export default class projectID extends Component {
 
 const TaskComment = (props) => {
   return (
-    <div className="flex justify-between m-4">
+    <div className="mx-4 mb-4 flex justify-start text-lg break-words overflow-auto rounded-md p-2 border-2 pl-4 text-gray-500">
       <label>{/* virtualMoney: <div>{props.moneyVir}</div> */}</label>
-      <label>
-        I like:
-        <div>{props.letComments.iLike}</div>
+      {/* <label className=" flex mr-8 justify-start rounded-full">
+        <img src={user} alt='user' className="w-14"></img>
+      </label> */}
+      <label className=" flex mr-11 justify-start my-auto ">
+        I like :
+        <div className="ml-2">{props.letComments.iLike}</div>
       </label>
-      <label>
-        I wish: <div>{props.letComments.iWish}</div>
+      <label className="mr-11 flex justify-start my-auto">
+        I wish : <div className="ml-2">{props.letComments.iWish}</div>
       </label>
-      <label>
-        Question: <div>{props.letComments.iQuest}</div>
+      <label className="mr-11 flex justify-start my-auto">
+        Question : <div className="ml-2">{props.letComments.iQuest}</div>
       </label>
-      <label>
-        Idea: <div>{props.letComments.iDea}</div>
+      <label className="mr-11 flex justify-start my-auto">
+        Idea : <div className="ml-2">{props.letComments.iDea}</div>
       </label>
     </div>
   );

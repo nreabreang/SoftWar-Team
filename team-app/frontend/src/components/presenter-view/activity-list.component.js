@@ -38,7 +38,7 @@ const ActivityInfo = (props) => {
         {/* description */}
         <div className="block">
           <p className="text-20px bold">DESCRIPTION : </p>
-          <p className="text-20px italic overflow-auto break-words w-120">{props.descript}</p>
+          <p className="text-20px italic  break-words">{props.descript}</p>
         </div>
       </div>
     </div>
@@ -193,12 +193,14 @@ export default class creatorActivityId extends Component {
       <main>
         <div className="flex justify-center">
           <div className="flex header-container">
-            <p className="text-36px">Activity : {this.state.actName}</p>
+            <p className=" text-2xl font-semibold">
+              Activity : {this.state.actName}
+            </p>
           </div>
 
           <div className="grid content-center">
             <Link to="/createProject">
-              <button className=" p-1 border-b border-red-500 font-semibold text-red-600 hover:text-gray-300 hover:border-gray-300">
+              <button className=" p-2 border-b bg-green-400 rounded-md hover:bg-red-300 font-semibold text-white hover:text-gray-300 hover:border-gray-300">
                 + Add Project
               </button>
             </Link>

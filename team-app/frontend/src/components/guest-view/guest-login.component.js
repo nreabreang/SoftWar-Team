@@ -78,7 +78,7 @@ export default class guestLogin extends Component {
 
   render() {
     return (
-      <div class=" flex justify-center mt-20 ">
+      <div class=" flex justify-center mt-11 ">
   <div class="max-w-md mx-5  ">
       <div class='relative m-0 shadow-lg flex'>
         <div class='mt-10 flex-no-shrink'>

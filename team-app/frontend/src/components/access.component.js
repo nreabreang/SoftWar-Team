@@ -17,7 +17,7 @@ export default class access extends Component {
   render() {
     return (
       <main class="h-100%">
-      <div class=" flex justify-center grid-cols-2  mt-20 ">
+      <div class=" flex justify-center grid-cols-2  mt-11 ">
 
   <div class="max-w-md mx-5  ">
       <div class='relative m-0 shadow-lg flex'>
