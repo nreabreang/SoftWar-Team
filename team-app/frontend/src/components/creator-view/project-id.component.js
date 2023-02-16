@@ -31,14 +31,16 @@ export default class projectID extends Component {
         <section class="text rounded-md bg-red-200 m-4 p-4">
           <div class=" home-content">
             <div class="overview-boxes ">
-              <div class="box">
+              <div class="rounded bg-white p-4 m-4">
                 <div class="right-side">
-                  <div class="text-24px">{this.state.projectName}</div>
-                  <div class="text-24px">
+                  <div class="w-32 flex justify-start text-2xl m-4 border-b">
+                    {this.state.projectName}
+                  </div>
+                  <div class="text-2xl m-4">
                     {" "}
-                    Description:
+                    Description :
                     <div
-                      class="text-16px w-120"
+                      class=" w-120 text-lg m-4"
                       dangerouslySetInnerHTML={{
                         __html: this.state.description,
                       }}
@@ -48,7 +50,7 @@ export default class projectID extends Component {
               </div>
             </div>
 
-            <div class="line-1"></div>
+            {/* <div class="line-1"></div> */}
             <div className="">
               <Feedback />
             </div>
@@ -65,27 +67,27 @@ const TaskComment = (props) => {
       <div className="flex justify-between mx-8 my-2">
         {/* <label >virtualMoney: <div>{props.moneyVir}</div></label> */}
         <label className="">
-          <div className="flex justify-start">
+          <div className="flex justify-start mr-8">
             <div className="mx-2">I like : </div>
-            {props.letComments.iLike}
+            <p className="italic">{props.letComments.iLike}</p>
           </div>
         </label>
         <label>
-          <div className="flex justify-start">
+          <div className="flex justify-start mr-8">
             <div className="mx-2">I wish : </div>
-            {props.letComments.iWish}
+            <p className="italic">{props.letComments.iWish}</p>
           </div>
         </label>
         <label>
-          <div className="flex justify-start">
+          <div className="flex justify-start mr-8">
             <div className="mx-2">Question : </div>
-            {props.letComments.iQuest}
+            <p className="italic">{props.letComments.iQuest}</p>
           </div>
         </label>
         <label>
           <div className="flex justify-start">
             <div className="mx-2">Idea : </div>
-            {props.letComments.iDea}
+            <p className="italic">{props.letComments.iDea}</p>
           </div>
         </label>
       </div>{" "}
@@ -138,10 +140,12 @@ class Feedback extends Component {
     return (
       <div>
         <div class="overview-boxes ">
-          <div class="vmbox">
+          <div class="m-4 rounded-md bg-white p-2">
             <div class="right-side">
               <div class="text-20px">Total Virtual Money</div>
-              <div class="text-24px">{this.showCalculateVirtual()}</div>
+              <div class="text-24px underline">
+                {this.showCalculateVirtual()}
+              </div>
               {/* <label>{this.showCalculateVirtual()}</label> */}
               <span class="text-20px">credits</span>{" "}
               {/*Please make it work, get VM unit form Activity Cretor */}
@@ -156,12 +160,12 @@ class Feedback extends Component {
               <div class="">
                 {this.showCommentAll}
                 <table>
-                  <tr>
+                  {/* <tr className="flex justify-between">
                     <th className="">I like</th>
                     <th>I wish</th>
                     <th>I Question</th>
                     <th>Idea</th>
-                  </tr>
+                  </tr> */}
                   <tr>{this.showLengthOfList()}</tr>
                 </table>
               </div>
