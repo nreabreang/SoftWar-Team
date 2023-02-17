@@ -100,6 +100,7 @@ export default class creatorLogin extends Component {
                             type="text"
                             placeholder="Enter your email"
                             required
+                            autoComplete="off"
                             onChange={(e) => 
                               this.setState({ email: e.target.value })
                             }
