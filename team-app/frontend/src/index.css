@@ -27,10 +27,52 @@ html {
     font-size: calc(60% + 0.8vmin);
 }
 
-/* for phone size
-@media only screen and (max-width: 480px) {
+/* for phone size  */
+/* @media only screen and (max-width: 600px) {
 
-    .joining-container {
-        display: block;
+    
+    .navbar {
+        grid-template-columns: 1fr;
     }
+
+    .navbar-container.right {
+        background-color: inherit;
+    }
+} */
+
+/* for large phone size  */
+/* @media only screen and (min-width: 600px) {
+
+    
+    .navbar {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar-container.right {
+        background-color: inherit;
+    }
+    
+} */
+
+/* for tablet size  */
+/* @media only screen and (min-width: 768px) {
+
+    
+    .navbar {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar-container.right {
+        background-color: inherit;
+    }
+} */
+
+/* for labtops size  */
+/* @media only screen and (min-width: 992px) {
+    
+} */
+
+/* for large labtops size  */
+/* @media only screen and (min-width: 1200px) {
+    
 } */

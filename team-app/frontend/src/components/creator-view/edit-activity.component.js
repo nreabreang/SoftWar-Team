@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./create-activity.component.css"
 import "../Styles.css"
 
 export default class EditActivity extends Component {
@@ -114,7 +113,7 @@ export default class EditActivity extends Component {
 						<div className="flex justify-center">
 							<div className="w-9/12">
 								{/* input activity name */}
-								<div className="input-container w-full">
+								<div className="w-full">
 									<label className="">Activity Name</label>
 									<input
 										className="input w-full"
@@ -130,7 +129,7 @@ export default class EditActivity extends Component {
 								{/* input virtual money and unit */}
 								<div className="flex">
 									{/* virtual money container */}
-									<div className="input-container w-full">
+									<div className="w-full">
 										<label className="">Virtual Money</label>
 										<input
 											className="input w-full"

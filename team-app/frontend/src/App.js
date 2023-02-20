@@ -30,7 +30,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
           <Route path="/createActivity" element={<CreateActivity />}></Route>
@@ -78,7 +78,7 @@ function App() {
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
         </Routes>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
