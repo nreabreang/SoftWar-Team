@@ -193,7 +193,7 @@ export default class EditActivity extends Component {
 								<div className="container justify-end">
 									<input
 										type="submit"
-										value="Submitted"
+										value="Submit"
 										className="button-navy"
 									/>
 								</div>

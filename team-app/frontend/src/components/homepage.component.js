@@ -106,7 +106,7 @@ export default class homepage extends Component {
 							</p>
 
 							<div className="container justify-start my-8">
-								<Link to="/creatorLogin" className="button red p-2 w-48 text-16px">
+								<Link to="/creatorLogin" className="button red p-2 w-48 text-18x">
 									Get Started!
 								</Link>
 							</div>
@@ -156,13 +156,6 @@ export default class homepage extends Component {
 
 							</div>
 						</div>
-
-
-
-
-
-
-
 					</div>
 
 
@@ -171,11 +164,6 @@ export default class homepage extends Component {
 
 					</div>
 				</div>
-
-
-
-
-
 			</main>
 		);
 	}

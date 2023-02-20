@@ -27,22 +27,6 @@ export default class navbar extends Component {
                         <Link to="/createProject" className="text-16px">Presenter View</Link>
                     </div> */}
                 </div>
-                {/* <div className="navbar">
-                    <div className="navbar-container">
-
-                        <div className="logo-container">
-                           
-                        </div>
-
-                        <div className="menu-container">
-                            <Link to="/createActivity" className="text-16px">Create Activity</Link>
-                            <Link to="/activityList" className="text-16px">Creator Activity View</Link>
-                            <Link to="/guestActivityList" className="text-16px">Guest Activity View</Link>
-                            <Link to="/createProject" className="text-16px">Presenter View</Link>
-                        </div>
-
-                    </div>
-                </div> */}
             </header>
         );
     }

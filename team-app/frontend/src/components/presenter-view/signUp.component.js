@@ -52,21 +52,21 @@ export default class presenterSignup extends Component {
 
   render() {
     return (
-      <div class="h-screen">
-        <div className="px-24 ">
-          <div className="row" class="flex justify-center w-auto bg-white">
+      // <div class="h-screen  bg-white">
+        <div className="px-40  bg-white ">
+          <div className="row" class="flex w-auto shadow mt-10 ">
 
-          <div className="column bg-FAE7E7" >
+          <div className="column bg-FAE7E7 shadow" >
           <div class="center">
-          <br></br> <br></br><br></br> 
-            <div className="text-36px">&nbsp; Are you new to</div>
-            <div className="text-48px">GARLICWAK?</div>
+          <br></br> <br></br><br></br> <br></br><br></br>
+            <div className="text-36px">Are you a new</div>
+            <div className="text-48px color-E22637">PRESENTERs?</div>
             <br></br>
             <div className="text-24px">&nbsp; Let's get you Sign up</div>
           </div>
           </div>
 
-          <div className="column" >
+          <div className="column " >
           <div class="vl"></div>
           <div class="forms">
           <div class="form-content"> 
@@ -108,7 +108,7 @@ export default class presenterSignup extends Component {
           </div>
           </div>
           </div>
-      </div>
+      // </div>
           
     );
   }
