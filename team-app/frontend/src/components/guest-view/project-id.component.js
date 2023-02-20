@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swire from "sweetalert2";
 import { Component } from "react";
-import user from '../images/user.png'
+// import user from '../images/user.png'
 
 export default class projectID extends Component {
   constructor(props) {
