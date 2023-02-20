@@ -75,6 +75,14 @@ export default class homepage extends Component {
 			.then((res) => console.log("res : ", res.data))
 			.catch((err) => console.log("error : ", err));
 
+<<<<<<< HEAD
+  onChange = (date) => {
+    // Day.js object
+    console.log(date);
+
+    // to normal Date object
+    console.log(date.toDate());
+  };
 
   render() {
     return (
@@ -99,6 +107,32 @@ export default class homepage extends Component {
             </div>
             <DatePicker onChange={this.onChange} />
           </div>
+=======
+		axios.get("http://localhost:5000/activity/").then((res) => {
+			console.log(res.data);
+			let i;
+			for (i = 0; i < res.data.length; i++) {
+				if (code.code === encodeNumber(res.data[i].actName)) {
+					// isTrue = true;
+					// resData = res.data[i].actName;
+					// window.location = "/guestActivityList/" + res.data[i]._id;
+					window.location = "./access/" + code.code;
+					break;
+				}
+			}
+
+			if (i >= res.data.length && code.code.length === 8) {
+				Swal.fire({
+					position: "top",
+					icon: "error",
+					title: "Wrong Code",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			}
+		});
+	}
+>>>>>>> bcd4d5d57c4a6a6df65b85b42f7ed6484a3a1d32
 
 	render() {
 		return (
