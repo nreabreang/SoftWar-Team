@@ -1,16 +1,14 @@
 .banner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
     text-align: left;
+    height: 100vh;
 }
 
 .banner-container {
     display: block;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 3rem 3rem;
+    padding: 0rem 3rem 3rem 3rem;
 }
 
 .banner-container.left {
@@ -18,7 +16,7 @@
 }
 
 .banner-container.right {
-    background-color: #FCC5C0;
+    background-color: #DB4D4B;
 }
 
 /* .joining-container {
@@ -34,18 +32,15 @@
     border: none;
     appearance: auto;
     outline: none;
-    border-top-left-radius: 2rem;
-    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
     text-transform: uppercase;
     vertical-align: middle;
     text-align: left;
-    font-family: 'Metro-M';
-    font-size: 14px;
-    color: #263159;
     cursor: pointer;
     padding: 10px 30px;
     margin: 10px 0px 10px 10px;
-    background-color: #FAE7E7;
+    background-color: #DB4D4B;
 }
 
 .input-code::placeholder {
@@ -61,11 +56,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px 10px;
+    padding: 11px 10px;
     margin: 0px 10px 0px 0px;
-    border-top-right-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     width: max-content;
     height: max-content;
-    background-color: #FAE7E7;
+    background-color: #DB4D4B;
 }
+
+

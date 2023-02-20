@@ -10,10 +10,28 @@ export default class navbar extends Component {
         return (
             <header>
                 <div className="navbar">
+
+                    {/* creator side */}
+                    <div className="my-8">
+                        <Link to="/" className="text-16px bold">GARLICWAK</Link>
+                    </div>
+
+                    <div className="line-horizon px-12"></div>
+
+
+                    {/* presenter and guest side */}
+                    {/* <div className="navbar-container nav left right-side">
+                        <Link to="/createActivity" className="text-16px">Create Activity</Link>
+                        <Link to="/activityList" className="text-16px">Creator Activity View</Link>
+                        <Link to="/guestActivityList" className="text-16px">Guest Activity View</Link>
+                        <Link to="/createProject" className="text-16px">Presenter View</Link>
+                    </div> */}
+                </div>
+                {/* <div className="navbar">
                     <div className="navbar-container">
 
                         <div className="logo-container">
-                            <Link to="/" className="text-16px">GARLICWAK</Link>
+                           
                         </div>
 
                         <div className="menu-container">
@@ -24,7 +42,7 @@ export default class navbar extends Component {
                         </div>
 
                     </div>
-                </div>
+                </div> */}
             </header>
         );
     }

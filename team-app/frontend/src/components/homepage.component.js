@@ -79,45 +79,49 @@ export default class homepage extends Component {
 	render() {
 		return (
 			<main>
+					<div className="navbar-container right">
+						<Link to="/createActivity" className="text-16px bold">Create Activity</Link>
+						<Link to="/activityList" className="text-16px bold">Creator Activity View</Link>
+						<Link to="/guestActivityList" className="text-16px bold">Guest Activity View</Link>
+						<Link to="/createProject" className="text-16px">Presenter View</Link>
+					</div>
+			
+
 				<div className="banner">
 
 					{/* creator side */}
 					<div className="banner-container left">
 
-						<p className="text-48px">Creator!</p>
-						<p className="text-20px">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-							dignissimos non quis illo provident officiis inventore esse,
-							dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
-							voluptas, a expedita optio?
-						</p>
+						<div className="my-8">
+							<Link to="/" className="text-16px bold">GARLICWAK</Link>
+						</div>
 
-						<div className="button my-8">
-							<div className="container justify-start">
-								<Link to="/creatorLogin" className="button-navy">
+						<div className="line-horizon"></div>
+
+						<div className="">
+							<p className="text-48px my-8">Creator!</p>
+							<p className="text-20px">
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
+								dignissimos non quis illo
+							</p>
+
+							<div className="container justify-start my-8">
+								<Link to="/creatorLogin" className="button red p-2 w-48 text-16px">
 									Get Started!
 								</Link>
 							</div>
 						</div>
 
+						<div className="text-right">
+							<p className="text-48px my-8 ">Welcome</p>
+							<p className="text-20px">
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
+								dignissimos non quis illo
+							</p>
 
-					</div>
+							<p className="text-20px">Joining an Activity</p>
 
-
-					{/* presenter and guest side */}
-					<div className="banner-container right">
-						<p className="text-48px">Welcome</p>
-						<p className="text-20px">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-							dignissimos non quis illo provident officiis inventore esse,
-							dolorum nam deserunt, dolor odio earum! Veniam nostrum sequi
-							voluptas, a expedita optio?
-						</p>
-
-						<p className="text-20px">Joining an Activity</p>
-
-						<div className="container justify-start">
-							<div className="">
+							<div className="container justify-end">
 
 								<form onSubmit={this.onEnterCode}
 									className="flex items-center justify-center">
@@ -134,7 +138,7 @@ export default class homepage extends Component {
 											<img
 												alt=""
 												src={rightarrow}
-												className="images-icon"
+												className="images-20px"
 												// onClick={this.onEnterCode}
 												type="submit"
 											/>
@@ -143,14 +147,28 @@ export default class homepage extends Component {
 
 									<div className="line-vertical" />
 
-									<p className="text-20px">OR</p>
+									<p className="text-20px bold mx-4">OR</p>
 
 									<Link to="/scanner">
-										<img src={qr} className="images-icon mx-2.5" alt="" />
+										<img src={qr} className="images-20px ml-2.5" alt="" />
 									</Link>
 								</form>
+
 							</div>
 						</div>
+
+
+
+
+
+
+
+					</div>
+
+
+					{/* presenter and guest side */}
+					<div className="banner-container right">
+
 					</div>
 				</div>
 
