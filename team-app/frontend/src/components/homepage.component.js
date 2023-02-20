@@ -6,15 +6,19 @@ import qr from "./images/qr-code - 1.png";
 import "./homepage.component.css";
 import "./Styles.css";
 import axios from "axios";
-import { Buffer } from "buffer";
+// import { Buffer } from "buffer";
 import Swal from "sweetalert2";
+import { DatePicker } from "@y0c/react-datepicker";
+// import calendar style
+// You can customize style by copying asset folder.
+import "@y0c/react-datepicker/assets/styles/calendar.scss";
 
-const encodeNumber = (str) => {
-  return Buffer.from(str)
-    .toString("base64")
-    .slice(0, 8)
-    .toLocaleUpperCase();
-};
+// const encodeNumber = (str) => {
+//   return Buffer.from(str)
+//     .toString("base64")
+//     .slice(0, 8)
+//     .toLocaleUpperCase();
+// };
 
 export default class homepage extends Component {
   constructor(props) {
@@ -56,7 +60,7 @@ export default class homepage extends Component {
 
     console.log(checkLoader.data);
     if (checkLoader.status === 200 && checkLoader.data.length > 0) {
-        window.location = "./access/" + code.code;
+      window.location = "./access/" + code.code;
     } else {
       Swal.fire({
         position: "top",
@@ -91,6 +95,14 @@ export default class homepage extends Component {
     // 	});
   }
 
+  onChange = (date) => {
+    // Day.js object
+    console.log(date);
+
+    // to normal Date object
+    console.log(date.toDate());
+  };
+
   render() {
     return (
       <main>
@@ -112,6 +124,7 @@ export default class homepage extends Component {
                 </Link>
               </div>
             </div>
+            <DatePicker onChange={this.onChange} />
           </div>
 
           {/* presenter and guest side */}
