@@ -8,6 +8,10 @@ import "./Styles.css";
 import axios from "axios";
 import { Buffer } from "buffer";
 import Swal from "sweetalert2";
+// import { DatePicker } from "@y0c/react-datepicker";
+// import calendar style
+// You can customize style by copying asset folder.
+// import "@y0c/react-datepicker/assets/styles/calendar.scss";
 
 const encodeNumber = (str) => {
 	return Buffer.from(str)
@@ -28,7 +32,36 @@ export default class homepage extends Component {
 		};
 	}
 
-	componentDidMount() { }
+	componentDidMount() {
+		const code = {
+			code: this.state.code,
+		};
+		axios.get("http://localhost:5000/activity/").then((res) => {
+			let i;
+			for (i = 0; i < res.data.length; i++) {
+				console.log(encodeNumber(res.data[i].actName + res.data[i].date));
+				if (
+					code.code === encodeNumber(res.data[i].actName + res.data[i].date)
+				) {
+					// isTrue = true;
+					// resData = res.data[i].actName;
+					// window.location = "/guestActivityList/" + res.data[i]._id;
+					window.location = "./access/" + code.code;
+					break;
+				}
+			}
+
+			if (i >= res.data.length && code.code.length === 8) {
+				Swal.fire({
+					position: "top",
+					icon: "error",
+					title: "Wrong Code",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			}
+		});
+	}
 
 	onChangeCode(e) {
 		this.setState({
@@ -55,7 +88,10 @@ export default class homepage extends Component {
 			console.log(res.data);
 			let i;
 			for (i = 0; i < res.data.length; i++) {
-				if (code.code === encodeNumber(res.data[i].actName)) {
+				console.log(encodeNumber(res.data[i].actName + res.data[i].date));
+				if (
+					code.code === encodeNumber(res.data[i].actName + res.data[i].date)
+				) {
 					// isTrue = true;
 					// resData = res.data[i].actName;
 					// window.location = "/guestActivityList/" + res.data[i]._id;
@@ -79,16 +115,22 @@ export default class homepage extends Component {
 	render() {
 		return (
 			<main>
-					<div className="navbar-container right">
-						<Link to="/createActivity" className="text-16px bold">Create Activity</Link>
-						<Link to="/activityList" className="text-16px bold">Creator Activity View</Link>
-						<Link to="/guestActivityList" className="text-16px bold">Guest Activity View</Link>
-						<Link to="/createProject" className="text-16px">Presenter View</Link>
-					</div>
-			
+				<div className="navbar-container right">
+					<Link to="/createActivity" className="text-16px bold">
+						Create Activity
+					</Link>
+					<Link to="/activityList" className="text-16px bold">
+						Creator Activity View
+					</Link>
+					<Link to="/guestActivityList" className="text-16px bold">
+						Guest Activity View
+					</Link>
+					<Link to="/createProject" className="text-16px">
+						Presenter View
+					</Link>
+				</div>
 
 				<div className="banner">
-
 					{/* creator side */}
 					<div className="banner-container left">
 
@@ -106,63 +148,60 @@ export default class homepage extends Component {
 							</p>
 
 							<div className="container justify-start my-8">
-								<Link to="/creatorLogin" className="button red p-2 w-48 text-18x">
+								<Link
+									to="/creatorLogin"
+									className="button red p-2 w-48 text-18x">
 									Get Started!
 								</Link>
 							</div>
-						</div>
 
-						<div className="text-right">
-							<p className="text-36px my-8 text-navy">Welcome</p>
-							<p className="text-18px text-navy">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-								dignissimos non quis illo
-							</p>
+							<div className="text-right">
+								<p className="text-36px my-8 text-navy">Welcome</p>
+								<p className="text-18px text-navy">
+									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
+									dignissimos non quis illo
+								</p>
 
-							<p className="text-20px">Joining an Activity</p>
+								<div className="container justify-end">
+									<form
+										onSubmit={this.onEnterCode}
+										className="flex items-center justify-center">
+										<input
+											onChange={this.onChangeCode}
+											type="text"
+											placeholder="Enter Code"
+											maxLength="8"
+											className="input-code"
+										></input>
 
-							<div className="container justify-end">
+										<div className="icon-container">
+											<button type="submit">
+												<img
+													alt=""
+													src={rightarrow}
+													className="images-20px"
+													// onClick={this.onEnterCode}
+													type="submit"
+												/>
+											</button>
+										</div>
 
-								<form onSubmit={this.onEnterCode}
-									className="flex items-center justify-center">
+										<div className="line-vertical" />
 
-									<input
-										onChange={this.onChangeCode}
-										type="text"
-										placeholder="Enter Code"
-										maxLength="8"
-										className="input-code text-16px pink"></input>
+										<p className="text-20px bold mx-4">OR</p>
 
-									<div className="icon-container">
-										<button type="submit">
-											<img
-												alt=""
-												src={rightarrow}
-												className="images-20px"
-												// onClick={this.onEnterCode}
-												type="submit"
-											/>
-										</button>
-									</div>
-
-									<div className="line-vertical" />
-
-									<p className="text-20px bold mx-4 text-navy">OR</p>
-
-									<Link to="/scanner">
-										<img src={qr} className="images-20px ml-2.5" alt="" />
-									</Link>
-								</form>
-
+										<Link to="/scanner">
+											<img src={qr} className="images-20px ml-2.5" alt="" />
+										</Link>
+									</form>
+								</div>
 							</div>
 						</div>
+
+
 					</div>
-
-
 					{/* presenter and guest side */}
-					<div className="banner-container right">
-
-					</div>
+					<div className="banner-container right"></div>
 				</div>
 			</main>
 		);

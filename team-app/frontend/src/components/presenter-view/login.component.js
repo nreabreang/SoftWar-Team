@@ -68,7 +68,10 @@ export default class presenterLogin extends Component {
               axios.get("http://localhost:5000/activity/").then((res) => {
                 let i;
                 for (i = 0; i < res.data.length; i++) {
-                  if (code === encodeNumber(res.data[i].actName)) {
+                  if (
+                    code ===
+                    encodeNumber(res.data[i].actName + res.data[i].date)
+                  ) {
                     window.location = "/presenterActivityId/" + res.data[i]._id;
                     break;
                   } else {

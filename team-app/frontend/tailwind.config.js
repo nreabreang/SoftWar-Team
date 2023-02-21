@@ -1,13 +1,17 @@
 module.exports = {
-	content: [
-		"./src/**/*.{js,jsx,ts,tsx}",
-		"./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}"
-	],
-	theme: {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  
+  theme: {
+    extend: {
+      screens: {
+        xs: { min: "320", max: "639px" },
+        // => @media (min-width: 640px and max-width: 767px) { ... }
 
-		extend: {
+        sm: { min: "640px", max: "767px" },
+        // => @media (min-width: 640px and max-width: 767px) { ... }
 
-			screens: {
+        md: { min: "768px", max: "1023px" },
+        // => @media (min-width: 768px and max-width: 1023px) { ... }
 
 				'xs': { 'min': '320', 'max': '639px' },
 				// => @media (min-width: 640px and max-width: 767px) { ... }
