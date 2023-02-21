@@ -2,7 +2,6 @@
   "dependencies": {
     "@y0c/react-datepicker": "^1.0.4",
     "bcryptjs": "^2.4.3",
-    "flowbite": "^1.6.3",
     "flowbite-datepicker": "^1.2.2",
     "flowbite-react": "^0.3.8",
     "jsonwebtoken": "^9.0.0"

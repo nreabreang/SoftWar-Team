@@ -6,7 +6,7 @@ import qr from "./images/qr-code - 1.png";
 import "./homepage.component.css";
 import "./Styles.css";
 import axios from "axios";
-// import { Buffer } from "buffer";
+import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 import { DatePicker } from "@y0c/react-datepicker";
 // import calendar style
@@ -32,7 +32,36 @@ export default class homepage extends Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const code = {
+      code: this.state.code,
+    };
+    axios.get("http://localhost:5000/activity/").then((res) => {
+      let i;
+      for (i = 0; i < res.data.length; i++) {
+        console.log(encodeNumber(res.data[i].actName + res.data[i].date));
+        if (
+          code.code === encodeNumber(res.data[i].actName + res.data[i].date)
+        ) {
+          // isTrue = true;
+          // resData = res.data[i].actName;
+          // window.location = "/guestActivityList/" + res.data[i]._id;
+          window.location = "./access/" + code.code;
+          break;
+        }
+      }
+
+      if (i >= res.data.length && code.code.length === 8) {
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: "Wrong Code",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  }
 
   onChangeCode(e) {
     this.setState({
@@ -59,7 +88,10 @@ export default class homepage extends Component {
       console.log(res.data);
       let i;
       for (i = 0; i < res.data.length; i++) {
-        if (code.code === encodeNumber(res.data[i].actName)) {
+        console.log(encodeNumber(res.data[i].actName + res.data[i].date));
+        if (
+          code.code === encodeNumber(res.data[i].actName + res.data[i].date)
+        ) {
           // isTrue = true;
           // resData = res.data[i].actName;
           // window.location = "/guestActivityList/" + res.data[i]._id;

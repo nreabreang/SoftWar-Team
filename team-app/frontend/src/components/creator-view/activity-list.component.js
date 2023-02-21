@@ -70,7 +70,7 @@ const Activity = (props) => (
 			<div className="items-container m-2 my-6">
 				<p className="text-16px bold mr-4">ACCESS CODE: </p>
 				<div className="text-16px italic mr-4">
-					{encodeNumber(props.activity.actName)}
+					{encodeNumber(props.activity.actName + props.activity.date)}
 				</div>
 			</div>
 
