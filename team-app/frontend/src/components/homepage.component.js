@@ -93,14 +93,14 @@ export default class homepage extends Component {
 					<div className="banner-container left">
 
 						<div className="my-8">
-							<Link to="/" className="text-16px bold">GARLICWAK</Link>
+							<Link to="/" className="text-16px text-navy bold">GARLICWAK</Link>
 						</div>
 
 						<div className="line-horizon"></div>
 
 						<div className="">
-							<p className="text-48px my-8">Creator!</p>
-							<p className="text-20px">
+							<p className="text-36px my-8 text-navy">Creator!</p>
+							<p className="text-18px text-navy">
 								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
 								dignissimos non quis illo
 							</p>
@@ -113,8 +113,8 @@ export default class homepage extends Component {
 						</div>
 
 						<div className="text-right">
-							<p className="text-48px my-8 ">Welcome</p>
-							<p className="text-20px">
+							<p className="text-36px my-8 text-navy">Welcome</p>
+							<p className="text-18px text-navy">
 								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
 								dignissimos non quis illo
 							</p>
@@ -131,7 +131,7 @@ export default class homepage extends Component {
 										type="text"
 										placeholder="Enter Code"
 										maxLength="8"
-										className="input-code"></input>
+										className="input-code text-16px pink"></input>
 
 									<div className="icon-container">
 										<button type="submit">
@@ -147,7 +147,7 @@ export default class homepage extends Component {
 
 									<div className="line-vertical" />
 
-									<p className="text-20px bold mx-4">OR</p>
+									<p className="text-20px bold mx-4 text-navy">OR</p>
 
 									<Link to="/scanner">
 										<img src={qr} className="images-20px ml-2.5" alt="" />

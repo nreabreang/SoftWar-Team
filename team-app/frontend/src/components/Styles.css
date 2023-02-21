@@ -57,7 +57,7 @@ footer {
 
 .button.red:hover {
     background-color: transparent;
-    color: #E22637;
+    color: #DB4D4B;
 }
 
 .button-navy.small {
@@ -88,7 +88,7 @@ footer {
 }
 
 .button-lightpink-liner {
-    color: #E22637;
+    color: #DB4D4B;
 }
 
 .button-lightpink-liner:hover {
@@ -106,7 +106,6 @@ footer {
     /* 48px */
     line-height: 1;
     font-family: 'Metro-B';
-    color: #263159;
 }
 
 .text-36px {
@@ -115,7 +114,6 @@ footer {
     line-height: 2.5rem;
     /* 40px */
     font-family: 'Metro-B';
-    color: #263159;
 }
 
 .text-30px {
@@ -124,7 +122,6 @@ footer {
     line-height: 2.25rem;
     /* 36px */
     font-family: 'Metro-B';
-    color: #263159;
 }
 
 .text-24px {
@@ -133,7 +130,6 @@ footer {
     line-height: 2rem;
     /* 32px */
     font-family: 'Metro-M';
-    color: #263159;
 }
 
 .text-24px.bold {
@@ -146,15 +142,10 @@ footer {
     line-height: 1.75rem;
     /* 28px */
     font-family: 'Metro-M';
-    color: #263159;
 }
 
 .text-20px.bold {
     font-family: 'Metro-B';
-}
-
-.text-20px.m4 {
-    margin-left: 3rem;
 }
 
 .text-18px {
@@ -163,7 +154,6 @@ footer {
     line-height: 1.75rem;
     /* 28px */
     font-family: 'Metro-M';
-    color: #263159;
 }
 
 .text-18px.bold {
@@ -176,7 +166,10 @@ footer {
     line-height: 1.5rem;
     /* 24px */
     font-family: 'Metro-R';
-    color: #263159;
+}
+
+.text-16px.pink {
+    color: #FCC5C0;
 }
 
 .text-16px.bold {
@@ -189,7 +182,10 @@ footer {
     line-height: 1.25rem;
     /* 20px */
     font-family: 'Metro-R';
-    color: #263159;
+}
+
+.text-14px.bold {
+    font-family: 'Metro-B';
 }
 
 .text-12px {
@@ -198,7 +194,10 @@ footer {
     line-height: 1rem;
     /* 16px */
     font-family: 'Metro-R';
-    color: #1E1E1E;
+}
+
+.text-12px.bold {
+    font-family: 'Metro-B';
 }
 
 .text-12px a {
@@ -292,6 +291,8 @@ footer {
     margin-right: 1.5rem;
 }
 
+
+
 .line-vertical {
     border-right-width: 0.1rem;
     border-left-width: 0rem;
@@ -305,7 +306,7 @@ footer {
 }
 
 .line-horizon {
-	border-top-width: 0rem;
-	border-bottom-width: 1px;
-	border-color: #1E1E1E;
+    border-top-width: 0rem;
+    border-bottom-width: 1px;
+    border-color: #1E1E1E;
 }

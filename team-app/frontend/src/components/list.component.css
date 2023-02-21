@@ -20,9 +20,8 @@
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    background-color: #FCC5C0;
+    /* border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem; */
 }
 
 .items-container {
@@ -42,6 +41,7 @@
 .show-container {
     display: grid;
     gap: 1rem;
+    margin: auto;
     justify-items: center;
     align-items: center;
 }

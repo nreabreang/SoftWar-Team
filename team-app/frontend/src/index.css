@@ -27,52 +27,22 @@ html {
     font-size: calc(60% + 0.8vmin);
 }
 
-/* for phone size  */
-/* @media only screen and (max-width: 600px) {
+/* @media (min-width: 640px and max-width: 767px) {
 
-    
-    .navbar {
-        grid-template-columns: 1fr;
-    }
+}
 
-    .navbar-container.right {
-        background-color: inherit;
-    }
-} */
+@media (min-width: 768px and max-width: 1023px) {
 
-/* for large phone size  */
-/* @media only screen and (min-width: 600px) {
+}
 
-    
-    .navbar {
-        grid-template-columns: 1fr;
-    }
+@media (min-width: 1024px and max-width: 1279px) {
 
-    .navbar-container.right {
-        background-color: inherit;
-    }
-    
-} */
+}
 
-/* for tablet size  */
-/* @media only screen and (min-width: 768px) {
+@media (min-width: 1280px and max-width: 1535px) {
 
-    
-    .navbar {
-        grid-template-columns: 1fr;
-    }
+}
 
-    .navbar-container.right {
-        background-color: inherit;
-    }
-} */
+@media (min-width: 1536px) {
 
-/* for labtops size  */
-/* @media only screen and (min-width: 992px) {
-    
-} */
-
-/* for large labtops size  */
-/* @media only screen and (min-width: 1200px) {
-    
 } */

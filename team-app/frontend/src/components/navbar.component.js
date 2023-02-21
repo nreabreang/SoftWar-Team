@@ -9,11 +9,11 @@ export default class navbar extends Component {
     render() {
         return (
             <header>
-                <div className="navbar">
+                <div className="navbar items-center">
 
                     {/* creator side */}
                     <div className="my-8">
-                        <Link to="/" className="text-16px bold">GARLICWAK</Link>
+                        <Link to="/" className="text-16px bold text-navy">GARLICWAK</Link>
                     </div>
 
                     <div className="line-horizon px-12"></div>

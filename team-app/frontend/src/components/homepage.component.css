@@ -44,8 +44,7 @@
 }
 
 .input-code::placeholder {
-    color: #1E1E1E;
-    opacity: 75%;
+    color: #FCC5C0;
 }
 
 .input-code:focus::placeholder {

@@ -119,7 +119,7 @@ render() {
 		<main>
 			<Navbar />
 			<div className="p-12">
-				<p className="text-36px text-center">Create Activity</p>
+				<p className="text-36px text-center text-navy">Create Activity</p>
 			</div>
 
 			<form onSubmit={this.onSubmit}>
@@ -138,7 +138,7 @@ render() {
 						{/* input activity name */}
 						<div className="w-full">
 							{/* <label className="text-18px bold">Activity Name</label> */}
-							<label className="text-18px bold">ACTIVITY NAME</label>
+							<label className="text-18px bold text-navy">ACTIVITY NAME</label>
 							<input
 								className="input mt-4 mb-8 w-full"
 								id="actName"
@@ -155,7 +155,7 @@ render() {
 
 							{/* virtual money container */}
 							<div className="w-full">
-								<label className="text-18px bold">VIRTUAL MONEY / GUEST</label>
+								<label className="text-18px bold text-navy">VIRTUAL MONEY / GUEST</label>
 								<input
 									className="input mt-4 mb-8 w-full"
 									id="virtualMoney"
@@ -169,7 +169,7 @@ render() {
 
 							{/* unit container */}
 							<div class="w-full">
-								<label className="text-18px bold" for="grid-last-name">
+								<label className="text-18px bold text-navy" for="grid-last-name">
 									UNIT
 								</label>
 								<input
@@ -187,7 +187,7 @@ render() {
 
 						{/* input date */}
 						<div className="w-full">
-							<label className="text-18px bold">DATE</label>
+							<label className="text-18px bold text-navy">DATE</label>
 
 							<DatePicker
 								className="input mt-4 mb-8 w-full"
