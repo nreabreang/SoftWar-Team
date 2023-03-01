@@ -3,23 +3,26 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem 0.5rem;
+    border-left-width: 20px;
+    border-color: #DB4D4B;
     margin: auto auto;
-    width: 75%;
-    background-color: #fcc5c0;
+    width: 60%;
+    background-color: #FCC5C0;
 }
     
-
 .info-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 2rem 2rem 0rem 2rem;
-
 }
 
 .des-container {
     display: block;
     padding: 0rem 2rem 2rem 2rem;
+}
 
+.join-container {
+    display: flex;
+    border-radius: 1rem 1rem;
 }
 
 

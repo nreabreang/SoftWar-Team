@@ -16,11 +16,11 @@ export default function GenerateQR(props) {
 				src={openAPI}
 				width="100"
 				height="100"
-				className="border-2 rounded-md mx-auto"
+				className="rounded-md mx-auto"
 			/>
 
-			<div className="flex justify-center mt-2 text-red-50">
-				<button onClick={downloadQR} className="text-16px bold flex justify-center hover:text-gray-900 uppercase">
+			<div className="flex justify-center mt-2">
+				<button onClick={downloadQR} className="text-16px bold flex justify-center text-light-pink hover:text-light-pink uppercase">
 					Download
 				</button>
 			</div>

@@ -45,6 +45,10 @@ module.exports = {
 				'navy': '#263159',
 				'dark': '#1E1E1E',
 			  },
+
+			  dropShadow: {
+				'sh': '0 35px 35px #DB4D4B'
+			  },
 		}
 	},
 

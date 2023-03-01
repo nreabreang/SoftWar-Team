@@ -277,6 +277,10 @@ footer {
     outline: none;
 }
 
+.input::placeholder {
+    color: #263159;
+}
+
 .ellipsis {
     white-space: nowrap;
     overflow: hidden;

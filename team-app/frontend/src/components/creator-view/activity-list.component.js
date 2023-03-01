@@ -162,7 +162,7 @@ export default class ActivityList extends Component {
 
 				<div className="grid grid-cols-2 px-12 py-8 items-center">
 
-					<p className="text-30px text-left text-navy break-words">Activity Dashboard</p>
+					<p className="text-30px text-left text-navy">Activity Dashboard</p>
 
 					<div className="container justify-end">
 						<a href="/createActivity" className="button red px-4 py-2 w-48 text-18x">
