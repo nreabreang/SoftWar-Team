@@ -38,12 +38,13 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
+				const arr = response.data.date.split(":00.000Z")
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
-					date: new Date(response.data.date),
+					date: arr[0],
 				});
 			})
 			.catch(function (error) {
@@ -183,6 +184,7 @@ export default class EditActivity extends Component {
 
 								<input
 									type="datetime-local"
+									value={this.state.date}
 									selected={this.state.date}
 									onChange={this.onChangeDate}
 									className="input mt-4 mb-8 w-full"
