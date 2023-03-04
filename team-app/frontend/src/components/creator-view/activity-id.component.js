@@ -57,7 +57,7 @@ const ActivityInfo = (props) => {
 							<div className="mx-8 text-left">
 								<p className="text-20px bold mb-4">Joining!</p>
 								<p className="text-16px bold">ACCESS CODE: </p>
-								<div className="text-16px">AAAAAAAA
+								<div className="text-16px">{props.code}
 									{/* {encodeNumber(props.activity.actName)} */}
 								</div>
 							</div>
@@ -102,6 +102,7 @@ export default class creatorActivityId extends Component {
 			actDescription: "",
 			virtualMoney: "",
 			unitMoney: "",
+			code:"",
 			date: new Date(),
 		};
 	}
@@ -118,6 +119,7 @@ export default class creatorActivityId extends Component {
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
+					code:response.data.code,
 					date: new Date(response.data.date),
 				});
 			})
@@ -160,6 +162,7 @@ export default class creatorActivityId extends Component {
 						}
 						actName={this.state.actName}
 						date={this.state.date}
+						code={this.state.code}
 						descript={this.state.actDescription}
 					/>
 					<CreatorProjectLists />
