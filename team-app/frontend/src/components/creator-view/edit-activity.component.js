@@ -38,7 +38,6 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
-				
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
@@ -52,8 +51,6 @@ export default class EditActivity extends Component {
 				console.log(error);
 			});
 		// this.setState({actName:"test"});
-	
-		
 	}
 
 	onChangeActName(e) {
@@ -84,6 +81,10 @@ export default class EditActivity extends Component {
 		this.setState({
 			date: e.target.value,
 		});
+	}
+
+	renderQuil(){
+		// return
 	}
 
 	onSubmit(e) {
@@ -216,21 +217,20 @@ export default class EditActivity extends Component {
 
 							<div className="justify-center w-full mx-auto">
 								<label className="text-18px bold text-navy">DESCRIPTION</label>
-								{/* <div>
+								<div>
 									<ReactQuill
 										theme="snow"
 										className="mt-4 mb-8"
 										required
-						
 										value={this.state.actDescription}
 										onChange={this.onChangeActDescription}
 										modules={this.modules}
 										formats={this.formats}
 										placeholder="Enter your Activity Description here"
 									/>
-								</div> */}
+								</div>
 
-								<textarea
+								{/* <textarea
 							rows="7"
 							required
 							id="actName"
@@ -239,7 +239,7 @@ export default class EditActivity extends Component {
 							onChange={this.onChangeActDescription}
 							placeholder="Description"
 							className="input w-full"
-								/>
+								/> */}
 
 
 							</div>
