@@ -3,6 +3,7 @@ import { Component } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export default class createProject extends Component {
   constructor(props) {
@@ -98,16 +99,40 @@ export default class createProject extends Component {
   render() {
     return (
       <main>
-        <div className="flex header-container">
-          <p className="text-36px">Create Project</p>
+        <header>
+					<div className="grid grid-cols-2 navbar my-8 items-center">
+						<Link to="/" className="">
+							<p className="text-16px bold text-navy">GARLICWAK</p>
+						</Link>
+						<div className="container justify-end">
+							{/* <p className="text-16px bold text-red-it">
+								{window.localStorage.getItem("name")}</p> */}
+						</div>
+					</div>
+					<div className="line-horizon px-12 mx-12"></div>
+				</header>
+
+        <div className="p-12">
+          <p className="text-30px text-navy text-center">Create Project</p>
         </div>
 
         <form onSubmit={this.sendForm}>
+        <div
+            className="grid grid-cols-2 w-9/12 gap-16 mx-auto
+										xs:grid-cols-1
+										sm:grid-cols-1
+										md:grid-cols-1
+										lg:grid-cols-2
+										xl:grid-cols-2
+										2xl:grid-cols-2"
+          >
+          {/* col1 */}
           {/* input activity name */}
-          <div className="input-container w-1/2 mx-auto">
-            <label className="">Project Name</label>
+          <div className="justify-center">
+          <div className="w-full">
+            <label className="text-18px text-navy bold">Project Name</label>
             <input
-              className="input w-full"
+              className="input mt-4 mb-8 w-full"
               id="projectName"
               name="projectName"
               type="text"
@@ -117,12 +142,24 @@ export default class createProject extends Component {
             />
           </div>
 
-          <div className="my-4">
-            <div className="input-container w-1/2 mx-auto">
-              <label>Project Description</label>
+          {/* add team member*/}
+          <div class="w-full">
+                <label
+                  className="text-18px bold text-navy"
+                  for="grid-last-name"
+                >
+                  Team Member
+                </label>
+                </div>
+        </div>
+
+          {/* col2 */}
+          <div className="justify-center">
+          <div className="justify-center w-full mx-auto">
+              <label className="text-18px bold text-navy">Project Description</label>
               <ReactQuill
                 theme="snow"
-                className="input w-full"
+                className="mt-4 mb-8"
                 value={this.state.description}
                 onChange={this.onchangeDescription}
                 modules={this.modules}
@@ -130,10 +167,10 @@ export default class createProject extends Component {
                 placeholder="Enter your Project Description "
               />
             </div>
-          </div>
+          </div></div>
 
-          <div className="container justify-end new">
-            <input type="submit" value="Submit" className="button-navy" />
+          <div className="container justify-end my-8 mx-auto w-9/12">
+            <input type="submit" value="Submit" className="button red p-2 w-48" />
           </div>
         </form>
       </main>
