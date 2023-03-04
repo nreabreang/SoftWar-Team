@@ -30,7 +30,7 @@ const ActivityList = (props) => (
 			{/* see project */}
 			<div className="enter-container mb-4">
 
-				<Link to={"/creatorActivityList/" + props.activity._id}>
+				<Link to={"/guestActivityList/" + props.activity._id}>
 					<div className="flex items-center">
 						<p className="text-12px bold mr-1">SEE PROJECT</p>
 						<img src={rightarrow} className="images-16px" />
