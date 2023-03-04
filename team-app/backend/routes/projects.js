@@ -17,11 +17,14 @@ router.route("/add").post((req, res) => {
   const projectName = req.body.projectName;
   const description = req.body.description;
   const idActivity = req.body.idActivity;
+  const members = req.body.members;
+  console.log(members)
 
   const newProject = new Projects({
     projectName,
     description,
     idActivity,
+    members,
   });
 
   newProject
@@ -63,5 +66,11 @@ router.route("/activity/:id").get(async (req, res) => {
     .then((resp) => res.status(200).json(resp))
     .catch((err) => console.log("Error: " + err));
 });
+
+router.route("/contains/:id").post(async(req,res)=>{
+  Projects.findByIdAndUpdate(req.params.id,req.body)
+  .then(()=>res.status(200).json("Success."))
+  .catch((err)=>res.status(400).json("Error: "+err))
+})
 
 module.exports = router;
