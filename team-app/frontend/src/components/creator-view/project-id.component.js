@@ -55,7 +55,7 @@ export default class projectID extends Component {
                         __html: this.state.description,
                       }}
                     ></div>
-                  </div>
+                  </div>Member:
                       {this.renderMember()} {/*ต้องปรับเปลี่ยน*/}
                 </div>
               </div>
