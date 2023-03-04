@@ -118,8 +118,8 @@ export default class CreatorProjectLists extends Component {
     render() {
         return (
             <main>
-                <div className="flex header-container">
-                    <p className="text-30px bold ">Project Dashboard</p>
+                <div className="header-container flex justify-center">
+                    <p className="text-30px bold mt-8">Project Dashboard</p>
                 </div>
 
                 <div className="w-9/12 mx-auto">

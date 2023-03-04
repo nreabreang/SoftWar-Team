@@ -75,15 +75,15 @@ const ActivityInfo = (props) => {
 					</div>
 				</div>
 
-				{/* <div className="line" />
+				<div className="line" />
 
-				<div className="des-container">
+				<div className="des-container mt-4">
 					
 					<div className="block">
 						<p className="text-20px bold">DESCRIPTION : </p>
 						<p className="text-20px italic m4  break-words">{props.descript}</p>
 					</div>
-				</div> */}
+				</div>
 			</div>
 
 		</div>
