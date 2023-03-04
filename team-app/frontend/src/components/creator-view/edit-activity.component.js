@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import Navbar from "../navbar.component";
 import "../Styles.css";
 // import date from "../images/calendar.png";
-import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { DatePicker } from "@y0c/react-datepicker";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 
 export default class EditActivity extends Component {
@@ -27,8 +25,6 @@ export default class EditActivity extends Component {
 			unitMoney: "",
 			date: new Date(),
 		};
-
-		
 	}
 
 	componentDidMount() {
@@ -52,8 +48,6 @@ export default class EditActivity extends Component {
 				console.log(error);
 			});
 		// this.setState({actName:"test"});
-	
-		
 	}
 
 	onChangeActName(e) {
@@ -108,7 +102,21 @@ export default class EditActivity extends Component {
 	render() {
 		return (
 			<main>
-				<Navbar />
+				{/* header */}
+				    <header>
+					<div className="grid grid-cols-2 navbar my-8 items-center">
+						<Link to="/" className="">
+							<p className="text-16px bold text-navy">GARLICWAK</p>
+						</Link>
+
+						<div className="container justify-end">
+							<p className="text-16px bold text-red-it">
+								{window.localStorage.getItem("name")}</p>
+						</div>
+					</div>
+
+					<div className="line-horizon px-12 mx-12"></div>
+				</header>
 
 				<div className="p-12">
 					<p className="text-30px text-navy text-center">Edit Activity</p>

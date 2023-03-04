@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import Navbar from "../navbar.component";
 import "../Styles.css";
 // import date from "../images/calendar.png";
 import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { DatePicker } from "@y0c/react-datepicker";
+import { Link } from "react-router-dom";
 // import calendar style
 // You can customize style by copying asset folder.
 // import "@y0c/react-datepicker/assets/styles/calendar_variable.scss";
@@ -118,7 +117,21 @@ export default class CreateActivity extends Component {
   render() {
     return (
       <main>
-        <Navbar />
+		{/* header */}
+        	<header>
+					<div className="grid grid-cols-2 navbar my-8 items-center">
+						<Link to="/" className="">
+							<p className="text-16px bold text-navy">GARLICWAK</p>
+						</Link>
+
+						<div className="container justify-end">
+							<p className="text-16px bold text-red-it">
+								{window.localStorage.getItem("name")}</p>
+						</div>
+					</div>
+
+					<div className="line-horizon px-12 mx-12"></div>
+				</header>
 
         <div className="p-12">
           <p className="text-30px text-navy text-center">Create Activity</p>

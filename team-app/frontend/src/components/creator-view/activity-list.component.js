@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Buffer } from "buffer";
 import "../list.component.css";
-import Navbar from "../navbar.component";
 import "../Styles.css";
 import rightarrow from "../images/right-arrow.png";
 import del from "../images/delete.png";
