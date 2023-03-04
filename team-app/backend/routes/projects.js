@@ -67,7 +67,7 @@ router.route("/activity/:id").get(async (req, res) => {
     .catch((err) => console.log("Error: " + err));
 });
 
-router.route("/contains/:id").post(async(req,res)=>{
+router.route("/containsUpdate/:id").post(async(req,res)=>{
   Projects.findByIdAndUpdate(req.params.id,req.body)
   .then(()=>res.status(200).json("Success."))
   .catch((err)=>res.status(400).json("Error: "+err))
