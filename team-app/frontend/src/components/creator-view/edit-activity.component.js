@@ -6,8 +6,8 @@ import "../Styles.css";
 // import date from "../images/calendar.png";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { DatePicker } from "@y0c/react-datepicker";
-import { useState } from "react";
+// import { DatePicker } from "@y0c/react-datepicker";
+// import { useState } from "react";
 
 
 export default class EditActivity extends Component {
@@ -28,7 +28,7 @@ export default class EditActivity extends Component {
 			date: new Date(),
 		};
 
-		
+
 	}
 
 	componentDidMount() {
@@ -45,7 +45,6 @@ export default class EditActivity extends Component {
 					unitMoney: response.data.unitMoney,
 					date: new Date(response.data.date),
 				});
-				
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -61,7 +60,7 @@ export default class EditActivity extends Component {
 
 	onChangeActDescription(e) {
 		this.setState({
-			actDescription: e.target.value,
+			actDescription: e,
 		});
 	}
 
@@ -81,10 +80,6 @@ export default class EditActivity extends Component {
 		this.setState({
 			date: e.target.value,
 		});
-	}
-
-	renderQuil(){
-		// return
 	}
 
 	onSubmit(e) {
@@ -222,6 +217,7 @@ export default class EditActivity extends Component {
 										theme="snow"
 										className="mt-4 mb-8"
 										required
+										// value="Joe"
 										value={this.state.actDescription}
 										onChange={this.onChangeActDescription}
 										modules={this.modules}
@@ -229,7 +225,7 @@ export default class EditActivity extends Component {
 										placeholder="Enter your Activity Description here"
 									/>
 								</div>
-
+						
 								{/* <textarea
 							rows="7"
 							required
