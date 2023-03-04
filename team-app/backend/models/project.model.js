@@ -19,7 +19,11 @@ const projectScheme = new schema({
     },
     idActivity:{
         type:String
-    }
+    },
+    members:[{
+        name:String,
+        email:String,
+    }]
 },{
     timestamps:true,
 });

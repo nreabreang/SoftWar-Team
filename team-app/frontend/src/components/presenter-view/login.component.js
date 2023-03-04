@@ -62,7 +62,8 @@ export default class presenterLogin extends Component {
           }).then((result) => {
             if (result.isConfirmed) {
               window.localStorage.setItem("token", data.data);
-
+              window.localStorage.setItem("PresenterFirstName",data.firstn)
+              window.localStorage.setItem("PresenterLastName",data.lastn)
               var code = window.localStorage.getItem("ActCode");
               console.log("Code : ", code);
               axios.get("http://localhost:5000/activity/").then((res) => {
@@ -89,7 +90,7 @@ export default class presenterLogin extends Component {
             showCancelButton: false,
           });
         }
-      });
+      })
   }
   render() {
     return (

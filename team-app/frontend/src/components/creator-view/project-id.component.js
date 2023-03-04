@@ -10,6 +10,7 @@ export default class projectID extends Component {
     this.state = {
       projectName: "",
       description: "",
+      members:[],
     };
   }
 
@@ -21,8 +22,17 @@ export default class projectID extends Component {
         this.setState({
           projectName: res.data.projectName,
           description: res.data.description,
+          members:res.data.members,
         });
       });
+  }
+
+  renderMember(){
+    return this.state.members.map((x)=>{
+      return(<div>
+        <div>{x.name}</div><div>{x.email}</div><div>{","}</div>
+      </div>)
+    })
   }
 
   render() {
@@ -46,6 +56,7 @@ export default class projectID extends Component {
                       }}
                     ></div>
                   </div>
+                      {this.renderMember()} {/*ต้องปรับเปลี่ยน*/}
                 </div>
               </div>
             </div>

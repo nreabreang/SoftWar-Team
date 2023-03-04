@@ -55,15 +55,14 @@ const ActivityInfo = (props) => {
 							<p className="text-20px bold text-center">Joining!</p>
 						</div> */}
 
-            <div className="join-container justity-center w-max mx-auto">
-              <div className="mx-8 text-left">
-                <p className="text-20px bold mb-4">Joining!</p>
-                <p className="text-16px bold">ACCESS CODE: </p>
-                <div className="text-16px">
-                  AAAAAAAA
-                  {/* {encodeNumber(props.activity.actName)} */}
-                </div>
-              </div>
+						<div className="join-container justity-center w-max mx-auto">
+							<div className="mx-8 text-left">
+								<p className="text-20px bold mb-4">Joining!</p>
+								<p className="text-16px bold">ACCESS CODE: </p>
+								<div className="text-16px">{props.code}
+									{/* {encodeNumber(props.activity.actName)} */}
+								</div>
+							</div>
 
               <div className="border-r-2 border-dark my-2"></div>
 
@@ -92,35 +91,37 @@ const ActivityInfo = (props) => {
 };
 
 export default class creatorActivityId extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      actName: "",
-      actDescription: "",
-      virtualMoney: "",
-      unitMoney: "",
-      date: new Date(),
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			actName: "",
+			actDescription: "",
+			virtualMoney: "",
+			unitMoney: "",
+			code:"",
+			date: new Date(),
+		};
+	}
 
   componentDidMount() {
     const arr = window.location.href.split("/");
     const access = arr[arr.length - 1];
 
-    axios
-      .get("http://localhost:5000/activity/" + arr[arr.length - 1])
-      .then((response) => {
-        this.setState({
-          actName: response.data.actName,
-          actDescription: response.data.actDescription,
-          virtualMoney: response.data.virtualMoney,
-          unitMoney: response.data.unitMoney,
-          date: new Date(response.data.date),
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+		axios
+			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
+			.then((response) => {
+				this.setState({
+					actName: response.data.actName,
+					actDescription: response.data.actDescription,
+					virtualMoney: response.data.virtualMoney,
+					unitMoney: response.data.unitMoney,
+					code:response.data.code,
+					date: new Date(response.data.date),
+				});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 
     window.localStorage.setItem("access", "http://localhost:3000/access/");
   }
@@ -151,20 +152,21 @@ export default class creatorActivityId extends Component {
           </p>
         </div>
 
-        {/* info container */}
-        <div className="">
-          <ActivityInfo
-            urls={
-              window.localStorage.getItem("access") +
-              encodeNumber(this.state.actName)
-            }
-            actName={this.state.actName}
-            date={this.state.date}
-            descript={this.state.actDescription}
-          />
-          <CreatorProjectLists />
-        </div>
-      </main>
-    );
-  }
+				{/* info container */}
+				<div className="">
+					<ActivityInfo
+						urls={
+							window.localStorage.getItem("access") +
+							encodeNumber(this.state.actName)
+						}
+						actName={this.state.actName}
+						date={this.state.date}
+						code={this.state.code}
+						descript={this.state.actDescription}
+					/>
+					<CreatorProjectLists />
+				</div>
+			</main>
+		);
+	}
 }
