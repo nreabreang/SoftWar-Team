@@ -67,9 +67,9 @@ export default class CreateActivity extends Component {
 		});
 	}
 
-	onChangeDate(date) {
+	onChangeDate(e) {
 		this.setState({
-			date: date,
+			date: e.target.value,
 		});
 	}
 
@@ -243,7 +243,7 @@ export default class CreateActivity extends Component {
 						</div>
 					</div>
 
-					{/* description */}
+					{/* description
 					<div className="justify-center w-9/12 mx-auto">
 						<label className="text-18px bold text-navy">DESCRIPTION</label>
 						<ReactQuill
@@ -257,7 +257,7 @@ export default class CreateActivity extends Component {
 							formats={this.formats}
 							placeholder="Put your Activity Description here"
 						/>
-					</div>
+					</div> */}
 
 					<div className="container justify-end my-8 mx-auto w-9/12">
 						<input
