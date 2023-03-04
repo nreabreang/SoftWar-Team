@@ -227,7 +227,7 @@ export default class CreateActivity extends Component {
 						{/* col2 */}
 						<div className="justify-center">
 							{/* input description */}
-							<div className="w-full mx-auto">
+							{/* <div className="w-full mx-auto">
 								<label className="">Description</label>
 								<textarea
 									rows="7"
@@ -238,7 +238,23 @@ export default class CreateActivity extends Component {
 									onChange={this.onChangeActDescription}
 									placeholder="Description"
 									className="input w-full"
-								/>
+								/> */}
+								
+							<div className="w-full mx-auto h-10">
+							<label className="text-18px bold text-navy">DESCRIPTION</label>
+							<ReactQuill
+								theme="snow"
+								className="mt-4 mb-8"
+								id="actName"
+								name="actName"
+								value={this.state.actDescription}
+								onChange={this.onChangeActDescription}
+								modules={this.modules}
+								formats={this.formats}
+								placeholder="Enter your Activity Description here"
+							/>
+						
+
 							</div>
 						</div>
 					</div>
