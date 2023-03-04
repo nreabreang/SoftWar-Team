@@ -16,6 +16,7 @@ export default class projectID extends Component {
     this.state = {
       projectName: "",
       description: "",
+      members:[],
       storeVirtualMoney: "",
       ILike: "",
       IWish: "",
@@ -32,6 +33,7 @@ export default class projectID extends Component {
         this.setState({
           projectName: res.data.projectName,
           description: res.data.description,
+          members:res.data.members,
         });
       });
   }
@@ -134,6 +136,16 @@ export default class projectID extends Component {
     // }
   }
 
+  showMembers(){
+    return this.state.members.map((x)=>{
+      return(
+        <div>
+          <div>{x.name}</div><div>{x.email}</div>
+        </div>
+      )
+    })
+  }
+
   render() {
     return (
       <div className=" bg-white flex mx-auto w-3/4 m-4  flex-col p-4 rounded-md">
@@ -151,6 +163,9 @@ export default class projectID extends Component {
             }}
             className="my-2 text-grey-500 overflow-x-auto p-2"
           ></div>
+          <div>Member:
+              {this.showMembers()}
+          </div>
         </div>
         <div>{this.showCommentAll}</div>
         <div className="">
