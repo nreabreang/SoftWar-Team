@@ -54,7 +54,7 @@ export default class access extends Component {
             <p class="text-md ml-3 font-bold text-grey block mt-6 color-263159">give Virtual Money and express your opinion on the Project! </p>
             <div class="h-20">              
             </div>
-            <a class="button-navy h-10 text-l " href="/guestLogin"
+            <a class="button-lightpink color-263159 m-0 h-10 text-l " href="/guestLogin"
             >Log in as GUEST</a>
             <div class="h-6 "> </div>  
           </div>
