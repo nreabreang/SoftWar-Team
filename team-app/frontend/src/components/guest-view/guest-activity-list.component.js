@@ -22,8 +22,7 @@ const ActivityList = (props) => (
 			{/* access code */}
 			<div className="items-container m-2 my-4">
 				<p className="text-16px bold mr-2">DESCRIPTION: </p>
-				<div className="text-16px ellipsis text-left">
-					{props.activity.actDescription}
+				<div className="text-16px ellipsis text-left" dangerouslySetInnerHTML={{__html:props.activity.actDescription}}>	
 				</div>
 			</div>
 
