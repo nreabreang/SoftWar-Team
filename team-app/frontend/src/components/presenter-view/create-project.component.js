@@ -71,14 +71,20 @@ export default class createProject extends Component {
   }
 
   onAddEvent(e){
-    console.log("Add Jah")
-    const data = {
-      name:this.state.nameMember,email:this.state.emailMember
+    e.preventDefault()
+    if(this.state.nameMember !== "" && this.state.emailMember !== ""){
+      const data = {
+        name:this.state.nameMember,email:this.state.emailMember
+      }
+      this.setState({
+        members:[...this.state.members,data]
+      })
+    }else{
+      Swal.fire({
+        title:"Cannot add this email & username",
+        showConfirmButton:true,
+      })
     }
-    this.setState({
-      members:[...this.state.members,data]
-    })
-    console.log(this.state.members)
   }
 
   onchangeProjectName(data) {
@@ -101,7 +107,7 @@ export default class createProject extends Component {
   renderInputTag(){
     return this.state.members.map((x)=>{
       return (<div>
-        <p>{x.name}</p><p>{x.email}</p><input type="button" onClick={()=>this.deleteMember(x)}>Del</input>
+        <p>{x.name}</p><p>{x.email}</p><button onClick={()=>this.deleteMember(x)}>Del</button>
       </div>)
     })
   }
