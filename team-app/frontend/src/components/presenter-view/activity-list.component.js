@@ -37,7 +37,7 @@ const ActivityInfo = (props) => {
         {/* description */}
         <div className="block">
           <p className="text-20px bold">DESCRIPTION : </p>
-          <p className="text-20px italic  break-words">{props.descript}</p>
+          <p className="text-20px italic  break-words" dangerouslySetInnerHTML={{__html:props.descript}}></p>
         </div>
       </div>
     </div>
