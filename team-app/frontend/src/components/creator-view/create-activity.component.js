@@ -51,7 +51,7 @@ export default class CreateActivity extends Component {
 
   onChangeActDescription(e) {
     this.setState({
-      actDescription: e.target.value,
+      actDescription: e,
     });
   }
 
