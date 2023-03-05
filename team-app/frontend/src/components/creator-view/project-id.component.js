@@ -30,7 +30,7 @@ export default class projectID extends Component {
   renderMember(){
     return this.state.members.map((x)=>{
       return(<div>
-        <div>{x.name}</div><div>{x.email}</div><div>{","}</div>
+        <div>{x.name}</div><div>{x.email}</div>
       </div>)
     })
   }
