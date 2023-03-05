@@ -90,6 +90,7 @@ export default class EditActivity extends Component {
 			actName: this.state.actName,
 			actDescription: this.state.actDescription,
 			virtualMoney: this.state.virtualMoney,
+			unitMoney: this.state.unitMoney,
 			date: this.state.date,
 		};
 
