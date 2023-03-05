@@ -101,7 +101,7 @@ export default class createProject extends Component {
   renderInputTag(){
     return this.state.members.map((x)=>{
       return (<div>
-        <p>{x.name}</p><p>{x.email}</p><button onClick={()=>this.deleteMember(x)}>Del</button>
+        <p>{x.name}</p><p>{x.email}</p><input type="button" onClick={()=>this.deleteMember(x)}>Del</input>
       </div>)
     })
   }
