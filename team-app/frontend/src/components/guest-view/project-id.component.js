@@ -155,6 +155,9 @@ export default class projectID extends Component {
           </label>
           {this.state.projectName}
         </div>
+        <div>
+          <button onClick={(e)=>window.history.back()}>Go Back</button>
+        </div>
         <div className="my-2 text-red-500  font-semibold">Description</div>
         <div className="rounded-md border-2 border-red-300 p-2 border-collapse flex ">
           <div
