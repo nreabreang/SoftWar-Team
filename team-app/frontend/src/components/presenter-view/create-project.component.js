@@ -77,7 +77,9 @@ export default class createProject extends Component {
         name:this.state.nameMember,email:this.state.emailMember
       }
       this.setState({
-        members:[...this.state.members,data]
+        members:[...this.state.members,data],
+        nameMember:"",
+        emailMember:"",
       })
     }else{
       Swal.fire({
@@ -106,7 +108,7 @@ export default class createProject extends Component {
 
   renderInputTag(){
     return this.state.members.map((x)=>{
-      return (<div>
+      return (<div className="flex justify-center gap-2">
         <p>{x.name}</p><p>{x.email}</p><button onClick={()=>this.deleteMember(x)}>Del</button>
       </div>)
     })
@@ -182,8 +184,8 @@ export default class createProject extends Component {
           </div>
           {this.renderInputTag()}
               <div>
-                <input type="text" onChange={this.onchangeNameMember} autoComplete="off"/>
-                <input type="text" onChange={this.onchangeEmailMember} autoComplete="off"/>
+                <input type="text" onChange={this.onchangeNameMember} autoComplete="off" value={this.state.nameMember}/>
+                <input type="text" onChange={this.onchangeEmailMember} autoComplete="off" value={this.state.emailMember}/>
                 <button onClick={this.onAddEvent}>Add</button>
               </div>
           <div className="container justify-end new">
