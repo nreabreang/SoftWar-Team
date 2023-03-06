@@ -10,7 +10,7 @@ export default class projectID extends Component {
     this.state = {
       projectName: "",
       description: "",
-      members:[],
+      members: [],
     };
   }
 
@@ -22,7 +22,7 @@ export default class projectID extends Component {
         this.setState({
           projectName: res.data.projectName,
           description: res.data.description,
-          members:res.data.members,
+          members: res.data.members,
         });
       });
   }
@@ -77,8 +77,9 @@ export default class projectID extends Component {
                         __html: this.state.description,
                       }}
                     ></div>
-                  </div>Member:
-                      {this.renderMember()} {/*ต้องปรับเปลี่ยน*/}
+                  </div>
+                  Member:
+                  {this.renderMember()} {/*ต้องปรับเปลี่ยน*/}
                 </div>
               </div>
             </div>
@@ -137,6 +138,15 @@ class Feedback extends Component {
     };
   }
 
+  showCalculateVirtual() {
+    let total = this.state.feedBacks.reduce(
+      (corr, data) => corr + Number(data.virtualMoney),
+      0
+    );
+
+    return total;
+  }
+
   componentDidMount() {
     const arr = window.location.href.split("/");
     axios
@@ -146,6 +156,21 @@ class Feedback extends Component {
         console.log(resp.data);
       })
       .catch((err) => console.log("Error: " + err));
+  }
+
+  componentDidUpdate() {
+    const arr = window.location.href.split("/");
+    axios
+      .post(
+        "http://localhost:5000/project/updateTotalVirtualMoney/" +
+          arr[arr.length - 1],
+        { totalVirtualMoney: this.showCalculateVirtual() }
+      )
+      .then((res) => console.log("Update total VP :", res.data))
+      .catch((err) => console.log("Error: " + err));
+
+    console.log(this.showCalculateVirtual());
+    console.log("id :", arr[arr.length - 1]);
   }
 
   showLengthOfList() {
@@ -161,13 +186,6 @@ class Feedback extends Component {
     });
     // const arr2 =  arr.then((data)=>data.map((fete)=>fete))
     // const sum =  moneyAll.reduce((correct,data)=>correct + Number(data),0)
-  }
-
-  showCalculateVirtual() {
-    return this.state.feedBacks.reduce(
-      (corr, data) => corr + Number(data.virtualMoney),
-      0
-    );
   }
 
   render() {
