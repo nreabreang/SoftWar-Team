@@ -203,6 +203,12 @@ export default class creatorActivityId extends Component {
                 + Add Project
               </button>
             </Link>
+            <p>{window.localStorage.PresenterFirstName + " "+ window.localStorage.PresenterLastName}</p>
+            <button onClick={(e)=>{
+              window.localStorage.removeItem("PresenterFirstName")
+              window.localStorage.removeItem("PresenterLastName")
+              window.history.back()
+            }}>Log Out</button>
           </div>
         </div>
 
