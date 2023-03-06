@@ -64,6 +64,7 @@ export default class presenterLogin extends Component {
               window.localStorage.setItem("token", data.data);
               window.localStorage.setItem("PresenterFirstName",data.firstn)
               window.localStorage.setItem("PresenterLastName",data.lastn)
+              window.localStorage.setItem("PresenterEmail",data.email)
               var code = window.localStorage.getItem("ActCode");
               console.log("Code : ", code);
               axios.get("http://localhost:5000/activity/").then((res) => {
