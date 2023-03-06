@@ -203,6 +203,14 @@ export default class creatorActivityId extends Component {
                 + Add Project
               </button>
             </Link>
+            <p>{window.localStorage.PresenterFirstName + " "+ window.localStorage.PresenterLastName}</p>
+            <button onClick={(e)=>{
+              window.localStorage.removeItem("PresenterFirstName")
+              window.localStorage.removeItem("PresenterLastName")
+              window.localStorage.removeItem("PresenterEmail")
+              window.localStorage.removeItem("token")
+              window.location.href = "http://localhost:3000/presenterLogin"
+            }}>Log Out</button>
           </div>
         </div>
 

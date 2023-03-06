@@ -96,6 +96,7 @@ export default class ActivityList extends Component {
 
 		this.state = {
 			activity: [],
+			name:"",
 		};
 	}
 
@@ -117,6 +118,9 @@ export default class ActivityList extends Component {
 					"name",
 					res.data[0].fname + " " + res.data[0].lname
 				);
+				this.setState({
+					name:res.data[0].fname + " " + res.data[0].lname,
+				})
 			});
 	}
 
@@ -153,8 +157,12 @@ export default class ActivityList extends Component {
 
 						<div className="container justify-end">
 							<p className="text-16px bold text-red-it">
-								{window.localStorage.getItem("name")}</p>
+								{this.state.name}</p>
 						</div>
+						<button onClick={(e)=>{
+							localStorage.clear()
+							window.history.back()
+						}}>Log out</button>
 					</div>
 
 					<div className="line-horizon px-12 mx-12"></div>

@@ -27,15 +27,34 @@ export default class projectID extends Component {
       });
   }
 
-  renderMember() {
-    return this.state.members.map((x) => {
-      return (
-        <div>
-          <div>{x.name}</div>
-          <div>{x.email}</div>
-        </div>
-      );
-    });
+  showButton(email,func){
+    if(this.state.members.find(elemental => elemental.email == email)){
+      return func;
+    }else{
+      return;
+    }
+  }
+
+  buttonEdit(){
+    return (<div>Edit.</div>)
+  }
+
+  buttonDelete(){
+    return(<div>
+      <button onClick={(e)=>{
+        const arr = window.location.href.split("/")
+        axios.delete("http://localhost:5000/project/delete/"+arr[arr.length-1])
+        window.history.back()
+      }}>Delete</button>
+    </div>)
+  }
+
+  renderMember(){
+    return this.state.members.map((x)=>{
+      return(<div>
+        <div>{x.name}</div><div>{x.email}</div>
+      </div>)
+    })
   }
 
   render() {
@@ -64,7 +83,8 @@ export default class projectID extends Component {
                 </div>
               </div>
             </div>
-
+              {this.showButton(window.localStorage.PresenterEmail,this.buttonEdit())}
+              {this.showButton(window.localStorage.PresenterEmail,this.buttonDelete())}
             {/* <div class="line-1"></div> */}
             <div className="">
               <Feedback />

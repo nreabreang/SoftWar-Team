@@ -137,7 +137,7 @@ export default class homepage extends Component {
 	render() {
 		return (
 			<main>
-				<div className="navbar-container right">
+				<div className="navbar-container right gap-2">
 					<Link to="/createActivity" className="text-16px bold">
 						Create Activity
 					</Link>
