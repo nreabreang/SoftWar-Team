@@ -54,6 +54,7 @@ router.route("/update/:id").post((req, res) => {
     .catch((error) => res.status(400).json("Error: " + error));
 });
 
+// http://localhost:5000/project/delete/:id
 router.route("/delete/:id").delete((req, res) => {
   Projects.findByIdAndDelete(req.params.id)
     .then(() => console.log("Delete successfully."))
