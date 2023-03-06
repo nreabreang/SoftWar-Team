@@ -1,5 +1,5 @@
+import axios from "axios";
 import React, { Component } from "react";
-
 import Chart from "./Chart";
 
 const labels = [
@@ -24,6 +24,16 @@ const data = {
 const options = {};
 
 export default class result extends Component {
+  componentDidMount() {
+    axios
+      .get(
+        "http://localhost:5000/feedback/" +
+          window.localStorage.getItem("idActivity")
+      )
+      .then((res) => console.log(res.data))
+      .catch((err) => err);
+  }
+
   render() {
     return (
       <div>

@@ -58,6 +58,13 @@ router.route("/:id").get(async(req,res)=>{
   .catch((err)=>res.status(400).json("Error: "+err))
 });
 
+// http://localhost:5000/feedback/:idProject
+router.route("/getIdProject/:idProject").get(async(req,res)=>{
+  Feedback.findById(req.params.idProject)
+  .then((feedback)=>res.status(200).json(feedback))
+  .catch((err)=>res.status(400).json("Error: "+err))
+});
+
 // http://localhost:5000/feedback/:id up to database
 router.route("/:id").post(async(req,res)=>{
   Feedback.findByIdAndDelete(req.params.id)
