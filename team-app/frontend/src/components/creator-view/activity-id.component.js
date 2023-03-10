@@ -21,7 +21,7 @@ const encodeNumber = (str) => {
 
 const ActivityInfo = (props) => {
 	return (
-		<div>
+		<div className="text-navy">
 
 			<div className="id-container text-navy">
 
@@ -75,15 +75,15 @@ const ActivityInfo = (props) => {
 					</div>
 				</div>
 
-				{/* <div className="line" />
+				
+			</div>
 
-				<div className="des-container">
+			<div className="block w-3/5 justify-center mx-auto pt-12">
 					
-					<div className="block">
-						<p className="text-20px bold">DESCRIPTION : </p>
-						<p className="text-20px italic m4  break-words">{props.descript}</p>
-					</div>
-				</div> */}
+				<div className="block">
+					<p className="text-18px bold mb-4">DESCRIPTION : </p>
+					<p className="text-18px italic m4  break-words">{props.descript}</p>
+				</div>
 			</div>
 
 		</div>

@@ -117,7 +117,7 @@ export default class CreateActivity extends Component {
 
 	render() {
 		return (
-			<main>
+			<main className="text-navy">
 				<Navbar />
 
 				<div className="p-12">
@@ -149,58 +149,79 @@ export default class CreateActivity extends Component {
 								/>
 							</div>
 
-							{/* input virtual money and unit */}
+							{/* bullet point for choose virtual money */}
+							<div className="pb-6 text-16px bold">
+								<ul className="flex items-center w-3/4">
+									<li className="w-full">
+										<div className="flex items-center">
+											<input checked
+												id="horizontal-list-radio-license"
+												type="radio"
+												value="10000"
+												name="list-radio"
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Default VM</label>
+										</div>
+									</li>
+									<li className="w-full">
+										<div className="flex items-center">
+											<input
+												id="horizontal-list-radio-license"
+												type="radio"
+												value="Unit"
+												name="list-radio"
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Customize VM</label>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							{/* input virtual money and unit grid*/}
 							<div className="grid grid-cols-2 gap-4">
+
 								{/* virtual money container */}
 								<div className="w-full">
 									<label className="text-18px text-navy bold">
 										VIRTUAL MONEY / GUEST
 									</label>
-							</div>
+									{/* virtual money container */}
+									<div className="flex w-full">
+										<input
+											className="input mt-4 mb-8 w-full"
+											id="virtualMoney"
+											name="virtualMoney"
+											type="text"
+											value={this.state.virtualMoney}
+											onChange={this.onChangeVirtualMoney}
+											placeholder="Enter Virtual Money"
+										/>
 
-									
-							</div>
-
-								<div className="flex items-center mt-4 mb-8">
-										<div class="mr-12">
-											<input checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 " />
-											<label for="default-radio-2" class="">Default Virtual Money</label>
-										</div>
-										<div class="">
-											<input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 " />
-											<label for="default-radio-1" class="">Customize Virtual Money</label>
-										</div>
 									</div>
 
-									<input
-										className="input mt-4 mb-8 w-full"
-										id="virtualMoney"
-										name="virtualMoney"
-										type="text"
-										value={this.state.virtualMoney}
-										onChange={this.onChangeVirtualMoney}
-										placeholder="Enter Virtual Money"
-									/>
-
-
+								</div>
 
 								{/* unit container */}
-								<div class="w-full">
+								<div className="w-full">
 									<label className="text-18px bold text-navy" for="grid-last-name">
 										UNIT
 									</label>
-									<input
-										className="input mt-4 mb-8 w-full"
-										required
-										id="unitMoney"
-										name="unitMoney"
-										type="text"
-										value={this.state.unitMoney}
-										onChange={this.onChangeUnitMoney}
-										placeholder="Enter Unit"
-									/>
+
+									{/* unit container */}
+									<div class="w-full">
+										<input
+											className="input mt-4 mb-8 w-full"
+											required
+											id="unitMoney"
+											name="unitMoney"
+											type="text"
+											value={this.state.unitMoney}
+											onChange={this.onChangeUnitMoney}
+											placeholder="Enter Unit"
+										/>
+									</div>
 								</div>
-						
+							</div>
 
 							{/* input date */}
 							<div className="w-full grid">
@@ -226,19 +247,11 @@ export default class CreateActivity extends Component {
 
 						{/* col2 */}
 						<div className="justify-center">
-							{/* input description */}
-							<div className="w-full mx-auto">
-								<label className="">Description</label>
-								<textarea
-									rows="7"
-									required
-									id="actName"
-									name="actName"
-									value={this.state.actDescription}
-									onChange={this.onChangeActDescription}
-									placeholder="Description"
-									className="input w-full"
-								/>
+							{/* input activity name */}
+							<div className="w-full">
+								{/* <label className="text-18px bold">Activity Name</label> */}
+								<label className="text-18px text-navy bold">ADD COMMITTEE</label>
+								{/* add committee front code */}
 							</div>
 						</div>
 					</div>
