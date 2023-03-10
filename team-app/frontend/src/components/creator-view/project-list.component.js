@@ -37,7 +37,7 @@ const Project = (props) => {
                     {/* <p className="text-16px italic ellipsis">{props.projectDescription}</p> */}
                     <div className="text-16px ellipsis break-words" dangerouslySetInnerHTML={{ __html : des }}></div>
                 </div>
-
+                
                 {/* see project */}
 
                 <Link to={"/creatorprojectList/" + props.projectID}>
@@ -89,8 +89,8 @@ export default class CreatorProjectLists extends Component {
 
 
     deleteProject(id) {
-        axios.post('http://localhost:5000/project/delete/' + id)
-        window.location = "/project/"
+        axios.delete('http://localhost:5000/project/delete/' + id)
+        // window.location = "/project/"
         this.setState({
             projects: this.state.projects.filter((val) => val.id !== id)
         })
@@ -118,8 +118,8 @@ export default class CreatorProjectLists extends Component {
     render() {
         return (
             <main>
-                <div className="flex header-container">
-                    <p className="text-30px bold ">Project Dashboard</p>
+                <div className="header-container flex justify-center">
+                    <p className="text-30px bold mt-8">Project Dashboard</p>
                 </div>
 
                 <div className="w-9/12 mx-auto">

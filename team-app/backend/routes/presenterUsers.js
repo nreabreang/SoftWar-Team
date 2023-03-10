@@ -42,7 +42,7 @@ router.route("/login-presenter").post(async (req, res) => {
   if (await bcrypt.compare(password, presenterUser.password)) {
     const token = jwt.sign({email:presenterUser.email}, JWT_SECRET);
     if (res.status(201)) {
-      return res.json({ status: "ok", data: token });
+      return res.json({ status: "ok", data: token , firstn:presenterUser.fname, lastn:presenterUser.lname,email:presenterUser.email});
     } else {
       return res.json({ status: "error" });
     }

@@ -62,7 +62,9 @@ export default class presenterLogin extends Component {
           }).then((result) => {
             if (result.isConfirmed) {
               window.localStorage.setItem("token", data.data);
-
+              window.localStorage.setItem("PresenterFirstName",data.firstn)
+              window.localStorage.setItem("PresenterLastName",data.lastn)
+              window.localStorage.setItem("PresenterEmail",data.email)
               var code = window.localStorage.getItem("ActCode");
               console.log("Code : ", code);
               axios.get("http://localhost:5000/activity/").then((res) => {
@@ -89,7 +91,7 @@ export default class presenterLogin extends Component {
             showCancelButton: false,
           });
         }
-      });
+      })
   }
   render() {
     return (
@@ -119,6 +121,7 @@ export default class presenterLogin extends Component {
                           type="text"
                           placeholder="Enter your email"
                           required
+                          autoComplete="off"
                           onChange={(e) =>
                             this.setState({ email: e.target.value })
                           }
