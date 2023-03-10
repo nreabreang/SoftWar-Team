@@ -11,11 +11,17 @@ export default class createProject extends Component {
     this.onchangeProjectName = this.onchangeProjectName.bind(this);
     this.onchangeDescription = this.onchangeDescription.bind(this);
     this.sendForm = this.sendForm.bind(this);
+    this.onchangeNameMember = this.onchangeNameMember.bind(this);
+    this.onchangeEmailMember = this.onchangeEmailMember.bind(this);
+    this.onAddEvent = this.onAddEvent.bind(this);
 
     this.state = {
       projectName: "",
       description: "",
       idActivity: "",
+      members:[],
+      nameMember:"",
+      emailMember:"",
     };
   }
 
@@ -53,6 +59,29 @@ export default class createProject extends Component {
     console.log("test id : ", window.localStorage.getItem("idActivity"));
   }
 
+  onchangeNameMember(e){
+    this.setState({
+      nameMember:e.target.value,
+    })
+  }
+
+  onchangeEmailMember(e){
+    this.setState({
+      emailMember:e.target.value,
+    })
+  }
+
+  onAddEvent(e){
+    console.log("Add Jah")
+    const data = {
+      name:this.state.nameMember,email:this.state.emailMember
+    }
+    this.setState({
+      members:[...this.state.members,data]
+    })
+    console.log(this.state.members)
+  }
+
   onchangeProjectName(data) {
     this.setState({
       projectName: data.target.value,
@@ -65,6 +94,21 @@ export default class createProject extends Component {
     });
   };
 
+  deleteMember(element){
+    const index = this.state.members.indexOf(element)
+    this.state.members.splice(index,1)
+  }
+
+  renderInputTag(){
+    return this.state.members.map((x)=>{
+      return (<div className="flex justify-center">
+        <div className="mt-4 mb-8 w-1/2 text-16px text-navy border-0 border-b border-blue-900 mr-4">{x.name}</div>
+        <div className="mt-4 mb-8 w-1/2 text-16px text-navy border-0 border-b border-blue-900 mr-4">{x.email}</div>
+        <button className="button red p-2 h-10 w-24" onClick={()=>this.deleteMember(x)}>Delete</button>
+      </div>)
+    })
+  }
+
   sendForm(e) {
     e.preventDefault();
 
@@ -72,6 +116,7 @@ export default class createProject extends Component {
       projectName: this.state.projectName,
       description: this.state.description,
       idActivity: window.localStorage.getItem("idActivity"),
+      members:this.state.members,
     };
 
     axios.post("http://localhost:5000/project/add", reqData).then((res) => {
@@ -150,7 +195,14 @@ export default class createProject extends Component {
                 >
                   Team Member
                 </label>
-                </div>
+                <div className="mt-4 mb-8 w-full">
+                {this.renderInputTag()}
+              <div>
+                <input className="border-0 border-b border-blue-900 mr-4" placeholder="Member Name" type="text" onChange={this.onchangeNameMember} autoComplete="off"/>
+                <input className="border-0 border-b border-blue-900 mr-4 " placeholder="Member Email" type="text" onChange={this.onchangeEmailMember} autoComplete="off"/>
+                <button className="button red p-2 h-10 w-20" onClick={this.onAddEvent}>Add</button>
+              </div></div>
+              </div>
         </div>
 
           {/* col2 */}

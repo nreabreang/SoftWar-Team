@@ -34,7 +34,6 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
-				
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
@@ -78,6 +77,10 @@ export default class EditActivity extends Component {
 		this.setState({
 			date: e.target.value,
 		});
+	}
+
+	renderQuil(){
+		// return
 	}
 
 	onSubmit(e) {
@@ -229,7 +232,6 @@ export default class EditActivity extends Component {
 										theme="snow"
 										className="mt-4 mb-8"
 										required
-						
 										value={this.state.actDescription}
 										onChange={this.onChangeActDescription}
 										modules={this.modules}
