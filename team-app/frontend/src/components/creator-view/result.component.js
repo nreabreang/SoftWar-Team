@@ -25,12 +25,23 @@ const options = {};
 
 export default class result extends Component {
   componentDidMount() {
+    // console.log(window.localStorage.getItem("idAct"));
+    const arr = [];
     axios
       .get(
-        "http://localhost:5000/feedback/" +
-          window.localStorage.getItem("idActivity")
+        "http://localhost:5000/project/activity/" +
+          window.localStorage.getItem("idAct")
       )
-      .then((res) => console.log(res.data))
+      .then((response) => {
+        const mappedData = response.data.map((project) => {
+          return {
+            projectName: project.projectName,
+            description: project.description,
+            totalVirtualMoney: project.totalVirtualMoney,
+          };
+        });
+        console.log(mappedData);
+      })
       .catch((err) => err);
   }
 

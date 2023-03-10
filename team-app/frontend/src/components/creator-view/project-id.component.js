@@ -15,7 +15,6 @@ export default class projectID extends Component {
   }
 
   componentDidMount() {
-    console.log("ress");
     const arr = window.location.href.split("/");
     axios
       .get("http://localhost:5000/project/" + arr[arr.length - 1])
