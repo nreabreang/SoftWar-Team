@@ -209,7 +209,7 @@ export default class creatorActivityId extends Component {
               window.localStorage.removeItem("PresenterLastName")
               window.localStorage.removeItem("PresenterEmail")
               window.localStorage.removeItem("token")
-              window.location.href = "http://localhost:3000/presenterLogin"
+              window.location.href = "http://localhost:3000"
             }}>Log Out</button>
           </div>
         </div>
