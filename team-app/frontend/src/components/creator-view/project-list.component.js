@@ -103,7 +103,7 @@ export default class CreatorProjectLists extends Component {
     constructor(props) {
         super(props)
 
-        this.deleteProject = this.deleteProject.bind(this)
+        // this.deleteProject = this.deleteProject.bind(this)
         this.state = {
             projects: [],
         }
@@ -132,6 +132,29 @@ export default class CreatorProjectLists extends Component {
 
     }
 
+    showButton(email,func,member){
+        if(member.find(elemental => elemental.email === email)){
+            return func;
+        }else{
+            return;
+        }
+    }
+
+    buttonEdit(){
+        return(<div>Edit</div>)
+    }
+
+    buttonDelete(id){
+        return(<div>
+            <button
+                onClick={(e)=>{
+                    axios.delete('http://localhost:5000/project/delete/' + id)
+                    window.location.reload()
+                }}
+            >Delete</button>
+        </div>)
+    }
+
     showProjectList() {
         return this.state.projects.map((resdata, index) => {
             return (
@@ -139,7 +162,10 @@ export default class CreatorProjectLists extends Component {
                     projectID={resdata._id}
                     projectName={resdata.projectName}
                     projectDescription={resdata.description}
-                    deleteProject={this.deleteProject}
+                    projectMember={resdata.members}
+                    projectShowButton={this.showButton}
+                    deleteProjectThis={this.buttonDelete}
+                    editProject={this.buttonEdit}
                     updateProject={this.updateProject}
                 />
             )

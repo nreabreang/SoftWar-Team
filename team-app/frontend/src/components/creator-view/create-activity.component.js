@@ -1,13 +1,28 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import Navbar from "../navbar.component";
 import "../Styles.css";
 import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { DatePicker } from "@y0c/react-datepicker";
+import { Link } from "react-router-dom";
+import Navbar from "../navbar.component";
+// import calendar style
+// You can customize style by copying asset folder.
+// import "@y0c/react-datepicker/assets/styles/calendar_variable.scss";
+
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return result;
+}
 
 export default class CreateActivity extends Component {
     constructor(props) {
@@ -34,6 +49,7 @@ export default class CreateActivity extends Component {
 
     componentDidMount() {
         // this.setState({actName:"test"});
+        // console.log(this.state.code);
     }
 
     onChangeActName(e) {
@@ -63,27 +79,38 @@ export default class CreateActivity extends Component {
         });
     }
 
-    onChangeDate(e) {
-        this.setState({
-            date: e.target.value,
-        });
-    }
 
-    onSubmit(e) {
-        e.preventDefault();
-        const emails = window.localStorage.activityEmail;
-        const code = Buffer.from(this.state.actName + this.state.date, "utf-8")
+
+    onChangeDate(e) {
+        const code = Buffer.from(makeid(8), "utf-8")
             .toString("base64")
             .slice(0, 8)
             .toLocaleUpperCase();
 
         console.log(code);
+        this.setState({
+            date: e.target.value,
+            code: code,
+        });
+    }
+
+
+
+
+    onSubmit(e) {
+        e.preventDefault();
+        const emails = window.localStorage.activityEmail;
+
+
+
+
+
         const activity = {
             actName: this.state.actName,
             actDescription: this.state.actDescription,
             virtualMoney: this.state.virtualMoney,
             unitMoney: this.state.unitMoney,
-            code: code,
+            code: this.state.code,
             email: emails,
             date: this.state.date,
         };
@@ -115,8 +142,8 @@ export default class CreateActivity extends Component {
         return (
             <main>
                 <header>
-					<Navbar name={window.localStorage.name} />
-				</header>
+                    <Navbar name={window.localStorage.name} />
+                </header>
 
                 <div className="p-12">
                     <p className="text-30px text-navy text-center">Create Activity</p>
@@ -156,12 +183,17 @@ export default class CreateActivity extends Component {
                                 <ul className="flex items-center w-3/4">
                                     <li className="w-full">
                                         <div className="flex items-center">
-                                            <input checked
+                                            <input
                                                 id="horizontal-list-radio-license"
                                                 type="radio"
                                                 value="10000"
                                                 name="list-radio"
-                                                className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+                                                className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2"
+                                                onClick={(e) => this.setState({
+                                                    virtualMoney: "10000",
+                                                    unitMoney: "unit"
+                                                })}
+                                            />
                                             <label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Default VM</label>
                                         </div>
                                     </li>
@@ -172,7 +204,12 @@ export default class CreateActivity extends Component {
                                                 type="radio"
                                                 value="Unit"
                                                 name="list-radio"
-                                                className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+                                                className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2"
+                                                onClick={(e) => this.setState({
+                                                    virtualMoney: "",
+                                                    unitMoney: ""
+                                                })}
+                                            />
                                             <label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Customize VM</label>
                                         </div>
                                     </li>
@@ -246,31 +283,31 @@ export default class CreateActivity extends Component {
 
                         {/* col2 */}
                         <div className="justify-center">
-                        <div className="w-full">
+                            <div className="w-full">
                                 {/* <label className="text-18px bold">Activity Name</label> */}
                                 <label className="text-18px text-navy bold">
                                     ADD COMMITTEE
                                 </label>
-                                
+
                             </div>
                         </div>
                     </div>
 
                     {/* description */}
-					<div className="justify-center w-9/12 mx-auto">
-						<label className="text-18px bold text-navy">DESCRIPTION</label>
-						<ReactQuill
-							theme="snow"
-							className="mt-4 mb-8"
-							id="actName"
-							name="actName"
-							value={this.state.actDescription}
-							onChange={this.onChangeActDescription}
-							modules={this.modules}
-							formats={this.formats}
-							placeholder="Put your Activity Description here"
-						/>
-					</div>
+                    <div className="justify-center w-9/12 mx-auto">
+                        <label className="text-18px bold text-navy">DESCRIPTION</label>
+                        <ReactQuill
+                            theme="snow"
+                            className="mt-4 mb-8"
+                            id="actName"
+                            name="actName"
+                            value={this.state.actDescription}
+                            onChange={this.onChangeActDescription}
+                            modules={this.modules}
+                            formats={this.formats}
+                            placeholder="Put your Activity Description here"
+                        />
+                    </div>
 
                     <div className="container justify-end my-8 mx-auto w-9/12">
                         <input

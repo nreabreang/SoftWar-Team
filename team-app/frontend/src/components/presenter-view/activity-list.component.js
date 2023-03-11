@@ -1,8 +1,8 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
 import CreatorProjectLists from "../creator-view/project-list.component";
-import Navbar from "../navbar.component";
-const { Component } = require("react");
+// import Navbar from "../navbar.component"
+// const { Component } = require("react");
+import { Component } from "react";
 
 const ActivityInfo = (props) => {
     const url = window.location.href.split("/");
@@ -111,13 +111,13 @@ export default class creatorActivityId extends Component {
     render() {
         return (
             <main>
-                <header>
+                {/* <header>
 					<Navbar name={window.localStorage.PresenterFirstName + " " + window.localStorage.PresenterLastName} />
-				</header>
+				</header> */}
 
                 {/* topic */}
                 <div className="grid grid-cols-2 px-12 py-8 items-center">
-                    <p className="text-30px text-left text-navy break-words">
+                    <p className="text-30px text-left text-navy">
                         Activity Description
                     </p>
 

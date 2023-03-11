@@ -4,8 +4,11 @@
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.2.1",
     "chartjs": "^0.3.24",
+    "datatables.net": "^1.13.4",
+    "datatables.net-dt": "^1.13.4",
     "flowbite-datepicker": "^1.2.2",
     "flowbite-react": "^0.3.8",
+    "jquery": "^3.6.4",
     "jsonwebtoken": "^9.0.0",
     "react-chartjs-2": "^5.2.0"
   },

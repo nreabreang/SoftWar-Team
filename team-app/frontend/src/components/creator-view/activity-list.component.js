@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Buffer } from "buffer";
 import "../list.component.css";
-import Navbar from "../navbar.component";
 import "../Styles.css";
 import rightarrow from "../images/right-arrow.png";
 import del from "../images/delete.png";
@@ -63,7 +62,7 @@ const Activity = (props) => (
 			<div className="items-container m-2 my-4">
 				<p className="text-16px bold mr-2">ACCESS CODE: </p>
 				<div className="text-16px italic mr-4">
-					{encodeNumber(props.activity.actName + props.activity.date)}
+					{props.activity.code}
 				</div>
 			</div>
 
