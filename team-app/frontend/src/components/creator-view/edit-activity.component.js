@@ -6,6 +6,8 @@ import "../Styles.css";
 import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
 
+// import { DatePicker } from "@y0c/react-datepicker";
+// import { useState } from "react";
 
 
 export default class EditActivity extends Component {
@@ -25,6 +27,8 @@ export default class EditActivity extends Component {
 			unitMoney: "",
 			date: new Date(),
 		};
+
+
 	}
 
 	componentDidMount() {
@@ -34,14 +38,14 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
+				const arr = response.data.date.split(":00.000Z")
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
-					date: new Date(response.data.date),
+					date: arr[0],
 				});
-				
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -57,7 +61,7 @@ export default class EditActivity extends Component {
 
 	onChangeActDescription(e) {
 		this.setState({
-			actDescription: e.target.value,
+			actDescription: e,
 		});
 	}
 
@@ -79,10 +83,6 @@ export default class EditActivity extends Component {
 		});
 	}
 
-	renderQuil(){
-		// return
-	}
-
 	onSubmit(e) {
 		e.preventDefault();
 
@@ -90,6 +90,7 @@ export default class EditActivity extends Component {
 			actName: this.state.actName,
 			actDescription: this.state.actDescription,
 			virtualMoney: this.state.virtualMoney,
+			unitMoney: this.state.unitMoney,
 			date: this.state.date,
 		};
 
@@ -198,6 +199,7 @@ export default class EditActivity extends Component {
 
 								<input
 									type="datetime-local"
+									value={this.state.date}
 									selected={this.state.date}
 									onChange={this.onChangeDate}
 									className="input mt-4 mb-8 w-full"
@@ -232,6 +234,7 @@ export default class EditActivity extends Component {
 										theme="snow"
 										className="mt-4 mb-8"
 										required
+										// value="Joe"
 										value={this.state.actDescription}
 										onChange={this.onChangeActDescription}
 										modules={this.modules}
@@ -240,6 +243,9 @@ export default class EditActivity extends Component {
 									/>
 								</div> */}
 
+								{/* <textarea
+								</div> */}
+						
 								<textarea
 							rows="7"
 							required

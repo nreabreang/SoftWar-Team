@@ -18,13 +18,15 @@ router.route("/add").post((req, res) => {
   const description = req.body.description;
   const idActivity = req.body.idActivity;
   const members = req.body.members;
-  console.log(members)
+  const totalVirtualMoney = req.body.totalVirtualMoney;
+  // console.log(members);
 
   const newProject = new Projects({
     projectName,
     description,
     idActivity,
     members,
+    totalVirtualMoney,
   });
 
   newProject
@@ -54,6 +56,18 @@ router.route("/update/:id").post((req, res) => {
     .catch((error) => res.status(400).json("Error: " + error));
 });
 
+// http://localhost:5000/project/updateTotalVirtualMoney/:id
+router.route("/updateTotalVirtualMoney/:id").post((req, res) => {
+  Projects.findById(req.params.id)
+    .then((Project) => {
+      Project.totalVirtualMoney = req.body.totalVirtualMoney;
+      Project.save()
+        .then(() => res.status(200).json("Total Virtual Money is updated"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((error) => res.status(400).json("Error: " + error));
+});
+
 router.route("/delete/:id").delete((req, res) => {
   Projects.findByIdAndDelete(req.params.id)
     .then(() => console.log("Delete successfully."))
@@ -67,10 +81,17 @@ router.route("/activity/:id").get(async (req, res) => {
     .catch((err) => console.log("Error: " + err));
 });
 
-router.route("/containsUpdate/:id").post(async(req,res)=>{
-  Projects.findByIdAndUpdate(req.params.id,req.body)
-  .then(()=>res.status(200).json("Success."))
-  .catch((err)=>res.status(400).json("Error: "+err))
-})
+// http://localhost:5000/project/activity/:id/:totalVirtualMoney
+router.route("/activity/:id/:totalVirtualMoney").get(async (req, res) => {
+  Projects.find({ totalVirtualMoney: req.params.totalVirtualMoney })
+    .then((resp) => res.status(200).json(resp))
+    .catch((err) => console.log("Error: " + err));
+});
+
+router.route("/containsUpdate/:id").post(async (req, res) => {
+  Projects.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => res.status(200).json("Success."))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 module.exports = router;

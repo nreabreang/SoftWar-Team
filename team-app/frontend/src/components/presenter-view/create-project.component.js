@@ -72,14 +72,22 @@ export default class createProject extends Component {
   }
 
   onAddEvent(e){
-    console.log("Add Jah")
-    const data = {
-      name:this.state.nameMember,email:this.state.emailMember
+    e.preventDefault()
+    if(this.state.nameMember !== "" && this.state.emailMember !== ""){
+      const data = {
+        name:this.state.nameMember,email:this.state.emailMember
+      }
+      this.setState({
+        members:[...this.state.members,data],
+        nameMember:"",
+        emailMember:"",
+      })
+    }else{
+      Swal.fire({
+        title:"Cannot add this email & username",
+        showConfirmButton:true,
+      })
     }
-    this.setState({
-      members:[...this.state.members,data]
-    })
-    console.log(this.state.members)
   }
 
   onchangeProjectName(data) {
@@ -223,6 +231,15 @@ export default class createProject extends Component {
 
           <div className="container justify-end my-8 mx-auto w-9/12">
             <input type="submit" value="Submit" className="button red p-2 w-48" />
+          </div>
+          {this.renderInputTag()}
+              <div>
+                <input type="text" onChange={this.onchangeNameMember} autoComplete="off" value={this.state.nameMember}/>
+                <input type="text" onChange={this.onchangeEmailMember} autoComplete="off" value={this.state.emailMember}/>
+                <button onClick={this.onAddEvent}>Add</button>
+              </div>
+          <div className="container justify-end new">
+            <input type="submit" value="Submit" className="button-navy" />
           </div>
         </form>
       </main>
