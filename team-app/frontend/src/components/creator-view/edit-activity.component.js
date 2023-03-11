@@ -17,7 +17,8 @@ export default class EditActivity extends Component {
 		this.onChangeActDescription = this.onChangeActDescription.bind(this);
 		this.onChangeVirtualMoney = this.onChangeVirtualMoney.bind(this);
 		this.onChangeUnitMoney = this.onChangeUnitMoney.bind(this);
-		this.onChangeDate = this.onChangeDate.bind(this);
+		this.onChangeStartTime = this.onChangeStartTime.bind(this);
+		this.onChangeEndTime = this.onChangeEndTime.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 
 		this.state = {
@@ -25,7 +26,8 @@ export default class EditActivity extends Component {
 			actDescription: "",
 			virtualMoney: "",
 			unitMoney: "",
-			date: new Date(),
+			startTime: new Date(),
+			endTime: new Date(),
 		};
 
 
@@ -38,13 +40,15 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
-				const arr = response.data.date.split(":00.000Z")
+				const arr1 = response.data.startTime.split(":00.000Z")
+				const arr2 = response.data.endTime.split(":00.000Z")
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
-					date: arr[0],
+					startTime: arr1[0],
+					endTime: arr2[0],
 				});
 			})
 			.catch(function (error) {
@@ -77,9 +81,15 @@ export default class EditActivity extends Component {
 		});
 	}
 
-	onChangeDate(e) {
+	onChangeStartTime(e) {
 		this.setState({
-			date: e.target.value,
+			startTime: e.target.value,
+		});
+	}
+
+	onChangeEndTime(e) {
+		this.setState({
+			endTime: e.target.value,
 		});
 	}
 
@@ -91,7 +101,8 @@ export default class EditActivity extends Component {
 			actDescription: this.state.actDescription,
 			virtualMoney: this.state.virtualMoney,
 			unitMoney: this.state.unitMoney,
-			date: this.state.date,
+			startTime: this.state.startTime,
+			endTime: this.state.endTime,
 		};
 
 		console.log(activity);
@@ -193,15 +204,31 @@ export default class EditActivity extends Component {
 							</div>
 
 
-							{/* input date */}
+							{/* input Start Time */}
 							<div className="w-full grid">
-								<label className="text-18px bold text-navy">DATE</label>
+								<label className="text-18px bold text-navy">Start Time</label>
 
 								<input
 									type="datetime-local"
-									value={this.state.date}
-									selected={this.state.date}
-									onChange={this.onChangeDate}
+									value={this.state.startTime}
+									selected={this.state.startTime}
+									onChange={this.onChangeStartTime}
+									className="input mt-4 mb-8 w-full"
+								></input>
+							</div>
+						</div>
+						{/* col2 */}
+						<div className="justify-center">
+
+							{/* input End Time */}
+							<div className="w-full grid">
+								<label className="text-18px bold text-navy">End Time</label>
+
+								<input
+									type="datetime-local"
+									value={this.state.endTime}
+									selected={this.state.endTime}
+									onChange={this.onChangeEndTime}
 									className="input mt-4 mb-8 w-full"
 								></input>
 							</div>
