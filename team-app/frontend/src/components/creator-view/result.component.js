@@ -3,7 +3,17 @@ import React, { Component } from "react";
 import Chart from "./Chart";
 
 const options = {
-  Response: true,
+  plugins: {
+    title: {
+      display: true,
+      text: "Top 3 Projects",
+    },
+    legend: {
+      display: false,
+      position: "bottom",
+    },
+    Response: true,
+  },
 };
 
 export default class result extends Component {
@@ -18,56 +28,65 @@ export default class result extends Component {
     axios
       .get(
         "http://localhost:5000/project/activity/" +
-          window.localStorage.getItem("idAct")
+          window.localStorage.getItem("idActivity")
       )
       .then((response) => {
         const dataAsArray = Object.values(response.data);
-        const newArray = [];
+        const virtualMoneyArr = [];
+        const projectNameArr = [];
+
+        // console.log(dataAsArray);
         for (let i = 0; i < dataAsArray.length; i++) {
-          newArray.push(
-            dataAsArray[i].totalVirtualMoney,
-            dataAsArray[i].projectName
-          ); // Replace "propertyName" with the actual name of the property you want to store
+          virtualMoneyArr.push(dataAsArray[i].totalVirtualMoney); // Replace "propertyName" with the actual name of the property you want to store
+          projectNameArr.push(dataAsArray[i].projectName);
         }
 
-        console.log(newArray);
-        newArray.sort(function(a, b) {
-          //use to allocate value from bigger to less
-          return b - a;
-        });
+        const nestedArray = projectNameArr.map((item, index) => [
+          item,
+          virtualMoneyArr[index],
+        ]);
 
-        const arr = [];
-        const arr2 = [];
-        arr.push(newArray[0]);
-        arr2.push(newArray[1]);
-        arr.push(newArray[2]);
-        arr2.push(newArray[3]);
-        arr.push(newArray[4]);
-        arr2.push(newArray[5]);
+        // console.log(nestedArray);
+        nestedArray.sort((a, b) => b[1] - a[1]);
+        console.log(nestedArray);
+        const vmArr = [];
+        const pnArr = [];
+        vmArr.push(nestedArray[0][1]);
+        vmArr.push(nestedArray[1][1]);
+        vmArr.push(nestedArray[2][1]);
+
+        pnArr.push(nestedArray[0][0]);
+        pnArr.push(nestedArray[1][0]);
+        pnArr.push(nestedArray[2][0]);
+        console.log(vmArr);
+        console.log(pnArr);
         this.setState({
-          totalVirtualMoney: arr,
-          projectName: arr2,
+          totalVirtualMoney: vmArr,
+          projectName: pnArr,
         });
       })
       .catch((err) => console.log(err));
 
-    console.log(this.state.totalVirtualMoney);
+    // console.log(this.state.totalVirtualMoney);
   }
 
   render() {
     const { totalVirtualMoney, projectName } = this.state;
-    console.log(totalVirtualMoney);
-    const labels = [projectName[0], projectName[1], projectName[2]];
+    // console.log(totalVirtualMoney);
+    const labels = projectName;
 
     const data = {
       labels,
       datasets: [
         {
-          label: "Virtual Money",
-          data: totalVirtualMoney.sort(function(a, b) {
-            //use to allocate value from bigger to less
-            return b - a;
-          }),
+          anchor: "end",
+          align: "top",
+          // formatter: Math.round,
+          font: {
+            weight: "bold",
+            size: 16,
+          },
+          data: totalVirtualMoney,
           backgroundColor: ["#2196F3", "#4CAF50", "#FFC107"],
         },
       ],
