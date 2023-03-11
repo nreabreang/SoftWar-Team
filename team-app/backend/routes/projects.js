@@ -48,6 +48,7 @@ router.route("/update/:id").post((req, res) => {
     .then((Project) => {
       Project.projectName = req.body.projectName;
       Project.description = req.body.description;
+      Project.members = req.body.members;
 
       Project.save()
         .then(() => res.status(200).json("Project is updated"))
