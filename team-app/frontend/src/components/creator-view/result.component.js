@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import Chart from "./Chart";
+import { Link } from "react-router-dom";
 
 const options = {
   plugins: {
@@ -88,17 +89,37 @@ export default class result extends Component {
           },
           data: totalVirtualMoney,
           backgroundColor: ["#2196F3", "#4CAF50", "#FFC107"],
+          borderColor: "#000",
+          borderWidth: "10px",
         },
       ],
     };
 
     return (
       <div>
+        <header>
+          <div className="grid grid-cols-2 navbar my-8 items-center">
+            <Link to="/" className="">
+              <p className="text-16px bold text-navy">GARLICWAK</p>
+            </Link>
+
+            <div className="container justify-end">
+              <p className="text-16px bold text-red-it">
+                {window.localStorage.getItem("name")}
+              </p>
+            </div>
+          </div>
+
+          <div className="line-horizon px-12 mx-12"></div>
+        </header>
         <div className="flex justify-center mt-8 text-xl font-bold">
           SUMMARIZED
         </div>
         <div className="mx-80 mt-4">
           <Chart data={data} options={options} />
+        </div>
+        <div className="flex justify-center mt-4">
+          <Link to='/ResultTable' className="bg-gray-300 p-2 rounded-md hover:bg-green-300 text-white">All Project</Link>
         </div>
       </div>
     );

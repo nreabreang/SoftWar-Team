@@ -26,7 +26,7 @@ import ScannerCode from "./components/scanner.component";
 import CreatorLogin from "./components/creator-view/creator-login.component";
 import GuestProjectID from "./components/guest-view/project-id.component";
 import CreatorResult from "./components/creator-view/result.component";
-
+import ResultTable from "./components/creator-view/result-table.component";
 function App() {
   return (
     <Router>
@@ -81,6 +81,7 @@ function App() {
           ></Route>
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
           <Route path="/CreatorResult" element={<CreatorResult />}></Route>
+          <Route path="/ResultTable" element={<ResultTable />}></Route>
         </Routes>
       </div>
       {/* <Footer /> */}
