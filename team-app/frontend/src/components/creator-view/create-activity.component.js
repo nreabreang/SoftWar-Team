@@ -158,12 +158,17 @@ export default class CreateActivity extends Component {
 								<ul className="flex items-center w-3/4">
 									<li className="w-full">
 										<div className="flex items-center">
-											<input checked
+											<input 
 												id="horizontal-list-radio-license"
 												type="radio"
 												value="10000"
 												name="list-radio"
-												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" 
+                        onClick={(e)=>this.setState({
+                          virtualMoney:"10000",
+                          unitMoney:"unit"
+                        })}
+                        />
 											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Default VM</label>
 										</div>
 									</li>
@@ -174,7 +179,12 @@ export default class CreateActivity extends Component {
 												type="radio"
 												value="Unit"
 												name="list-radio"
-												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" 
+                        onClick={(e)=>this.setState({
+                          virtualMoney:"",
+                          unitMoney:""
+                        })}
+                        />
 											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Customize VM</label>
 										</div>
 									</li>
