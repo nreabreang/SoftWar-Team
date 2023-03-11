@@ -110,8 +110,8 @@ export default class createProject extends Component {
   renderInputTag(){
     return this.state.members.map((x)=>{
       return (<div className="flex justify-center">
-        <div className="mt-4 mb-8 w-1/2 text-16px text-navy border-0 border-b border-blue-900 mr-4">{x.name}</div>
-        <div className="mt-4 mb-8 w-1/2 text-16px text-navy border-0 border-b border-blue-900 mr-4">{x.email}</div>
+        <div className="p-3 mb-8 w-1/2 text-16px text-navy border-0 border-b border-blue-900 mr-4">{x.name}</div>
+        <div className="p-3 mb-8 w-1/2 text-16px text-navy border-0 border-b border-blue-900 mr-4">{x.email}</div>
         <button className="button red p-2 h-10 w-24" onClick={()=>this.deleteMember(x)}>Delete</button>
       </div>)
     })
@@ -203,12 +203,12 @@ export default class createProject extends Component {
                 >
                   Team Member
                 </label>
-                <div className="mt-4 mb-8 w-full">
+                <div className="mt-2 mb-8 w-full">
                 {this.renderInputTag()}
               <div>
                 <input className="border-0 border-b border-blue-900 mr-4" placeholder="Member Name" type="text" onChange={this.onchangeNameMember} autoComplete="off"/>
                 <input className="border-0 border-b border-blue-900 mr-4 " placeholder="Member Email" type="text" onChange={this.onchangeEmailMember} autoComplete="off"/>
-                <button className="button red p-2 h-10 w-20" onClick={this.onAddEvent}>Add</button>
+                <button className="button red p-2 h-10 w-20 ml-4" onClick={this.onAddEvent}>Add</button>
               </div></div>
               </div>
         </div>
@@ -232,15 +232,7 @@ export default class createProject extends Component {
           <div className="container justify-end my-8 mx-auto w-9/12">
             <input type="submit" value="Submit" className="button red p-2 w-48" />
           </div>
-          {this.renderInputTag()}
-              <div>
-                <input type="text" onChange={this.onchangeNameMember} autoComplete="off" value={this.state.nameMember}/>
-                <input type="text" onChange={this.onchangeEmailMember} autoComplete="off" value={this.state.emailMember}/>
-                <button onClick={this.onAddEvent}>Add</button>
-              </div>
-          <div className="container justify-end new">
-            <input type="submit" value="Submit" className="button-navy" />
-          </div>
+             
         </form>
       </main>
       // <div className="flex justify-center">
