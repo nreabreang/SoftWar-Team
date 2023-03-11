@@ -60,7 +60,7 @@ export default class ResultTable extends Component {
           <div className="flex justify-between">
             <table
               id="resultTable"
-              className="display"
+              className="display bg-gray-300"
               ref={(el) => (this.el = el)}
             >
               <thead>
