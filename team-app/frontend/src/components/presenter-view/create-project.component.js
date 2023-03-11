@@ -103,7 +103,11 @@ export default class createProject extends Component {
 
   deleteMember(element){
     const index = this.state.members.indexOf(element)
-    this.state.members.splice(index,1)
+    const copy = this.state.members
+    copy.splice(index,1)
+    this.setState({
+      members:copy
+    })
   }
 
   renderInputTag(){
@@ -117,33 +121,39 @@ export default class createProject extends Component {
   sendForm(e) {
     e.preventDefault();
 
-    const reqData = {
-      projectName: this.state.projectName,
-      description: this.state.description,
-      idActivity: window.localStorage.getItem("idActivity"),
-      members:this.state.members,
-    };
-
-    axios.post("http://localhost:5000/project/add", reqData).then((res) => {
-      if (res.status === 200) {
+    if(this.state.members.length === 0){
         Swal.fire({
-          title: "Created Project Successfully",
-          showConfirmButton: true,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location =
-              "./presenterActivityId/" +
-              window.localStorage.getItem("idActivity");
-          }
-        });
-      }
-    });
-
-    this.setState({
-      projectName: "",
-      description: "",
-      idActivity: "",
-    });
+          title:"You should be add 1 Member.",
+          showConfirmButton:true
+        })
+    }else{
+      const reqData = {
+        projectName: this.state.projectName,
+        description: this.state.description,
+        idActivity: window.localStorage.getItem("idActivity"),
+        members:this.state.members,
+      };
+  
+      axios.post("http://localhost:5000/project/add", reqData).then((res) => {
+        if (res.status === 200) {
+          Swal.fire({
+            title: "Created Project Successfully",
+            showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location =
+                "./presenterActivityId/" +
+                window.localStorage.getItem("idActivity");
+            }
+          });
+        }
+      });
+    }    
+    // this.setState({
+    //   projectName: "",
+    //   description: "",
+    //   idActivity: "",
+    // });
   }
 
   render() {
