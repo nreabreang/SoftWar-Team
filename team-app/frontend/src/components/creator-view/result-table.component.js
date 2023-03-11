@@ -18,7 +18,7 @@ export default class ResultTable extends Component {
     axios
       .get(
         "http://localhost:5000/project/activity/" +
-          window.localStorage.getItem("idActivity")
+          window.localStorage.getItem("idAct")
       )
       .then((response) => {
         this.setState({ data: response.data }, () => {

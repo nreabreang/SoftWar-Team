@@ -365,4 +365,52 @@ footer {
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
 
-  /*/////////////////////////////////////////////////////////////////*/
+
+
+/* Result Table */
+.dataTables_wrapper {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.dataTables_length select {
+    width: 120px !important;
+  }
+  
+
+.dataTables_filter {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+table.dataTable {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table.dataTable thead th {
+  padding: 10px 15px;
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+table.dataTable tbody td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+table.dataTable tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+table.dataTable tbody tr:hover {
+  background-color: #f5f5f5;
+}

@@ -29,7 +29,7 @@ export default class result extends Component {
     axios
       .get(
         "http://localhost:5000/project/activity/" +
-          window.localStorage.getItem("idActivity")
+          window.localStorage.getItem("idAct")
       )
       .then((response) => {
         const dataAsArray = Object.values(response.data);
