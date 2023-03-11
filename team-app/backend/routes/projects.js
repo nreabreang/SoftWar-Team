@@ -81,6 +81,13 @@ router.route("/activity/:id").get(async (req, res) => {
     .catch((err) => console.log("Error: " + err));
 });
 
+// http://localhost:5000/project/activity/:id/:totalVirtualMoney
+router.route("/activity/:id/:totalVirtualMoney").get(async (req, res) => {
+  Projects.find({ totalVirtualMoney: req.params.totalVirtualMoney })
+    .then((resp) => res.status(200).json(resp))
+    .catch((err) => console.log("Error: " + err));
+});
+
 router.route("/containsUpdate/:id").post(async (req, res) => {
   Projects.findByIdAndUpdate(req.params.id, req.body)
     .then(() => res.status(200).json("Success."))

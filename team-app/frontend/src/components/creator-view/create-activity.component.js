@@ -153,86 +153,90 @@ export default class CreateActivity extends Component {
                 />
               </div>
 
-              {/* input virtual money and unit */}
-              <div className="grid grid-cols-2 gap-4">
-                {/* virtual money container */}
-                <div className="w-full">
-                  <label className="text-18px text-navy bold">
-                    VIRTUAL MONEY / GUEST
-                  </label>
-                </div>
-              </div>
+							{/* bullet point for choose virtual money */}
+							<div className="pb-6 text-16px bold">
+								<ul className="flex items-center w-3/4">
+									<li className="w-full">
+										<div className="flex items-center">
+											<input checked
+												id="horizontal-list-radio-license"
+												type="radio"
+												value="10000"
+												name="list-radio"
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Default VM</label>
+										</div>
+									</li>
+									<li className="w-full">
+										<div className="flex items-center">
+											<input
+												id="horizontal-list-radio-license"
+												type="radio"
+												value="Unit"
+												name="list-radio"
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2" />
+											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Customize VM</label>
+										</div>
+									</li>
+								</ul>
+							</div>
 
-              {/* <div className="flex items-center mt-4 mb-8">
-                <div class="mr-12">
-                  <input
-                    checked
-                    id="default-radio-2"
-                    type="radio"
-                    value=""
-                    name="default-radio"
-                    class="w-4 h-4 text-blue-600 "
-                  />
-                  <label for="default-radio-2" class="">
-                    Default Virtual Money
-                  </label>
-                </div>
-                <div class="">
-                  <input
-                    id="default-radio-1"
-                    type="radio"
-                    value=""
-                    name="default-radio"
-                    class="w-4 h-4 text-blue-600 "
-                  />
-                  <label for="default-radio-1" class="">
-                    Customize Virtual Money
-                  </label>
-                </div>
-              </div> */}
+							{/* input virtual money and unit grid*/}
+							<div className="grid grid-cols-2 gap-4">
 
-              <input
-                className="input mt-4 mb-8 w-full"
-                id="virtualMoney"
-                name="virtualMoney"
-                type="text"
-                value={this.state.virtualMoney}
-                onChange={this.onChangeVirtualMoney}
-                placeholder="Enter Virtual Money"
-              />
+								{/* virtual money container */}
+								<div className="w-full">
+									<label className="text-18px text-navy bold">
+										VIRTUAL MONEY / GUEST
+									</label>
+									{/* virtual money container */}
+									<div className="flex w-full">
+										<input
+											className="input mt-4 mb-8 w-full"
+											id="virtualMoney"
+											name="virtualMoney"
+											type="text"
+											value={this.state.virtualMoney}
+											onChange={this.onChangeVirtualMoney}
+											placeholder="Enter Virtual Money"
+										/>
 
-              {/* unit container */}
-              <div class="w-full">
-                <label
-                  className="text-18px bold text-navy"
-                  for="grid-last-name"
-                >
-                  UNIT
-                </label>
-                <input
-                  className="input mt-4 mb-8 w-full"
-                  required
-                  id="unitMoney"
-                  name="unitMoney"
-                  type="text"
-                  value={this.state.unitMoney}
-                  onChange={this.onChangeUnitMoney}
-                  placeholder="Enter Unit"
-                />
-              </div>
+									</div>
 
-              {/* input date */}
-              <div className="w-full grid">
-                <label className="text-18px bold text-navy">DATE</label>
+								</div>
 
-                <input
-                  type="datetime-local"
-                  selected={this.state.date}
-                  onChange={this.onChangeDate}
-                  className="input mt-4 mb-8 w-full"
-                ></input>
+								{/* unit container */}
+								<div className="w-full">
+									<label className="text-18px bold text-navy" for="grid-last-name">
+										UNIT
+									</label>
 
-                {/* <div style={{ background: 'none' }}>
+									{/* unit container */}
+									<div class="w-full">
+										<input
+											className="input mt-4 mb-8 w-full"
+											required
+											id="unitMoney"
+											name="unitMoney"
+											type="text"
+											value={this.state.unitMoney}
+											onChange={this.onChangeUnitMoney}
+											placeholder="Enter Unit"
+										/>
+									</div>
+								</div>
+							</div>
+
+							{/* input date */}
+							<div className="w-full grid">
+								<label className="text-18px bold text-navy">DATE</label>
+
+								<input type="datetime-local"
+									selected={this.state.date}
+									onChange={this.onChangeDate}
+									className="input mt-4 mb-8 w-full"></input>
+
+								{/* <div style={{ background: 'none' }}>
 									<DatePicker
 
 										selected={this.state.date}

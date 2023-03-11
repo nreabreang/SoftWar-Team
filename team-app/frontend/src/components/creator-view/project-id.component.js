@@ -158,20 +158,20 @@ class Feedback extends Component {
       .catch((err) => console.log("Error: " + err));
   }
 
-  componentDidUpdate() {
-    const arr = window.location.href.split("/");
-    axios
-      .post(
-        "http://localhost:5000/project/updateTotalVirtualMoney/" +
-          arr[arr.length - 1],
-        { totalVirtualMoney: this.showCalculateVirtual() }
-      )
-      .then((res) => console.log("Update total VP :", res.data))
-      .catch((err) => console.log("Error: " + err));
+  // componentDidUpdate() {
+  //   const arr = window.location.href.split("/");
+  //   axios
+  //     .post(
+  //       "http://localhost:5000/project/updateTotalVirtualMoney/" +
+  //         arr[arr.length - 1],
+  //       { totalVirtualMoney: this.showCalculateVirtual() }
+  //     )
+  //     .then((res) => console.log("Update total VP :", res.data))
+  //     .catch((err) => console.log("Error: " + err));
 
-    console.log(this.showCalculateVirtual());
-    console.log("id :", arr[arr.length - 1]);
-  }
+  //   console.log(this.showCalculateVirtual());
+  //   console.log("id :", arr[arr.length - 1]);
+  // }
 
   showLengthOfList() {
     return this.state.feedBacks.map((data, index) => {

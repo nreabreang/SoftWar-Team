@@ -77,7 +77,10 @@ const ActivityInfo = (props) => {
         <div className="des-container mt-4">
           <div className="block">
             <p className="text-20px bold">DESCRIPTION : </p>
-            <p className="text-20px italic m4  break-words" dangerouslySetInnerHTML={{__html:props.descript}} ></p>
+            <p
+              className="text-20px italic m4  break-words"
+              dangerouslySetInnerHTML={{ __html: props.descript }}
+            ></p>
           </div>
         </div>
       </div>
@@ -104,9 +107,10 @@ export default class creatorActivityId extends Component {
   componentDidMount() {
     const arr = window.location.href.split("/");
     const access = arr[arr.length - 1];
-
+    window.localStorage.setItem("idAct", access);
+    console.log("hh",window.localStorage.getItem("idAct"));
     axios
-      .get("http://localhost:5000/activity/" + arr[arr.length - 1])
+      .get("http://localhost:5000/activity/" + access)
       .then((response) => {
         this.setState({
           actName: response.data.actName,
