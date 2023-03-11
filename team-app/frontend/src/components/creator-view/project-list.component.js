@@ -8,49 +8,80 @@ import rightarrow from "../images/right-arrow.png"
 const Project = (props) => {
     const des = props.projectDescription
     return (
-        <div className="list-container mx-auto
-                        xs:w-80
-                        sm:w-80
-                        md:w-72
-                        lg:w-100
-                        xl:w-80">
+        <div className="list-container w-96 text-navy mb-auto mr-auto">
 
             {/* header */}
-            <div className="list-header-container text-24px bold">
-                <div className="flex ellipsis">
-                    {props.projectName}
-                </div>
+            <div className="list-header-container text-20px bold my-3 mx-6">
+                <div className="block ellipsis w-9/12">{props.projectName}</div>
             </div>
 
-            {/* description */}
-            <div className="mt-2">
+            <div className="line border-red-it" />
 
+            <div className="my-3 mx-2">
                 {/* description head */}
                 <div className="items-container">
-                    <p className="text-16px bold">DESCRIPTION</p>
-                </div>
+                    <p className="text-16px bold mr-1 mb-2">DESCRIPTION</p>
 
-                <div className="line" />
+                </div>
 
                 {/* description */}
-                <div className="items-container">
-                    {/* <p className="text-16px italic ellipsis">{props.projectDescription}</p> */}
-                    <div className="text-16px ellipsis break-words" dangerouslySetInnerHTML={{ __html : des }}></div>
+                <div className="items-container ml-4">
+                    <div className="text-16px block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
                 </div>
-                
+
                 {/* see project */}
 
                 <Link to={"/creatorprojectList/" + props.projectID}>
-                    <div className="enter-container">
-                        <p className="text-14px underline italic">MORE</p>
+                    <div className="enter-container mt-4 justify-end">
+                        <p className="text-14px underline italic mr-2">MORE</p>
                         <img src={rightarrow} className="images-16px" />
                     </div>
                 </Link>
-
             </div>
 
 
-        </div >
+        </div>
+        // <div className="list-container mx-auto
+        //                 xs:w-80
+        //                 sm:w-80
+        //                 md:w-72
+        //                 lg:w-100
+        //                 xl:w-80">
+
+        //     {/* header */}
+        //     <div className="list-header-container text-24px bold">
+        //         <div className="flex ellipsis">
+        //             {props.projectName}
+        //         </div>
+        //     </div>
+
+        //     {/* description */}
+        //     <div className="mt-2">
+
+        //         {/* description head */}
+        //         <div className="items-container">
+        //             <p className="text-16px bold">DESCRIPTION</p>
+        //         </div>
+
+        //         <div className="line" />
+
+        //         {/* description */}
+        //         <div className="items-container">
+        //             {/* <p className="text-16px italic ellipsis">{props.projectDescription}</p> */}
+        //             <div className="text-16px ellipsis break-words" dangerouslySetInnerHTML={{ __html: des }}></div>
+        //         </div>
+
+        //         {/* see project */}
+
+        //         <Link to={"/creatorprojectList/" + props.projectID}>
+        //             <div className="enter-container">
+        //                 <p className="text-14px underline italic">MORE</p>
+        //                 <img src={rightarrow} className="images-16px" />
+        //             </div>
+        //         </Link>
+
+        //     </div>
+        // </div >
 
         /* <div className="overflow-hidden flex flex-col bg-white p-3 m-4 shadow sm:rounded-lg" >
             <h1 className=" text-20px">Project Name: {props.projectName}</h1>
@@ -118,18 +149,36 @@ export default class CreatorProjectLists extends Component {
     render() {
         return (
             <main>
-                <div className="header-container flex justify-center">
-                    <p className="text-30px bold mt-8">Project Dashboard</p>
+                <div className="px-12 py-8 items-center justify-center">
+
+                    <p className="text-30px text-center text-navy">Project Dashboard</p>
                 </div>
 
-                <div className="w-9/12 mx-auto">
+                <div className="px-12 pb-12 flex w-full">
+                    <div className="show-container mx-auto
+                                xs:grid-cols-2
+                                sm:grid-cols-2
+                                md:grid-cols-2
+                                lg:grid-cols-3
+                                xl:grid-cols-3
+                                2xl:grid-cols-3">
+
+                        {/* show list of project */}
+                        {this.showProjectList()}
+                    </div>
+                </div>
+                {/* <div className="header-container flex justify-center">
+                    <p className="text-30px bold px-12 py-8 text-navy">Project Dashboard</p>
+                </div>
+
+                <div className="w-full mx-auto mb-8">
                     <div className="show-container
                                     xs:grid-cols-1
                                     sm:grid-cols-2
                                     md:grid-cols-2
                                     lg:grid-cols-2
                                     xl:grid-cols-3">{this.showProjectList()}</div>
-                </div>
+                </div> */}
             </main>
         )
     }

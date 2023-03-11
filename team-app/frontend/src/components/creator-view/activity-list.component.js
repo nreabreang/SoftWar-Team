@@ -96,7 +96,7 @@ export default class ActivityList extends Component {
 
 		this.state = {
 			activity: [],
-			name:"",
+			name: "",
 		};
 	}
 
@@ -119,7 +119,7 @@ export default class ActivityList extends Component {
 					res.data[0].fname + " " + res.data[0].lname
 				);
 				this.setState({
-					name:res.data[0].fname + " " + res.data[0].lname,
+					name: res.data[0].fname + " " + res.data[0].lname,
 				})
 			});
 	}
@@ -150,22 +150,7 @@ export default class ActivityList extends Component {
 		return (
 			<main>
 				<header>
-					<div className="grid grid-cols-2 navbar my-8 items-center">
-						<Link to="/" className="">
-							<p className="text-16px bold text-navy">GARLICWAK</p>
-						</Link>
-
-						<div className="container justify-end">
-							<p className="text-16px bold text-red-it">
-								{this.state.name}</p>
-						</div>
-						<button onClick={(e)=>{
-							localStorage.clear()
-							window.history.back()
-						}}>Log out</button>
-					</div>
-
-					<div className="line-horizon px-12 mx-12"></div>
+					<Navbar name={this.state.name} />
 				</header>
 
 				<div className="grid grid-cols-2 px-12 py-8 items-center">
