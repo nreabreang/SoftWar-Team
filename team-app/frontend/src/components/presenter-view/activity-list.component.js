@@ -6,7 +6,6 @@ const { Component } = require("react");
 const ActivityInfo = (props) => {
   const url = window.location.href.split("/");
   window.localStorage.setItem("idActivity", url[url.length - 1]);
-  console.log(props.fname);
   return (
     <div className="id-container">
       <div className="info-container">
@@ -209,7 +208,7 @@ export default class creatorActivityId extends Component {
               window.localStorage.removeItem("PresenterLastName")
               window.localStorage.removeItem("PresenterEmail")
               window.localStorage.removeItem("token")
-              window.location.href = "http://localhost:3000/presenterLogin"
+              window.location.href = "http://localhost:3000"
             }}>Log Out</button>
           </div>
         </div>

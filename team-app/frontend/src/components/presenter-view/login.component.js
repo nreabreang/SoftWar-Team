@@ -67,18 +67,24 @@ export default class presenterLogin extends Component {
               window.localStorage.setItem("PresenterEmail",data.email)
               var code = window.localStorage.getItem("ActCode");
               console.log("Code : ", code);
-              axios.get("http://localhost:5000/activity/").then((res) => {
-                let i;
-                for (i = 0; i < res.data.length; i++) {
-                  if (
-                    code ===
-                    encodeNumber(res.data[i].actName + res.data[i].date)
-                  ) {
-                    window.location = "/presenterActivityId/" + res.data[i]._id;
-                    break;
-                  } else {
-                  }
+              axios.get("http://localhost:5000/activity/name/"+code).then((res) => {
+                if(res.status === 200 && res.data.length){
+                  window.location = "/presenterActivityId/" + res.data[0]._id;
                 }
+                // let i;
+                // for (i = 0; i < res.data.length; i++) {
+                //   console.log(code)
+                //   console.log(encodeNumber(res.data[i].actName + res.data[i].date))
+                //   if (
+                //     code ===
+                //     encodeNumber(res.data[i].actName + res.data[i].date)
+                //   ) {
+                //     window.location = "/presenterActivityId/" + res.data[i]._id;
+                //     break;
+                //   } else {
+                //   }
+                // }
+
               });
               // console.log(window.localStorage.getItem("token"));
             }
