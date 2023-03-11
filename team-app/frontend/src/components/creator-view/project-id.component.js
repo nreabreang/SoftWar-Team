@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import Navbar from "../navbar.component";
 import like from "../images/heart.png";
 import wish from "../images/christmas-star.png";
-import ques from "../images/question-mark.png";
-import idea from "../images/idea.png";
+// import ques from "../images/question-mark.png";
+// import idea from "../images/idea.png";
 import leftarrow from "../images/left-arrow.png";
 
 
@@ -36,7 +36,7 @@ export default class projectID extends Component {
     }
 
     showButton(email, func) {
-        if (this.state.members.find(elemental => elemental.email == email)) {
+        if (this.state.members.find(elemental => elemental.email === email)) {
             return func;
         } else {
             return;
@@ -78,7 +78,7 @@ export default class projectID extends Component {
                 <div className="grid grid-cols-2 px-12 py-8 items-center">
                     <p className="flex text-30px text-left text-navy">
                         <Link to="/" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
+                            <img src={leftarrow} alt="left arrow" className="images-18px mr-2 mt-1.5" />
                             Project Description
                         </Link>
                     </p>
@@ -136,7 +136,7 @@ const TaskComment = (props) => {
                     <div className="mb-4">
                         <p>What do you like about the project?</p>
                         <div className="flex">
-                            <img src={like} className="images-20px mr-4" />
+                            <img src={like} alt="like" className="images-20px mr-4" />
                             <div className="text-16px bold">{props.letComments.iLike}</div>
                         </div>
                     </div>
@@ -144,7 +144,7 @@ const TaskComment = (props) => {
                     <div className="">
                         <p>What do you wish about the project?</p>
                         <div className="flex">
-                            <img src={wish} className="images-20px mr-4" />
+                            <img src={wish} alt="wish" className="images-20px mr-4" />
                             <div className="text-16px bold">{props.letComments.iWish}</div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@ const TaskComment = (props) => {
                     <div className="mb-4">
                         <p>What questions do you have about this project?</p>
                         <div className="flex">
-                            <img src={like} className="images-20px mr-4" />
+                            <img src={like} alt="like" className="images-20px mr-4" />
                             <div className="text-16px bold">{props.letComments.iQuest}</div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ const TaskComment = (props) => {
                     <div className="">
                         <p>What ideas do you have for this project?</p>
                         <div className="flex">
-                            <img src={wish} className="images-20px mr-4" />
+                            <img src={wish} alt="wish" className="images-20px mr-4" />
                             <div className="text-16px bold">{props.letComments.iDea}</div>
                         </div>
                     </div>

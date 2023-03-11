@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Buffer } from "buffer";
+// import { Buffer } from "buffer";
 import "../list.component.css";
 import "../Styles.css";
 import rightarrow from "../images/right-arrow.png";
 import del from "../images/delete.png";
 import edit from "../images/edit-1.png";
 import Swal from "sweetalert2";
+import Navbar from "../navbar.component"
 
-const encodeNumber = (str) => {
-	const code = Buffer.from(str, "utf-8")
-		.toString("base64")
-		.slice(0, 8)
-		.toLocaleUpperCase();
-	return <div>{code}</div>;
-};
+// const encodeNumber = (str) => {
+// 	const code = Buffer.from(str, "utf-8")
+// 		.toString("base64")
+// 		.slice(0, 8)
+// 		.toLocaleUpperCase();
+// 	return <div>{code}</div>;
+// };
 
 const Activity = (props) => (
 	<div className="list-container w-72 text-navy mb-auto mr-auto">
@@ -27,11 +28,11 @@ const Activity = (props) => (
 			<div className="flex">
 				{/* edit icon */}
 				<Link to={"/edit/" + props.activity._id}>
-					<img src={edit} className="images-16px mx-2" />
+					<img src={edit} alt="edit" className="images-16px mx-2" />
 				</Link>
 
 				{/* delete icon */}
-				<a
+				<button
 					href="#"
 					onClick={() => {
 						Swal.fire({
@@ -48,8 +49,8 @@ const Activity = (props) => (
 						});
 					}}
 				>
-					<img src={del} className="images-16px" />
-				</a>
+					<img src={del} alt="del" className="images-16px" />
+				</button>
 			</div>
 		</div>
 
@@ -80,7 +81,7 @@ const Activity = (props) => (
 				<Link to={"/creatorActivityList/" + props.activity._id}>
 					<div className="flex items-center">
 						<p className="text-12px bold mr-1">SEE PROJECT</p>
-						<img src={rightarrow} className="images-16px" />
+						<img src={rightarrow} alt="right arrow" className="images-16px" />
 					</div>
 				</Link>
 			</div>

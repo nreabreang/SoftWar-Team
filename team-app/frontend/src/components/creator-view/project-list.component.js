@@ -34,7 +34,7 @@ const Project = (props) => {
                 <Link to={"/creatorprojectList/" + props.projectID}>
                     <div className="enter-container mt-4 justify-end">
                         <p className="text-14px underline italic mr-2">MORE</p>
-                        <img src={rightarrow} className="images-16px" />
+                        <img src={rightarrow} alt="right Arrow" className="images-16px" />
                     </div>
                 </Link>
             </div>

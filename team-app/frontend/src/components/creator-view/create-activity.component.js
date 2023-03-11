@@ -6,7 +6,7 @@ import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Navbar from "../navbar.component";
 // import calendar style
 // You can customize style by copying asset folder.
