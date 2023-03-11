@@ -24,7 +24,7 @@ const Project = (props) => {
             {/* <div>Edit</div>
             <div>Delete</div> */}
             {props.projectShowButton(window.localStorage.PresenterEmail,props.deleteProjectThis(props.projectID),props.projectMember)}
-            {props.projectShowButton(window.localStorage.PresenterEmail,props.editProject(),props.projectMember)}
+            {props.projectShowButton(window.localStorage.PresenterEmail,props.editProject(props.projectID),props.projectMember)}
             {/* description */}
             <div className="mt-2">
 
@@ -112,8 +112,12 @@ export default class CreatorProjectLists extends Component {
         }
     }
 
-    buttonEdit(){
-        return(<div>Edit</div>)
+    buttonEdit(id){
+        return(<div>
+            <Link to={"/editProj/"+id}>
+                <p>Edit</p>
+            </Link>
+        </div>)
     }
 
     buttonDelete(id){
