@@ -26,6 +26,7 @@ import ScannerCode from "./components/scanner.component";
 import CreatorLogin from "./components/creator-view/creator-login.component";
 import GuestProjectID from "./components/guest-view/project-id.component";
 import CreatorResult from "./components/creator-view/result.component";
+import EditProject from "./components/presenter-view/edit-project.component";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/activityList" element={<ActivityList />}></Route>
           <Route path="/activityList/:id" element={<ActivityList />}></Route>
           <Route path="/Edit/:id" element={<EditActivity />}></Route>
+          <Route path="/editProj/:id" element={<EditProject />}></Route>
           <Route
             path="/guestActivityList"
             element={<GuestActivityList />}
