@@ -6,7 +6,6 @@ const { Component } = require("react");
 const ActivityInfo = (props) => {
   const url = window.location.href.split("/");
   window.localStorage.setItem("idActivity", url[url.length - 1]);
-  console.log(props.fname);
   return (
     <div className="id-container">
       <div className="info-container">
