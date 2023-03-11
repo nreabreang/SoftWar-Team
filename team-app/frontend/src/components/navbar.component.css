@@ -24,16 +24,16 @@
 }
 
 .navbar-container.left.right-side {
-	justify-content: end;
+	justify-content: flex-end;
 }
 
 .navbar-container.right {
 	background-color: #FCC5C0;
-	justify-content: end;
+	justify-content: flex-end;
 }
 
 .navbar-container.right.new {
-	justify-content: end;
+	justify-content: flex-end;
 
 }
 
