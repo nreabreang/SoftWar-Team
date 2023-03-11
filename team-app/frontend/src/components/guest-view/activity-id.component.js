@@ -167,7 +167,7 @@ export default class activityId extends Component {
     //   axios.post("http://localhost:5000/guest/add/virtual",data)
     //   return virtualMoney
     // }
-    return virtualMoney;
+    // return virtualMoney;
   }
 
   render() {

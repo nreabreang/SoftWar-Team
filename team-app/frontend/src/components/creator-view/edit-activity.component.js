@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import Navbar from "../navbar.component";
 import "../Styles.css";
 // import date from "../images/calendar.png";
-import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { Link } from "react-router-dom";
+
 // import { DatePicker } from "@y0c/react-datepicker";
 // import { useState } from "react";
 
@@ -17,7 +17,8 @@ export default class EditActivity extends Component {
 		this.onChangeActDescription = this.onChangeActDescription.bind(this);
 		this.onChangeVirtualMoney = this.onChangeVirtualMoney.bind(this);
 		this.onChangeUnitMoney = this.onChangeUnitMoney.bind(this);
-		this.onChangeDate = this.onChangeDate.bind(this);
+		this.onChangeStartTime = this.onChangeStartTime.bind(this);
+		this.onChangeEndTime = this.onChangeEndTime.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 
 		this.state = {
@@ -25,7 +26,8 @@ export default class EditActivity extends Component {
 			actDescription: "",
 			virtualMoney: "",
 			unitMoney: "",
-			date: new Date(),
+			startTime: new Date(),
+			endTime: new Date(),
 		};
 
 
@@ -38,13 +40,15 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
-				const arr = response.data.date.split(":00.000Z")
+				const arr1 = response.data.startTime.split(":00.000Z")
+				const arr2 = response.data.endTime.split(":00.000Z")
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
-					date: arr[0],
+					startTime: arr1[0],
+					endTime: arr2[0],
 				});
 			})
 			.catch(function (error) {
@@ -77,9 +81,15 @@ export default class EditActivity extends Component {
 		});
 	}
 
-	onChangeDate(e) {
+	onChangeStartTime(e) {
 		this.setState({
-			date: e.target.value,
+			startTime: e.target.value,
+		});
+	}
+
+	onChangeEndTime(e) {
+		this.setState({
+			endTime: e.target.value,
 		});
 	}
 
@@ -91,7 +101,8 @@ export default class EditActivity extends Component {
 			actDescription: this.state.actDescription,
 			virtualMoney: this.state.virtualMoney,
 			unitMoney: this.state.unitMoney,
-			date: this.state.date,
+			startTime: this.state.startTime,
+			endTime: this.state.endTime,
 		};
 
 		console.log(activity);
@@ -106,7 +117,21 @@ export default class EditActivity extends Component {
 	render() {
 		return (
 			<main>
-				<Navbar />
+				{/* header */}
+				    <header>
+					<div className="grid grid-cols-2 navbar my-8 items-center">
+						<Link to="/" className="">
+							<p className="text-16px bold text-navy">GARLICWAK</p>
+						</Link>
+
+						<div className="container justify-end">
+							<p className="text-16px bold text-red-it">
+								{window.localStorage.getItem("name")}</p>
+						</div>
+					</div>
+
+					<div className="line-horizon px-12 mx-12"></div>
+				</header>
 
 				<div className="p-12">
 					<p className="text-30px text-navy text-center">Edit Activity</p>
@@ -179,15 +204,31 @@ export default class EditActivity extends Component {
 							</div>
 
 
-							{/* input date */}
+							{/* input Start Time */}
 							<div className="w-full grid">
-								<label className="text-18px bold text-navy">DATE</label>
+								<label className="text-18px bold text-navy">Start Time</label>
 
 								<input
 									type="datetime-local"
-									value={this.state.date}
-									selected={this.state.date}
-									onChange={this.onChangeDate}
+									value={this.state.startTime}
+									selected={this.state.startTime}
+									onChange={this.onChangeStartTime}
+									className="input mt-4 mb-8 w-full"
+								></input>
+							</div>
+						</div>
+						{/* col2 */}
+						<div className="justify-center">
+
+							{/* input End Time */}
+							<div className="w-full grid">
+								<label className="text-18px bold text-navy">End Time</label>
+
+								<input
+									type="datetime-local"
+									value={this.state.endTime}
+									selected={this.state.endTime}
+									onChange={this.onChangeEndTime}
 									className="input mt-4 mb-8 w-full"
 								></input>
 							</div>
@@ -215,7 +256,7 @@ export default class EditActivity extends Component {
 
 							<div className="justify-center w-full mx-auto">
 								<label className="text-18px bold text-navy">DESCRIPTION</label>
-								<div>
+								{/* <div>
 									<ReactQuill
 										theme="snow"
 										className="mt-4 mb-8"
@@ -227,9 +268,12 @@ export default class EditActivity extends Component {
 										formats={this.formats}
 										placeholder="Enter your Activity Description here"
 									/>
-								</div>
-						
+								</div> */}
+
 								{/* <textarea
+								</div> */}
+						
+								<textarea
 							rows="7"
 							required
 							id="actName"
@@ -238,7 +282,7 @@ export default class EditActivity extends Component {
 							onChange={this.onChangeActDescription}
 							placeholder="Description"
 							className="input w-full"
-								/> */}
+								/>
 
 
 							</div>

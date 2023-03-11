@@ -32,10 +32,10 @@
 
 .enter-container {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
-    padding-right: 1.5rem;
+    padding-right: 0.5rem;
 }
 
 .show-container {

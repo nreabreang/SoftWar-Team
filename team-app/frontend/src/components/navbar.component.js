@@ -3,31 +3,35 @@ import { Link } from "react-router-dom";
 import './navbar.component.css';
 import './Styles.css';
 
-
-
 export default class navbar extends Component {
+
+    constructor(props) {
+        super(props)
+    }
 
     render() {
         return (
             <header>
-                <div className="navbar items-center">
+                <div className="grid grid-cols-2 navbar my-8 items-center">
+                    <Link to="/" className="">
+                        <p className="text-16px bold text-navy">GARLICWAK</p>
+                    </Link>
 
-                    {/* creator side */}
-                    <div className="my-8">
-                        <Link to="/" className="text-16px bold text-navy">GARLICWAK</Link>
+                    <div className="container justify-end">
+                        <p className="text-16px bold text-red-it">
+                            {this.props.name}
+                            </p>
                     </div>
 
-                    <div className="line-horizon px-12"></div>
-
-
-                    {/* presenter and guest side */}
-                    {/* <div className="navbar-container nav left right-side">
-                        <Link to="/createActivity" className="text-16px">Create Activity</Link>
-                        <Link to="/activityList" className="text-16px">Creator Activity View</Link>
-                        <Link to="/guestActivityList" className="text-16px">Guest Activity View</Link>
-                        <Link to="/createProject" className="text-16px">Presenter View</Link>
-                    </div> */}
+                    <div className="text-14px text-navy">
+                        <button onClick={(e) => {
+                            localStorage.clear()
+                            window.history.back()
+                        }}>Log out</button>
+                    </div>
                 </div>
+
+                <div className="line-horizon px-12 mx-12"></div>
             </header>
         );
     }

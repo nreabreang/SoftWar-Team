@@ -38,6 +38,11 @@ module.exports = {
 
 			},
 
+			margin: {
+				'1.5': '0.4rem',
+				
+			   },
+
 			colors: {
 				'light-pink': '#FCC5C0',
 				'white-pink': '#FFF2F2',
