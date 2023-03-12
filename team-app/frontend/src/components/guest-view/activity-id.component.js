@@ -37,9 +37,16 @@ const ActivityInformation = (props) => {
 
                     {/* date */}
                     <div className="">
-                        <p className="text-20px bold">DATE : </p>
+                        <p className="text-20px bold">START DATE : </p>
                         <p className="text-20px italic m4">
-                            {props.date.toISOString().substring(0, 10)}
+                            {props.startTime.toISOString().substring(0, 10)}
+                        </p>
+                    </div>
+                    {/* date */}
+                    <div className="">
+                        <p className="text-20px bold">END DATE : </p>
+                        <p className="text-20px italic m4">
+                            {props.endTime.toISOString().substring(0, 10)}
                         </p>
                     </div>
                 </div>
@@ -152,34 +159,34 @@ export default class activityId extends Component {
         
     }
 
-    getVirtual() {
-        let virtualMoney = this.state.virtualMoney;
-        var findVirtual = window.localStorage.getItem("guestVirtualMoney");
-        if (findVirtual) {
-            return window.localStorage.guestVirtualMoney;
-        } else {
-            window.localStorage.setItem("guestVirtualMoney", virtualMoney);
-            return virtualMoney;
-        }}
+    // getVirtual() {
+    //     let virtualMoney = this.state.virtualMoney;
+    //     var findVirtual = window.localStorage.getItem("guestVirtualMoney");
+    //     if (findVirtual) {
+    //         return window.localStorage.guestVirtualMoney;
+    //     } else {
+    //         window.localStorage.setItem("guestVirtualMoney", virtualMoney);
+    //         return virtualMoney;
+    //     }}
 
-        componentDidMount() {
-            const arr = window.location.href.split("/");
-            // const nameArr = window.location.href.split("/");
-            // const name = nameArr[nameArr.length - 1];
+    //     componentDidMount() {
+    //         const arr = window.location.href.split("/");
+    //         // const nameArr = window.location.href.split("/");
+    //         // const name = nameArr[nameArr.length - 1];
 
-            axios.get("http://localhost:5000/activity/" + arr[arr.length - 1]).then((response) => {
-                    this.setState({
-                        actName: response.data.actName,
-                        actDescription: response.data.actDescription,
-                        virtualMoney: response.data.virtualMoney,
-                        unitMoney: response.data.unitMoney,
-                        date: new Date(response.data.date),
-                    });
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            }
+    //         axios.get("http://localhost:5000/activity/" + arr[arr.length - 1]).then((response) => {
+    //                 this.setState({
+    //                     actName: response.data.actName,
+    //                     actDescription: response.data.actDescription,
+    //                     virtualMoney: response.data.virtualMoney,
+    //                     unitMoney: response.data.unitMoney,
+    //                     date: new Date(response.data.date),
+    //                 });
+    //             })
+    //             .catch(function (error) {
+    //                 console.log(error);
+    //             });
+    //         }
         
 
         getVirtual() {
@@ -227,7 +234,8 @@ export default class activityId extends Component {
                     <div className="div">
                         <ActivityInformation
                             actName={this.state.actName}
-                            date={this.state.date}
+                            startTime={this.state.startTime}
+                            endTime={this.state.endTime}
                             descript={this.state.actDescription}
                             myname={window.localStorage.getItem("guestName")}
                             funcGetVirtual={this.getVirtual()}
