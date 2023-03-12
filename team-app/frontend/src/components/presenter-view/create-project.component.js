@@ -216,8 +216,8 @@ export default class createProject extends Component {
                 <div className="mt-2 mb-8 w-full">
                 {this.renderInputTag()}
               <div>
-                <input className="border-0 border-b border-blue-900 mr-4" placeholder="Member Name" type="text" onChange={this.onchangeNameMember} autoComplete="off"/>
-                <input className="border-0 border-b border-blue-900 mr-4 " placeholder="Member Email" type="text" onChange={this.onchangeEmailMember} autoComplete="off"/>
+                <input className="border-0 border-b border-blue-900 mr-4" placeholder="Member Name" type="text" onChange={this.onchangeNameMember} autoComplete="off" value={this.state.nameMember}/>
+                <input className="border-0 border-b border-blue-900 mr-4 " placeholder="Member Email" type="text" onChange={this.onchangeEmailMember} autoComplete="off" value={this.state.emailMember}/>
                 <button className="button red p-2 h-10 w-20 ml-4" onClick={this.onAddEvent}>Add</button>
               </div></div>
               </div>
