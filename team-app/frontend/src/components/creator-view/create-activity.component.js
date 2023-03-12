@@ -159,13 +159,12 @@ export default class CreateActivity extends Component {
                     <Navbar name={window.localStorage.name} />
                 </header>
 
-                <div className="p-12">
+                <div className="p-8">
                     <p className="text-30px text-navy text-center">Create Activity</p>
                 </div>
 
                 <form onSubmit={this.onSubmit}>
-                    <div
-                        className="grid grid-cols-2 w-9/12 gap-16 mx-auto
+                    <div className="grid grid-cols-2 w-9/12 gap-16 mx-auto text-navy
 										xs:grid-cols-1
 										sm:grid-cols-1
 										md:grid-cols-1
@@ -179,7 +178,7 @@ export default class CreateActivity extends Component {
                             <div className="w-full">
                                 {/* <label className="text-18px bold">Activity Name</label> */}
                                 <label className="text-18px text-navy bold">
-                                    ACTIVITY NAME
+                                    Activity Name
                                 </label>
                                 <input
                                     className="input mt-4 mb-8 w-full"
@@ -236,7 +235,7 @@ export default class CreateActivity extends Component {
                                 {/* virtual money container */}
                                 <div className="w-full">
                                     <label className="text-18px text-navy bold">
-                                        VIRTUAL MONEY / GUEST
+                                        Virtual Money / Guest
                                     </label>
                                     {/* virtual money container */}
                                     <div className="flex w-full">
@@ -257,7 +256,7 @@ export default class CreateActivity extends Component {
                                 {/* unit container */}
                                 <div className="w-full">
                                     <label className="text-18px bold text-navy" for="grid-last-name">
-                                        UNIT
+                                        Unit
                                     </label>
 
                                     {/* unit container */}
@@ -278,7 +277,7 @@ export default class CreateActivity extends Component {
 
                             {/* input date */}
                             <div className="w-full grid">
-                                <label className="text-18px bold text-navy">START TIME</label>
+                                <label className="text-18px bold text-navy">Start Time</label>
 
                                 <input type="datetime-local"
                                     selected={this.state.startTime}
@@ -288,7 +287,7 @@ export default class CreateActivity extends Component {
                             </div>
 
                             <div className="w-full grid">
-                                <label className="text-18px bold text-navy">END TIME</label>
+                                <label className="text-18px bold text-navy">End Time</label>
 
                                 <input type="datetime-local"
                                     selected={this.state.endTime}
