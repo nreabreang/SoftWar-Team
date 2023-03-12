@@ -18,7 +18,8 @@ router.route("/add").post((req, res) => {
   const unitMoney = req.body.unitMoney;
   const email = req.body.email;
   const code = req.body.code;
-  const date = Date.parse(req.body.date);
+  const startTime = Date.parse(req.body.startTime);
+  const endTime = Date.parse(req.body.endTime);
 
   const newActivity = new Activity({
     actName,
@@ -27,7 +28,8 @@ router.route("/add").post((req, res) => {
     unitMoney,
     code,
     email,
-    date,
+    startTime,
+    endTime,
   });
 
   newActivity
@@ -61,7 +63,8 @@ router.route("/update/:id").post((req, res) => {
       activity.actDescription = req.body.actDescription;
       activity.virtualMoney = req.body.virtualMoney;
       activity.unitMoney = req.body.unitMoney;
-      activity.date = Date.parse(req.body.date);
+      activity.startTime = Date.parse(req.body.startTime);
+      activity.endTime = Date.parse(req.body.endTime)
 
       activity
         .save()
