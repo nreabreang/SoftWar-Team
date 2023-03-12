@@ -85,7 +85,7 @@ export default class EditProject extends Component {
                     <div>{x.email}</div>
 
                     <div className="text-12px justify-left items-center pl-6 my-auto">
-                        <img src={cross} className="images-16px" onClick={(e) => this.deleteMember(x)} />
+                        <img src={cross} alt="" className="images-16px" onClick={(e) => this.deleteMember(x)} />
                     </div>
                 </div>
             // <div>
@@ -162,7 +162,7 @@ export default class EditProject extends Component {
 
                     <p className="flex text-30px text-left text-navy">
                         <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
+                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
                             Edit Project
                         </Link>
 

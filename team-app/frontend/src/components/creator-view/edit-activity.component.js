@@ -44,11 +44,7 @@ export default class EditActivity extends Component {
 			.then((response) => {
 				// const arr1 = response.data.startTime.split(":00.000Z")
 				// const arr2 = response.data.endTime.split(":00.000Z")
-				const st = new Date(response.data.startTime)
-				const ed = new Date(response.data.endTime)
 				const offset = (new Date()).getTimezoneOffset()*60000
-				console.log(st)
-				console.log()
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,

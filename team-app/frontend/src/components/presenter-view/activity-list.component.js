@@ -125,7 +125,6 @@ export default class creatorActivityId extends Component {
         }else{
             return;
         }
-        console.log()
     }
 
     render() {

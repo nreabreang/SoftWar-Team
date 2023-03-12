@@ -32,7 +32,7 @@ const ActivityList = (props) => (
 				<Link to={"/guestActivityList/" + props.activity._id}>
 					<div className="flex items-center">
 						<p className="text-12px bold mr-1">SEE PROJECT</p>
-						<img src={rightarrow} className="images-16px" />
+						<img src={rightarrow} alt="" className="images-16px" />
 					</div>
 				</Link>
 			</div>
