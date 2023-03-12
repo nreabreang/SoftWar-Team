@@ -35,7 +35,14 @@ const ActivityInfo = (props) => {
                         <div className="flex mb-4">
                             <p className="text-18px bold mr-4">Date : </p>
                             <p className="text-18px italic">
-                                {props.date.toISOString().substring(0, 10)}
+                                {props.startTime.toISOString().substring(0, 10)}
+                            </p>
+                        </div>
+                        {/* date */}
+                        <div className="flex mb-4">
+                            <p className="text-18px bold mr-4">Date : </p>
+                            <p className="text-18px italic">
+                                {props.endTime.toISOString().substring(0, 10)}
                             </p>
                         </div>
                         <div className="text text-lg font-sans font-semibold ">
@@ -98,7 +105,8 @@ export default class creatorActivityId extends Component {
             virtualMoney: "",
             unitMoney: "",
             code: "",
-            date: new Date(),
+            startTime: new Date(),
+            endTime:new Date(),
         };
     }
 
@@ -116,7 +124,8 @@ export default class creatorActivityId extends Component {
                     virtualMoney: response.data.virtualMoney,
                     unitMoney: response.data.unitMoney,
                     code: response.data.code,
-                    date: new Date(response.data.date),
+                    startTime: new Date(response.data.startTime),
+                    endTime:new Date(response.data.endTime)
                 });
             })
             .catch(function (error) {
@@ -153,7 +162,8 @@ export default class creatorActivityId extends Component {
                             encodeNumber(this.state.actName)
                         }
                         actName={this.state.actName}
-                        date={this.state.date}
+                        startTime={this.state.startTime}
+                        endTime={this.state.endTime}
                         code={this.state.code}
                         descript={this.state.actDescription}
                     />
