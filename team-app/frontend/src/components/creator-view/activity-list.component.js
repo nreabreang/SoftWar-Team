@@ -19,78 +19,84 @@ import Navbar from "../navbar.component"
 // };
 
 const Activity = (props) => {
-	return(
-	<div className="list-container w-72 text-navy mb-auto mr-auto">
+	return (
+		<div className="list-container w-full text-navy mb-auto mr-auto">
 
-		{/* header */}
-		<div className="list-header-container text-20px bold my-3 mx-6">
-			<div className="block ellipsis w-9/12">{props.activity.actName}</div>
+			{/* header */}
+			<div className="list-header-container text-20px bold my-3 mx-6">
+				<div className="block ellipsis w-9/12">{props.activity.actName}</div>
 
-			<div className="flex">
-				{/* edit icon */}
-				<Link to={"/edit/" + props.activity._id}>
-					<img src={edit} alt="edit" className="images-16px mx-2" />
-				</Link>
+				<div className="flex">
+					{/* edit icon */}
+					<Link to={"/edit/" + props.activity._id}>
+						<img src={edit} alt="edit" className="images-16px mx-2" />
+					</Link>
 
-				{/* delete icon */}
-				<button
-					href="#"
-					onClick={() => {
-						Swal.fire({
-							title: "Do you want to delete the Activity?",
-							showCancelButton: true,
-							confirmButtonText: "Confirm",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								Swal.fire("Deleted!", "", "success").then((result) => {
-									props.deleteActivity(props.activity._id);
-								});
-							}
-						});
-					}}
-				>
-					<img src={del} alt="del" className="images-16px" />
-				</button>
-			</div>
-		</div>
-
-		<div className="line border-red-it" />
-
-		{/* description */}
-		<div className="mt-3">
-
-			{/* access code */}
-			<div className="items-container m-2 my-4">
-				<p className="text-16px bold mr-2">ACCESS CODE: </p>
-				<div className="text-16px italic mr-4">
-					{props.activity.code}
+					{/* delete icon */}
+					<button
+						href="#"
+						onClick={() => {
+							Swal.fire({
+								title: "Do you want to delete the Activity?",
+								showCancelButton: true,
+								confirmButtonText: "Confirm",
+							}).then((result) => {
+								/* Read more about isConfirmed, isDenied below */
+								if (result.isConfirmed) {
+									Swal.fire("Deleted!", "", "success").then((result) => {
+										props.deleteActivity(props.activity._id);
+									});
+								}
+							});
+						}}
+					>
+						<img src={del} alt="del" className="images-16px" />
+					</button>
 				</div>
 			</div>
 
-			{/* see project */}
-			<div className="enter-container mb-4">
+			<div className="line border-red-it" />
 
-				{/* date */}
-				<div className="items-container mx-2 my-2">
-					{/* <p className="text-16px bold mr-2">DATE: </p> */}
-					<p className="text-14px mr-4">
-						{props.activity.startTime.substr(0,10)}
-					</p>
-					<p className="text-14px mr-4">
-						{props.activity.endTime.substr(0,10)}
-					</p>
-				</div>
+			{/* description */}
+			<div className="mt-3">
 
-				<Link to={"/creatorActivityList/" + props.activity._id}>
-					<div className="flex items-center">
-						<p className="text-12px bold mr-1">SEE PROJECT</p>
-						<img src={rightarrow} alt="right arrow" className="images-16px" />
+				{/* access code */}
+				<div className="items-container m-2 my-4">
+					<p className="text-16px bold mr-1">Access Code :</p>
+					<div className="text-16px italic mr-4">
+						{props.activity.code}
 					</div>
-				</Link>
+				</div>
+
+				{/* access code */}
+				<div className="items-container items-center m-2 my-4">
+					<p className="text-16px bold mr-1">Date :</p>
+					<p className="text-14px mr-2">
+						{props.activity.startTime.substr(0, 10)}
+					</p>
+					<p className="text-14px mr-2">
+						to
+					</p>
+					<p className="text-14px">
+						{props.activity.endTime.substr(0, 10)}
+					</p>
+				</div>
+
+				{/* see project */}
+				<div className="enter-container justify-end mb-2 mx-2">
+					<Link to={"/creatorActivityList/" + props.activity._id}>
+						<div className="flex items-center justify-end pb-4">
+							<p className="text-12px bold mr-1">SEE PROJECT</p>
+							<img src={rightarrow} alt="right arrow" className="images-16px" />
+						</div>
+					</Link>
+				</div>
+
+				<div className="mx-4">
+
+				</div>
 			</div>
 		</div>
-	</div>
 	)
 };
 
@@ -144,7 +150,7 @@ export default class ActivityList extends Component {
 			return (
 				<Activity
 					activity={currentactivity}
-					
+
 					deleteActivity={this.deleteActivity}
 					key={currentactivity._id}
 				/>
