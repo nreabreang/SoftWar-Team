@@ -22,10 +22,6 @@ const activitySchema = new Schema(
       type: String,
       require: true,
     },
-    date: {
-      type: Date,
-      required: true,
-    },
     code:{
       type:String,
     },
@@ -33,6 +29,14 @@ const activitySchema = new Schema(
       type:String,
       required:true,
     },
+    startTime:{
+      type:Date,
+      require:true,
+    },
+    endTime:{
+      type:Date,
+      require:true,
+    }
   },
   {
     timestamps: true,
