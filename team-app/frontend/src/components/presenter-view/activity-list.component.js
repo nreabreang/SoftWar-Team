@@ -7,7 +7,6 @@ import { Component } from "react";
 const ActivityInfo = (props) => {
     const url = window.location.href.split("/");
     window.localStorage.setItem("idActivity", url[url.length - 1]);
-    console.log(props.fname);
     return (
         <div>
             <div className="id-container text-navy">
@@ -116,6 +115,19 @@ export default class creatorActivityId extends Component {
             });
     }
 
+    showButtonAdd(){
+        if(new Date().getTime() <= new Date(this.state.endTime).getTime()){
+            return(<div className="container justify-end">
+            <a href="/createProject" className="button red px-4 py-2 w-48 text-18x">
+                Add Project +
+            </a>
+        </div>)
+        }else{
+            return;
+        }
+        console.log()
+    }
+
     render() {
         return (
             <main>
@@ -128,12 +140,8 @@ export default class creatorActivityId extends Component {
                     <p className="text-30px text-left text-navy">
                         Activity Description
                     </p>
+                    {this.showButtonAdd()}
 
-                    <div className="container justify-end">
-						<a href="/createProject" className="button red px-4 py-2 w-48 text-18x">
-							Add Project +
-						</a>
-					</div>
                 </div>
 
                 {/* info container */}
