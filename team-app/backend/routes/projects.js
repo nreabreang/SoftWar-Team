@@ -1,6 +1,4 @@
 const router = require("express").Router();
-
-const bodyParser = require("body-parser");
 let Projects = require("../models/project.model");
 // let bodyParser = require('body-parser');
 let express = require("express");
