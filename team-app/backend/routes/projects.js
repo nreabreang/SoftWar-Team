@@ -1,9 +1,14 @@
 const router = require("express").Router();
 let Projects = require("../models/project.model");
 // let bodyParser = require('body-parser');
-let express = require("express");
-router.route(express.json({ limit: "50mb" }));
-router.route(express.urlencoded({ limit: "50mb" }));
+
+
+const express = require("express");
+const bodyParser = require("body-parser");
+
+router.use(bodyParser.json({ limit: "50mb" }));
+router.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
 // http://localhost:5000/project/
 router.route("/").get((req, res) => {
   Projects.find()
