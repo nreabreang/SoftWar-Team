@@ -34,9 +34,16 @@ const ActivityInformation = (props) => {
 
           {/* date */}
           <div className="">
-            <p className="text-20px bold">DATE : </p>
+            <p className="text-20px bold">START DATE : </p>
             <p className="text-20px italic m4">
-              {props.date.toISOString().substring(0, 10)}
+              {props.startTime.toISOString().substring(0, 10)}
+            </p>
+          </div>
+          {/* date */}
+          <div className="">
+            <p className="text-20px bold">END DATE : </p>
+            <p className="text-20px italic m4">
+              {props.endTime.toISOString().substring(0, 10)}
             </p>
           </div>
         </div>
@@ -123,7 +130,8 @@ export default class activityId extends Component {
       actDescription: "",
       virtualMoney: "",
       unitMoney: "",
-      date: new Date(),
+      startTime: new Date(),
+      endTime: new Date(),
     };
   }
 
@@ -140,7 +148,8 @@ export default class activityId extends Component {
           actDescription: response.data.actDescription,
           virtualMoney: response.data.virtualMoney,
           unitMoney: response.data.unitMoney,
-          date: new Date(response.data.date),
+          startTime: new Date(response.data.startTime),
+          endTime: new Date(response.data.endTime)
         });
       })
       .catch(function(error) {
@@ -194,7 +203,8 @@ export default class activityId extends Component {
         <div className="div">
           <ActivityInformation
             actName={this.state.actName}
-            date={this.state.date}
+            startTime={this.state.startTime}
+            endTime={this.state.endTime}
             descript={this.state.actDescription}
             myname={window.localStorage.getItem("guestName")}
             funcGetVirtual={this.getVirtual()}
