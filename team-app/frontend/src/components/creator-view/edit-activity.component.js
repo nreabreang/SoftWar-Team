@@ -6,6 +6,7 @@ import "../Styles.css";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 // import { DatePicker } from "@y0c/react-datepicker";
 // import { useState } from "react";
@@ -41,16 +42,16 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
-				// const arr1 = response.data.startTime.split(":00.000Z")
-				// const arr2 = response.data.endTime.split(":00.000Z")
+				const arr1 = response.data.startTime.split(":00.000Z")
+				const arr2 = response.data.endTime.split(":00.000Z")
 				console.log(response.data)
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
-					startTime: "",
-					endTime: "",
+					startTime: arr1[0],
+					endTime: arr2[0],
 				});
 			})
 			.catch(function (error) {
@@ -97,23 +98,31 @@ export default class EditActivity extends Component {
 
 	onSubmit(e) {
 		e.preventDefault();
-
-		const activity = {
-			actName: this.state.actName,
-			actDescription: this.state.actDescription,
-			virtualMoney: this.state.virtualMoney,
-			unitMoney: this.state.unitMoney,
-			startTime: this.state.startTime,
-			endTime: this.state.endTime,
-		};
-
-		console.log(activity);
-		const arr = window.location.href.split('/');
-		axios
-			.post("http://localhost:5000/activity/update/" + arr[arr.length - 1], activity)
-			.then((res) => console.log(res.data));
-
-		window.location = "/activityList"; //relocation to homepage
+		// console.log(new Date(this.state.startTime).getTime())
+		// console.log(>= new Date(this.state.endTime).getTime)
+		if(new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()){
+				Swal.fire({
+					title:"Cannot use date.",
+					showConfirmButton:true
+				})
+		}else{
+			const activity = {
+				actName: this.state.actName,
+				actDescription: this.state.actDescription,
+				virtualMoney: this.state.virtualMoney,
+				unitMoney: this.state.unitMoney,
+				startTime: this.state.startTime,
+				endTime: this.state.endTime,
+			};
+	
+			console.log(activity);
+			const arr = window.location.href.split('/');
+			axios
+				.post("http://localhost:5000/activity/update/" + arr[arr.length - 1], activity)
+				.then((res) => console.log(res.data));
+	
+			window.location = "/activityList"; //relocation to homepage
+		}
 	}
 
 	render() {
