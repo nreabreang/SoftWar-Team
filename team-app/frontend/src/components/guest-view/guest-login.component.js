@@ -1,15 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
-import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 import "../Styles.css";
-
-const encodeNumber = (str) => {
-  return Buffer.from(str)
-    .toString("base64")
-    .slice(0, 8)
-    .toLocaleUpperCase();
-};
 
 export default class guestLogin extends Component {
   constructor(props) {
@@ -20,6 +12,17 @@ export default class guestLogin extends Component {
     this.state = {
       username: [],
     };
+  }
+
+  componentDidMount() {
+    axios.get("http://localhost:5000/activity/").then((res) => {
+      console.log(res.data[0].code);
+    });
+
+    const previousPath = document.referrer;
+    let arr = previousPath.split("/");
+    const index = arr[arr.length - 1];
+    console.log(index);
   }
 
   onChangeUsername(e) {
@@ -38,6 +41,7 @@ export default class guestLogin extends Component {
     const previousPath = document.referrer;
     let arr = previousPath.split("/");
     const index = arr[arr.length - 1];
+    console.log(index);
     window.localStorage.setItem("guestName", this.state.username);
     window.localStorage.removeItem("guestVirtualMoney");
 
@@ -56,10 +60,9 @@ export default class guestLogin extends Component {
           axios.get("http://localhost:5000/activity/").then((res) => {
             let i;
             for (i = 0; i < res.data.length; i++) {
-              if (
-                index === encodeNumber(res.data[i].actName + res.data[i].date)
-              ) {
+              if (index === res.data[i].code) {
                 window.location = "/guestActivityList/" + res.data[i]._id;
+                console.log(res.data[i]._id);
                 break;
               } else {
               }
@@ -75,7 +78,7 @@ export default class guestLogin extends Component {
           text: "You cannot use this name !",
           // footer: '<a href="">Why do I have this issue?</a>'
         });
-      }, console.log("test"));
+      });
   }
 
   render() {
