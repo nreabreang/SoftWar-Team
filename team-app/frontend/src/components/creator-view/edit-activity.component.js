@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../Styles.css";
 // import date from "../images/calendar.png";
 import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
 import { Link } from "react-router-dom";
 
 // import { DatePicker } from "@y0c/react-datepicker";
@@ -40,15 +41,16 @@ export default class EditActivity extends Component {
 		axios
 			.get("http://localhost:5000/activity/" + arr[arr.length - 1])
 			.then((response) => {
-				const arr1 = response.data.startTime.split(":00.000Z")
-				const arr2 = response.data.endTime.split(":00.000Z")
+				// const arr1 = response.data.startTime.split(":00.000Z")
+				// const arr2 = response.data.endTime.split(":00.000Z")
+				console.log(response.data)
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
-					startTime: arr1[0],
-					endTime: arr2[0],
+					startTime: "",
+					endTime: "",
 				});
 			})
 			.catch(function (error) {
@@ -256,7 +258,7 @@ export default class EditActivity extends Component {
 
 							<div className="justify-center w-full mx-auto">
 								<label className="text-18px bold text-navy">DESCRIPTION</label>
-								{/* <div>
+								<div>
 									<ReactQuill
 										theme="snow"
 										className="mt-4 mb-8"
@@ -268,12 +270,12 @@ export default class EditActivity extends Component {
 										formats={this.formats}
 										placeholder="Enter your Activity Description here"
 									/>
-								</div> */}
+								</div>
 
 								{/* <textarea
 								</div> */}
 						
-								<textarea
+								{/* <textarea
 							rows="7"
 							required
 							id="actName"
@@ -282,7 +284,7 @@ export default class EditActivity extends Component {
 							onChange={this.onChangeActDescription}
 							placeholder="Description"
 							className="input w-full"
-								/>
+								/> */}
 
 
 							</div>
