@@ -18,7 +18,8 @@ import Navbar from "../navbar.component"
 // 	return <div>{code}</div>;
 // };
 
-const Activity = (props) => (
+const Activity = (props) => {
+	return(
 	<div className="list-container w-72 text-navy mb-auto mr-auto">
 
 		{/* header */}
@@ -74,7 +75,10 @@ const Activity = (props) => (
 				<div className="items-container mx-2 my-2">
 					{/* <p className="text-16px bold mr-2">DATE: </p> */}
 					<p className="text-14px mr-4">
-						{props.activity.date.substring(0, 10)}
+						{props.activity.startTime.substr(0,10)}
+					</p>
+					<p className="text-14px mr-4">
+						{props.activity.endTime.substr(0,10)}
 					</p>
 				</div>
 
@@ -87,7 +91,8 @@ const Activity = (props) => (
 			</div>
 		</div>
 	</div>
-);
+	)
+};
 
 export default class ActivityList extends Component {
 	constructor(props) {
@@ -139,6 +144,7 @@ export default class ActivityList extends Component {
 			return (
 				<Activity
 					activity={currentactivity}
+					
 					deleteActivity={this.deleteActivity}
 					key={currentactivity._id}
 				/>

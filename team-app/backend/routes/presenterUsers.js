@@ -2,8 +2,7 @@ const router = require("express").Router();
 //import presenterUsers from '../models/presenterUsers.model'
 const presenterUsers = require("../models/presenterUsers.model");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-
+const jwt = require('jsonwebtoken');
 const JWT_SECRET = "kfqbntpwvbuypbw4va.,/ffdlt0bw7uv8bsv./z/m,mzn;dgpvq[t]";
 
 router.route("/").get(async (req, res) => {

@@ -126,7 +126,8 @@ export default class activityId extends Component {
             actDescription: "",
             virtualMoney: "",
             unitMoney: "",
-            date: new Date(),
+            startTime: new Date(),
+            endTime: new Date(),
         };
     }
 
@@ -135,20 +136,20 @@ export default class activityId extends Component {
         // const nameArr = window.location.href.split("/");
         // const name = nameArr[nameArr.length - 1];
 
-        axios
-            .get("http://localhost:5000/activity/" + arr[arr.length - 1])
-            .then((response) => {
+        axios .get("http://localhost:5000/activity/" + arr[arr.length - 1]).then((response) => {
                 this.setState({
                     actName: response.data.actName,
                     actDescription: response.data.actDescription,
                     virtualMoney: response.data.virtualMoney,
                     unitMoney: response.data.unitMoney,
-                    date: new Date(response.data.date),
+                    startTime: new Date(response.data.startTime),
+                    endTime: new Date(response.data.endTime)
                 });
             })
             .catch(function (error) {
                 console.log(error);
             });
+        
     }
 
     getVirtual() {
@@ -159,83 +160,83 @@ export default class activityId extends Component {
         } else {
             window.localStorage.setItem("guestVirtualMoney", virtualMoney);
             return virtualMoney;
+        }}
+
+        componentDidMount() {
+            const arr = window.location.href.split("/");
+            // const nameArr = window.location.href.split("/");
+            // const name = nameArr[nameArr.length - 1];
+
+            axios.get("http://localhost:5000/activity/" + arr[arr.length - 1]).then((response) => {
+                    this.setState({
+                        actName: response.data.actName,
+                        actDescription: response.data.actDescription,
+                        virtualMoney: response.data.virtualMoney,
+                        unitMoney: response.data.unitMoney,
+                        date: new Date(response.data.date),
+                    });
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+        
+
+        getVirtual() {
+            let virtualMoney = this.state.virtualMoney;
+            var findVirtual = window.localStorage.getItem("guestVirtualMoney");
+            if (findVirtual) {
+                return window.localStorage.guestVirtualMoney;
+            } else {
+                window.localStorage.setItem("guestVirtualMoney", virtualMoney);
+                return virtualMoney;
+            }
+            // var data1 = []
+            // axios.get("http://localhost:5000/guest/getName/"+getNameJa).then((res)=>data1.push(res.data)).catch((err)=>console.log("Error: "+err))
+            // if(data1.virtualMoney){
+            //   return data1.virtualMoney;
+            // }else{
+            //   console.log(false)
+            //   const data = {username:getNameJa,virtualMoney:virtualMoney};
+            //   axios.post("http://localhost:5000/guest/add/virtual",data)
+            //   return virtualMoney
+            // }
+            // return virtualMoney;
         }
-        // var data1 = []
-        // axios.get("http://localhost:5000/guest/getName/"+getNameJa).then((res)=>data1.push(res.data)).catch((err)=>console.log("Error: "+err))
-        // if(data1.virtualMoney){
-        //   return data1.virtualMoney;
-        // }else{
-        //   console.log(false)
-        //   const data = {username:getNameJa,virtualMoney:virtualMoney};
-        //   axios.post("http://localhost:5000/guest/add/virtual",data)
-        //   return virtualMoney
-        // }
-        // return virtualMoney;
-    }
 
-    render() {
-        return (
-            <main>
-                <header>
-                    <Navbar name={window.localStorage.getItem("guestName")} />
-                </header>
+        render() {
+            return (
+                <main>
+                    <header>
+                        <Navbar name={window.localStorage.getItem("guestName")} />
+                    </header>
 
-                {/* topic */}
-                <div className="px-12 py-8 items-center">
+                    {/* topic */}
+                    <div className="px-12 py-8 items-center">
 
-                    <p className="flex text-30px text-left text-navy">
-                        <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
-                            Activity Description
-                        </Link>
+                        <p className="flex text-30px text-left text-navy">
+                            <Link to="/ActivityList" className="flex">
+                                <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
+                                Activity Description
+                            </Link>
 
-                    </p>
-                </div>
+                        </p>
+                    </div>
 
-                {/* info container */}
-                <div className="div">
-                    <ActivityInformation
-                        actName={this.state.actName}
-                        date={this.state.date}
-                        descript={this.state.actDescription}
-                        myname={window.localStorage.getItem("guestName")}
-                        funcGetVirtual={this.getVirtual()}
-                        unitMoney={this.state.unitMoney}
-                    />
-                    <ProjectLists />
-                </div>
-            </main>
-            // <main>
-            //     <div className="flex header-container">
-            //         <p className="text-36px">Activity : {this.state.actName}</p>
-
-            //         <div className=" justify-center grid content-center">
-            //             <div className="m-4   text-blue-900 font-semibold justify-end border-b-2 border-red-400 pb-2 ">
-            //                 <div className="flex justify-start">
-            //                     <p className="mr-2">Name:</p>
-            //                     <div>{window.localStorage.getItem("guestName")}</div>
-            //                 </div>
-            //                 <div className="flex justify-start">
-            //                     <p className="mr-2">Virtual Money:</p>
-            //                     {/* <div> {window.localStorage.guestVirtualMoney}</div> */}
-            //                     <div>{this.getVirtual()}</div>
-            //                 </div>
-            //             </div>
-            //         </div>
-            //     </div>
-
-            //     <div className="div">
-            //         <ActivityInformation
-            //             actName={this.state.actName}
-            //             date={this.state.date}
-            //             descript={this.state.actDescription}
-            //             myname={window.localStorage.getItem("guestName")}
-            //             funcGetVirtual={this.getVirtual()}
-            //             unitMoney={this.state.unitMoney}
-            //         />
-            //         <ProjectLists />
-            //     </div>
-            // </main>
-        );
-    }
+                    {/* info container */}
+                    <div className="div">
+                        <ActivityInformation
+                            actName={this.state.actName}
+                            date={this.state.date}
+                            descript={this.state.actDescription}
+                            myname={window.localStorage.getItem("guestName")}
+                            funcGetVirtual={this.getVirtual()}
+                            unitMoney={this.state.unitMoney}
+                        />
+                        <ProjectLists />
+                    </div>
+                </main>
+            );
+        }
+    
 }

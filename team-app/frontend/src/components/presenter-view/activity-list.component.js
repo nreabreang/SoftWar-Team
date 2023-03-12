@@ -22,12 +22,18 @@ const ActivityInfo = (props) => {
 
                         {/* date */}
                         <div className="flex mb-4">
-                            <p className="text-18px bold mr-4">Date : </p>
+                            <p className="text-18px bold mr-4">START Date : </p>
                             <p className="text-18px italic">
-                                {props.date.toISOString().substring(0, 10)}
+                                {props.startTime.toISOString().substring(0, 10)}
                             </p>
                         </div>
-                    
+                        {/* date */}
+                        <div className="flex mb-4">
+                            <p className="text-18px bold mr-4">END Date : </p>
+                            <p className="text-18px italic">
+                                {props.endTime.toISOString().substring(0, 10)}
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -55,7 +61,8 @@ export default class creatorActivityId extends Component {
             actDescription: "",
             virtualMoney: "",
             unitMoney: "",
-            date: new Date(),
+            startTime: new Date(),
+            endTime: new Date(),
             presenterUserData: [],
         };
     }
@@ -99,7 +106,8 @@ export default class creatorActivityId extends Component {
                     actDescription: response.data.actDescription,
                     virtualMoney: response.data.virtualMoney,
                     unitMoney: response.data.unitMoney,
-                    date: new Date(response.data.date),
+                    startTime: new Date(response.data.startTime),
+                    endTime:new Date(response.data.endTime),
                 });
                 // console.log("res :",response.data.actName);
             })
@@ -133,7 +141,8 @@ export default class creatorActivityId extends Component {
                     <ActivityInfo
                         urls={window.location.href}
                         actName={this.state.actName}
-                        date={this.state.date}
+                        startTime={this.state.startTime}
+                        endTime={this.state.endTime}
                         descript={this.state.actDescription}
                         presenter={this.state.presenterUserData}
                     />

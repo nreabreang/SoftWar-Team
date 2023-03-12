@@ -4,7 +4,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../Styles.css";
 // import date from "../images/calendar.png";
 import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 // import { DatePicker } from "@y0c/react-datepicker";
 // import { useState } from "react";
@@ -42,6 +44,7 @@ export default class EditActivity extends Component {
 			.then((response) => {
 				const arr1 = response.data.startTime.split(":00.000Z")
 				const arr2 = response.data.endTime.split(":00.000Z")
+				console.log(response.data)
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,
@@ -95,23 +98,31 @@ export default class EditActivity extends Component {
 
 	onSubmit(e) {
 		e.preventDefault();
-
-		const activity = {
-			actName: this.state.actName,
-			actDescription: this.state.actDescription,
-			virtualMoney: this.state.virtualMoney,
-			unitMoney: this.state.unitMoney,
-			startTime: this.state.startTime,
-			endTime: this.state.endTime,
-		};
-
-		console.log(activity);
-		const arr = window.location.href.split('/');
-		axios
-			.post("http://localhost:5000/activity/update/" + arr[arr.length - 1], activity)
-			.then((res) => console.log(res.data));
-
-		window.location = "/activityList"; //relocation to homepage
+		// console.log(new Date(this.state.startTime).getTime())
+		// console.log(>= new Date(this.state.endTime).getTime)
+		if(new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()){
+				Swal.fire({
+					title:"Cannot use date.",
+					showConfirmButton:true
+				})
+		}else{
+			const activity = {
+				actName: this.state.actName,
+				actDescription: this.state.actDescription,
+				virtualMoney: this.state.virtualMoney,
+				unitMoney: this.state.unitMoney,
+				startTime: this.state.startTime,
+				endTime: this.state.endTime,
+			};
+	
+			console.log(activity);
+			const arr = window.location.href.split('/');
+			axios
+				.post("http://localhost:5000/activity/update/" + arr[arr.length - 1], activity)
+				.then((res) => console.log(res.data));
+	
+			window.location = "/activityList"; //relocation to homepage
+		}
 	}
 
 	render() {
@@ -256,7 +267,7 @@ export default class EditActivity extends Component {
 
 							<div className="justify-center w-full mx-auto">
 								<label className="text-18px bold text-navy">DESCRIPTION</label>
-								{/* <div>
+								<div>
 									<ReactQuill
 										theme="snow"
 										className="mt-4 mb-8"
@@ -268,12 +279,12 @@ export default class EditActivity extends Component {
 										formats={this.formats}
 										placeholder="Enter your Activity Description here"
 									/>
-								</div> */}
+								</div>
 
 								{/* <textarea
 								</div> */}
 						
-								<textarea
+								{/* <textarea
 							rows="7"
 							required
 							id="actName"
@@ -282,7 +293,7 @@ export default class EditActivity extends Component {
 							onChange={this.onChangeActDescription}
 							placeholder="Description"
 							className="input w-full"
-								/>
+								/> */}
 
 
 							</div>

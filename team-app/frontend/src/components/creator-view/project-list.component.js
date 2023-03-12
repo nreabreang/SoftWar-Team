@@ -48,7 +48,7 @@ const Project = (props) => {
                     </div>
                 </Link>
             </div>
-        </div>
+        </div >
     )
 }
 
@@ -105,33 +105,42 @@ export default class CreatorProjectLists extends Component {
         return (
             <button
                 onClick={(e) => {
-                    axios.delete('http://localhost:5000/project/delete/' + id)
-                    window.location.reload()
+                    Swal.fire({
+                        title: "Do you want delete it?",
+                        confirmButtonText: "Yes,delete it",
+                        showCancelButton: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            axios.delete('http://localhost:5000/project/delete/' + id)
+                            window.location.reload()
+                        }
+                    })
+
                 }}
             >
                 <img src={del} alt="del" className="images-16px" />
             </button>
-        )
+            )
     }
 
-    showProjectList() {
+            showProjectList() {
         return this.state.projects.map((resdata, index) => {
             return (
-                <Project
-                    projectID={resdata._id}
-                    projectName={resdata.projectName}
-                    projectDescription={resdata.description}
-                    projectMember={resdata.members}
-                    projectShowButton={this.showButton}
-                    deleteProjectThis={this.buttonDelete}
-                    editProject={this.buttonEdit}
-                    updateProject={this.updateProject}
-                />
+            <Project
+                projectID={resdata._id}
+                projectName={resdata.projectName}
+                projectDescription={resdata.description}
+                projectMember={resdata.members}
+                projectShowButton={this.showButton}
+                deleteProjectThis={this.buttonDelete}
+                editProject={this.buttonEdit}
+                updateProject={this.updateProject}
+            />
             )
         })
     }
 
-    render() {
+            render() {
         return (
             <main>
                 <div className="px-12 py-8 items-center justify-center">
@@ -153,6 +162,6 @@ export default class CreatorProjectLists extends Component {
                     </div>
                 </div>
             </main>
-        )
+            )
     }
 };
