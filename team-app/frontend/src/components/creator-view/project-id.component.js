@@ -59,11 +59,13 @@ export default class projectID extends Component {
 
     renderMember() {
         return this.state.members.map((x) => {
-            return (<div className="flex text-16px bold">
+            return (
+            <div className="flex text-16px bold">
                 <div className="">● {x.name}</div>
                 <p className="mx-1">—</p>
                 <div>{x.email}</div>
-            </div>)
+            </div>
+            )
         })
     }
 
@@ -259,37 +261,6 @@ class Feedback extends Component {
                     </div>
 
                 </div>
-
-
-
-
-                {/* <div class="overview-boxes ">
-                    <div class="m-4 rounded-md bg-white p-2">
-                        <div class="right-side">
-                            <div class="text-20px">Total Virtual Money</div>
-                            <div class="text-24px underline">
-                                {this.showCalculateVirtual()}
-                            </div>
-                          
-                            <span class="text-20px">credits</span>{" "}
-                           
-                        </div>
-                    </div>
-                </div>
-
-                <div class="overview-boxes ">
-                    <div class="text rounded-md bg-white m-4 p-4">
-                        <div class="right-side">
-                            <div class="text-24px">Comment</div>
-                            <div class="">
-                                {this.showCommentAll}
-                                <table>
-                                    <tr>{this.showLengthOfList()}</tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         );
     }

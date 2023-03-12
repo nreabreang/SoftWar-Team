@@ -164,28 +164,7 @@ export default class guestActivityList extends Component {
 					</div>
 				</div>
 			</main>
-			// <main>
-
-			// 	<div className="flex header-container">
-			// 		<p className="text-36px">Activity Dashboard</p>
-			// 	</div>
-
-			// 	<div className="w-5/6 mx-auto">
-			// 		<div className="show-container
-			// 						xs:grid-cols-1
-			// 						sm:grid-cols-2
-			// 						md:grid-cols-2
-			// 						lg:grid-cols-3
-			// 						xl:grid-cols-3">{this.guestActivityList()}</div>
-			// 	</div>
-
-			// </main>
-			// <div className="pl-4 font-sans font-bold text-xl">
-			//   <h3 className="pl-4 flex justify-center">Activity</h3>
-			//   <div className="flex justify-auto m-4 p-4">
-			//     {this.guestActivityList()}
-			//   </div>
-			// </div>
+			
 		);
 	}
 }

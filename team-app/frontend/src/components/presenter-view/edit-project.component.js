@@ -2,6 +2,10 @@ import axios from "axios";
 import { Component } from "react";
 import ReactQuill from "react-quill";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import Navbar from "../navbar.component";
+import leftarrow from "../images/left-arrow.png";
+import cross from "../images/cross.png";
 
 export default class EditProject extends Component {
     constructor (props) {
@@ -74,13 +78,24 @@ export default class EditProject extends Component {
 
     showAllMembers() {
         return this.state.members.map((x) => {
-            return (<div>
-                <p>{x.name}</p>
-                <p>{x.email}</p>
-                <button onClick={(e) => {
-                    this.deleteMember(x)
-                }}>Dele</button>
-            </div>)
+            return (
+                <div className="flex justify-left ml-8 pt-4">
+                    <div className="">● {x.name}</div>
+                    <p className="mx-1">—</p>
+                    <div>{x.email}</div>
+
+                    <div className="text-12px justify-left items-center pl-6 my-auto">
+                        <img src={cross} className="images-16px" onClick={(e) => this.deleteMember(x)} />
+                    </div>
+                </div>
+            // <div>
+            //     <p>{x.name}</p>
+            //     <p>{x.email}</p>
+            //     <button onClick={(e) => {
+            //         this.deleteMember(x)
+            //     }}>Dele</button>
+            // </div>
+            )
         })
     }
 
@@ -137,24 +152,123 @@ export default class EditProject extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.onAddEvent}>
-                    <div>Project Name</div>
-                    <input type="text" value={this.state.projectName} onChange={this.onChangeProjectName} />
-                    <div>Description</div>
-                    <ReactQuill
-                        value={this.state.projectDescript}
-                        onChange={this.onChangeProjectDescript}
-                    />
-                    <div>Members</div>
-                    {this.showAllMembers()}
-                    <input type="text" onChange={this.onChangeName} autoComplete="off" value={this.state.name} />
-                    <input type="text" onChange={this.onChangeEmail} autoComplete="off" value={this.state.email} />
-                    <button onClick={this.addMember}>Add</button>
+            <main>
+                <header>
+                    <Navbar name={window.localStorage.getItem("name")} />
+                </header>
 
-                    <input type="submit" value="Submit" />
+                {/* topic */}
+                <div className="px-12 py-8 items-center">
+
+                    <p className="flex text-30px text-left text-navy">
+                        <Link to="/ActivityList" className="flex">
+                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
+                            Edit Project
+                        </Link>
+
+                    </p>
+                </div>
+
+                <form onSubmit={this.onAddEvent}>
+                    <div className="mx-auto w-9/12 jusstify-center text-navy">
+
+                        <div className="justify-center">
+
+                            {/* input activity name */}
+                            <div className="w-full">
+                                <label className="text-20px bold">Project Name</label>
+                                <input
+                                    className="input mt-4 mb-8 w-full"
+                                    id="projectName"
+                                    name="projectName"
+                                    type="text"
+                                    value={this.state.projectName}
+                                    onChange={this.onchangeProjectName}
+                                    placeholder="Enter your Project Name"
+                                />
+                            </div>
+
+                            {/* input activity name */}
+                            <div className="w-full">
+                                <label className="text-20px bold" for="grid-last-name">Team Members</label>
+                                {this.showAllMembers()}
+                                <div className="grid grid-cols-5 gap-4 w-full">
+
+                                    <div className="col-span-2">
+                                        <input
+                                            className="input mt-4 mb-8 w-full"
+                                            // id="memberName"
+                                            // name="memberName"
+                                            type="text"
+                                            value={this.state.name}
+                                            onChange={this.onChangeName}
+                                            placeholder="Enter Member Name"
+                                            autoComplete="off"
+                                        />
+                                    </div>
+
+                                    <div className="col-span-2">
+                                        <input
+                                            className="input mt-4 mb-8 w-full"
+                                            // id="memberEmail"
+                                            // name="memberEmail"
+                                            type="text"
+                                            value={this.state.email}
+                                            onChange={this.onChangeEmail}
+                                            placeholder="Enter Email Name"
+                                            autoComplete="off"
+                                        />
+                                    </div>
+
+                                    <div className="col-span-1 justify-center mx-auto pt-4">
+                                        <input type="submit" value="Add" className="button red p-1 w-20" onClick={this.addMember} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* col2 */}
+                        <div className="justify-center">
+                            <div className="justify-center w-full mx-auto">
+                                <label className="text-20px bold text-navy">Project Description</label>
+                                <ReactQuill
+                                    theme="snow"
+                                    className="mt-4 mb-8"
+                                    value={this.state.projectDescript}
+                                    onChange={this.onChangeProjectDescript}
+                                    // modules={this.modules}
+                                    // formats={this.formats}
+                                    placeholder="Enter your Project Description "
+                                />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="container justify-end my-8 mx-auto w-9/12">
+                        <input type="submit" value="Submit" className="button red p-2 w-48" />
+                    </div>
+
                 </form>
-            </div>
+            </main>
+            // <div>
+            //     <form onSubmit={this.onAddEvent}>
+            //         <div>Project Name</div>
+            //         <input type="text" value={this.state.projectName} onChange={this.onChangeProjectName} />
+            //         <div>Description</div>
+            //         <ReactQuill
+            //             value={this.state.projectDescript}
+            //             onChange={this.onChangeProjectDescript}
+            //         />
+            //         <div>Members</div>
+            //         {this.showAllMembers()}
+            //         <input type="text" onChange={this.onChangeName} autoComplete="off" value={this.state.name} />
+            //         <input type="text" onChange={this.onChangeEmail} autoComplete="off" value={this.state.email} />
+            //         <button onClick={this.addMember}>Add</button>
+
+            //         <input type="submit" value="Submit" />
+            //     </form>
+            // </div>
         )
     }
 }
