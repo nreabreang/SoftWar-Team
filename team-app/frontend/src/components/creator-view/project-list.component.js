@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../Styles.css";
 import "../list.component.css"
 import rightarrow from "../images/right-arrow.png"
+import Swal from "sweetalert2";
 
 const Project = (props) => {
     const des = props.projectDescription
@@ -16,41 +17,41 @@ const Project = (props) => {
             </div>
             {/* <div>Edit</div>
             <div>Delete</div> */}
-            {props.projectShowButton(window.localStorage.PresenterEmail,props.deleteProjectThis(props.projectID),props.projectMember)}
-            {props.projectShowButton(window.localStorage.PresenterEmail,props.editProject(props.projectID),props.projectMember)}
+            {props.projectShowButton(window.localStorage.PresenterEmail, props.deleteProjectThis(props.projectID), props.projectMember)}
+            {props.projectShowButton(window.localStorage.PresenterEmail, props.editProject(props.projectID), props.projectMember)}
             {/* description */}
             <div className="mt-2">
 
-            <div className="line border-red-it" />
+                <div className="line border-red-it" />
 
-            <div className="my-3 mx-2">
-                {/* description head */}
-                <div className="items-container">
-                    <p className="text-16px bold mr-1 mb-2">DESCRIPTION</p>
+                <div className="my-3 mx-2">
+                    {/* description head */}
+                    <div className="items-container">
+                        <p className="text-16px bold mr-1 mb-2">DESCRIPTION</p>
 
-                </div>
-
-                {/* description */}
-                <div className="items-container ml-4">
-                    <div className="text-16px block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
-                </div>
-
-                {/* see project */}
-
-                <Link to={"/creatorprojectList/" + props.projectID}>
-                    <div className="enter-container mt-4 justify-end">
-                        <p className="text-14px underline italic mr-2">MORE</p>
-                        <img src={rightarrow} alt="right Arrow" className="images-16px" />
                     </div>
-                </Link>
-            </div>
-         </div >
-    </div>
+
+                    {/* description */}
+                    <div className="items-container ml-4">
+                        <div className="text-16px block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
+                    </div>
+
+                    {/* see project */}
+
+                    <Link to={"/creatorprojectList/" + props.projectID}>
+                        <div className="enter-container mt-4 justify-end">
+                            <p className="text-14px underline italic mr-2">MORE</p>
+                            <img src={rightarrow} alt="right Arrow" className="images-16px" />
+                        </div>
+                    </Link>
+                </div>
+            </div >
+        </div>
     )
 }
 
 export default class CreatorProjectLists extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props)
 
         // this.deleteProject = this.deleteProject.bind(this)
@@ -82,28 +83,37 @@ export default class CreatorProjectLists extends Component {
 
     }
 
-    showButton(email,func,member){
-        if(member.find(elemental => elemental.email === email)){
+    showButton(email, func, member) {
+        if (member.find(elemental => elemental.email === email)) {
             return func;
-        }else{
+        } else {
             return;
         }
     }
 
-    buttonEdit(id){
-        return(<div>
-            <Link to={"/editProj/"+id}>
+    buttonEdit(id) {
+        return (<div>
+            <Link to={"/editProj/" + id}>
                 <p>Edit</p>
             </Link>
         </div>)
     }
 
-    buttonDelete(id){
-        return(<div>
+    buttonDelete(id) {
+        return (<div>
             <button
-                onClick={(e)=>{
-                    axios.delete('http://localhost:5000/project/delete/' + id)
-                    window.location.reload()
+                onClick={(e) => {
+                    Swal.fire({
+                        title: "Do you want delete it?",
+                        confirmButtonText: "Yes,delete it",
+                        showCancelButton: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            axios.delete('http://localhost:5000/project/delete/' + id)
+                            window.location.reload()
+                        }
+                    })
+
                 }}
             >Delete</button>
         </div>)
