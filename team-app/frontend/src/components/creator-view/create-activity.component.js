@@ -32,8 +32,9 @@ export default class CreateActivity extends Component {
         this.onChangeActDescription = this.onChangeActDescription.bind(this);
         this.onChangeVirtualMoney = this.onChangeVirtualMoney.bind(this);
         this.onChangeUnitMoney = this.onChangeUnitMoney.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
+        this.onChangeStartTime = this.onChangeStartTime.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onChangeEndTime = this.onChangeEndTime.bind(this)
 
         this.state = {
             actName: "",
@@ -42,7 +43,8 @@ export default class CreateActivity extends Component {
             unitMoney: "",
             email: "",
             code: "",
-            date: new Date(),
+            startTime: new Date(),
+            endTime:new Date(),
             users: [],
         };
     }
@@ -81,7 +83,7 @@ export default class CreateActivity extends Component {
 
 
 
-    onChangeDate(e) {
+    onChangeStartTime(e) {
         const code = Buffer.from(makeid(8), "utf-8")
             .toString("base64")
             .slice(0, 8)
@@ -89,22 +91,32 @@ export default class CreateActivity extends Component {
 
         console.log(code);
         this.setState({
-            date: e.target.value,
+            startTime: e.target.value,
             code: code,
         });
     }
 
-
+    onChangeEndTime(e){
+        this.setState({
+            endTime:e.target.value,
+        })
+    }
 
 
     onSubmit(e) {
         e.preventDefault();
         const emails = window.localStorage.activityEmail;
-
-
-
-
-
+        console.log(this.state.startTime)
+        if(new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()){
+            Swal.fire({
+                title:"Connot use date.",
+                showConfirmButton:true
+            })            
+            {this.setState({
+                startTime:"",
+                endTime:"",
+            })}
+        }else{
         const activity = {
             actName: this.state.actName,
             actDescription: this.state.actDescription,
@@ -112,7 +124,8 @@ export default class CreateActivity extends Component {
             unitMoney: this.state.unitMoney,
             code: this.state.code,
             email: emails,
-            date: this.state.date,
+            startTime: this.state.startTime,
+            endTime:this.state.endTime,
         };
 
         console.log(activity);
@@ -136,6 +149,7 @@ export default class CreateActivity extends Component {
                     Swal.fire("Cannot create this Activity !");
                 }
             });
+        }
     }
 
     render() {
@@ -264,20 +278,23 @@ export default class CreateActivity extends Component {
 
                             {/* input date */}
                             <div className="w-full grid">
-                                <label className="text-18px bold text-navy">DATE</label>
+                                <label className="text-18px bold text-navy">START TIME</label>
 
                                 <input type="datetime-local"
-                                    selected={this.state.date}
-                                    onChange={this.onChangeDate}
+                                    selected={this.state.startTime}
+                                    value={this.state.startTime}
+                                    onChange={this.onChangeStartTime}
                                     className="input mt-4 mb-8 w-full"></input>
+                            </div>
 
-                                {/* <div style={{ background: 'none' }}>
-									<DatePicker
+                            <div className="w-full grid">
+                                <label className="text-18px bold text-navy">END TIME</label>
 
-										selected={this.state.date}
-										onChange={this.onChangeDate}
-									/>
-								</div> */}
+                                <input type="datetime-local"
+                                    selected={this.state.endTime}
+                                    value={this.state.endTime}
+                                    onChange={this.onChangeEndTime}
+                                    className="input mt-4 mb-8 w-full"></input>
                             </div>
                         </div>
 
