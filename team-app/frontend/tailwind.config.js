@@ -1,17 +1,17 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  
-  theme: {
-    extend: {
-      screens: {
-        xs: { min: "320", max: "639px" },
-        // => @media (min-width: 640px and max-width: 767px) { ... }
+	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 
-        sm: { min: "640px", max: "767px" },
-        // => @media (min-width: 640px and max-width: 767px) { ... }
+	theme: {
+		extend: {
+			screens: {
+				xs: { min: "320", max: "639px" },
+				// => @media (min-width: 640px and max-width: 767px) { ... }
 
-        md: { min: "768px", max: "1023px" },
-        // => @media (min-width: 768px and max-width: 1023px) { ... }
+				sm: { min: "640px", max: "767px" },
+				// => @media (min-width: 640px and max-width: 767px) { ... }
+
+				md: { min: "768px", max: "1023px" },
+				// => @media (min-width: 768px and max-width: 1023px) { ... }
 
 				'xs': { 'min': '320', 'max': '639px' },
 				// => @media (min-width: 640px and max-width: 767px) { ... }
@@ -40,8 +40,12 @@ module.exports = {
 
 			margin: {
 				'1.5': '0.4rem',
-				
-			   },
+
+			},
+
+			padding: {
+				'0.05': '0.05rem',
+			},
 
 			colors: {
 				'light-pink': '#FCC5C0',
@@ -49,11 +53,11 @@ module.exports = {
 				'red-it': '#DB4D4B',
 				'navy': '#263159',
 				'dark': '#1E1E1E',
-			  },
+			},
 
-			  dropShadow: {
+			dropShadow: {
 				'sh': '0 35px 35px #DB4D4B'
-			  },
+			},
 		}
 	},
 

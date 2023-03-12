@@ -2,12 +2,7 @@
     display: block;;
     justify-content: center;
     align-items: center;
-    border-radius: 0.5rem 0.5rem;
-    border-left-width: 20px;
-    border-color: #DB4D4B;
     margin: auto auto;
-    width: 60%;
-    background-color: #FCC5C0;
 }
     
 .info-container {
@@ -15,15 +10,22 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.des-container {
-    display: block;
-    padding: 0rem 2rem 2rem 2rem;
-}
+
 
 .join-container {
     display: flex;
     border-radius: 1rem 1rem;
 }
+
+.header-id {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border-radius: 0.5rem 0.5rem;
+    background: #db4d4b;
+}
+
 
 
 

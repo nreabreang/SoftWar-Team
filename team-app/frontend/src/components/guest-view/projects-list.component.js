@@ -1,97 +1,44 @@
 import axios from "axios";
 import { Component } from "react";
 import { Link } from "react-router-dom";
-
+import rightarrow from "../images/right-arrow.png"
 
 
 const Project = (props) => {
 	const des = props.projectDescription;
 	return (
-		<main>
-			<div className="list-container
-							xs: w-80
-							sm: w-80
-							md: w-80
-							lg: w-80
-							xl: w-120">
+		<div className="list-container w-96 text-navy mb-auto mr-auto">
 
-				{/* header */}
-				<div className="list-header-container text-24px bold">
-					<div className="flex ellipsis">
-						Project Name: {props.projectName}
-					</div>
+			{/* header */}
+			<div className="list-header-container text-20px bold my-3 mx-6">
+				<div className="block ellipsis w-9/12">{props.projectName}</div>
+			</div>
+
+			<div className="line border-red-it" />
+
+			{/* description */}
+			<div className="my-3 mx-2">
+				{/* description head */}
+				<div className="items-container">
+					<p className="text-16px bold mr-1 mb-2">DESCRIPTION</p>
+
 				</div>
-
-				
 
 				{/* description */}
-				<div className="mt-2">
-
-					{/* description head */}
-					<div className="items-container">
-						<p className="text-16px bold">DESCRIPTION</p>
-					</div>
-
-					<div className="line" />
-
-					{/* description */}
-					<div className="items-container my-2 mx-2">
-						<dl className="">
-							<div className=" break-words">
-
-								<div className="text-16px text-left overflow-x-auto h-32"
-									dangerouslySetInnerHTML={{ __html: des }}
-								></div>
-							</div>
-						</dl>
-					</div>
-					{/* <div className="items-container">
-						<p className="text-16px italic ellipsis">{props.projectDescription}</p>
-						<div className="text-16px ellipsis break-words" dangerouslySetInnerHTML={{ __html: des }}></div>
-					</div> */}
-
-					{/* see project */}
-
-					<Link to={"/guestprojectList/" + props.projectID}>
-						<div className="enter-container">
-							<p className="text-14px underline italic">MORE</p>
-							{/* <img src={rightarrow} className="images-16px" /> */}
-						</div>
-					</Link>
-
+				<div className="items-container ml-4">
+					<div className="text-16px block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
 				</div>
 
+				{/* see project */}
 
-			</div >
-		</main>
-		// <main className="border-2 rounded-md my-2 border-white">
-		// 	<div className="overflow-hidden flex flex-col bg-white p-4 m-4 shadow rounded-md sm:rounded-lg">
-		// 		<h1 className=" text-2xl my-2 font-semibold text-red-400">
-		// 			Project Name: {props.projectName}
-		// 		</h1>
-		// 		<div className=" border-gray-200 "></div>
-		// 		<div className="flex justify-start mt-4">
-		// 			<dl className="">
-		// 				<div className="p-4 bg-white sm:grid sm:grid-cols-3 rounded-md w-80 mx-auto  border-2 break-words">
-		// 					<dt className="text-sm text-red-400 font-semibold border-b-2 mb-4">Description</dt>
-		// 					<div className="my-1"></div>
-		// 					<div
-		// 						className=" text-sm text-gray-900 sm:col-span-2 sm:mt-0 overflow-x-auto h-32"
-		// 						dangerouslySetInnerHTML={{ __html: des }}
-		// 					></div>
-		// 				</div>
-		// 			</dl>
-		// 		</div>
-		// 		<div className="mt-4 text-white">
-		// 			<Link
-		// 				to={"/projectList/" + props.projectID}
-		// 				className="underline text-red-400"
-		// 			>
-		// 				See Project
-		// 			</Link>
-		// 		</div>
-		// 	</div>
-		// </main>
+				<Link to={"/projectList/" + props.projectID}>
+					<div className="enter-container mt-4 justify-end">
+						<p className="text-14px underline italic mr-2">MORE</p>
+						<img src={rightarrow} alt="right Arrow" className="images-16px" />
+					</div>
+				</Link>
+			</div>
+		</div>
 	);
 };
 
@@ -144,23 +91,43 @@ export default class ProjectLists extends Component {
 	render() {
 		return (
 			<main>
-				<div className="flex header-container">
-					<p className="text-30px bold ">Project Dashboard</p>
+				<div className="px-12 py-8 items-center justify-center">
+
+					<p className="text-30px text-center text-navy">Project Dashboard</p>
 				</div>
 
-				<div className="w-9/12 mx-auto">
-					<div className="show-container
-                                    xs:grid-cols-1
-                                    sm:grid-cols-1
-                                    md:grid-cols-1
-                                    lg:grid-cols-2
-                                    xl:grid-cols-2">{this.showProjectList()}</div>
-				</div>
+				<div className="px-12 pb-12 flex w-full">
+					<div className="show-container mx-auto
+							xs:grid-cols-2
+							sm:grid-cols-2
+							md:grid-cols-2
+							lg:grid-cols-3
+							xl:grid-cols-3
+							2xl:grid-cols-3">
 
-				{/* <div className="grid grid-cols-1 md:grid-cols-4 m-4">
-					{this.showProjectList()}
-				</div> */}
+						{/* show list of project */}
+						{this.showProjectList()}
+					</div>
+				</div>
 			</main>
+			// <main>
+			// 	<div className="flex header-container">
+			// 		<p className="text-30px bold ">Project Dashboard</p>
+			// 	</div>
+
+			// 	<div className="w-9/12 mx-auto">
+			// 		<div className="show-container
+			//                         xs:grid-cols-1
+			//                         sm:grid-cols-1
+			//                         md:grid-cols-1
+			//                         lg:grid-cols-2
+			//                         xl:grid-cols-2">{this.showProjectList()}</div>
+			// 	</div>
+
+			// 	{/* <div className="grid grid-cols-1 md:grid-cols-4 m-4">
+			// 		{this.showProjectList()}
+			// 	</div> */}
+			// </main>
 
 		);
 	}

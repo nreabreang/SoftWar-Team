@@ -4,25 +4,29 @@ import { Link } from "react-router-dom";
 import "../Styles.css";
 import "../list.component.css"
 import rightarrow from "../images/right-arrow.png"
+import del from "../images/delete.png";
+import edit from "../images/edit-1.png";
+import Swal from "sweetalert2";
 
 const Project = (props) => {
     const des = props.projectDescription
+
     return (
         <div className="list-container w-96 text-navy mb-auto mr-auto">
 
             {/* header */}
             <div className="list-header-container text-20px bold my-3 mx-6">
                 <div className="block ellipsis w-9/12">{props.projectName}</div>
+
+                <div className="flex">
+                    {props.projectShowButton(window.localStorage.PresenterEmail, props.editProject(props.projectID), props.projectMember)}
+                    {props.projectShowButton(window.localStorage.PresenterEmail, props.deleteProjectThis(props.projectID), props.projectMember)}
+                </div>
             </div>
-            {/* <div>Edit</div>
-            <div>Delete</div> */}
-            {props.projectShowButton(window.localStorage.PresenterEmail,props.deleteProjectThis(props.projectID),props.projectMember)}
-            {props.projectShowButton(window.localStorage.PresenterEmail,props.editProject(props.projectID),props.projectMember)}
-            {/* description */}
-            <div className="mt-2">
 
             <div className="line border-red-it" />
 
+            {/* description */}
             <div className="my-3 mx-2">
                 {/* description head */}
                 <div className="items-container">
@@ -44,8 +48,7 @@ const Project = (props) => {
                     </div>
                 </Link>
             </div>
-         </div >
-    </div>
+        </div>
     )
 }
 
@@ -82,31 +85,33 @@ export default class CreatorProjectLists extends Component {
 
     }
 
-    showButton(email,func,member){
-        if(member.find(elemental => elemental.email === email)){
+    showButton(email, func, member) {
+        if (member.find(elemental => elemental.email === email)) {
             return func;
-        }else{
+        } else {
             return;
         }
     }
 
-    buttonEdit(id){
-        return(<div>
-            <Link to={"/editProj/"+id}>
-                <p>Edit</p>
+    buttonEdit(id) {
+        return (
+            <Link to={"/editProj/" + id}>
+                <img src={edit} alt="edit" className="images-16px mx-2" />
             </Link>
-        </div>)
+        )
     }
 
-    buttonDelete(id){
-        return(<div>
+    buttonDelete(id) {
+        return (
             <button
-                onClick={(e)=>{
+                onClick={(e) => {
                     axios.delete('http://localhost:5000/project/delete/' + id)
                     window.location.reload()
                 }}
-            >Delete</button>
-        </div>)
+            >
+                <img src={del} alt="del" className="images-16px" />
+            </button>
+        )
     }
 
     showProjectList() {
@@ -147,18 +152,6 @@ export default class CreatorProjectLists extends Component {
                         {this.showProjectList()}
                     </div>
                 </div>
-                {/* <div className="header-container flex justify-center">
-                    <p className="text-30px bold px-12 py-8 text-navy">Project Dashboard</p>
-                </div>
-
-                <div className="w-full mx-auto mb-8">
-                    <div className="show-container
-                                    xs:grid-cols-1
-                                    sm:grid-cols-2
-                                    md:grid-cols-2
-                                    lg:grid-cols-2
-                                    xl:grid-cols-3">{this.showProjectList()}</div>
-                </div> */}
             </main>
         )
     }
