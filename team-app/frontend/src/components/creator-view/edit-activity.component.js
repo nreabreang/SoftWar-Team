@@ -119,9 +119,14 @@ export default class EditActivity extends Component {
 			const arr = window.location.href.split('/');
 			axios
 				.post("http://localhost:5000/activity/update/" + arr[arr.length - 1], activity)
-				.then((res) => console.log(res.data));
-	
-			window.location = "/activityList"; //relocation to homepage
+				.then((res) =>{
+					Swal.fire({
+						title:"Added",
+						showConfirmButton:true
+					}).then(()=>{
+						window.location = "/activityList"; //relocation to homepage
+					})
+				});
 		}
 	}
 
