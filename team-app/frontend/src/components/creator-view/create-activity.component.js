@@ -44,7 +44,7 @@ export default class CreateActivity extends Component {
             email: "",
             code: "",
             startTime: new Date(),
-            endTime:new Date(),
+            endTime: new Date(),
             users: [],
         };
     }
@@ -96,9 +96,9 @@ export default class CreateActivity extends Component {
         });
     }
 
-    onChangeEndTime(e){
+    onChangeEndTime(e) {
         this.setState({
-            endTime:e.target.value,
+            endTime: e.target.value,
         })
     }
 
@@ -107,48 +107,50 @@ export default class CreateActivity extends Component {
         e.preventDefault();
         const emails = window.localStorage.activityEmail;
         console.log(this.state.startTime)
-        if(new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()){
+        if (new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()) {
             Swal.fire({
-                title:"Connot use date.",
-                showConfirmButton:true
-            })            
-            {this.setState({
-                startTime:"",
-                endTime:"",
-            })}
-        }else{
-        const activity = {
-            actName: this.state.actName,
-            actDescription: this.state.actDescription,
-            virtualMoney: this.state.virtualMoney,
-            unitMoney: this.state.unitMoney,
-            code: this.state.code,
-            email: emails,
-            startTime: this.state.startTime,
-            endTime:this.state.endTime,
-        };
-
-        console.log(activity);
-
-        axios
-            .post("http://localhost:5000/activity/add", activity)
-            .then((res) => {
-                if (res.status === 200) {
-                    Swal.fire("Activity Added !").then((result) => {
-                        window.location = "/activityList";
-                    });
-                } else {
-                    // alert("Cannot create this Activity !")
-                    Swal.fire("Cannot create this Activity !");
-                }
-                //relocation to homepage
+                title: "Connot use date.",
+                showConfirmButton: true
             })
-            .catch((err) => {
-                if (err) {
-                    // Swal.fire("Cannot use this Activity Name!")
-                    Swal.fire("Cannot create this Activity !");
-                }
-            });
+            {
+                this.setState({
+                    startTime: "",
+                    endTime: "",
+                })
+            }
+        } else {
+            const activity = {
+                actName: this.state.actName,
+                actDescription: this.state.actDescription,
+                virtualMoney: this.state.virtualMoney,
+                unitMoney: this.state.unitMoney,
+                code: this.state.code,
+                email: emails,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+            };
+
+            console.log(activity);
+
+            axios
+                .post("http://localhost:5000/activity/add", activity)
+                .then((res) => {
+                    if (res.status === 200) {
+                        Swal.fire("Activity Added !").then((result) => {
+                            window.location = "/activityList";
+                        });
+                    } else {
+                        // alert("Cannot create this Activity !")
+                        Swal.fire("Cannot create this Activity !");
+                    }
+                    //relocation to homepage
+                })
+                .catch((err) => {
+                    if (err) {
+                        // Swal.fire("Cannot use this Activity Name!")
+                        Swal.fire("Cannot create this Activity !");
+                    }
+                });
         }
     }
 
@@ -159,9 +161,14 @@ export default class CreateActivity extends Component {
                     <Navbar name={window.localStorage.name} />
                 </header>
 
-                <div className="p-8">
-                    <p className="text-30px text-navy text-center">Create Activity</p>
+                {/* topic */}
+                <div className="px-12 py-8 items-center">
+                    <p className="text-30px text-center text-navy">Create Activity</p>
                 </div>
+
+                {/* <div className="p-8">
+                    <p className="text-30px text-navy text-center"></p>
+                </div> */}
 
                 <form onSubmit={this.onSubmit}>
                     <div className="grid grid-cols-2 w-9/12 gap-16 mx-auto text-navy
@@ -302,7 +309,7 @@ export default class CreateActivity extends Component {
                             <div className="w-full">
                                 {/* <label className="text-18px bold">Activity Name</label> */}
                                 <label className="text-18px text-navy bold">
-                                    ADD COMMITTEE
+                                    Add Committee
                                 </label>
 
                             </div>

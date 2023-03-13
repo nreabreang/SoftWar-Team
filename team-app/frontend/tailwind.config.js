@@ -50,6 +50,7 @@ module.exports = {
 			colors: {
 				'light-pink': '#FCC5C0',
 				'white-pink': '#FFF2F2',
+				'pink': '#FAE7E7',
 				'red-it': '#DB4D4B',
 				'navy': '#263159',
 				'dark': '#1E1E1E',

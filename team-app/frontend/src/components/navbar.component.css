@@ -37,28 +37,8 @@
 
 }
 
-
-
-/* .navbar-container {
-	display: flex;
-	font-family: 'Metro-B';
-	justify-content: space-between;
-	height: 5rem;
-	padding: 0rem 3rem 0rem 3rem;
-	width: 100%;
-	align-items: center;
-}
-
-.logo-container a {
-	text-decoration: none;
-	width: 100%;
-	padding: 10px;
-	color: #ffffff;
-}
-
-.menu-container a {
-	text-decoration: none;
-	width: 100%;
-	padding-right: 2rem;
-	color: #ffffff;
-} */
+.dropdown:focus-within .dropdown-menu {
+	opacity:1;
+	transform: translate(0) scale(1);
+	visibility: visible;
+  }

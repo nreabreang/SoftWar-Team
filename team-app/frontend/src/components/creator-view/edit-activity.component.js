@@ -7,9 +7,7 @@ import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
-// import { DatePicker } from "@y0c/react-datepicker";
-// import { useState } from "react";
+import Navbar from "../navbar.component";
 
 
 export default class EditActivity extends Component {
@@ -46,7 +44,7 @@ export default class EditActivity extends Component {
 				// const arr2 = response.data.endTime.split(":00.000Z")
 				const st = new Date(response.data.startTime)
 				const ed = new Date(response.data.endTime)
-				const offset = (new Date()).getTimezoneOffset()*60000
+				const offset = (new Date()).getTimezoneOffset() * 60000
 				console.log(st)
 				console.log()
 				this.setState({
@@ -54,8 +52,8 @@ export default class EditActivity extends Component {
 					actDescription: response.data.actDescription,
 					virtualMoney: response.data.virtualMoney,
 					unitMoney: response.data.unitMoney,
-					startTime: new Date((new Date(response.data.startTime))-offset).toISOString().substring(0,16),
-					endTime: new Date((new Date(response.data.endTime))-offset).toISOString().substring(0,16),
+					startTime: new Date((new Date(response.data.startTime)) - offset).toISOString().substring(0, 16),
+					endTime: new Date((new Date(response.data.endTime)) - offset).toISOString().substring(0, 16),
 				});
 			})
 			.catch(function (error) {
@@ -104,12 +102,12 @@ export default class EditActivity extends Component {
 		e.preventDefault();
 		// console.log(new Date(this.state.startTime).getTime())
 		// console.log(>= new Date(this.state.endTime).getTime)
-		if(new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()){
-				Swal.fire({
-					title:"Cannot use date.",
-					showConfirmButton:true
-				})
-		}else{
+		if (new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()) {
+			Swal.fire({
+				title: "Cannot use date.",
+				showConfirmButton: true
+			})
+		} else {
 			const activity = {
 				actName: this.state.actName,
 				actDescription: this.state.actDescription,
@@ -118,13 +116,13 @@ export default class EditActivity extends Component {
 				startTime: this.state.startTime,
 				endTime: this.state.endTime,
 			};
-	
+
 			console.log(activity);
 			const arr = window.location.href.split('/');
 			axios
 				.post("http://localhost:5000/activity/update/" + arr[arr.length - 1], activity)
 				.then((res) => console.log(res.data));
-	
+
 			window.location = "/activityList"; //relocation to homepage
 		}
 	}
@@ -133,27 +131,17 @@ export default class EditActivity extends Component {
 		return (
 			<main>
 				{/* header */}
-				    <header>
-					<div className="grid grid-cols-2 navbar my-8 items-center">
-						<Link to="/" className="">
-							<p className="text-16px bold text-navy">GARLICWAK</p>
-						</Link>
-
-						<div className="container justify-end">
-							<p className="text-16px bold text-red-it">
-								{window.localStorage.getItem("name")}</p>
-						</div>
-					</div>
-
-					<div className="line-horizon px-12 mx-12"></div>
+				<header>
+					<Navbar name={window.localStorage.name} />
 				</header>
 
-				<div className="p-12">
-					<p className="text-30px text-navy text-center">Edit Activity</p>
+				{/* topic */}
+				<div className="px-12 py-8 items-center">
+					<p className="text-30px text-center text-navy">Edit Activity</p>
 				</div>
 
 				<form onSubmit={this.onSubmit}>
-					<div className="grid grid-cols-2 w-9/12 gap-16 mx-auto
+					<div className="grid grid-cols-2 w-9/12 gap-16 mx-auto text-navy
 										xs:grid-cols-1
 										sm:grid-cols-1
 										md:grid-cols-1
@@ -161,14 +149,13 @@ export default class EditActivity extends Component {
 										xl:grid-cols-2
 										2xl:grid-cols-2"
 					>
-
 						{/* col1 */}
 						<div className="justify-center">
 							{/* input activity name */}
 							<div className="w-full">
 								{/* <label className="text-18px bold">Activity Name</label> */}
 								<label className="text-18px text-navy bold">
-									ACTIVITY NAME
+									Activity Name
 								</label>
 								<input
 									className="input mt-4 mb-8 w-full"
@@ -181,135 +168,146 @@ export default class EditActivity extends Component {
 								/>
 							</div>
 
-							{/* input virtual money and unit */}
+							{/* bullet point for choose virtual money */}
+							<div className="pb-6 text-16px bold">
+								<ul className="flex items-center w-3/4">
+									<li className="w-full">
+										<div className="flex items-center">
+											<input
+												id="horizontal-list-radio-license"
+												type="radio"
+												value="10000"
+												name="list-radio"
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2"
+												onClick={(e) => this.setState({
+													virtualMoney: "10000",
+													unitMoney: "unit"
+												})}
+											/>
+											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Default VM</label>
+										</div>
+									</li>
+									<li className="w-full">
+										<div className="flex items-center">
+											<input
+												id="horizontal-list-radio-license"
+												type="radio"
+												value="Unit"
+												name="list-radio"
+												className="w-4 h-4 text-red-it bg-white-pink border-navy focus:ring-red-it focus:ring-2"
+												onClick={(e) => this.setState({
+													virtualMoney: "",
+													unitMoney: ""
+												})}
+											/>
+											<label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Customize VM</label>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							{/* input virtual money and unit grid*/}
 							<div className="grid grid-cols-2 gap-4">
+
 								{/* virtual money container */}
 								<div className="w-full">
 									<label className="text-18px text-navy bold">
-										VIRTUAL MONEY / GUEST
+										Virtual Money / Guest
 									</label>
+									{/* virtual money container */}
+									<div className="flex w-full">
+										<input
+											className="input mt-4 mb-8 w-full"
+											id="virtualMoney"
+											name="virtualMoney"
+											type="text"
+											value={this.state.virtualMoney}
+											onChange={this.onChangeVirtualMoney}
+											placeholder="Enter Virtual Money"
+										/>
+
+									</div>
+
+								</div>
+
+								{/* unit container */}
+								<div className="w-full">
+									<label className="text-18px bold text-navy" for="grid-last-name">
+										Unit
+									</label>
+
+									{/* unit container */}
+									<div class="w-full">
+										<input
+											className="input mt-4 mb-8 w-full"
+											required
+											id="unitMoney"
+											name="unitMoney"
+											type="text"
+											value={this.state.unitMoney}
+											onChange={this.onChangeUnitMoney}
+											placeholder="Enter Unit"
+										/>
+									</div>
 								</div>
 							</div>
-							<input
-								className="input mt-4 mb-8 w-full"
-								id="virtualMoney"
-								name="virtualMoney"
-								type="text"
-								value={this.state.virtualMoney}
-								onChange={this.onChangeVirtualMoney}
-								placeholder="Enter Virtual Money"
-							/>
 
-
-							{/* unit container */}
-							<div class="w-full">
-								<label className="text-18px bold text-navy" for="grid-last-name">
-									UNIT
-								</label>
-								<input
-									className="input mt-4 mb-8 w-full"
-									required
-									id="unitMoney"
-									name="unitMoney"
-									type="text"
-									value={this.state.unitMoney}
-									onChange={this.onChangeUnitMoney}
-									placeholder="Enter Unit"
-								/>
-							</div>
-
-
-							{/* input Start Time */}
+							{/* input date */}
 							<div className="w-full grid">
 								<label className="text-18px bold text-navy">Start Time</label>
 
-								<input
-									type="datetime-local"
-									value={this.state.startTime}
+								<input type="datetime-local"
 									selected={this.state.startTime}
+									value={this.state.startTime}
 									onChange={this.onChangeStartTime}
-									className="input mt-4 mb-8 w-full"
-								></input>
+									className="input mt-4 mb-8 w-full"></input>
 							</div>
-						</div>
-						{/* col2 */}
-						<div className="justify-center">
 
-							{/* input End Time */}
 							<div className="w-full grid">
 								<label className="text-18px bold text-navy">End Time</label>
 
-								<input
-									type="datetime-local"
-									value={this.state.endTime}
+								<input type="datetime-local"
 									selected={this.state.endTime}
+									value={this.state.endTime}
 									onChange={this.onChangeEndTime}
-									className="input mt-4 mb-8 w-full"
-								></input>
+									className="input mt-4 mb-8 w-full"></input>
 							</div>
 						</div>
+
 						{/* col2 */}
 						<div className="justify-center">
+							<div className="w-full">
+								{/* <label className="text-18px bold">Activity Name</label> */}
+								<label className="text-18px text-navy bold">
+									Add Committee
+								</label>
 
-							{/* input description */}
+							</div>
+						</div>
+					</div>
 
-							{/* <div className="w-9/12"> */}
-							{/* <div className="input-container w-full md md:mb-0">
-									<label className="">Description</label>
-									<textarea
-										rows="7"
-										required
-										id="actName"
-										name="actName"
-										value={this.state.actDescription}
-										onChange={this.onChangeActDescription}
-										placeholder="Description"
-										className="input w-full"
-									/>
-								</div> */}
-
-
-							<div className="justify-center w-full mx-auto">
-								<label className="text-18px bold text-navy">DESCRIPTION</label>
-								<div>
-									<ReactQuill
-										theme="snow"
-										className="mt-4 mb-8"
-										required
-										// value="Joe"
-										value={this.state.actDescription}
-										onChange={this.onChangeActDescription}
-										modules={this.modules}
-										formats={this.formats}
-										placeholder="Enter your Activity Description here"
-									/>
-								</div>
-
-								{/* <textarea
-								</div> */}
-						
-								{/* <textarea
-							rows="7"
-							required
+					{/* description */}
+					<div className="justify-center w-9/12 mx-auto">
+						<label className="text-18px bold text-navy">DESCRIPTION</label>
+						<ReactQuill
+							theme="snow"
+							className="mt-4 mb-8"
 							id="actName"
 							name="actName"
 							value={this.state.actDescription}
 							onChange={this.onChangeActDescription}
-							placeholder="Description"
-							className="input w-full"
-								/> */}
-
-
-							</div>
-
-						</div>
+							modules={this.modules}
+							formats={this.formats}
+							placeholder="Put your Activity Description here"
+						/>
 					</div>
 
 					<div className="container justify-end my-8 mx-auto w-9/12">
 						<input
 							type="submit"
-							value="Submit"
-							className="button red p-2 w-48"></input>
+							value="Edit Activity"
+							className="button red p-2 w-48"
+						/>
 					</div>
 				</form>
 			</main>

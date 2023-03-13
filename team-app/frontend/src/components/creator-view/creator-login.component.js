@@ -3,140 +3,174 @@ import Swal from "sweetalert2";
 import "../Styles.css";
 
 export default class creatorLogin extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      email: "",
-      password: "",
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-    const { email, password } = this.state;
-    console.log('handleSubmit email=' + email + ' password=' + password);
-    if(window.localStorage.getItem("activityEmail")){ // check email in localstorage
-      window.localStorage.removeItem("activityEmail"); // remove old email
-      window.localStorage.setItem("activityEmail",email)
-    }else{
-      window.localStorage.setItem("activityEmail",email)
+        this.state = {
+            email: "",
+            password: "",
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    fetch("http://localhost:5000/creatorUsers/login-creator", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "creatorReg");
-        if (data.status === "ok") {
-          Swal.fire({
-            title: "Login Successfully",
-            showConfirmButton: true,
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.localStorage.setItem("token", data.data);
+    handleSubmit(e) {
+        e.preventDefault();
 
-              window.location = "/activitylist/";
-              var code = window.localStorage.getItem("ActCode");
-              console.log("Codell : ", code);
-              // axios.get("http://localhost:5000/activity/").then((res) => {
-              //   let i;
-              //   for (i = 0; i < res.data.length; i++) {
-              //     if (code === encodeNumber(res.data[i].actName)) {
-              //       // window.location = "/creatorActivityId/" + res.data[i]._id;
-              //       break;
-              //     } else {
-              //     }
-              //   }
-              // });
-              // console.log(window.localStorage.getItem("token"));
-            }
-          });
-        } else if (data.status === "error") {
-          Swal.fire({
-            title: "Login Failed",
-            showConfirmButton: true,
-          });
+        const { email, password } = this.state;
+        console.log('handleSubmit email=' + email + ' password=' + password);
+        if (window.localStorage.getItem("activityEmail")) { // check email in localstorage
+            window.localStorage.removeItem("activityEmail"); // remove old email
+            window.localStorage.setItem("activityEmail", email)
+        } else {
+            window.localStorage.setItem("activityEmail", email)
         }
-      });
-  }
-  render() {
-    return (
-      <main>
-        <div className="px-40 mt-20 ">
-          <div className="row" class="flex justify-center w-auto bg-white shadow">
-            <div className="column bg-FAE7E7 shadow">
-              <div class="center">
-                <br></br> <br></br><br></br>
-                <div className="text-36px">want to create a</div>
-                <div class="text-48px color-E22637">NEW ACTIVITY?</div>         
-                <div className="text-24px">&nbsp;You must log in first!</div>
-              </div>
-            </div>
 
-            <div className="column">
-              <div class="vl"></div>
-              <div class="forms">
-                <div class="form-content">
-                  <div class="signup-form">
-                    <div class="title">Log In</div>
-                    <form onSubmit={this.handleSubmit}>
-                      <div class="input-boxes">
-                        <div class="input-box">
-                          <input
-                            type="text"
-                            placeholder="Enter your email"
-                            required
-                            autoComplete="off"
-                            onChange={(e) => 
-                              this.setState({ email: e.target.value })
-                            }
-                          ></input>
-                        </div>
+        fetch("http://localhost:5000/creatorUsers/login-creator", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data, "creatorReg");
+                if (data.status === "ok") {
+                    Swal.fire({
+                        title: "Login Successfully",
+                        showConfirmButton: true,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.localStorage.setItem("token", data.data);
 
-                        <div class="input-box">
-                          <input
-                            placeholder="Enter your password"
-                            
-                            type="password"
-                  required
-                  onChange={(e) => this.setState({ password: e.target.value })}></input>
-                        </div>
-
-                        <div class="button input-box">
-                          <input type="submit" value="Submit"></input>
-                        </div>
-                        <div class="text sign-up-text">
-                          Don't have an account yet?&nbsp;
-                          <a
-                            className="underline text-blue-400"
-                            href="/creatorSignup"
-                          >
-                            Sign up now
-                          </a>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+                            window.location = "/activitylist/";
+                            var code = window.localStorage.getItem("ActCode");
+                            console.log("Codell : ", code);
+                            // axios.get("http://localhost:5000/activity/").then((res) => {
+                            //   let i;
+                            //   for (i = 0; i < res.data.length; i++) {
+                            //     if (code === encodeNumber(res.data[i].actName)) {
+                            //       // window.location = "/creatorActivityId/" + res.data[i]._id;
+                            //       break;
+                            //     } else {
+                            //     }
+                            //   }
+                            // });
+                            // console.log(window.localStorage.getItem("token"));
+                        }
+                    });
+                } else if (data.status === "error") {
+                    Swal.fire({
+                        title: "Login Failed",
+                        showConfirmButton: true,
+                    });
+                }
+            });
+    }
+    render() {
+        return (
+            <main>
+                <div className="flex px-14 pt-12 items-center w-11/12 mx-auto">
+                    <a href="/"><p className="text-48px text-navy bold goback">GARLICWAK</p></a>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    );
-  }
+
+                <div className="grid justify-center p-14 w-11/12 mx-auto
+                                xs:grid-cols-1
+                                sm:grid-cols-1
+                                md:grid-cols-1
+                                lg:grid-cols-2
+                                xl:grid-cols-2
+                                2xl:grid-cols-2">
+
+                    {/* col1 */}
+                    <div className="bg-pink p-14 text-red-it rounded-l-lg w-full shadow">
+                        <p className="text-24px bold">Want to create a</p>
+                        <p className="text-45px text-navy py-4">NEW ACTIVITY?</p>
+                        <p className="text-24px">You must log in first!</p>
+                    </div>
+
+                    {/* col2 */}
+                    <div className="bg-white p-14 text-navy rounded-r-lg w-full shadow">
+                        <p className="text-30px bold pb-2">Log In</p>
+                        <div className="border-b-2 border-red-it w-10"></div>
+
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="justify-center">
+
+                                {/* input email */}
+                                <div className="w-full">
+
+                                    {/* <label className="text-18px text-navy bold">
+                                        Activity Name
+                                    </label> */}
+                                    <input required
+                                        className="input my-8 px-6 pt-4 w-full"
+                                        // id="actName"
+                                        // name="actName"
+                                        type="text"
+                                        // value={this.state.actName}
+                                        onChange={(e) =>
+                                            this.setState({ email: e.target.value })
+                                        }
+                                        placeholder="Enter Your Email Address"
+                                        autoComplete="off"
+
+                                    />
+                                </div>
+
+                                {/* input password */}
+                                <div className="w-full">
+
+                                    {/* <label className="text-18px text-navy bold">
+                                        Activity Name
+                                    </label> */}
+                                    <input
+                                        className="input my-8 px-6 pt-4 w-full"
+                                        // id="actName"
+                                        // name="actName"
+                                        type="password"
+                                        // value={this.state.actName}
+                                        onChange={(e) =>
+                                            this.setState({ password: e.target.value })
+                                        }
+                                        placeholder="Enter Your Password"
+                                        autoComplete="off"
+                                    />
+                                </div>
+
+                            </div>
+
+                            <div className="container justify-end my-8 mx-auto w-full">
+                                <input
+                                    type="submit"
+                                    value="Submit"
+                                    className="button red p-2 w-full"
+                                />
+                            </div>
+                        </form>
+
+                        {/* sign up */}
+                        <div className="justify-center text-center text-16px
+                                        xs:block
+                                        sm:block
+                                        md:flex
+                                        lg:flex
+                                        xl:flex
+                                        2xl:flex">
+                            <p className="text-navy mr-2">Don't have an account yet?</p>
+                            <a href="/creatorSignup" className="button-redit-liner text-16px bold">
+                                Sign-up now!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        );
+    }
 }

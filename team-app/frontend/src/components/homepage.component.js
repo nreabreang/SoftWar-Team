@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./homepage.component.css";
-import rightarrow from "./images/right-arrow.png";
+import rightarrowpink from "./images/right-arrow-pink.png";
 import qr from "./images/qr-code - 1.png";
 import "./homepage.component.css";
 import "./Styles.css";
@@ -184,7 +184,7 @@ export default class homepage extends Component {
 									dignissimos non quis illo
 								</p>
 
-								<div className="container justify-end">
+								<div className="container justify-end text-navy">
 									<form
 										onSubmit={this.onEnterCode}
 										className="flex items-center justify-center">
@@ -194,14 +194,14 @@ export default class homepage extends Component {
 											placeholder="Enter Code"
 											maxLength="8"
 											autoComplete="off"
-											className="input-code"
+											className="input-code text-light-pink"
 										></input>
 
 										<div className="icon-container">
 											<button type="submit">
 												<img
 													alt=""
-													src={rightarrow}
+													src={rightarrowpink}
 													className="images-20px"
 													// onClick={this.onEnterCode}
 													type="submit"
