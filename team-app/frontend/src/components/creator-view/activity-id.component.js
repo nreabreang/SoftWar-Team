@@ -1,6 +1,5 @@
 import { Buffer } from "buffer";
 import axios from "axios";
-import GenerateQR from "./qr-activity";
 import CreatorProjectLists from "./project-list.component";
 import { Link } from "react-router-dom";
 import "../id.component.css";
@@ -8,10 +7,7 @@ import "../Styles.css";
 import "../list.component.css";
 import Navbar from "../navbar.component";
 import leftarrow from "../images/left-arrow.png";
-import del from "../images/delete.png";
-import edit from "../images/edit-1.png";
-import rightarrow from "../images/right-arrow.png";
-import Swal from "sweetalert2";
+
 const { Component } = require("react");
 
 const encodeNumber = (str) => {
@@ -181,7 +177,7 @@ export default class creatorActivityId extends Component {
                 <div className="px-12 py-9 items-center">
                     <p className="flex text-30px text-left text-navy">
                         <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
+                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
                             <p className="text-30px text-left text-navy">Activity Description</p>
                         </Link>
                     </p>
