@@ -12,11 +12,11 @@ const Project = (props) => {
     const des = props.projectDescription
 
     return (
-        <div className="list-container w-96 text-navy mb-auto mr-auto">
+        <div className="list-container w-96 text-navy mb-auto mr-auto bg-FAE7E7 shadow-md">
 
             {/* header */}
             <div className="list-header-container text-20px bold my-3 mx-6">
-                <div className="block ellipsis w-9/12">{props.projectName}</div>
+                <div className="block ellipsis w-9/12 pt-2">{props.projectName}</div>
 
                 <div className="flex">
                     {props.projectShowButton(window.localStorage.PresenterEmail, props.editProject(props.projectID), props.projectMember)}
@@ -143,10 +143,6 @@ export default class CreatorProjectLists extends Component {
             render() {
         return (
             <main>
-                <div className="px-12 py-8 items-center justify-center">
-
-                    <p className="text-30px text-center text-navy">Project Dashboard</p>
-                </div>
 
                 <div className="px-12 pb-12 flex w-full">
                     <div className="show-container mx-auto
