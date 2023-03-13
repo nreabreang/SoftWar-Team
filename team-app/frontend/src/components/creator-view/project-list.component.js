@@ -17,7 +17,6 @@ const Project = (props) => {
             {/* header */}
             <div className="list-header-container text-20px bold mt-4 mb-3 mx-6">
                 <div className="block ellipsis w-9/12">{props.projectName}</div>
-
                 <div className="flex">
                     {props.projectShowButton(window.localStorage.PresenterEmail, props.editProject(props.projectID), props.projectMember)}
                     {props.projectShowButton(window.localStorage.PresenterEmail, props.deleteProjectThis(props.projectID), props.projectMember)}

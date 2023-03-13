@@ -49,6 +49,35 @@ export default class CreateActivity extends Component {
         };
     }
 
+    modules = {
+        toolbar: [
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline", "strike", "blockquote"],
+            [
+                { list: "ordered" },
+                { list: "bullet" },
+                { indent: "-1" },
+                { indent: "+1" },
+            ],
+            ["link", "image"],
+            // ['clean']
+        ],
+    };
+
+    formats = [
+        "header",
+        "bold",
+        "italic",
+        "underline",
+        "strike",
+        "blockquote",
+        "list",
+        "bullet",
+        "indent",
+        "link",
+        "image",
+    ];
+
     componentDidMount() {
         // this.setState({actName:"test"});
         // console.log(this.state.code);
@@ -109,49 +138,41 @@ export default class CreateActivity extends Component {
         console.log(this.state.startTime)
         if (new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()) {
             Swal.fire({
-                title: "Connot use date.",
-                showConfirmButton: true
+                title:"Connot use date.",
+                showConfirmButton:true
+            })            
+            this.setState({
+                startTime:"",
+                endTime:"",
             })
-            {
-                this.setState({
-                    startTime: "",
-                    endTime: "",
-                })
-            }
-        } else {
-            const activity = {
-                actName: this.state.actName,
-                actDescription: this.state.actDescription,
-                virtualMoney: this.state.virtualMoney,
-                unitMoney: this.state.unitMoney,
-                code: this.state.code,
-                email: emails,
-                startTime: this.state.startTime,
-                endTime: this.state.endTime,
-            };
+        }else{
+        const activity = {
+            actName: this.state.actName,
+            actDescription: this.state.actDescription,
+            virtualMoney: this.state.virtualMoney,
+            unitMoney: this.state.unitMoney,
+            code: this.state.code,
+            email: emails,
+            startTime: this.state.startTime,
+            endTime:this.state.endTime,
+        };
 
-            console.log(activity);
+        console.log(activity);
 
-            axios
-                .post("http://localhost:5000/activity/add", activity)
-                .then((res) => {
-                    if (res.status === 200) {
-                        Swal.fire("Activity Added !").then((result) => {
-                            window.location = "/activityList";
-                        });
-                    } else {
-                        // alert("Cannot create this Activity !")
-                        Swal.fire("Cannot create this Activity !");
-                    }
-                    //relocation to homepage
-                })
-                .catch((err) => {
-                    if (err) {
-                        // Swal.fire("Cannot use this Activity Name!")
-                        Swal.fire("Cannot create this Activity !");
-                    }
-                });
-        }
+        axios
+            .post("http://localhost:5000/activity/add", activity)
+            .then((res) => {
+                if (res.status === 200) {
+                    Swal.fire("Activity Added !").then((result) => {
+                        window.location = "/activityList";
+                    });
+                } else {
+                    // alert("Cannot create this Activity !")
+                    Swal.fire("Cannot create this Activity !");
+                }
+                //relocation to homepage
+            })
+        } 
     }
 
     render() {

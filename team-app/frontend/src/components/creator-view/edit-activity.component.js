@@ -5,7 +5,6 @@ import "../Styles.css";
 // import date from "../images/calendar.png";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Navbar from "../navbar.component";
 
@@ -42,11 +41,7 @@ export default class EditActivity extends Component {
 			.then((response) => {
 				// const arr1 = response.data.startTime.split(":00.000Z")
 				// const arr2 = response.data.endTime.split(":00.000Z")
-				const st = new Date(response.data.startTime)
-				const ed = new Date(response.data.endTime)
-				const offset = (new Date()).getTimezoneOffset() * 60000
-				console.log(st)
-				console.log()
+				const offset = (new Date()).getTimezoneOffset()*60000
 				this.setState({
 					actName: response.data.actName,
 					actDescription: response.data.actDescription,

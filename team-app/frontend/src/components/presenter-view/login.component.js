@@ -1,15 +1,6 @@
 import { Component } from "react";
 import Swal from "sweetalert2";
-import { Buffer } from "buffer";
 import axios from "axios";
-
-const encodeNumber = (str) => {
-  const code = Buffer.from(str, "utf-8")
-    .toString("base64")
-    .slice(0, 8)
-    .toLocaleUpperCase();
-  return code;
-};
 
 export default class presenterLogin extends Component {
   constructor(props) {

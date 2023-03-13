@@ -4,11 +4,6 @@ import './navbar.component.css';
 import './Styles.css';
 
 export default class navbar extends Component {
-
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <header>

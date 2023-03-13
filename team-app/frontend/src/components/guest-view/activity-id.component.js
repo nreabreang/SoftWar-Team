@@ -143,7 +143,7 @@ export default class activityId extends Component {
         // const nameArr = window.location.href.split("/");
         // const name = nameArr[nameArr.length - 1];
 
-        axios .get("http://localhost:5000/activity/" + arr[arr.length - 1]).then((response) => {
+        axios.get("http://localhost:5000/activity/" + arr[arr.length - 1]).then((response) => {
                 this.setState({
                     actName: response.data.actName,
                     actDescription: response.data.actDescription,
@@ -223,7 +223,7 @@ export default class activityId extends Component {
 
                         <p className="flex text-30px text-left text-navy">
                             <Link to="/ActivityList" className="flex">
-                                <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
+                                <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
                                 Activity Description
                             </Link>
 

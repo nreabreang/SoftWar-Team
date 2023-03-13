@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/navbar.component";
 import Homepage from "./components/homepage.component";
-import Footer from "./components/footer.component";
 import CreateActivity from "./components/creator-view/create-activity.component";
 import ActivityList from "./components/creator-view/activity-list.component";
 import EditActivity from "./components/creator-view/edit-activity.component";

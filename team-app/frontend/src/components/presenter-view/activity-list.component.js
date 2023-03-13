@@ -1,6 +1,6 @@
 import axios from "axios";
 import CreatorProjectLists from "../creator-view/project-list.component";
-// import Navbar from "../navbar.component"
+import Navbar from "../navbar.component"
 // const { Component } = require("react");
 import { Component } from "react";
 
@@ -8,44 +8,39 @@ const ActivityInfo = (props) => {
     const url = window.location.href.split("/");
     window.localStorage.setItem("idActivity", url[url.length - 1]);
     return (
-        <div>
-            <div className="id-container text-navy">
-                <div className="info-container p-8">
-                    {/* col1 */}
-                    <div className="">
-                        {/* date */}
-                        <div className="mb-4">
-                            {/* <p className="text-20px bold mr-4">Activity Name : </p> */}
-                            <p className="text-24px text-left bold">{props.actName}</p>
+        <div className="card-container mx-auto px-24 ">
+            <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 text-navy" >
+                <div class=" overflow-hidden rounded-lg shadow-lg  lg:max-w-none lg:flex bg-FAE7E7 py-6">
+                    <div class="flex-1 px-4 py-4  lg:p-12 " >
+                    <h3 className="text-3xl font-semibold ml-2 color-E22637">{props.actName}</h3>
+                        {/* description */}
+                        <div className="mt-6 ml-2">
+                            <p className=" text-2xl font-bold text-navy">Description</p>
+                            <p className="mt-2 text-base text-navy" dangerouslySetInnerHTML={{ __html: props.descript }}></p>
                         </div>
 
-                        {/* date */}
-                        <div className="flex mb-4">
-                            <p className="text-18px bold mr-4">START Date : </p>
-                            <p className="text-18px italic">
-                                {props.startTime.toISOString().substring(0, 10)}
-                            </p>
-                        </div>
-                        {/* date */}
-                        <div className="flex mb-4">
-                            <p className="text-18px bold mr-4">END Date : </p>
-                            <p className="text-18px italic">
-                                {props.endTime.toISOString().substring(0, 10)}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                        {/* <div class="mt-6">
+                            <div class="flex items-center">
+                                <h4 class="flex-shrink-0 pr-4 text-sm font-semibold tracking-wider text-navy uppercase"></h4>
+                                <div class="flex-1 border-t border-red-500"></div>
+                            </div>
+                        </div> */}
 
-                <div className="line" />
+                        <div className="flex justify-start">
+                             {/*start date */}
+                        <div className="flex mt-6 ml-2">
+                            <p className="text-18px bold mr-4">Start Date : </p>
+                            <p className="mt-1 text-base text-navy">{props.startTime.toISOString().substring(0, 10)}</p>
+                        </div>
 
-                <div className="des-container mt-4">
-                    <div className="block">
-                        <p className="text-20px bold">DESCRIPTION : </p>
-                        <p
-                            className="text-20px italic m4  break-words"
-                            dangerouslySetInnerHTML={{ __html: props.descript }}
-                        ></p>
-                    </div>
+                        {/*end date */}
+                        <div className="flex mt-6 ml-4">
+                            <p className="text-18px bold mr-4">Due Date : </p>
+                            <p className="mt-1  text-base text-navy">{props.endTime.toISOString().substring(0, 10)}</p>
+                        </div>
+                        </div>
+
+                       </div>
                 </div>
             </div>
         </div>
@@ -118,31 +113,31 @@ export default class creatorActivityId extends Component {
     showButtonAdd(){
         if(new Date().getTime() <= new Date(this.state.endTime).getTime()){
             return(<div className="container justify-end">
-            <a href="/createProject" className="button red px-4 py-2 w-48 text-18x">
+            <a href="/createProject" className="button red px-4 py-2 w-48 text-18x ">
                 Add Project +
             </a>
         </div>)
         }else{
             return;
         }
-        console.log()
     }
 
     render() {
         return (
-            <main>
-                {/* <header>
+            <main className="">
+                
+                <header>
 					<Navbar name={window.localStorage.PresenterFirstName + " " + window.localStorage.PresenterLastName} />
-				</header> */}
+				</header>
 
                 {/* topic */}
-                <div className="grid grid-cols-2 px-12 py-8 items-center">
-                    <p className="text-30px text-left text-navy">
-                        Activity Description
+                <div className=" px-12 py-12 mx-12 items-center justify-center ">
+                    <div className="items-center justify-center">
+                    <p className="text-30px text-center text-navy pb-10">
+                        Activity Details
                     </p>
-                    {this.showButtonAdd()}
-
                 </div>
+                
 
                 {/* info container */}
                 <div className="div">
@@ -154,6 +149,11 @@ export default class creatorActivityId extends Component {
                         descript={this.state.actDescription}
                         presenter={this.state.presenterUserData}
                     />
+                    <div className=" mx-28 items-center justify-center grid grid-cols-2  py-8 pt-16">
+                        <p className="text-30px text-navy ">Project List</p> 
+                        {this.showButtonAdd()}
+                    </div>
+                </div>
                     <CreatorProjectLists />
                 </div>
 
