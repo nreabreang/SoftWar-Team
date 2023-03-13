@@ -12,7 +12,7 @@ header {
 }
 
 main {
-  background-color: #fff2f2;
+  background-color: #FFF2F2;
   height: min-content;
 }
 
@@ -31,6 +31,8 @@ footer {
   border-radius: 1rem;
   text-decoration: none;
   transition-duration: 0.4s;
+  font-size: 14px;
+  font-family: "Metro-B";
 }
 
 .button.navy {
@@ -44,6 +46,13 @@ footer {
   color: #fcc5c0;
   border: 2px solid #db4d4b;
 }
+
+.button.red.light {
+  background-color: #db4d4b;
+  color: #FFF2F2;
+  border: 2px solid #db4d4b;
+}
+
 
 .button.navy:hover {
   background-color: transparent;
@@ -82,14 +91,51 @@ footer {
   color: #fcc5c0;
 }
 
-.button-lightpink-liner {
+.button-redit-liner {
   color: #db4d4b;
 }
 
-.button-lightpink-liner:hover {
+.button-redit-liner:hover {
   text-decoration-line: underline;
-  text-decoration-thickness: 1px;
-  text-decoration-color: #fcc5c0;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #db4d4b;
+}
+
+.goback {
+  background-image: linear-gradient(
+    to right,
+    #db4d4b,
+    #db4d4b 50%,
+    #263159 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.goback:before {
+  content: '';
+  background: #db4d4b;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.goback:hover {
+ background-position: 0;
+}
+
+.goback:hover::before {
+  width:100%;
 }
 
 /*/////////////////////////////////////////////////////////////////*/
@@ -98,6 +144,20 @@ footer {
 
 .text-48px {
   font-size: 3rem;
+  /* 48px */
+  line-height: 1;
+  font-family: "Metro-B";
+}
+
+.text-45px {
+  font-size: 2.8rem;
+  /* 48px */
+  line-height: 1;
+  font-family: "Metro-B";
+}
+
+.text-40px {
+  font-size: 2.5rem;
   /* 48px */
   line-height: 1;
   font-family: "Metro-B";
@@ -203,6 +263,11 @@ footer {
 
 /*////////////////////////// images size //////////////////////////*/
 
+.images-48px {
+  width: 48px;
+  height: 48px;
+}
+
 .images-30px {
     width: 30px;
     height: 30px;
@@ -226,6 +291,11 @@ footer {
 .images-16px {
   width: 16px;
   height: 16px;
+}
+
+.images-14px {
+  width: 14px;
+  height: 14px;
 }
 
 

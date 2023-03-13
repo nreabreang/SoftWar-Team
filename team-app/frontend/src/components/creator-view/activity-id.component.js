@@ -24,107 +24,110 @@ const encodeNumber = (str) => {
 
 const ActivityInfo = (props) => {
     return (
-        <div className="w-9/12 mx-auto">
-            <div className="flex mx-auto">
+        <div>
 
-                {/* col1 */}
-                <div className="w-full w-4/5 mr-8">
-
-                    <div className="header-id w-full">
-                        <p className="text-24px bold py-2">{props.actName}</p>
-                    </div>
-
-                    <div className="header-id mt-8 p-4 h-full">
-                        <div className="flex mb-4">
-                            <p className="text-18px bold mr-4">Date : </p>
-                            <p className="text-18px italic">
-                                {props.startTime.toISOString().substring(0, 10)}
-                            </p>
-                        </div>
-                        {/* date */}
-                        <div className="flex mb-4">
-                            <p className="text-18px bold mr-4">Date : </p>
-                            <p className="text-18px italic">
-                                {props.endTime.toISOString().substring(0, 10)}
-                            </p>
-                        </div>
-
-                        <div className="flex mb-4">
-                            <p className="text-18px bold mr-4">Committee : </p>
-                            <p className="text-18px italic">
-
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* col2 */}
-                <div className="w-3/5 text-center items-center justify-center mr-8">
-                    <div className="m-auto w-full h-full header-id ">
-
-                        <div className="flex text-16px justify-center">
-                            <p className="text-16px bold mr-2">ACCESS CODE : </p>
-                            {props.code}
-                        </div>
-
-                        <div className="items-center my-auto mx-8">
-                            {/* qrcode */}
-                            <GenerateQR urls={props.urls} actName={props.actName} />
-                        </div>
-                    </div>
-                </div>
-
-                {/* col3 */}
-                <div className="w-24 text-center items-center justify-center mx-auto">
-
-                    <div className="w-full header-id">
-
-                        {/* edit icon */}
-                        <div>
-                            <Link to={"/edit/"} className="p-8">
-                                <img src={edit} alt="edit" className="images-20px mx-auto" />
-                            </Link>
-                        </div>
-
-                        {/* delete icon */}
-                        <button
-                            href="#"
-                            onClick={() => {
-                                Swal.fire({
-                                    title: "Do you want to delete the Activity?",
-                                    showCancelButton: true,
-                                    confirmButtonText: "Confirm",
-                                }).then((result) => {
-                                    /* Read more about isConfirmed, isDenied below */
-                                    if (result.isConfirmed) {
-                                        Swal.fire("Deleted!", "", "success").then((result) => {
-                                            props.deleteActivity(props.activity._id);
-                                        });
-                                    }
-                                });
-                            }}
-                        >
-                            <img src={del} alt="del" className="images-20px" />
-                        </button>
-
-                        {/* view result icon */}
-                        <Link to={"/edit/"} className="p-8">
-                            <img src={rightarrow} alt="right arrow" className="images-20px mx-auto" />
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
-            <div className="des-container mt-4">
-                <div className="block">
-                    <p className="text-20px bold">DESCRIPTION : </p>
-                    <p
-                        className="text-20px italic m4  break-words"
-                        dangerouslySetInnerHTML={{ __html: props.descript }}
-                    ></p>
-                </div>
-            </div>
         </div>
+        // <div className="w-9/12 mx-auto">
+        //     <div className="flex mx-auto">
+
+        //         {/* col1 */}
+        //         <div className="w-full w-4/5 mr-8">
+
+        //             <div className="header-id w-full">
+        //                 <p className="text-24px bold py-2">{props.actName}</p>
+        //             </div>
+
+        //             <div className="header-id mt-8 p-4 h-full">
+        //                 <div className="flex mb-4">
+        //                     <p className="text-18px bold mr-4">Date : </p>
+        //                     <p className="text-18px italic">
+        //                         {props.startTime.toISOString().substring(0, 10)}
+        //                     </p>
+        //                 </div>
+        //                 {/* date */}
+        //                 <div className="flex mb-4">
+        //                     <p className="text-18px bold mr-4">Date : </p>
+        //                     <p className="text-18px italic">
+        //                         {props.endTime.toISOString().substring(0, 10)}
+        //                     </p>
+        //                 </div>
+
+        //                 <div className="flex mb-4">
+        //                     <p className="text-18px bold mr-4">Committee : </p>
+        //                     <p className="text-18px italic">
+
+        //                     </p>
+        //                 </div>
+        //             </div>
+        //         </div>
+
+        //         {/* col2 */}
+        //         <div className="w-3/5 text-center items-center justify-center mr-8">
+        //             <div className="m-auto w-full h-full header-id ">
+
+        //                 <div className="flex text-16px justify-center">
+        //                     <p className="text-16px bold mr-2">ACCESS CODE : </p>
+        //                     {props.code}
+        //                 </div>
+
+        //                 <div className="items-center my-auto mx-8">
+        //                     {/* qrcode */}
+        //                     <GenerateQR urls={props.urls} actName={props.actName} />
+        //                 </div>
+        //             </div>
+        //         </div>
+
+        //         {/* col3 */}
+        //         <div className="w-24 text-center items-center justify-center mx-auto">
+
+        //             <div className="w-full header-id">
+
+        //                 {/* edit icon */}
+        //                 <div>
+        //                     <Link to={"/edit/"} className="p-8">
+        //                         <img src={edit} alt="edit" className="images-20px mx-auto" />
+        //                     </Link>
+        //                 </div>
+
+        //                 {/* delete icon */}
+        //                 <button
+        //                     href="#"
+        //                     onClick={() => {
+        //                         Swal.fire({
+        //                             title: "Do you want to delete the Activity?",
+        //                             showCancelButton: true,
+        //                             confirmButtonText: "Confirm",
+        //                         }).then((result) => {
+        //                             /* Read more about isConfirmed, isDenied below */
+        //                             if (result.isConfirmed) {
+        //                                 Swal.fire("Deleted!", "", "success").then((result) => {
+        //                                     props.deleteActivity(props.activity._id);
+        //                                 });
+        //                             }
+        //                         });
+        //                     }}
+        //                 >
+        //                     <img src={del} alt="del" className="images-20px" />
+        //                 </button>
+
+        //                 {/* view result icon */}
+        //                 <Link to={"/edit/"} className="p-8">
+        //                     <img src={rightarrow} alt="right arrow" className="images-20px mx-auto" />
+        //                 </Link>
+        //             </div>
+        //         </div>
+        //     </div>
+
+        //     <div className="des-container mt-4">
+        //         <div className="block">
+        //             <p className="text-20px bold">DESCRIPTION : </p>
+        //             <p
+        //                 className="text-20px italic m4  break-words"
+        //                 dangerouslySetInnerHTML={{ __html: props.descript }}
+        //             ></p>
+        //         </div>
+        //     </div>
+        // </div>
     );
 };
 
@@ -138,7 +141,7 @@ export default class creatorActivityId extends Component {
             unitMoney: "",
             code: "",
             startTime: new Date(),
-            endTime:new Date(),
+            endTime: new Date(),
         };
     }
 
@@ -157,7 +160,7 @@ export default class creatorActivityId extends Component {
                     unitMoney: response.data.unitMoney,
                     code: response.data.code,
                     startTime: new Date(response.data.startTime),
-                    endTime:new Date(response.data.endTime)
+                    endTime: new Date(response.data.endTime)
                 });
             })
             .catch(function (error) {
@@ -175,16 +178,15 @@ export default class creatorActivityId extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="px-12 py-8 items-center">
-
+                <div className="px-12 py-9 items-center">
                     <p className="flex text-30px text-left text-navy">
                         <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
-                            Activity Description
+                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
+                            <p className="text-30px text-left text-navy">Activity Description</p>
                         </Link>
-
                     </p>
                 </div>
+
 
                 {/* info container */}
                 <div className="">

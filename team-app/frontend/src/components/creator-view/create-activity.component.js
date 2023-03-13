@@ -44,10 +44,39 @@ export default class CreateActivity extends Component {
             email: "",
             code: "",
             startTime: new Date(),
-            endTime:new Date(),
+            endTime: new Date(),
             users: [],
         };
     }
+
+    modules = {
+        toolbar: [
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline", "strike", "blockquote"],
+            [
+                { list: "ordered" },
+                { list: "bullet" },
+                { indent: "-1" },
+                { indent: "+1" },
+            ],
+            ["link", "image"],
+            // ['clean']
+        ],
+    };
+
+    formats = [
+        "header",
+        "bold",
+        "italic",
+        "underline",
+        "strike",
+        "blockquote",
+        "list",
+        "bullet",
+        "indent",
+        "link",
+        "image",
+    ];
 
     componentDidMount() {
         // this.setState({actName:"test"});
@@ -96,9 +125,9 @@ export default class CreateActivity extends Component {
         });
     }
 
-    onChangeEndTime(e){
+    onChangeEndTime(e) {
         this.setState({
-            endTime:e.target.value,
+            endTime: e.target.value,
         })
     }
 
@@ -107,7 +136,7 @@ export default class CreateActivity extends Component {
         e.preventDefault();
         const emails = window.localStorage.activityEmail;
         console.log(this.state.startTime)
-        if(new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()){
+        if (new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()) {
             Swal.fire({
                 title:"Connot use date.",
                 showConfirmButton:true
@@ -143,13 +172,7 @@ export default class CreateActivity extends Component {
                 }
                 //relocation to homepage
             })
-            .catch((err) => {
-                if (err) {
-                    // Swal.fire("Cannot use this Activity Name!")
-                    Swal.fire("Cannot create this Activity !");
-                }
-            });
-        }
+        } 
     }
 
     render() {
@@ -159,9 +182,14 @@ export default class CreateActivity extends Component {
                     <Navbar name={window.localStorage.name} />
                 </header>
 
-                <div className="p-8">
-                    <p className="text-30px text-navy text-center">Create Activity</p>
+                {/* topic */}
+                <div className="px-12 py-8 items-center">
+                    <p className="text-30px text-center text-navy">Create Activity</p>
                 </div>
+
+                {/* <div className="p-8">
+                    <p className="text-30px text-navy text-center"></p>
+                </div> */}
 
                 <form onSubmit={this.onSubmit}>
                     <div className="grid grid-cols-2 w-9/12 gap-16 mx-auto text-navy
@@ -302,7 +330,7 @@ export default class CreateActivity extends Component {
                             <div className="w-full">
                                 {/* <label className="text-18px bold">Activity Name</label> */}
                                 <label className="text-18px text-navy bold">
-                                    ADD COMMITTEE
+                                    Add Committee
                                 </label>
 
                             </div>

@@ -5,8 +5,8 @@ import axios from "axios";
 import "../list.component.css";
 import "../Styles.css";
 import rightarrow from "../images/right-arrow.png";
-import del from "../images/delete.png";
-import edit from "../images/edit-1.png";
+import del from "../images/bin.png";
+import edit from "../images/edit-2.png";
 import Swal from "sweetalert2";
 import Navbar from "../navbar.component"
 
@@ -20,10 +20,10 @@ import Navbar from "../navbar.component"
 
 const Activity = (props) => {
 	return (
-		<div className="list-container w-full text-navy mb-auto mr-auto">
+		<div className="list-container bg-pink w-96 h-full text-navy mb-auto mr-auto">
 
 			{/* header */}
-			<div className="list-header-container text-20px bold my-3 mx-6">
+			<div className="list-header-container text-20px bold mt-4 mb-3 mx-6">
 				<div className="block ellipsis w-9/12">{props.activity.actName}</div>
 
 				<div className="flex">
@@ -61,7 +61,7 @@ const Activity = (props) => {
 			<div className="mt-3">
 
 				{/* access code */}
-				<div className="items-container m-2 my-4">
+				<div className="flex px-4 m-2 my-4">
 					<p className="text-16px bold mr-1">Access Code :</p>
 					<div className="text-16px italic mr-4">
 						{props.activity.code}
@@ -69,7 +69,7 @@ const Activity = (props) => {
 				</div>
 
 				{/* access code */}
-				<div className="items-container items-center m-2 my-4">
+				<div className="flex px-4 items-center m-2">
 					<p className="text-16px bold mr-1">Date :</p>
 					<p className="text-14px mr-2">
 						{props.activity.startTime.substr(0, 10)}
@@ -86,8 +86,8 @@ const Activity = (props) => {
 				<div className="enter-container justify-end mb-2 mx-2">
 					<Link to={"/creatorActivityList/" + props.activity._id}>
 						<div className="flex items-center justify-end pb-4">
-							<p className="text-12px bold mr-1">SEE PROJECT</p>
-							<img src={rightarrow} alt="right arrow" className="images-16px" />
+							<p className="text-14px underline bold mr-2">See Project</p>
+							<img src={rightarrow} alt="right arrow" className="images-14px" />
 						</div>
 					</Link>
 				</div>
@@ -181,9 +181,9 @@ export default class ActivityList extends Component {
 									xs:grid-cols-2
 									sm:grid-cols-2
 									md:grid-cols-2
-									lg:grid-cols-3
-									xl:grid-cols-4
-									2xl:grid-cols-4">
+									lg:grid-cols-2
+									xl:grid-cols-3
+									2xl:grid-cols-3">
 
 						{/* show list of activity */}
 						{this.activityList()}
