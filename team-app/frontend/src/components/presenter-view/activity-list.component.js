@@ -118,7 +118,9 @@ export default class creatorActivityId extends Component {
             </a>
         </div>)
         }else{
-            return;
+            return(<div>
+                <p>หมดเวลา</p>
+            </div>);
         }
     }
 
