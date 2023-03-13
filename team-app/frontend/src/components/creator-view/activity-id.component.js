@@ -24,7 +24,58 @@ const encodeNumber = (str) => {
 
 const ActivityInfo = (props) => {
     return (
-        <div>
+        <div className="card-container mx-auto px-24 grid grid-cols-2">
+            <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 text-navy " >
+                <div class=" overflow-hidden rounded-lg shadow-lg  lg:max-w-none lg:flex bg-FAE7E7 py-6">
+                    <div class="flex-1 px-4 py-4  lg:p-12 " >
+                    <h3 className="text-3xl font-semibold ml-2 color-E22637">{props.actName}</h3>
+                        {/* description */}
+                        <div className="mt-6 ml-2">
+                            <p className=" text-2xl font-bold text-navy">Description</p>
+                            <p className="mt-2 text-base text-navy" dangerouslySetInnerHTML={{ __html: props.descript }}></p>
+                        </div>
+
+                        {/* <div class="mt-6">
+                            <div class="flex items-center">
+                                <h4 class="flex-shrink-0 pr-4 text-sm font-semibold tracking-wider text-navy uppercase"></h4>
+                                <div class="flex-1 border-t border-red-500"></div>
+                            </div>
+                        </div> */}
+
+                        <div className="flex justify-start">
+                             {/*start date */}
+                        <div className="flex mt-6 ml-2">
+                            <p className="text-18px bold mr-4">Start Date : </p>
+                            <p className="mt-1 text-base text-navy">{props.startTime.toISOString().substring(0, 10)}</p>
+                        </div>
+
+                        {/*end date */}
+                        <div className="flex mt-6 ml-4">
+                            <p className="text-18px bold mr-4">Due Date : </p>
+                            <p className="mt-1  text-base text-navy">{props.endTime.toISOString().substring(0, 10)}</p>
+                        </div>
+                        </div>
+                        <div className="flex mb-4">
+                             <p className="text-18px bold mr-4">Committee : </p>
+                             <p className="text-18px italic"></p>
+                        </div>
+                       </div>
+                </div>
+            </div>
+                     <div className="w-3/5 text-center items-center justify-center mr-8">
+                     <div className="m-auto w-full h-full ">
+
+                        <div className="flex text-16px justify-center">
+                             <p className="text-16px bold mr-2">ACCESS CODE : </p>
+                             {props.code}
+                         </div>
+
+                         <div className="items-center my-auto mx-8">
+                             {/* qrcode */}
+                             <GenerateQR urls={props.urls} actName={props.actName} />
+                         </div>
+                     </div>
+                     </div>
 
         </div>
         // <div className="w-9/12 mx-auto">
