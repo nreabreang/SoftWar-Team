@@ -146,18 +146,15 @@ export default class createProject extends Component {
                 members: this.state.members,
             };
 
-            axios.post("http://localhost:5000/project/add", reqData).then((res) => {
-                if (res.status === 200) {
-                    Swal.fire({
-                        title: "Created Project Successfully",
-                        showConfirmButton: true,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location =
-                                "./presenterActivityId/" +
-                                window.localStorage.getItem("idActivity");
-                        }
-                    });
+            Swal.fire({
+                title: "Created Project Successfully",
+                showConfirmButton: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.post("http://localhost:5000/project/add", reqData)
+                    window.location =
+                        "./presenterActivityId/" +
+                        window.localStorage.getItem("idActivity");
                 }
             });
         }
@@ -230,7 +227,7 @@ export default class createProject extends Component {
                                             className="input mt-4 mb-8 w-full"
                                             // id="memberEmail"
                                             // name="memberEmail"
-                                            type="text"
+                                            type="email"
                                             // value={this.state.projectName}
                                             onChange={this.onchangeEmailMember}
                                             placeholder="Enter Email Name"

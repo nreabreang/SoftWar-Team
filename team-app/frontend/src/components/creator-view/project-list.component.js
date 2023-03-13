@@ -18,8 +18,8 @@ const Project = (props) => {
             <div className="list-header-container text-20px bold mt-4 mb-3 mx-6 ">
                 <div className="block ellipsis w-9/12 pt-2">{props.projectName}</div>
                 <div className="flex">
-                    {props.projectShowButton(window.localStorage.PresenterEmail, props.editProject(props.projectID), props.projectMember)}
-                    {props.projectShowButton(window.localStorage.PresenterEmail, props.deleteProjectThis(props.projectID), props.projectMember)}
+                    {props.projectShowButtonEdit(window.localStorage.PresenterEmail, props.editProject(props.projectID), props.projectMember)}
+                    {props.projectShowButtonDel(window.localStorage.PresenterEmail, props.deleteProjectThis(props.projectID), props.projectMember,props.activityEmail)}
                 </div>
             </div>
 
@@ -98,12 +98,13 @@ const Project = (props) => {
 }
 
 export default class CreatorProjectLists extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props)
 
         // this.deleteProject = this.deleteProject.bind(this)
         this.state = {
             projects: [],
+            emailOfActivity:"",
         }
     };
 
@@ -114,6 +115,11 @@ export default class CreatorProjectLists extends Component {
                 this.setState({ projects: res.data })
             })
             .catch((err) => console.log(err))
+        axios.get("http://localhost:5000/activity/"+arr[arr.length -1]).then((res)=>{
+            this.setState({
+                emailOfActivity:res.data.email
+            })
+        })
     };
 
 
@@ -130,10 +136,18 @@ export default class CreatorProjectLists extends Component {
 
     }
 
-    showButton(email, func, member) {
-        if (member.find(elemental => elemental.email === email)) {
-            return func;
-        } else {
+    showButtonDel(email, funcDelete, member, actE) {
+        if(member.find(ele=>ele.email === email) || actE === window.localStorage.activityEmail){
+            return funcDelete;
+        }else{
+            return;
+        }
+    }
+
+    showButtonEdit(email, funcEdit, member){
+        if(member.find(el=>el.email===email)){
+            return funcEdit;
+        }else{
             return;
         }
     }
@@ -176,8 +190,10 @@ export default class CreatorProjectLists extends Component {
                     projectName={resdata.projectName}
                     projectDescription={resdata.description}
                     projectMember={resdata.members}
-                    projectShowButton={this.showButton}
+                    projectShowButtonDel={this.showButtonDel}
+                    projectShowButtonEdit={this.showButtonEdit}
                     deleteProjectThis={this.buttonDelete}
+                    activityEmail={this.state.emailOfActivity}
                     editProject={this.buttonEdit}
                     updateProject={this.updateProject}
                 />
