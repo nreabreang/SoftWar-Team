@@ -6,11 +6,9 @@ import { Buffer } from "buffer";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../navbar.component";
-// import calendar style
-// You can customize style by copying asset folder.
-// import "@y0c/react-datepicker/assets/styles/calendar_variable.scss";
+import leftarrow from "../images/left-arrow.png";
 
 function makeid(length) {
     let result = '';
@@ -138,41 +136,41 @@ export default class CreateActivity extends Component {
         console.log(this.state.startTime)
         if (new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()) {
             Swal.fire({
-                title:"Connot use date.",
-                showConfirmButton:true
-            })            
+                title: "Connot use date.",
+                showConfirmButton: true
+            })
             this.setState({
-                startTime:"",
-                endTime:"",
+                startTime: "",
+                endTime: "",
             })
-        }else{
-        const activity = {
-            actName: this.state.actName,
-            actDescription: this.state.actDescription,
-            virtualMoney: this.state.virtualMoney,
-            unitMoney: this.state.unitMoney,
-            code: this.state.code,
-            email: emails,
-            startTime: this.state.startTime,
-            endTime:this.state.endTime,
-        };
+        } else {
+            const activity = {
+                actName: this.state.actName,
+                actDescription: this.state.actDescription,
+                virtualMoney: this.state.virtualMoney,
+                unitMoney: this.state.unitMoney,
+                code: this.state.code,
+                email: emails,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+            };
 
-        console.log(activity);
+            console.log(activity);
 
-        axios
-            .post("http://localhost:5000/activity/add", activity)
-            .then((res) => {
-                if (res.status === 200) {
-                    Swal.fire("Activity Added !").then((result) => {
-                        window.location = "/activityList";
-                    });
-                } else {
-                    // alert("Cannot create this Activity !")
-                    Swal.fire("Cannot create this Activity !");
-                }
-                //relocation to homepage
-            })
-        } 
+            axios
+                .post("http://localhost:5000/activity/add", activity)
+                .then((res) => {
+                    if (res.status === 200) {
+                        Swal.fire("Activity Added !").then((result) => {
+                            window.location = "/activityList";
+                        });
+                    } else {
+                        // alert("Cannot create this Activity !")
+                        Swal.fire("Cannot create this Activity !");
+                    }
+                    //relocation to homepage
+                })
+        }
     }
 
     render() {
@@ -183,8 +181,13 @@ export default class CreateActivity extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="px-12 py-8 items-center">
-                    <p className="text-30px text-center text-navy">Create Activity</p>
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to="/" className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Create Activity
+                    </p>
                 </div>
 
                 {/* <div className="p-8">
@@ -302,10 +305,19 @@ export default class CreateActivity extends Component {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        {/* col2 */}
+                        <div className="justify-center">
+
+                            <div className="pb-8">
+                                <label className="text-18px bold text-navy">Date and Time</label>
+                            </div>
+
 
                             {/* input date */}
-                            <div className="w-full grid">
-                                <label className="text-18px bold text-navy">Start Time</label>
+                            <div className="w-full pl-6">
+                                <label className="text-16px bold text-navy">Start</label>
 
                                 <input type="datetime-local"
                                     selected={this.state.startTime}
@@ -314,8 +326,8 @@ export default class CreateActivity extends Component {
                                     className="input mt-4 mb-8 w-full"></input>
                             </div>
 
-                            <div className="w-full grid">
-                                <label className="text-18px bold text-navy">End Time</label>
+                            <div className="w-full pl-6">
+                                <label className="text-16px bold text-navy">End</label>
 
                                 <input type="datetime-local"
                                     selected={this.state.endTime}
@@ -324,22 +336,11 @@ export default class CreateActivity extends Component {
                                     className="input mt-4 mb-8 w-full"></input>
                             </div>
                         </div>
-
-                        {/* col2 */}
-                        <div className="justify-center">
-                            <div className="w-full">
-                                {/* <label className="text-18px bold">Activity Name</label> */}
-                                <label className="text-18px text-navy bold">
-                                    Add Committee
-                                </label>
-
-                            </div>
-                        </div>
                     </div>
 
                     {/* description */}
                     <div className="justify-center w-9/12 mx-auto">
-                        <label className="text-18px bold text-navy">DESCRIPTION</label>
+                        <label className="text-18px bold text-navy">Description</label>
                         <ReactQuill
                             theme="snow"
                             className="mt-4 mb-8"
