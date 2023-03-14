@@ -163,47 +163,50 @@ export default class projectID extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="grid grid-cols-2 px-12 py-8 items-center">
-                    <p className="flex text-30px text-left text-navy">
+                <div className="px-12 py-12 mx-12 items-center justify-center ">
+                <div className="items-center justify-center">
+                <p className="text-30px text-center text-navy pb-10">
                         <Link to="/" className="flex">
                             <img src={leftarrow} alt="left arrow" className="images-18px mr-2 mt-1.5" />
-                            Project Description
+                            Project Details
                         </Link>
                     </p>
                 </div>
 
-                <div>
-                    <div className="id-container text-navy">
-                        <div className="info-container p-8">
-                            {/* col1 */}
-                            <div className="">
-                                {/* date */}
-                                <div className="mb-4">
-                                    {/* <p className="text-20px bold mr-4">Activity Name : </p> */}
-                                    <p className="text-24px text-left bold">{this.state.projectName}</p>
-                                    <p className="text-18px bold py-4">Member : {this.showMembers()}</p>
-                                </div>
-                            </div>
-                        </div>
+                <div className="card-container mx-auto px-24 ">
+            <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 text-navy" >
+                <div class=" overflow-hidden rounded-lg shadow-lg  lg:max-w-none lg:flex bg-FAE7E7 py-6">
+                    {/* col1 */}
+                    <div class="flex-1 px-4 py-4  lg:p-12 " >
+                    <h3 className="text-3xl font-semibold ml-2 color-E22637">{this.state.projectName}</h3>
 
-                        <div className="line" />
-
-                        <div className="des-container mt-4">
-                            <div className="block">
-                                <p className="text-20px bold">DESCRIPTION : </p>
-                                <p
-                                    className="text-20px italic m4  break-words"
-                                    dangerouslySetInnerHTML={{
-                                        __html: this.state.description,
-                                    }}
-                                ></p>
+                    {/* description */}
+                <div className="mt-6 ml-2">
+                        <p className=" text-2xl font-bold text-navy">Description</p>
+                            <p
+                                className="mt-2 text-base text-navy"
+                                dangerouslySetInnerHTML={{
+                                    __html: this.state.description,
+                            }}
+                            ></p>
                             </div>
+
+                {/* member */}
+                    <div className="mt-6 ml-2">
+                       <p className="text-18px bold py-4">Member : </p>
+                       <div className="ml-6">
+                       {this.showMembers()}
+                       </div>
+                        </div>    
+                        </div>       
                         </div>
                     </div>
+                </div>
+
 
                     {/* {this.showButton(window.localStorage.PresenterEmail, this.buttonEdit())}
                     {this.showButton(window.localStorage.PresenterEmail, this.buttonDelete())} */}
-                    <div className="w-9/12 mx-auto text-navy">
+                    <div className="w-9/12 mx-auto text-navy mt-6">
                         <Feedback />
 
                         <form onSubmit={this.onSubmitAction}>
@@ -278,7 +281,6 @@ export default class projectID extends Component {
                                     <input type="submit" value="Submit" className="button red p-2 w-48" />
                                 </div>
                             </div>
-
 
                         </form>
                     </div>
