@@ -1,4 +1,3 @@
-import { Buffer } from "buffer";
 import axios from "axios";
 import GenerateQR from "./qr-activity";
 import CreatorProjectLists from "./project-list.component";
@@ -14,13 +13,6 @@ import rightarrow from "../images/right-arrow.png";
 import Swal from "sweetalert2";
 const { Component } = require("react");
 
-const encodeNumber = (str) => {
-    const code = Buffer.from(str, "utf-8")
-        .toString("base64")
-        .slice(0, 8)
-        .toLocaleUpperCase();
-    return code;
-};
 
 const ActivityInfo = (props) => {
     return (
@@ -131,7 +123,7 @@ export default class creatorActivityId extends Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount() { //check
         const arr = window.location.href.split("/");
         const access = arr[arr.length - 1];
         window.localStorage.setItem("idAct", access);
@@ -168,7 +160,7 @@ export default class creatorActivityId extends Component {
                 <div className="items-center justify-center">
                     <p className="text-30px text-center text-navy pb-10">
                         <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5 " />
+                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5 " />
                             <p className="text-30px text-center text-navy ">Activity Details</p>
                         </Link>
                     </p>
@@ -179,7 +171,7 @@ export default class creatorActivityId extends Component {
                     <ActivityInfo
                         urls={
                             window.localStorage.getItem("access") +
-                            encodeNumber(this.state.actName)
+                            this.state.code
                         }
                         actName={this.state.actName}
                         startTime={this.state.startTime}
