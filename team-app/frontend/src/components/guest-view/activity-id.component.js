@@ -166,6 +166,16 @@ export default class activityId extends Component {
                         <p className="text-30px text-center text-navy">Activity Details</p>
                     </div>
 
+                    {/* <div className="px-12 py-12 mx-12 items-center justify-center">
+                    <div className="items-center justify-center">
+                        <p className="text-30px text-center text-navy pb-10">
+                            <Link to="/ActivityList" className="flex">
+                                <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />Activity Details</Link>
+                        </p>
+                        </div>
+                    </div> */}
+                    
+
                     {/* info container */}
                     <div className="div">
                         <ActivityInformation

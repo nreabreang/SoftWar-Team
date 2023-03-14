@@ -1,7 +1,6 @@
 import { Component } from "react";
 import "./Styles.css";
 import "./presenter-view/signUP.component.css";
-import leftarrow from "./images/left-arrow.png";
 
 
 export default class access extends Component {

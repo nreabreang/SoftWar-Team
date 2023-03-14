@@ -111,15 +111,17 @@ export default class creatorActivityId extends Component {
             });
     }
 
-    showButtonAdd() {
-        if (new Date().getTime() <= new Date(this.state.endTime).getTime()) {
-            return (<div className="container justify-end">
-                <a href="/createProject" className="button red px-4 py-2 w-48 text-18x ">
-                    Add Project +
-                </a>
-            </div>)
-        } else {
-            return;
+    showButtonAdd(){
+        if(new Date().getTime() <= new Date(this.state.endTime).getTime()){
+            return(<div className="container justify-end">
+            <a href="/createProject" className="button red px-4 py-2 w-48 text-18x ">
+                Add Project +
+            </a>
+        </div>)
+        }else{
+            return(<div>
+                <p className="text-18x">Time Out</p>
+            </div>);
         }
     }
 
