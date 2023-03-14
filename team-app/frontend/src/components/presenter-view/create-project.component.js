@@ -193,7 +193,7 @@ export default class createProject extends Component {
                 {/* topic */}
                 <div className="px-12 py-8 items-center">
                     <p className="flex text-30px text-left text-navy">
-                        <Link to="/ActivityList" className="flex">
+                        <Link to={"/presenterActivityId/"+window.localStorage.idActivity} className="flex">
                             <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
                             Create Project
                         </Link>
