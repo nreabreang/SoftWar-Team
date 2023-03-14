@@ -361,6 +361,17 @@ footer {
   text-overflow: ellipsis;
 }
 
+.overflow {
+  /* background-color: #fed9ff; */
+  width: 90%;
+  max-height: 20rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: left;
+  justify-content: center;
+  padding: 20px;
+}
+
 .line {
   border-top-width: 0rem;
   border-bottom-width: 0.1rem;

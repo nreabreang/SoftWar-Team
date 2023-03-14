@@ -19,8 +19,8 @@ export default function GenerateQR(props) {
 				className="rounded-md mx-auto"
 			/>
 
-			<div className="flex justify-center mt-4">
-				<button onClick={downloadQR} className="text-12px semi-bold flex justify-center text-navy hover:text-light-pink uppercase">
+			<div className="flex justify-center mt-2">
+				<button onClick={downloadQR} className="text-16px bold flex justify-center text-light-pink hover:text-red-it uppercase">
 					Download
 				</button>
 			</div>

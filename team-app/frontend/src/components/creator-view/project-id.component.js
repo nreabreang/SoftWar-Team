@@ -60,11 +60,12 @@ export default class projectID extends Component {
     renderMember() {
         return this.state.members.map((x) => {
             return (
-            <div className="flex text-16px bold">
-                <div className="">● {x.name}</div>
-                <p className="mx-1">—</p>
-                <div>{x.email}</div>
-            </div>
+                <div className="flex text-16px bold">
+                    <div className="">{x.name}</div>
+                    <p className="mx-1">—</p>
+                    <div>{x.email}</div>
+                    <p className="text-red-it mx-4">|</p>
+                </div>
             )
         })
     }
@@ -86,41 +87,38 @@ export default class projectID extends Component {
                     </p>
                 </div>
 
-                <div>
-                    <div className="id-container text-navy">
-                        <div className="info-container p-8">
-                            {/* col1 */}
-                            <div className="">
-                                {/* date */}
-                                <div className="mb-4">
-                                    {/* <p className="text-20px bold mr-4">Activity Name : </p> */}
-                                    <p className="text-24px text-left bold">{this.state.projectName}</p>
-                                    <p className="text-18px bold py-4">Member : {this.renderMember()}</p>
-                                </div>
+                <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
+
+                    <div className="p-8">
+
+                        {/* topic */}
+                        <div className="pb-4">
+                            <p className="text-30px text-red-it">{this.state.projectName}</p>
+                        </div>
+
+                        {/* description */}
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-1">● Description</p>
+                            <div className="text-16px text-navy mx-auto overflow"
+                                dangerouslySetInnerHTML={{ __html: this.state.description }}>
                             </div>
                         </div>
 
-                        <div className="line" />
-
-                        <div className="des-container mt-4">
-                            <div className="block">
-                                <p className="text-20px bold">DESCRIPTION : </p>
-                                <p
-                                    className="text-20px italic m4  break-words"
-                                    dangerouslySetInnerHTML={{ __html: this.state.description }}
-                                ></p>
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-4">● Members</p>
+                            <div className="flex text-navy ml-4">
+                                {this.renderMember()}
                             </div>
                         </div>
                     </div>
-
-                    {this.showButton(window.localStorage.PresenterEmail, this.buttonEdit())}
-                    {this.showButton(window.localStorage.PresenterEmail, this.buttonDelete())}
-                    <div className="w-9/12 mx-auto">
-                        <Feedback />
-
-                    </div>
-                    <div className="line-horizon w-full" />
                 </div>
+
+                {/* {this.showButton(window.localStorage.PresenterEmail, this.buttonEdit())}
+                {this.showButton(window.localStorage.PresenterEmail, this.buttonDelete())} */}
+
+
+
+                <Feedback />
             </main>
 
 
@@ -130,8 +128,8 @@ export default class projectID extends Component {
 
 const TaskComment = (props) => {
     return (
-        <div>
-            <div className="grid grid-cols-2 p-8 w-full">
+        <div className="">
+            <div className="grid grid-cols-2 px-8 w-full">
 
                 {/* col1 */}
                 <div>
@@ -172,7 +170,7 @@ const TaskComment = (props) => {
                 </div>
             </div>
 
-            <div className="line-horizon w-full" />
+            <div className="line-horizon w-full my-8" />
         </div>
 
     );
@@ -238,30 +236,61 @@ class Feedback extends Component {
 
     render() {
         return (
-            <div className="text-navy">
-                <div className="px-12 py-8 items-center justify-left">
-                    <p className="text-30px text-left">Feedbacks</p>
+            <div className="items-center justify-center pb-12">
 
-                    <div className="flex py-8 ml-8">
-                        <p className="text-20px text-left mr-2">● Total Virtual Money : </p>
-
-                        <div className="text-20px text-red-it mr-2">
-                            {this.showCalculateVirtual()}
-                        </div>
-                        <p className="text-20px text-left">credits</p>
-                    </div>
-
-                    <div className="ml-8">
-                        <div className="text-20px">● Comments</div>
-
-                        <div className="">
-                            {this.showCommentAll}
-                            {this.showLengthOfList()}
-                        </div>
-                    </div>
-
+                {/* topic */}
+                <div className="w-9/12 mx-auto items-center justify-center py-9">
+                    <p className="text-30px text-navy ">Feedbacks</p>
                 </div>
+
+                <div className="flex w-9/12 mx-auto text-navy pb-4">
+                    <p className="text-20px text-left mr-2">● Total Virtual Money : </p>
+
+                    <div className="text-20px text-red-it mr-2">
+                        {this.showCalculateVirtual()}
+                    </div>
+                    <p className="text-20px text-left">credits</p>
+                </div>
+
+
+                <div className="w-9/12 mx-auto text-navy">
+                    <div className="text-20px">● Comments</div>
+
+                    <div className="text-16px text-navy mx-auto overflow">
+                        {this.showLengthOfList()}
+                    </div>
+                </div>
+
+
+
+
             </div>
+
+
+            // <div className="text-navy">
+            //     <div className="items-center justify-left">
+            //         <p className="text-30px text-left">Feedbacks</p>
+
+            //         <div className="flex py-8 ml-8">
+            //             <p className="text-20px text-left mr-2">● Total Virtual Money : </p>
+
+            //             <div className="text-20px text-red-it mr-2">
+            //                 {this.showCalculateVirtual()}
+            //             </div>
+            //             <p className="text-20px text-left">credits</p>
+            //         </div>
+
+            //         <div className="ml-8">
+            //             <div className="text-20px">● Comments</div>
+
+            //             <div className="">
+            //                 {this.showCommentAll}
+            //                 {this.showLengthOfList()}
+            //             </div>
+            //         </div>
+
+            //     </div>
+            // </div>
         );
     }
 }
