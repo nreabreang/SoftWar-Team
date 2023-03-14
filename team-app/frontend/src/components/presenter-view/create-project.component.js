@@ -215,7 +215,7 @@ export default class createProject extends Component {
                                             // id="memberName"
                                             // name="memberName"
                                             type="text"
-                                            // value={this.state.projectName}
+                                            value={this.state.nameMember}
                                             onChange={this.onchangeNameMember}
                                             placeholder="Enter Member Name"
                                             autoComplete="off"
@@ -228,7 +228,7 @@ export default class createProject extends Component {
                                             // id="memberEmail"
                                             // name="memberEmail"
                                             type="email"
-                                            // value={this.state.projectName}
+                                            value={this.state.emailMember}
                                             onChange={this.onchangeEmailMember}
                                             placeholder="Enter Email Name"
                                             autoComplete="off"
