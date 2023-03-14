@@ -1,4 +1,3 @@
-import { Buffer } from "buffer";
 import axios from "axios";
 import GenerateQR from "./qr-activity";
 import CreatorProjectLists from "./project-list.component";
@@ -14,13 +13,6 @@ import rightarrow from "../images/right-arrow.png";
 import Swal from "sweetalert2";
 const { Component } = require("react");
 
-const encodeNumber = (str) => {
-    const code = Buffer.from(str, "utf-8")
-        .toString("base64")
-        .slice(0, 8)
-        .toLocaleUpperCase();
-    return code;
-};
 
 const ActivityInfo = (props) => {
     return (
