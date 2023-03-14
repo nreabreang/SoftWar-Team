@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './navbar.component.css';
 import './Styles.css';
+import downarrow from "./images/down-arrow-red.png";
 
 export default class navbar extends Component {
     render() {
@@ -18,9 +19,10 @@ export default class navbar extends Component {
                         <div class="relative inline-block dropdown">
 
                             <button class="container inline-flex justify-center w-full py-2">
-                                <p className="text-16px bold text-red-it">
+                                <p className="text-16px bold text-red-it mr-2">
                                     {this.props.name}
                                 </p>
+                                <img src={downarrow} className="images-16px" />
                             </button>
 
                             {/* dropdown container */}
@@ -38,31 +40,11 @@ export default class navbar extends Component {
                                     </div>
                                 </div>
                             </div>
-
-                            {/* <div class="opacity-0 invisible dropdown-menu origin-top-right">
-                                <div class="absolute right-4 w-56 mt-2">
-                                    <div className="bg-red-it rounded-lg">
-                                        <button onClick={(e) => {
-                                            localStorage.clear()
-                                            window.history.back()
-                                        }}>
-                                            <p className="text-14px text-navy bold px-4 py-2">Log out |</p>
-
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </div> */}
-
                         </div>
                     </div>
-
-
                 </div>
 
                 <div className="line-horizon px-12 mx-12"></div>
-
-
             </header>
         );
     }
