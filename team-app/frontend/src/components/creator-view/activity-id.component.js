@@ -126,7 +126,6 @@ export default class creatorActivityId extends Component {
     componentDidMount() { //check
         const arr = window.location.href.split("/");
         const access = arr[arr.length - 1];
-        console.log(access)
         window.localStorage.setItem("idAct", access);
         console.log("hh", window.localStorage.getItem("idAct"));
         axios
