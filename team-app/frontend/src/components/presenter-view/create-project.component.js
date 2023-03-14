@@ -57,10 +57,18 @@ export default class createProject extends Component {
         "image",
     ];
 
-    componentDidMount() {
-        // this.setState({actName:"test"});
-        console.log("test id : ", window.localStorage.getItem("idActivity"));
+  componentDidMount() {
+    // this.setState({actName:"test"});
+    console.log("test id : ", window.localStorage.getItem("idActivity"));
+    const data = {
+      name: String(window.localStorage.PresenterFirstName) + " " + String(window.localStorage.PresenterLastName),
+      email: String(window.localStorage.PresenterEmail)
     }
+
+    this.setState({
+      members:[data],
+    })
+  }
 
     onchangeNameMember(e) {
         this.setState({
