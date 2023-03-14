@@ -15,14 +15,27 @@ export default class guestLogin extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/activity/").then((res) => {
-      console.log(res.data[0].code);
-    });
+    // axios.get("http://localhost:5000/activity/").then((res) => {
+    // console.log(res.data[0].code);
+    // });
 
     const previousPath = document.referrer;
     let arr = previousPath.split("/");
     const index = arr[arr.length - 1];
     console.log(index);
+
+    axios
+      .get(
+        "http://localhost:5000/activity/name/" +
+          window.localStorage.getItem("ActCode")
+      )
+      .then((res) => {
+        // console.log(res.data[0]._id);
+        window.localStorage.setItem("ActId", res.data[0]._id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   onChangeUsername(e) {
@@ -42,43 +55,45 @@ export default class guestLogin extends Component {
     let arr = previousPath.split("/");
     const index = arr[arr.length - 1];
     console.log(index);
-    window.localStorage.setItem("guestName", this.state.username);
     window.localStorage.removeItem("guestVirtualMoney");
 
-    axios
-      .post("http://localhost:5000/guest/add", guestInfo)
-      .then((res) => {
-        if (res.status === 200) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your name has been saved",
-            showConfirmButton: false,
-            timer: 3000,
-          });
-
-          axios.get("http://localhost:5000/activity/").then((res) => {
-            let i;
-            for (i = 0; i < res.data.length; i++) {
-              if (index === res.data[i].code) {
-                window.location = "/guestActivityList/" + res.data[i]._id;
-                console.log(res.data[i]._id);
-                break;
-              } else {
-              }
-            }
-          });
-        } else {
-        }
-      })
-      .catch((err) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "You cannot use this name !",
-          // footer: '<a href="">Why do I have this issue?</a>'
-        });
+    if (window.localStorage.getItem("guestName") === this.state.username) {
+      window.location =
+        "/guestActivityList/" + window.localStorage.getItem("ActId");
+    } else if (window.localStorage.getItem("guestName")) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please use your correct username",
       });
+    } else {
+      axios
+        .post("http://localhost:5000/guest/add", guestInfo)
+        .then((res) => {
+          if (res.status === 200) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your name has been saved",
+              showConfirmButton: false,
+              timer: 3000,
+            }).then(
+              (window.location =
+                "/guestActivityList/" + window.localStorage.getItem("ActId"))
+            );
+          } else {
+          }
+
+          window.localStorage.setItem("guestName", this.state.username);
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You cannot use this username !",
+          });
+        });
+    }
   }
 
   render() {
