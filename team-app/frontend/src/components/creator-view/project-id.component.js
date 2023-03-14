@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import Navbar from "../navbar.component";
 import like from "../images/heart.png";
 import wish from "../images/christmas-star.png";
-// import ques from "../images/question-mark.png";
-// import idea from "../images/idea.png";
+import ques from "../images/question-mark.png";
+import idea from "../images/idea.png";
 import leftarrow from "../images/left-arrow.png";
 
 
@@ -155,7 +155,7 @@ const TaskComment = (props) => {
                     <div className="mb-4">
                         <p>What questions do you have about this project?</p>
                         <div className="flex">
-                            <img src={like} alt="like" className="images-20px mr-4" />
+                            <img src={ques} alt="like" className="images-20px mr-4" />
                             <div className="text-16px bold">{props.letComments.iQuest}</div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ const TaskComment = (props) => {
                     <div className="">
                         <p>What ideas do you have for this project?</p>
                         <div className="flex">
-                            <img src={wish} alt="wish" className="images-20px mr-4" />
+                            <img src={idea} alt="wish" className="images-20px mr-4" />
                             <div className="text-16px bold">{props.letComments.iDea}</div>
                         </div>
                     </div>
