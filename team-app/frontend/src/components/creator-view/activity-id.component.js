@@ -24,10 +24,39 @@ const encodeNumber = (str) => {
 
 const ActivityInfo = (props) => {
     return (
-        <div className="card-container mx-auto px-24 grid grid-cols-2">
+        <div className="card-container mx-auto px-24 ">
             <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 text-navy " >
-                <div class=" overflow-hidden rounded-lg shadow-lg  lg:max-w-none lg:flex bg-FAE7E7 py-6">
-                    <div class="flex-1 px-4 py-4  lg:p-12 " >
+                <div class=" overflow-hidden rounded-lg shadow-lg  lg:max-w-none lg:flex bg-FAE7E7 py-6 ">
+                   
+                    {/* edit & delete tab */}
+                        
+                        {/* edit icon */}
+                                <Link to={"/edit/"} className="p-8">
+                                    <img src={edit} alt="edit" className="images-20px mx-auto absolute inset-y-4 right-20" />
+                                </Link>
+                        {/* delete icon */}
+                         <button
+                            href="#"
+                            onClick={() => {
+                                Swal.fire({
+                                    title: "Do you want to delete the Activity?",
+                                    showCancelButton: true,
+                                    confirmButtonText: "Confirm",
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
+                                        Swal.fire("Deleted!", "", "success").then((result) => {
+                                            props.deleteActivity(props.activity._id);
+                                        });
+                                    }
+                                });
+                            }}
+                        >
+                            <img src={del} alt="del" className="images-20px absolute inset-y-4 right-12" />
+                        </button>
+                                                        
+                    <div className="grid grid-cols-2">
+                    <div class="flex-1 px-4 py-4  lg:p-12 ml-12" >
                     <h3 className="text-3xl font-semibold ml-2 color-E22637">{props.actName}</h3>
                         {/* description */}
                         <div className="mt-6 ml-2">
@@ -55,130 +84,36 @@ const ActivityInfo = (props) => {
                             <p className="mt-1  text-base text-navy">{props.endTime.toISOString().substring(0, 10)}</p>
                         </div>
                         </div>
-                        <div className="flex mb-4">
-                             <p className="text-18px bold mr-4">Committee : </p>
+                        <div className="flex mt-6 ml-2">
+                             <p className="text-18px bold mr-4">Audit Committee : </p>
                              <p className="text-18px italic"></p>
                         </div>
                        </div>
-                </div>
-            </div>
-                     <div className="w-3/5 text-center items-center justify-center mr-8">
-                     <div className="m-auto w-full h-full ">
+                
+                {/* column 2 */}
+                     <div className="text-center items-center justify-center mr-8">
+                     <div className=" w-full h-full ">
 
-                        <div className="flex text-16px justify-center">
+                        <div className="flex text-16px justify-center mt-8">
                              <p className="text-16px bold mr-2">ACCESS CODE : </p>
                              {props.code}
                          </div>
-
                          <div className="items-center my-auto mx-8">
                              {/* qrcode */}
                              <GenerateQR urls={props.urls} actName={props.actName} />
                          </div>
+                            {/* view result icon */}
+                            <Link to={"/CreatorResult"} className=" flex justify-center items-center ml-8">
+                                <p className=" text-16px bold ml-2">View Result</p>
+                                <img src={rightarrow} alt="right arrow" className="images-20px mx-2" />
+                            </Link>
                      </div>
+                     </div> 
                      </div>
-
+                 </div>
+             </div>
         </div>
-        // <div className="w-9/12 mx-auto">
-        //     <div className="flex mx-auto">
-
-        //         {/* col1 */}
-        //         <div className="w-full w-4/5 mr-8">
-
-        //             <div className="header-id w-full">
-        //                 <p className="text-24px bold py-2">{props.actName}</p>
-        //             </div>
-
-        //             <div className="header-id mt-8 p-4 h-full">
-        //                 <div className="flex mb-4">
-        //                     <p className="text-18px bold mr-4">Date : </p>
-        //                     <p className="text-18px italic">
-        //                         {props.startTime.toISOString().substring(0, 10)}
-        //                     </p>
-        //                 </div>
-        //                 {/* date */}
-        //                 <div className="flex mb-4">
-        //                     <p className="text-18px bold mr-4">Date : </p>
-        //                     <p className="text-18px italic">
-        //                         {props.endTime.toISOString().substring(0, 10)}
-        //                     </p>
-        //                 </div>
-
-        //                 <div className="flex mb-4">
-        //                     <p className="text-18px bold mr-4">Committee : </p>
-        //                     <p className="text-18px italic">
-
-        //                     </p>
-        //                 </div>
-        //             </div>
-        //         </div>
-
-        //         {/* col2 */}
-        //         <div className="w-3/5 text-center items-center justify-center mr-8">
-        //             <div className="m-auto w-full h-full header-id ">
-
-        //                 <div className="flex text-16px justify-center">
-        //                     <p className="text-16px bold mr-2">ACCESS CODE : </p>
-        //                     {props.code}
-        //                 </div>
-
-        //                 <div className="items-center my-auto mx-8">
-        //                     {/* qrcode */}
-        //                     <GenerateQR urls={props.urls} actName={props.actName} />
-        //                 </div>
-        //             </div>
-        //         </div>
-
-        //         {/* col3 */}
-        //         <div className="w-24 text-center items-center justify-center mx-auto">
-
-        //             <div className="w-full header-id">
-
-        //                 {/* edit icon */}
-        //                 <div>
-        //                     <Link to={"/edit/"} className="p-8">
-        //                         <img src={edit} alt="edit" className="images-20px mx-auto" />
-        //                     </Link>
-        //                 </div>
-
-        //                 {/* delete icon */}
-        //                 <button
-        //                     href="#"
-        //                     onClick={() => {
-        //                         Swal.fire({
-        //                             title: "Do you want to delete the Activity?",
-        //                             showCancelButton: true,
-        //                             confirmButtonText: "Confirm",
-        //                         }).then((result) => {
-        //                             /* Read more about isConfirmed, isDenied below */
-        //                             if (result.isConfirmed) {
-        //                                 Swal.fire("Deleted!", "", "success").then((result) => {
-        //                                     props.deleteActivity(props.activity._id);
-        //                                 });
-        //                             }
-        //                         });
-        //                     }}
-        //                 >
-        //                     <img src={del} alt="del" className="images-20px" />
-        //                 </button>
-
-        //                 {/* view result icon */}
-        //                 <Link to={"/edit/"} className="p-8">
-        //                     <img src={rightarrow} alt="right arrow" className="images-20px mx-auto" />
-        //                 </Link>
-        //             </div>
-        //         </div>
-        //     </div>
-
-        //     <div className="des-container mt-4">
-        //         <div className="block">
-        //             <p className="text-20px bold">DESCRIPTION : </p>
-        //             <p
-        //                 className="text-20px italic m4  break-words"
-        //                 dangerouslySetInnerHTML={{ __html: props.descript }}
-        //             ></p>
-        //         </div>
-        //     </div>
-        // </div>
+                     
     );
 };
 
@@ -229,15 +164,15 @@ export default class creatorActivityId extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="px-12 py-9 items-center">
-                    <p className="flex text-30px text-left text-navy">
+                <div className=" px-12 py-12 mx-12 items-center justify-center ">
+                <div className="items-center justify-center">
+                    <p className="text-30px text-center text-navy pb-10">
                         <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
-                            <p className="text-30px text-left text-navy">Activity Description</p>
+                            <img src={leftarrow} className="images-18px mr-2 mt-1.5 " />
+                            <p className="text-30px text-center text-navy ">Activity Details</p>
                         </Link>
                     </p>
                 </div>
-
 
                 {/* info container */}
                 <div className="">
@@ -252,8 +187,10 @@ export default class creatorActivityId extends Component {
                         code={this.state.code}
                         descript={this.state.actDescription}
                     />
+                    <div className=" mx-28 items-center justify-center grid grid-cols-2  py-8 pt-16">
+                        <p className="text-30px text-navy ">Project List</p> </div>
                     <CreatorProjectLists />
-                </div>
+                </div></div>                
             </main>
         );
     }

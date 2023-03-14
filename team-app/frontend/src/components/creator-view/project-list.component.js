@@ -204,7 +204,6 @@ export default class CreatorProjectLists extends Component {
     render() {
         return (
             <main>
-
                 <div className="px-12 pb-12 flex w-full">
                     <div className="show-container mx-auto
                                 xs:grid-cols-2
