@@ -60,6 +60,14 @@ export default class createProject extends Component {
   componentDidMount() {
     // this.setState({actName:"test"});
     console.log("test id : ", window.localStorage.getItem("idActivity"));
+    const data = {
+      name: String(window.localStorage.PresenterFirstName) + " " + String(window.localStorage.PresenterLastName),
+      email: String(window.localStorage.PresenterEmail)
+    }
+
+    this.setState({
+      members:[data],
+    })
   }
 
   onchangeNameMember(e) {
@@ -121,6 +129,7 @@ export default class createProject extends Component {
 
   renderInputTag() {
     return this.state.members.map((x) => {
+      console.log(x)
       return (
         <div className="flex justify-left ml-8 pt-4">
           <div className="">● {x.name}</div>
