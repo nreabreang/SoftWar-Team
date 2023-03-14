@@ -193,15 +193,15 @@ export default class createProject extends Component {
           <Navbar name={window.localStorage.getItem("name")} />
         </header>
 
-        {/* topic */}
-        <div className="px-12 py-8 items-center">
-          <p className="flex text-30px text-left text-navy">
-            <Link to="/ActivityList" className="flex">
-              <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
-              Create Project
-            </Link>
-          </p>
-        </div>
+                {/* topic */}
+                <div className="px-12 py-8 items-center">
+                    <p className="flex text-30px text-left text-navy">
+                        <Link to={"/presenterActivityId/"+window.localStorage.idActivity} className="flex">
+                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
+                            Create Project
+                        </Link>
+                    </p>
+                </div>
 
         <form onSubmit={this.sendForm}>
           <div className="mx-auto w-9/12 jusstify-center text-navy">
