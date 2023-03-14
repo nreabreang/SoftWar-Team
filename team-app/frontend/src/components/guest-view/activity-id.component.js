@@ -1,8 +1,6 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
 import ProjectLists from "./projects-list.component";
 import Navbar from "../navbarguest.component";
-import leftarrow from "../images/left-arrow.png";
 const { Component } = require("react");
 
 

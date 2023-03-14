@@ -6,11 +6,7 @@ import "../id.component.css";
 import "../Styles.css";
 import "../list.component.css";
 import Navbar from "../navbar.component";
-import leftarrow from "../images/left-arrow.png";
-import del from "../images/delete.png";
-import edit from "../images/edit-1.png";
 import rightarrow from "../images/right-arrow.png";
-import Swal from "sweetalert2";
 const { Component } = require("react");
 
 
