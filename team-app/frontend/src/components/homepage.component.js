@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./homepage.component.css";
 import rightarrowpink from "./images/right-arrow-pink.png";
+import welcome from "./images/welcom-png.png";
+// import welcomePng from "./images/welcompng.png"
 import qr from "./images/qr-code - 1.png";
 import "./homepage.component.css";
 import "./Styles.css";
@@ -137,7 +139,7 @@ export default class homepage extends Component {
 	render() {
 		return (
 			<main>
-				<div className="navbar-container right gap-2">
+				{/* <div className="navbar-container right gap-2">
 					<Link to="/createActivity" className="text-16px bold">
 						Create Activity
 					</Link>
@@ -150,7 +152,7 @@ export default class homepage extends Component {
 					<Link to="/createProject" className="text-16px">
 						Presenter View
 					</Link>
-				</div>
+				</div> */}
 
 				<div className="banner">
 					{/* creator side */}
@@ -222,7 +224,10 @@ export default class homepage extends Component {
 
 					</div>
 					{/* presenter and guest side */}
-					<div className="banner-container right"></div>
+					<div className="banner-container right flex justify-center">
+					<img src={welcome} />
+ 
+					</div>
 				</div>
 			</main>
 		);
