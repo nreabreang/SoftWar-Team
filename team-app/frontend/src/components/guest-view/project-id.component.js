@@ -147,10 +147,10 @@ export default class projectID extends Component {
         return this.state.members.map((x) => {
             return (
                 <div className="flex text-16px bold">
+                    <p className="text-red-it mx-4">|</p>
                     <div className="">{x.name}</div>
                     <p className="mx-1">—</p>
                     <div>{x.email}</div>
-                    <p className="text-red-it mx-4">|</p>
                 </div>
             );
         });
@@ -164,48 +164,39 @@ export default class projectID extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="px-12 py-12 mx-12 items-center justify-center ">
-                    <div className="items-center justify-center">
-                        <p className="text-30px text-center text-navy pb-10">
-                            <Link to="/" className="flex">
-                                <img src={leftarrow} alt="left arrow" className="images-18px mr-2 mt-1.5" />
-                                Project Details
-                            </Link>
-                        </p>
-                    </div>
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to="/" className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Project Details
+                    </p>
+                </div>
 
-                    <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
+                <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
 
-                        <div className="p-8">
+                    <div className="p-8">
 
-                            {/* topic */}
-                            <div className="pb-4">
-                                <p className="text-30px text-red-it">{this.state.projectName}</p>
+                        {/* topic */}
+                        <div className="pb-4">
+                            <p className="text-30px text-red-it">{this.state.projectName}</p>
+                        </div>
+
+                        {/* description */}
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-1">● Description</p>
+                            <div className="text-16px text-navy mx-auto overflow"
+                                dangerouslySetInnerHTML={{
+                                    __html: this.state.description,
+                                }}
+                            >
                             </div>
+                        </div>
 
-                            {/* description */}
-                            <div className="pb-4">
-                                <p className="text-20px text-navy bold pb-1">● Description</p>
-                                <div className="text-16px text-navy mx-auto overflow"
-                                    dangerouslySetInnerHTML={{
-                                        __html: this.state.description,
-                                    }}>
-                                </div>
-                            </div>
-
-                            <div className="pb-4">
-                                <p className="text-20px text-navy bold pb-4">● Members</p>
-                                <div className="flex text-navy ml-4">
-                                    {this.showMembers()}
-                                </div>
-
-                                {/* member */}
-                                <div className="mt-6 ml-2">
-                                    <p className="text-18px bold py-4">Member : </p>
-                                    <div className="ml-6">
-                                        {this.showMembers()}
-                                    </div>
-                                </div>
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-4">● Members</p>
+                            <div className="text-navy ml-4">
+                                {this.showMembers()}
                             </div>
                         </div>
                     </div>
@@ -213,87 +204,6 @@ export default class projectID extends Component {
 
                 <Feedback />
 
-                <div>
-
-
-                    {/* {this.showButton(window.localStorage.PresenterEmail, this.buttonEdit())}
-                    {this.showButton(window.localStorage.PresenterEmail, this.buttonDelete())} */}
-
-                    <div className="items-center justify-center pb-12">
-                        <form onSubmit={this.onSubmitAction}>
-
-                            {/* topic */}
-                            <div className="w-9/12 mx-auto items-center justify-center py-9">
-                                <p className="text-30px text-navy">Give Feedbacks</p>
-                            </div>
-
-                            <div className="flex w-9/12 mx-auto text-navy pb-8">
-                                <p className="text-20px text-left w-1/4 mr-4 pt-1 bold">● Give Virtual Money</p>
-
-                                <div className="items-center w-full">
-                                    <input
-                                        className="input"
-                                        // id="projectName"
-                                        // name="projectName"
-                                        type="number"
-                                        // value={this.state.projectName}
-                                        onChange={(e) => this.virtualMoneyOnChange(e.target.value)}
-                                        placeholder="Enter Virtual Money"
-                                        min="0"
-                                    />
-                                </div>
-                            </div>
-
-
-                            <div className="w-9/12 mx-auto text-navy">
-                                <div className="text-20px bold">● Give Comments</div>
-
-                                <input required
-                                    className="input mt-4 mb-8 w-full"
-                                    id="ILike"
-                                    name="ILike"
-                                    type="text"
-                                    value={this.state.ILike}
-                                    onChange={this.commentILikeOnChange}
-                                    placeholder="What do you like about this project?"
-                                />
-                                <input required
-                                    className="input mt-4 mb-8 w-full"
-                                    id="IWish"
-                                    name="IWish"
-                                    type="text"
-                                    value={this.state.IWish}
-                                    onChange={this.commentIWishOnChange}
-                                    placeholder="What do you wish about this project?"
-                                />
-
-                                <input required
-                                    className="input mt-4 mb-8 w-full"
-                                    id="Question"
-                                    name="Question"
-                                    type="text"
-                                    value={this.state.Quest}
-                                    onChange={this.commentQuestionOnChange}
-                                    placeholder="What questions would you like to ask about the project?"
-                                />
-
-                                <input required
-                                    className="input mt-4 mb-8 w-full"
-                                    id="Ideas"
-                                    name="Ideas"
-                                    type="text"
-                                    value={this.state.Idea}
-                                    onChange={this.commentIdeaOnChange}
-                                    placeholder="What ideas would you like to share about the project?"
-                                />
-
-                                <div className="container justify-end mx-auto pt-4 pb-12">
-                                    <input type="submit" value="Submit" className="button red p-2 w-48" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </main>
         );
     }

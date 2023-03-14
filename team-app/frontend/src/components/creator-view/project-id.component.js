@@ -61,10 +61,10 @@ export default class projectID extends Component {
         return this.state.members.map((x) => {
             return (
                 <div className="flex text-16px bold">
+                    <p className="text-red-it mx-4">|</p>
                     <div className="">{x.name}</div>
                     <p className="mx-1">—</p>
                     <div>{x.email}</div>
-                    <p className="text-red-it mx-4">|</p>
                 </div>
             )
         })
@@ -78,12 +78,12 @@ export default class projectID extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="grid grid-cols-2 px-12 py-8 items-center">
-                    <p className="flex text-30px text-left text-navy">
-                        <Link to="/" className="flex">
-                            <img src={leftarrow} alt="left arrow" className="images-18px mr-2 mt-1.5" />
-                            Project Description
-                        </Link>
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to="/" className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Project Details
                     </p>
                 </div>
 
@@ -106,7 +106,7 @@ export default class projectID extends Component {
 
                         <div className="pb-4">
                             <p className="text-20px text-navy bold pb-4">● Members</p>
-                            <div className="flex text-navy ml-4">
+                            <div className="text-navy ml-4">
                                 {this.renderMember()}
                             </div>
                         </div>
@@ -244,7 +244,7 @@ class Feedback extends Component {
                 </div>
 
                 <div className="flex w-9/12 mx-auto text-navy pb-4">
-                    <p className="text-20px text-left mr-2">● Total Virtual Money : </p>
+                    <p className="text-20px text-left bold mr-2">● Total Virtual Money : </p>
 
                     <div className="text-20px text-red-it mr-2">
                         {this.showCalculateVirtual()}
@@ -254,43 +254,13 @@ class Feedback extends Component {
 
 
                 <div className="w-9/12 mx-auto text-navy">
-                    <div className="text-20px">● Comments</div>
+                    <div className="text-20px bold">● Comments</div>
 
                     <div className="text-16px text-navy mx-auto overflow">
                         {this.showLengthOfList()}
                     </div>
                 </div>
-
-
-
-
             </div>
-
-
-            // <div className="text-navy">
-            //     <div className="items-center justify-left">
-            //         <p className="text-30px text-left">Feedbacks</p>
-
-            //         <div className="flex py-8 ml-8">
-            //             <p className="text-20px text-left mr-2">● Total Virtual Money : </p>
-
-            //             <div className="text-20px text-red-it mr-2">
-            //                 {this.showCalculateVirtual()}
-            //             </div>
-            //             <p className="text-20px text-left">credits</p>
-            //         </div>
-
-            //         <div className="ml-8">
-            //             <div className="text-20px">● Comments</div>
-
-            //             <div className="">
-            //                 {this.showCommentAll}
-            //                 {this.showLengthOfList()}
-            //             </div>
-            //         </div>
-
-            //     </div>
-            // </div>
         );
     }
 }

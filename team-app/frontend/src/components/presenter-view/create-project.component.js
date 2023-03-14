@@ -173,14 +173,12 @@ export default class createProject extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="px-12 py-8 items-center">
-
-                    <p className="flex text-30px text-left text-navy">
-                        <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
-                            Create Project
-                        </Link>
-
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to="/" className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Create Project
                     </p>
                 </div>
 
@@ -215,7 +213,7 @@ export default class createProject extends Component {
                                             // id="memberName"
                                             // name="memberName"
                                             type="text"
-                                            // value={this.state.projectName}
+                                            // value={this.state.members}
                                             onChange={this.onchangeNameMember}
                                             placeholder="Enter Member Name"
                                             autoComplete="off"
@@ -253,7 +251,7 @@ export default class createProject extends Component {
                                     onChange={this.onchangeDescription}
                                     modules={this.modules}
                                     formats={this.formats}
-                                    placeholder="Enter your Project Description "
+                                    placeholder="Enter your Project Description"
                                 />
                             </div>
                         </div>

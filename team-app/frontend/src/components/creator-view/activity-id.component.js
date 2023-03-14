@@ -9,7 +9,7 @@ import Navbar from "../navbar.component";
 import leftarrow from "../images/left-arrow.png";
 import del from "../images/delete.png";
 import edit from "../images/edit-1.png";
-import rightarrow from "../images/right-arrow.png";
+import rightarrow from "../images/right-arrow-red.png";
 import Swal from "sweetalert2";
 const { Component } = require("react");
 
@@ -74,30 +74,12 @@ const ActivityInfo = (props) => {
                 </div>
             </div>
 
-            <Link to={"/CreatorResult"} className=" flex justify-center items-center ml-8">
-                <p className=" text-16px bold ml-2">View Result</p>
-                <img src={rightarrow} alt="right arrow" className="images-20px mx-2" />
-            </Link>
-
-
-            {/* <div className="flex justify-start">
-                             
-                        <div className="flex mt-6 ml-2">
-                            <p className="text-18px bold mr-4">Start Date : </p>
-                            <p className="mt-1 text-base text-navy">{props.startTime.toISOString().substring(0, 10)}</p>
-                        </div>
-
-                        
-                        <div className="flex mt-6 ml-4">
-                            <p className="text-18px bold mr-4">Due Date : </p>
-                            <p className="mt-1  text-base text-navy">{props.endTime.toISOString().substring(0, 10)}</p>
-                        </div>
-                        </div>
-                        <div className="flex mt-6 ml-2">
-                             <p className="text-18px bold mr-4">Audit Committee : </p>
-                             <p className="text-18px italic"></p>
-                        </div>
-                       </div> */}
+            <div className="p-6">
+                <Link to={"/CreatorResult"} className="flex justify-end items-center ml-8">
+                    <p className="text-18px bold ml-2 text-red-it">View Result</p>
+                    <img src={rightarrow} alt="right arrow" className="images-18px mx-2" />
+                </Link>
+            </div>
         </div >
     );
 };
@@ -151,8 +133,13 @@ export default class creatorActivityId extends Component {
                 <div className="items-center justify-center pb-12">
 
                     {/* topic */}
-                    <div className="px-12 py-9 items-center">
-                        <p className="text-30px text-center text-navy">Activity Details</p>
+                    <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                        <Link to="/" className="">
+                            <img src={leftarrow} alt="left arrow" className="images-18px" />
+                        </Link>
+                        <p className="flex text-30px justify-center">
+                            Activity Details
+                        </p>
                     </div>
 
                     {/* info container */}

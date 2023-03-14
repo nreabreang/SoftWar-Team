@@ -162,19 +162,14 @@ export default class activityId extends Component {
                 <div className="items-center justify-center pb-12">
 
                     {/* topic */}
-                    <div className="px-12 py-9 items-center">
-                        <p className="text-30px text-center text-navy">Activity Details</p>
-                    </div>
-
-                    {/* <div className="px-12 py-12 mx-12 items-center justify-center">
-                    <div className="items-center justify-center">
-                        <p className="text-30px text-center text-navy pb-10">
-                            <Link to="/ActivityList" className="flex">
-                                <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />Activity Details</Link>
+                    <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                        <Link to="/" className="">
+                            <img src={leftarrow} alt="left arrow" className="images-18px" />
+                        </Link>
+                        <p className="flex text-30px justify-center">
+                            Activity Details
                         </p>
-                        </div>
-                    </div> */}
-                    
+                    </div>
 
                     {/* info container */}
                     <div className="div">
