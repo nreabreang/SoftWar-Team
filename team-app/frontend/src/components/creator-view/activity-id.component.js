@@ -24,9 +24,66 @@ const encodeNumber = (str) => {
 
 const ActivityInfo = (props) => {
     return (
-        <div>
+        <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
+
+            <div className="grid grid-cols-2 px-8 pt-8">
+
+                {/* col1 */}
+                <div>
+                    {/* topic */}
+                    <div className="pb-4">
+                        <p className="text-30px text-red-it">{props.actName}</p>
+                    </div>
+
+                    <div className="pb-4">
+
+                        <p className="text-20px text-navy bold pb-4">● Date</p>
+
+                        <div className="flex mx-4 text-navy">
+
+                            {/* start date */}
+                            <div className="flex items-center mr-6">
+                                <p className="text-16px bold mr-4">Start Date : </p>
+                                <p className="text-base text-navy">{props.startTime.toISOString().substring(0, 10)}</p>
+                            </div>
+
+                            {/* end date */}
+                            <div className="flex items-center">
+                                <p className="text-16px bold mr-4">Due Date : </p>
+                                <p className="text-base text-navy">{props.endTime.toISOString().substring(0, 10)}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* col2 */}
+                <div className="header-id m-auto mx-12">
+
+                    <div className="grid flex text-16px text-navy bold justify-center px-8
+                                    grid-cols-2">
+                        <div className="items-center m-auto">
+                            <p className="m-auto">Access Code : </p>
+                            <p className="text-red-it">{props.code}</p>
+                        </div>
+
+                        <div className="items-center m-auto">
+                            {/* qrcode */}
+                            <GenerateQR urls={props.urls} actName={props.actName} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* description */}
+            <div className="px-8 pb-8">
+                <p className="text-20px text-navy bold pb-1">● Description</p>
+                <div className="text-16px text-navy mx-auto overflow"
+                    dangerouslySetInnerHTML={{ __html: props.descript }}>
+                </div>
+            </div>
 
         </div>
+
         // <div className="w-9/12 mx-auto">
         //     <div className="flex mx-auto">
 
@@ -177,30 +234,33 @@ export default class creatorActivityId extends Component {
                     <Navbar name={window.localStorage.getItem("name")} />
                 </header>
 
-                {/* topic */}
-                <div className="px-12 py-9 items-center">
-                    <p className="flex text-30px text-left text-navy">
-                        <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5" />
-                            <p className="text-30px text-left text-navy">Activity Description</p>
-                        </Link>
-                    </p>
-                </div>
+                <div className="items-center justify-center pb-12">
 
+                    {/* topic */}
+                    <div className="px-12 py-9 items-center">
+                        <p className="text-30px text-center text-navy">Activity Details</p>
+                    </div>
 
-                {/* info container */}
-                <div className="">
-                    <ActivityInfo
-                        urls={
-                            window.localStorage.getItem("access") +
-                            encodeNumber(this.state.actName)
-                        }
-                        actName={this.state.actName}
-                        startTime={this.state.startTime}
-                        endTime={this.state.endTime}
-                        code={this.state.code}
-                        descript={this.state.actDescription}
-                    />
+                    {/* info container */}
+                    <div className="div">
+                        <ActivityInfo
+                            urls={
+                                window.localStorage.getItem("access") +
+                                encodeNumber(this.state.actName)
+                            }
+                            actName={this.state.actName}
+                            startTime={this.state.startTime}
+                            endTime={this.state.endTime}
+                            code={this.state.code}
+                            descript={this.state.actDescription}
+                        />
+
+                    </div>
+
+                    <div className="w-9/12 mx-auto items-center justify-center py-9">
+                        <p className="text-30px text-navy ">Activity List</p>
+                    </div>
+
                     <CreatorProjectLists />
                 </div>
             </main>

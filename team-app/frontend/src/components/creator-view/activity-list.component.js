@@ -20,7 +20,7 @@ import Navbar from "../navbar.component"
 
 const Activity = (props) => {
 	return (
-		<div className="list-container bg-pink w-96 h-full text-navy mb-auto mr-auto">
+		<div className="list-container bg-pink w-full h-full text-navy mb-auto mr-auto">
 
 			{/* header */}
 			<div className="list-header-container text-20px bold mt-4 mb-3 mx-6">
@@ -176,14 +176,14 @@ export default class ActivityList extends Component {
 					</div>
 				</div>
 
-				<div className="px-12 pb-12 flex w-full">
+				<div className="flex w-full mx-auto">
 					<div className="show-container mx-auto
 									xs:grid-cols-2
 									sm:grid-cols-2
-									md:grid-cols-2
-									lg:grid-cols-2
-									xl:grid-cols-3
-									2xl:grid-cols-3">
+									md:grid-cols-4
+									lg:grid-cols-4
+									xl:grid-cols-4
+									2xl:grid-cols-4">
 
 						{/* show list of activity */}
 						{this.activityList()}
