@@ -200,12 +200,12 @@ export default class projectID extends Component {
                                 </div>
 
                                 {/* member */}
-                                <div className="mt-6 ml-2">
+                                {/* <div className="mt-6 ml-2">
                                     <p className="text-18px bold py-4">Member : </p>
                                     <div className="ml-6">
                                         {this.showMembers()}
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

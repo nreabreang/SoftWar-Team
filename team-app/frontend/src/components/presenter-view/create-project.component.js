@@ -169,7 +169,7 @@ export default class createProject extends Component {
         return (
             <main>
                 <header>
-                    <Navbar name={window.localStorage.getItem("name")} />
+                    <Navbar name={window.localStorage.PresenterFirstName + " " + window.localStorage.PresenterLastName} />
                 </header>
 
                 {/* topic */}
