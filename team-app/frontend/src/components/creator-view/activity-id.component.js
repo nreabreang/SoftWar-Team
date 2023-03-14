@@ -131,9 +131,10 @@ export default class creatorActivityId extends Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount() { //check
         const arr = window.location.href.split("/");
         const access = arr[arr.length - 1];
+        console.log(access)
         window.localStorage.setItem("idAct", access);
         console.log("hh", window.localStorage.getItem("idAct"));
         axios
@@ -179,7 +180,7 @@ export default class creatorActivityId extends Component {
                     <ActivityInfo
                         urls={
                             window.localStorage.getItem("access") +
-                            encodeNumber(this.state.actName)
+                            this.state.code
                         }
                         actName={this.state.actName}
                         startTime={this.state.startTime}
