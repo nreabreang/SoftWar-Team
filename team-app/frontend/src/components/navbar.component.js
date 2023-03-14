@@ -22,7 +22,7 @@ export default class navbar extends Component {
                                 <p className="text-16px bold text-red-it mr-2">
                                     {this.props.name}
                                 </p>
-                                <img src={downarrow} className="images-16px" />
+                                <img src={downarrow} alt="" className="images-16px" />
                             </button>
 
                             {/* dropdown container */}

@@ -156,17 +156,16 @@ export default class homepage extends Component {
 					{/* creator side */}
 					<div className="banner-container left">
 
-						<div className="my-8">
-							<Link to="/" className="text-16px text-navy bold">GARLICWAK</Link>
-						</div>
+						
+				<div className="flex pt-12  mx-auto">
+                    <a href="/"><p className="text-48px text-navy bold goback">GARLICWAK</p></a>
+                </div>
 
-						<div className="line-horizon"></div>
 
-						<div className="">
-							<p className="text-36px my-8 text-navy">Creator!</p>
+						<div className="pt-8">
+							<p className="text-36px my-8 text-navy">Be Activity Creator!</p>
 							<p className="text-18px text-navy">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-								dignissimos non quis illo
+								Create, Organize and Invite people to join your Activity! 
 							</p>
 
 							<div className="container justify-start my-8">
@@ -177,11 +176,10 @@ export default class homepage extends Component {
 								</Link>
 							</div>
 
-							<div className="text-right">
-								<p className="text-36px my-8 text-navy">Welcome</p>
-								<p className="text-18px text-navy">
-									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente
-									dignissimos non quis illo
+							<div className="text-right ">
+								<p className="text-36px my-8 text-navy">Join Activity!</p>
+								<p className="text-18px text-navy pl-20 pb-6">
+									Be a Presenter and add your project into Activity! or Be a guest, explore projects and give them feedbacks!
 								</p>
 
 								<div className="container justify-end text-navy">
