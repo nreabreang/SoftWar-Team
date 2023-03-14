@@ -109,7 +109,7 @@ export default class projectID extends Component {
                         Number(window.localStorage.guestVirtualMoney) -
                         this.state.storeVirtualMoney;
                     this.setState({
-                        feedBacks:[...this.state.feedBacks,data]
+                        feedBacks: [...this.state.feedBacks, data]
                     })
                 });
             } else {
@@ -202,9 +202,85 @@ export default class projectID extends Component {
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <Feedback />
+
+                <div className="items-center justify-center pb-12">
+                    <form onSubmit={this.onSubmitAction}>
+
+                        {/* topic */}
+                        <div className="w-9/12 mx-auto items-center justify-center py-9">
+                            <p className="text-30px text-navy">Give Feedbacks</p>
+                        </div>
+
+                        <div className="flex w-9/12 mx-auto text-navy pb-8">
+                            <p className="text-20px text-left w-1/4 mr-4 pt-1 bold">● Give Virtual Money</p>
+
+                            <div className="items-center w-full">
+                                <input
+                                    className="input"
+                                    // id="projectName"
+                                    // name="projectName"
+                                    type="number"
+                                    // value={this.state.projectName}
+                                    onChange={(e) => this.virtualMoneyOnChange(e.target.value)}
+                                    placeholder="Enter Virtual Money"
+                                    min="0"
+                                />
+                            </div>
+                        </div>
+
+
+                        <div className="w-9/12 mx-auto text-navy">
+                            <div className="text-20px bold">● Give Comments</div>
+
+                            <input required
+                                className="input mt-4 mb-8 w-full"
+                                id="ILike"
+                                name="ILike"
+                                type="text"
+                                value={this.state.ILike}
+                                onChange={this.commentILikeOnChange}
+                                placeholder="What do you like about this project?"
+                            />
+                            <input required
+                                className="input mt-4 mb-8 w-full"
+                                id="IWish"
+                                name="IWish"
+                                type="text"
+                                value={this.state.IWish}
+                                onChange={this.commentIWishOnChange}
+                                placeholder="What do you wish about this project?"
+                            />
+
+                            <input required
+                                className="input mt-4 mb-8 w-full"
+                                id="Question"
+                                name="Question"
+                                type="text"
+                                value={this.state.Quest}
+                                onChange={this.commentQuestionOnChange}
+                                placeholder="What questions would you like to ask about the project?"
+                            />
+
+                            <input required
+                                className="input mt-4 mb-8 w-full"
+                                id="Ideas"
+                                name="Ideas"
+                                type="text"
+                                value={this.state.Idea}
+                                onChange={this.commentIdeaOnChange}
+                                placeholder="What ideas would you like to share about the project?"
+                            />
+
+                            <div className="flex container justify-end mx-auto pt-4 pb-12">
+                                <input type="submit" value="Submit" className="button red p-2 w-48" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
             </main>
         );
