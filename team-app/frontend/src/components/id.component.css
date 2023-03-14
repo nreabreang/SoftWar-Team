@@ -18,12 +18,12 @@
 }
 
 .header-id {
-    display: block;
     justify-content: center;
     text-align: center;
     align-items: center;
     border-radius: 0.5rem 0.5rem;
-    background: #db4d4b;
+    border-width: 0.2rem;
+    border-color: #db4d4b;
 }
 
 

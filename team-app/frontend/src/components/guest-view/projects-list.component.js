@@ -7,38 +7,39 @@ import rightarrow from "../images/right-arrow.png"
 const Project = (props) => {
 	const des = props.projectDescription;
 	return (
-		<div className="list-container bg-pink w-96 h-full text-navy mb-auto mr-auto shadow-md">
+		<div className="list-container bg-pink w-full h-full text-navy mb-auto mr-auto">
 
-			{/* header */}
-			<div className="list-header-container text-20px bold mt-4 mb-3 mx-6 ">
-				<div className="block ellipsis w-9/12">{props.projectName}</div>
-			</div>
+            {/* header */}
+            <div className="list-header-container text-20px bold mt-4 mb-3 mx-6">
+                <div className="block ellipsis w-9/12">{props.projectName}</div>
+            </div>
 
-			<div className="line border-red-it" />
+            <div className="line border-red-it" />
 
-			{/* description */}
-			<div className="mt-3">
-				{/* description */}
-				<div className="text-left px-4 m-2 my-4">
-		<p className="text-16px bold py-1">Description</p>
-		<div className="text-16px italic ml-4 block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
-	</div>
+            {/* description */}
+            <div className="mt-3">
 
-				{/* see project */}
-				<div className="enter-container justify-end mb-2 mx-2">
-				<Link to={"/projectList/" + props.projectID}>
-					<div className="flex items-center justify-end pb-4">
-						<p className="text-14px underline bold mr-2">See Project</p>
-						<img src={rightarrow} alt="right Arrow" className="images-14px" />
-					</div>
-				</Link>
-			</div>
-		</div></div>
+                {/* access code */}
+                <div className="text-left px-4 m-2 my-4">
+                    <p className="text-16px bold py-1">Description</p>
+                    <div className="text-16px italic ml-4 block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
+                </div>
 
+                {/* see project */}
+                <div className="enter-container justify-end mb-2 mx-2">
+                    <Link to={"/projectList/" + props.projectID}>
+                        <div className="flex items-center justify-end pb-4">
+                            <p className="text-14px underline bold mr-2">See Project</p>
+                            <img src={rightarrow} alt="right arrow" className="images-14px" />
+                        </div>
+                    </Link>
+                </div>
 
+                <div className="mx-4">
 
-
-
+                </div>
+            </div>
+        </div>
 	);
 };
 
@@ -91,22 +92,20 @@ export default class ProjectLists extends Component {
 	render() {
 		return (
 			<main>
-				<div className="px-12 pb-12 flex w-full">
-					<div className="show-container mx-auto
-							xs:grid-cols-2
-							sm:grid-cols-2
-							md:grid-cols-2
-							lg:grid-cols-3
-							xl:grid-cols-3
-							2xl:grid-cols-3">
+				<div className="flex w-9/12 mx-auto">
+                    <div className="show-container mx-auto
+                                xs:grid-cols-1
+                                sm:grid-cols-1
+                                md:grid-cols-3
+                                lg:grid-cols-3
+                                xl:grid-cols-3
+                                2xl:grid-cols-3">
 
-						{/* show list of project */}
-						{this.showProjectList()}
-					</div>
-				</div>
+                        {/* show list of project */}
+                        {this.showProjectList()}
+                    </div>
+                </div>
 			</main>
-			
-
 		);
 	}
 }
