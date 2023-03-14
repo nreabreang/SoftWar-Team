@@ -6,11 +6,11 @@ import "../id.component.css";
 import "../Styles.css";
 import "../list.component.css";
 import Navbar from "../navbar.component";
-import leftarrow from "../images/left-arrow.png";
-import del from "../images/delete.png";
-import edit from "../images/edit-1.png";
+// import leftarrow from "../images/left-arrow.png";
+// import del from "../images/delete.png";
+// import edit from "../images/edit-1.png";
 import rightarrow from "../images/right-arrow.png";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 const { Component } = require("react");
 
 
@@ -51,8 +51,7 @@ const ActivityInfo = (props) => {
                 {/* col2 */}
                 <div className="header-id m-auto mx-12">
 
-                    <div className="grid flex text-16px text-navy bold justify-center px-8
-                                    grid-cols-2">
+                    <div className="grid text-16px text-navy bold justify-center px-8 grid-cols-2">
                         <div className="items-center m-auto">
                             <p className="m-auto">Access Code : </p>
                             <p className="text-red-it">{props.code}</p>
@@ -172,7 +171,7 @@ export default class creatorActivityId extends Component {
                     </div>
 
                     <div className="w-9/12 mx-auto items-center justify-center py-9">
-                        <p className="text-30px text-navy ">Activity List</p>
+                        <p className="text-30px text-navy ">Project List</p>
                     </div>
 
                     <CreatorProjectLists />
