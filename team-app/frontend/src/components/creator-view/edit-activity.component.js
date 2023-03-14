@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import "../Styles.css";
-// import date from "../images/calendar.png";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 import Navbar from "../navbar.component";
 
 export default class EditActivity extends Component {
@@ -39,14 +39,24 @@ export default class EditActivity extends Component {
         { indent: "-1" },
         { indent: "+1" },
       ],
-
-      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-      [{ font: [] }],
-      [{ align: [] }],
       ["link", "image"],
-      ["clean"],
+      // ['clean']
     ],
   };
+
+  formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+  ];
 
   componentDidMount() {
     // console.log(this.props);

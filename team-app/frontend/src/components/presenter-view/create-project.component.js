@@ -38,18 +38,39 @@ export default class createProject extends Component {
         { indent: "-1" },
         { indent: "+1" },
       ],
-
-      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-      [{ font: [] }],
-      [{ align: [] }],
       ["link", "image"],
-      ['clean']     
+      // ['clean']
     ],
   };
+
+  formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+  ];
 
   componentDidMount() {
     // this.setState({actName:"test"});
     console.log("test id : ", window.localStorage.getItem("idActivity"));
+    const data = {
+      name:
+        String(window.localStorage.PresenterFirstName) +
+        " " +
+        String(window.localStorage.PresenterLastName),
+      email: String(window.localStorage.PresenterEmail),
+    };
+
+    this.setState({
+      members: [data],
+    });
   }
 
   onchangeNameMember(e) {

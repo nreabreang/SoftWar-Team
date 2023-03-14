@@ -1,6 +1,8 @@
 import axios from "axios";
 import CreatorProjectLists from "../creator-view/project-list.component";
 import Navbar from "../navbar.component"
+import leftarrow from "../images/left-arrow.png";
+import { Link } from "react-router-dom";
 import { Component } from "react";
 
 const ActivityInfo = (props) => {
@@ -136,8 +138,13 @@ export default class creatorActivityId extends Component {
                 <div className="items-center justify-center pb-12">
 
                     {/* topic */}
-                    <div className="px-12 py-9 items-center">
-                        <p className="text-30px text-center text-navy">Activity Details</p>
+                    <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                        <Link to="/" className="">
+                            <img src={leftarrow} alt="left arrow" className="images-18px" />
+                        </Link>
+                        <p className="flex text-30px justify-center">
+                            Activity Details
+                        </p>
                     </div>
 
                     {/* info container */}
