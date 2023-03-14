@@ -108,7 +108,9 @@ export default class projectID extends Component {
                     window.localStorage.guestVirtualMoney =
                         Number(window.localStorage.guestVirtualMoney) -
                         this.state.storeVirtualMoney;
-                    window.location = "";
+                    this.setState({
+                        feedBacks:[...this.state.feedBacks,data]
+                    })
                 });
             } else {
                 //it over
