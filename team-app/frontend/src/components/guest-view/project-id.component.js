@@ -163,38 +163,49 @@ export default class projectID extends Component {
                     <Navbar name={window.localStorage.getItem("guestName")} />
                 </header>
 
-                <div className="grid grid-cols-2 px-12 py-8 items-center">
-                    <p className="flex text-30px text-left text-navy">
-                        <Link to="/" className="flex">
-                            <img src={leftarrow} alt="left arrow" className="images-18px mr-2 mt-1.5" />
-                            Project Description
-                        </Link>
-                    </p>
-                </div>
+                {/* topic */}
+                <div className="px-12 py-12 mx-12 items-center justify-center ">
+                    <div className="items-center justify-center">
+                        <p className="text-30px text-center text-navy pb-10">
+                            <Link to="/" className="flex">
+                                <img src={leftarrow} alt="left arrow" className="images-18px mr-2 mt-1.5" />
+                                Project Details
+                            </Link>
+                        </p>
+                    </div>
 
-                <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
+                    <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
 
-                    <div className="p-8">
+                        <div className="p-8">
 
-                        {/* topic */}
-                        <div className="pb-4">
-                            <p className="text-30px text-red-it">{this.state.projectName}</p>
-                        </div>
-
-                        {/* description */}
-                        <div className="pb-4">
-                            <p className="text-20px text-navy bold pb-1">● Description</p>
-                            <div className="text-16px text-navy mx-auto overflow"
-                                dangerouslySetInnerHTML={{
-                                    __html: this.state.description,
-                                }}>
+                            {/* topic */}
+                            <div className="pb-4">
+                                <p className="text-30px text-red-it">{this.state.projectName}</p>
                             </div>
-                        </div>
 
-                        <div className="pb-4">
-                            <p className="text-20px text-navy bold pb-4">● Members</p>
-                            <div className="flex text-navy ml-4">
-                                {this.showMembers()}
+                            {/* description */}
+                            <div className="pb-4">
+                                <p className="text-20px text-navy bold pb-1">● Description</p>
+                                <div className="text-16px text-navy mx-auto overflow"
+                                    dangerouslySetInnerHTML={{
+                                        __html: this.state.description,
+                                    }}>
+                                </div>
+                            </div>
+
+                            <div className="pb-4">
+                                <p className="text-20px text-navy bold pb-4">● Members</p>
+                                <div className="flex text-navy ml-4">
+                                    {this.showMembers()}
+                                </div>
+
+                                {/* member */}
+                                <div className="mt-6 ml-2">
+                                    <p className="text-18px bold py-4">Member : </p>
+                                    <div className="ml-6">
+                                        {this.showMembers()}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
