@@ -7,38 +7,38 @@ import rightarrow from "../images/right-arrow.png"
 const Project = (props) => {
 	const des = props.projectDescription;
 	return (
-		<div className="list-container w-96 text-navy mb-auto mr-auto">
+		<div className="list-container bg-pink w-96 h-full text-navy mb-auto mr-auto shadow-md">
 
 			{/* header */}
-			<div className="list-header-container text-20px bold my-3 mx-6">
+			<div className="list-header-container text-20px bold mt-4 mb-3 mx-6 ">
 				<div className="block ellipsis w-9/12">{props.projectName}</div>
 			</div>
 
 			<div className="line border-red-it" />
 
 			{/* description */}
-			<div className="my-3 mx-2">
-				{/* description head */}
-				<div className="items-container">
-					<p className="text-16px bold mr-1 mb-2">DESCRIPTION</p>
-
-				</div>
-
+			<div className="mt-3">
 				{/* description */}
-				<div className="items-container ml-4">
-					<div className="text-16px block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
-				</div>
+				<div className="text-left px-4 m-2 my-4">
+		<p className="text-16px bold py-1">Description</p>
+		<div className="text-16px italic ml-4 block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
+	</div>
 
 				{/* see project */}
-
+				<div className="enter-container justify-end mb-2 mx-2">
 				<Link to={"/projectList/" + props.projectID}>
-					<div className="enter-container mt-4 justify-end">
-						<p className="text-14px underline italic mr-2">MORE</p>
-						<img src={rightarrow} alt="right Arrow" className="images-16px" />
+					<div className="flex items-center justify-end pb-4">
+						<p className="text-14px underline bold mr-2">See Project</p>
+						<img src={rightarrow} alt="right Arrow" className="images-14px" />
 					</div>
 				</Link>
 			</div>
-		</div>
+		</div></div>
+
+
+
+
+
 	);
 };
 
@@ -91,11 +91,6 @@ export default class ProjectLists extends Component {
 	render() {
 		return (
 			<main>
-				<div className="px-12 py-8 items-center justify-center">
-
-					<p className="text-30px text-center text-navy">Project Dashboard</p>
-				</div>
-
 				<div className="px-12 pb-12 flex w-full">
 					<div className="show-container mx-auto
 							xs:grid-cols-2
@@ -110,24 +105,7 @@ export default class ProjectLists extends Component {
 					</div>
 				</div>
 			</main>
-			// <main>
-			// 	<div className="flex header-container">
-			// 		<p className="text-30px bold ">Project Dashboard</p>
-			// 	</div>
-
-			// 	<div className="w-9/12 mx-auto">
-			// 		<div className="show-container
-			//                         xs:grid-cols-1
-			//                         sm:grid-cols-1
-			//                         md:grid-cols-1
-			//                         lg:grid-cols-2
-			//                         xl:grid-cols-2">{this.showProjectList()}</div>
-			// 	</div>
-
-			// 	{/* <div className="grid grid-cols-1 md:grid-cols-4 m-4">
-			// 		{this.showProjectList()}
-			// 	</div> */}
-			// </main>
+			
 
 		);
 	}

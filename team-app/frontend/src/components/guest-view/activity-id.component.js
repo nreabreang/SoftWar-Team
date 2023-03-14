@@ -25,103 +25,40 @@ const { Component } = require("react");
 
 const ActivityInformation = (props) => {
     return (
-        <div className="id-container">
-            <div className="info-container">
-                {/* col1 */}
-                <div>
-                    {/* date */}
-                    <div className="">
-                        <p className="text-20px bold">ACTIVITY NAME : </p>
-                        <p className="text-20px italic m4">{props.actName}</p>
-                    </div>
+        <div className="card-container mx-auto px-24 ">
+            <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 text-navy" >
+                <div class=" overflow-hidden rounded-lg shadow-lg  lg:max-w-none lg:flex bg-FAE7E7 py-6">
+                    
+                    <div class="flex-1 px-4 py-4  lg:p-12 " >
+                    <h3 className="text-3xl font-semibold ml-2 color-E22637">{props.actName}</h3>
+                        
+                        {/* description */}
+                        <div className="mt-6 ml-2">
+                            <p className=" text-2xl font-bold text-navy">Description</p>
+                            <p className="mt-2 text-base text-navy" dangerouslySetInnerHTML={{ __html: props.descript }}></p>
+                        </div>
 
-                    {/* date */}
-                    <div className="">
-                        <p className="text-20px bold">START DATE : </p>
-                        <p className="text-20px italic m4">
-                            {props.startTime.toISOString().substring(0, 10)}
-                        </p>
-                    </div>
-                    {/* date */}
-                    <div className="">
-                        <p className="text-20px bold">END DATE : </p>
-                        <p className="text-20px italic m4">
-                            {props.endTime.toISOString().substring(0, 10)}
-                        </p>
-                    </div>
-                </div>
 
-                {/* col2 */}
-                {/* <div> */}
-                {/* profile */}
-                {/* <div className="text-20px bold mr-2 mb-2 border-2 text-center rounded-full p-2">
-						Profile
-					</div>
-					<div className="text-white mr-2 px-2 text-center">
-						<p className="text-16px bold">Name : </p>
-						<p className="text-16px italic underline">
-							{props.myname}
-						</p>
-					</div>
-					<div className="text-white mr-2 px-2 text-center">
-						<p className="font-bold text-lg">Virtual Money</p>
-						<p className="text-base font-light text-white border-2 rounded-lg p-2 mt-2">
-							Value : {props.funcGetVirtual}
-							<p>Unit : {props.unitMoney}</p>
-						</p>
-					</div>
-				</div> */}
-            </div>
+                        <div className="flex justify-start">
+                             {/*start date */}
+                        <div className="flex mt-6 ml-2">
+                            <p className="text-18px bold mr-4">Start Date : </p>
+                            <p className="mt-1 text-base text-navy">{props.startTime.toISOString().substring(0, 10)}</p>
+                        </div>
 
-            <div className="line" />
+                        {/*end date */}
+                        <div className="flex mt-6 ml-4">
+                            <p className="text-18px bold mr-4">Due Date : </p>
+                            <p className="mt-1  text-base text-navy">{props.endTime.toISOString().substring(0, 10)}</p>
+                        </div>
+                        </div>
 
-            <div className="des-container">
-                {/* description */}
-                <div className="block">
-                    <p className="text-20px bold">DESCRIPTION : </p>
-                    <p className="text-20px italic overflow-hidden break-words" dangerouslySetInnerHTML={{ __html: props.descript }}></p>
+                       </div>
                 </div>
             </div>
         </div>
-        // <div className="flex justify-center">
-        // 	<div class="m-4 p-6 flex justify-center bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-        // 		<p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-        // 			<h5 className="font-bold">Activity Name</h5>
-        // 			{props.actName}
-        // 		</p>
 
-        // 		<p class="mb-3 mx-4 font-medium text-gray-700 dark:text-gray-400">
-        // 			<h5 className="font-bold">Date</h5>
-        // 			{props.date.toISOString().substring(0, 10)}
-        // 		</p>
 
-        // 		<p class="mb-3 font-medium text-gray-700 w-52 dark:text-gray-400 break-words">
-        // 			<h5 className="font-bold ">Description</h5>
-        // 			<p className="break-words">{props.descript}</p>
-        // 		</p>
-        // 	</div>
-        // 	{/* <GenerateQR urls={window.location.href} actName={this.state.actName} /> */}
-        // 	<div className="m-4 grid content-center font-semibold ">
-        // 		<div className="text-white mr-2 mb-2 border-2 text-center rounded-full p-2">
-        // 			Profile
-        // 		</div>
-        // 		<div className="text-white mr-2 px-2 text-center">
-        // 			<p className="font-bold text-lg">Your name</p>
-        // 			<p className="text-base font-light italic underline">
-        // 				{props.myname}
-        // 			</p>
-        // 		</div>
-        // 	</div>
-        // 	<div className="m-4 grid content-center font-semibold ">
-        // 		<div className="text-white mr-2 px-2 text-center">
-        // 			<p className="font-bold text-lg">Virtual Money</p>
-        // 			<p className="text-base font-light text-white border-2 rounded-lg p-2 mt-2">
-        // 				Value : {props.funcGetVirtual}
-        // 				<p>Unit : {props.unitMoney}</p>
-        // 			</p>
-        // 		</div>
-        // 	</div>
-        // </div>
     );
 };
 
@@ -219,16 +156,14 @@ export default class activityId extends Component {
                     </header>
 
                     {/* topic */}
-                    <div className="px-12 py-8 items-center">
-
-                        <p className="flex text-30px text-left text-navy">
+                    <div className="px-12 py-12 mx-12 items-center justify-center">
+                    <div className="items-center justify-center">
+                        <p className="text-30px text-center text-navy pb-10">
                             <Link to="/ActivityList" className="flex">
-                                <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
-                                Activity Description
-                            </Link>
-
+                                <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />Activity Details</Link>
                         </p>
                     </div>
+                    
 
                     {/* info container */}
                     <div className="div">
@@ -241,8 +176,10 @@ export default class activityId extends Component {
                             funcGetVirtual={this.getVirtual()}
                             unitMoney={this.state.unitMoney}
                         />
+                        <div className=" mx-28 items-center justify-center grid grid-cols-2  py-8 pt-16">
+                        <p className="text-30px text-navy ">Project List</p> </div>
                         <ProjectLists />
-                    </div>
+                    </div></div>
                 </main>
             );
         }

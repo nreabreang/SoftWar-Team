@@ -27,8 +27,6 @@ const Project = (props) => {
 
             {/* description */}
             <div className="mt-3">
-
-                {/* access code */}
                 <div className="text-left px-4 m-2 my-4">
                     <p className="text-16px bold py-1">Description</p>
                     <div className="text-16px italic ml-4 block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
@@ -42,10 +40,6 @@ const Project = (props) => {
                             <img src={rightarrow} alt="right arrow" className="images-14px" />
                         </div>
                     </Link>
-                </div>
-
-                <div className="mx-4">
-
                 </div>
             </div>
         </div>
