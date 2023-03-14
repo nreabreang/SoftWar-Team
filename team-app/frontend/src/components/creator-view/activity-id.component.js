@@ -168,7 +168,7 @@ export default class creatorActivityId extends Component {
                 <div className="items-center justify-center">
                     <p className="text-30px text-center text-navy pb-10">
                         <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} className="images-18px mr-2 mt-1.5 " />
+                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5 " />
                             <p className="text-30px text-center text-navy ">Activity Details</p>
                         </Link>
                     </p>
