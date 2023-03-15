@@ -19,43 +19,124 @@ export default class projectID extends Component {
         this.virtualMoneyOnChange = this.virtualMoneyOnChange.bind(this);
         this.onSubmitAction = this.onSubmitAction.bind(this);
 
-        this.state = {
-            projectName: "",
-            description: "",
-            members: [],
-            storeVirtualMoney: "",
+    this.state = {
+      projectName: "",
+      description: "",
+      members: [],
+      storeVirtualMoney: "",
+      ILike: "",
+      IWish: "",
+      Quest: "",
+      Idea: "",
+      feedBacks: [],
+    };
+  }
+
+  componentDidMount() {
+    const arr = window.location.href.split("/");
+    axios
+      .get("http://localhost:5000/project/" + arr[arr.length - 1])
+      .then((res) => {
+        this.setState({
+          projectName: res.data.projectName,
+          description: res.data.description,
+          members: res.data.members,
+        });
+      });
+  }
+
+  virtualMoneyOnChange(number) {
+    this.setState({
+      storeVirtualMoney: number,
+    });
+  }
+
+  commentILikeOnChange(texts) {
+    this.setState({
+      ILike: texts.target.value,
+    });
+  }
+
+  commentIWishOnChange(texts) {
+    this.setState({
+      IWish: texts.target.value,
+    });
+  }
+
+  commentQuestionOnChange(texts) {
+    this.setState({
+      Quest: texts.target.value,
+    });
+  }
+
+  commentIdeaOnChange(texts) {
+    this.setState({
+      Idea: texts.target.value,
+    });
+  }
+
+  onSubmitAction(e) {
+    e.preventDefault();
+    const arr = window.location.href.split("/");
+    const test = {
+      iLike: this.state.ILike,
+      iWish: this.state.IWish,
+      iQuest: this.state.Quest,
+      iDea: this.state.Idea,
+    };
+    const data = {
+      virtualMoney: this.state.storeVirtualMoney,
+      comments: test,
+      idProject: arr[arr.length - 1],
+    };
+    console.log(data);
+    var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
+    if (findVirtualMoney) {
+      var calculate =
+        Number(window.localStorage.guestVirtualMoney) -
+        Number(this.state.storeVirtualMoney);
+      if (calculate >= 0) {
+        //not over
+        Swire.fire({
+          title: "Give Virtual Money Successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        }).then(() => {
+          axios
+            .post("http://localhost:5000/feedback/add", data)
+            .then(() => console.log("Success."))
+            .catch((err) => console.log("Error: " + err));
+          window.localStorage.guestVirtualMoney =
+            Number(window.localStorage.guestVirtualMoney) -
+            this.state.storeVirtualMoney;
+          this.setState({
+            feedBacks: [...this.state.feedBacks, data],
+            virtualMoney: "",
             ILike: "",
             IWish: "",
             Quest: "",
             Idea: "",
-            feedBacks: [],
-        };
-    }
-
-    componentDidMount() {
-        const arr = window.location.href.split("/");
-        axios
-            .get("http://localhost:5000/project/" + arr[arr.length - 1])
-            .then((res) => {
-                this.setState({
-                    projectName: res.data.projectName,
-                    description: res.data.description,
-                    members: res.data.members,
-                });
-            });
-    }
-
-    virtualMoneyOnChange(number) {
-        this.setState({
-            storeVirtualMoney: number,
+          });
+          window.location.reload()
         });
+      }
     }
+  }
 
-    commentILikeOnChange(texts) {
-        this.setState({
-            ILike: texts.target.value,
-        });
-    }
+  showMembers(){
+    return this.state.members.map((x) => {
+      return (
+        <div className="flex text-16px bold">
+          <div className="">{x.name}</div>
+          <p className="mx-1">—</p>
+          <div>{x.email}</div>
+          <p className="text-red-it mx-4">|</p>
+        </div>
+      );
+    });
+  }
 
     commentIWishOnChange(texts) {
         this.setState({
