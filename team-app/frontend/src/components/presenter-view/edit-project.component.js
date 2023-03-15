@@ -169,7 +169,7 @@ export default class EditProject extends Component {
 
     onAddEvent(e) {
         e.preventDefault();
-        const arr = window.location.href.split("/");
+        // const arr = window.location.href.split("/");
         // console.log(this.state.members);
         const dataReq = {
             projectName: this.state.projectName,

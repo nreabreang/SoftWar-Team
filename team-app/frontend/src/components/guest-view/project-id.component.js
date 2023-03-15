@@ -75,55 +75,55 @@ export default class projectID extends Component {
     });
   }
 
-  onSubmitAction(e) {
-    e.preventDefault();
-    const arr = window.location.href.split("/");
-    const test = {
-      iLike: this.state.ILike,
-      iWish: this.state.IWish,
-      iQuest: this.state.Quest,
-      iDea: this.state.Idea,
-    };
-    const data = {
-      virtualMoney: this.state.storeVirtualMoney,
-      comments: test,
-      idProject: arr[arr.length - 1],
-    };
-    console.log(data);
-    var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
-    if (findVirtualMoney) {
-      var calculate =
-        Number(window.localStorage.guestVirtualMoney) -
-        Number(this.state.storeVirtualMoney);
-      if (calculate >= 0) {
-        //not over
-        Swire.fire({
-          title: "Give Virtual Money Successfully",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-        }).then(() => {
-          axios
-            .post("http://localhost:5000/feedback/add", data)
-            .then(() => console.log("Success."))
-            .catch((err) => console.log("Error: " + err));
-          window.localStorage.guestVirtualMoney =
-            Number(window.localStorage.guestVirtualMoney) -
-            this.state.storeVirtualMoney;
-          this.setState({
-            feedBacks: [...this.state.feedBacks, data],
-            virtualMoney: "",
-            ILike: "",
-            IWish: "",
-            Quest: "",
-            Idea: "",
-          });
-          window.location.reload()
-        });
-      }
-    }
-  }
+//   onSubmitAction(e) {
+//     e.preventDefault();
+//     const arr = window.location.href.split("/");
+//     const test = {
+//       iLike: this.state.ILike,
+//       iWish: this.state.IWish,
+//       iQuest: this.state.Quest,
+//       iDea: this.state.Idea,
+//     };
+//     const data = {
+//       virtualMoney: this.state.storeVirtualMoney,
+//       comments: test,
+//       idProject: arr[arr.length - 1],
+//     };
+//     console.log(data);
+//     var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
+//     if (findVirtualMoney) {
+//       var calculate =
+//         Number(window.localStorage.guestVirtualMoney) -
+//         Number(this.state.storeVirtualMoney);
+//       if (calculate >= 0) {
+//         //not over
+//         Swire.fire({
+//           title: "Give Virtual Money Successfully",
+//           icon: "success",
+//           showConfirmButton: false,
+//           timer: 3000,
+//           timerProgressBar: true,
+//         }).then(() => {
+//           axios
+//             .post("http://localhost:5000/feedback/add", data)
+//             .then(() => console.log("Success."))
+//             .catch((err) => console.log("Error: " + err));
+//           window.localStorage.guestVirtualMoney =
+//             Number(window.localStorage.guestVirtualMoney) -
+//             this.state.storeVirtualMoney;
+//           this.setState({
+//             feedBacks: [...this.state.feedBacks, data],
+//             virtualMoney: "",
+//             ILike: "",
+//             IWish: "",
+//             Quest: "",
+//             Idea: "",
+//           });
+//           window.location.reload()
+//         });
+//       }
+//     }
+//   }
 
   showMembers(){
     return this.state.members.map((x) => {
@@ -137,24 +137,6 @@ export default class projectID extends Component {
       );
     });
   }
-
-    commentIWishOnChange(texts) {
-        this.setState({
-            IWish: texts.target.value,
-        });
-    }
-
-    commentQuestionOnChange(texts) {
-        this.setState({
-            Quest: texts.target.value,
-        });
-    }
-
-    commentIdeaOnChange(texts) {
-        this.setState({
-            Idea: texts.target.value,
-        });
-    }
 
     onSubmitAction(e) {
         e.preventDefault();
@@ -218,7 +200,7 @@ export default class projectID extends Component {
                         Quest: "",
                         Idea: "",
                     });
-                    //   window.location = "";
+                    window.location.reload()
                 });
             }
         } else {
@@ -237,19 +219,6 @@ export default class projectID extends Component {
         // }else{
         //     document.cookie = `virtualmoney=${calculate}`
         // }
-    }
-
-    showMembers() {
-        return this.state.members.map((x) => {
-            return (
-                <div className="flex text-16px bold">
-                    <p className="text-red-it mx-4">|</p>
-                    <div className="">{x.name}</div>
-                    <p className="mx-1">—</p>
-                    <div>{x.email}</div>
-                </div>
-            );
-        });
     }
 
     render() {

@@ -106,6 +106,7 @@ export default class presenterActivityId extends Component {
                     endTime: new Date(response.data.endTime),
                 });
                 // console.log("res :",response.data.actName);
+                window.localStorage.setItem("endTime",response.data.endTime)
             })
             .catch(function (error) {
                 console.log(error);

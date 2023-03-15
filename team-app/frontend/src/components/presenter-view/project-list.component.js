@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import del from "../images/bin.png";
 import edit from "../images/edit-2.png";
 import Swal from "sweetalert2";
+import '../list.component.css';
+import '../Styles.css'
 import rightarrow from "../images/right-arrow.png"
 
 const Project = (props) =>{
@@ -32,7 +34,7 @@ const Project = (props) =>{
 
                 {/* see project */}
                 <div className="enter-container justify-end mb-2 mx-2">
-                    <Link to={"/creatorprojectList/" + props.projectID}>
+                    <Link to={"/presenterProjectID/" + props.projectID}>
                         <div className="flex items-center justify-end pb-4">
                             <p className="text-14px underline bold mr-2">See Project</p>
                             <img src={rightarrow} alt="right arrow" className="images-14px" />
