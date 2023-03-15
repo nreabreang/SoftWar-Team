@@ -156,7 +156,7 @@ export default class homepage extends Component {
 
 				<div className="banner">
 					{/* creator side */}
-					<div className="banner-container left">
+					<div className="block banner-container left">
 
 
 						<div className="flex pt-12  mx-auto">
@@ -242,8 +242,7 @@ export default class homepage extends Component {
 					</div>
 					{/* presenter and guest side */}
 					<div className="banner-container right flex justify-center">
-					<img src={welcome} />
- 
+						<img src={welcome} />
 					</div>
 				</div>
 			</main>

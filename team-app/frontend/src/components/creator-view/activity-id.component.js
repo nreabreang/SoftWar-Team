@@ -28,11 +28,9 @@ const ActivityInfo = (props) => {
                     </div>
 
                     <div className="pb-4">
-
                         <p className="text-20px text-navy bold pb-4">● Date</p>
 
                         <div className="flex mx-4 text-navy">
-
                             {/* start date */}
                             <div className="flex items-center mr-6">
                                 <p className="text-16px bold mr-4">Start Date : </p>
@@ -101,7 +99,7 @@ export default class creatorActivityId extends Component {
         const arr = window.location.href.split("/");
         const access = arr[arr.length - 1];
         window.localStorage.setItem("idAct", access);
-        console.log("hh", window.localStorage.getItem("idAct"));
+        // console.log("hh", window.localStorage.getItem("idAct"));
         axios
             .get("http://localhost:5000/activity/" + access)
             .then((response) => {

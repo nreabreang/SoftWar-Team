@@ -10,14 +10,14 @@ import ques from "../images/question-mark.png";
 import idea from "../images/idea.png";
 
 export default class projectID extends Component {
-  constructor(props) {
-    super(props);
-    this.commentILikeOnChange = this.commentILikeOnChange.bind(this);
-    this.commentIWishOnChange = this.commentIWishOnChange.bind(this);
-    this.commentQuestionOnChange = this.commentQuestionOnChange.bind(this);
-    this.commentIdeaOnChange = this.commentIdeaOnChange.bind(this);
-    this.virtualMoneyOnChange = this.virtualMoneyOnChange.bind(this);
-    this.onSubmitAction = this.onSubmitAction.bind(this);
+    constructor(props) {
+        super(props);
+        this.commentILikeOnChange = this.commentILikeOnChange.bind(this);
+        this.commentIWishOnChange = this.commentIWishOnChange.bind(this);
+        this.commentQuestionOnChange = this.commentQuestionOnChange.bind(this);
+        this.commentIdeaOnChange = this.commentIdeaOnChange.bind(this);
+        this.virtualMoneyOnChange = this.virtualMoneyOnChange.bind(this);
+        this.onSubmitAction = this.onSubmitAction.bind(this);
 
     this.state = {
       projectName: "",
@@ -138,285 +138,382 @@ export default class projectID extends Component {
     });
   }
 
-  render() {
-    return (
-      <main>
-        <header>
-          <Navbar name={window.localStorage.getItem("guestName")} />
-        </header>
+    commentIWishOnChange(texts) {
+        this.setState({
+            IWish: texts.target.value,
+        });
+    }
 
-        {/* topic */}
-        <div className="px-12 py-12 mx-12 items-center justify-center ">
-          <div className="items-center justify-center">
-            <p className="text-30px text-center text-navy pb-10">
-              <Link to={"/guestActivityList/"+window.localStorage.ActId} className="flex">
-                <img
-                  src={leftarrow}
-                  alt="left arrow"
-                  className="images-18px mr-2 mt-1.5"
-                />
-                Project Details
-              </Link>
-            </p>
-          </div>
+    commentQuestionOnChange(texts) {
+        this.setState({
+            Quest: texts.target.value,
+        });
+    }
 
-          <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
-            <div className="p-8">
-              {/* topic */}
-              <div className="pb-4">
-                <p className="text-30px text-red-it">
-                  {this.state.projectName}
-                </p>
-              </div>
+    commentIdeaOnChange(texts) {
+        this.setState({
+            Idea: texts.target.value,
+        });
+    }
 
-              {/* description */}
-              <div className="pb-4">
-                <p className="text-20px text-navy bold pb-1">● Description</p>
-                <div
-                  className="text-16px text-navy mx-auto overflow"
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.description,
-                  }}
-                ></div>
-              </div>
+    onSubmitAction(e) {
+        e.preventDefault();
+        const arr = window.location.href.split("/");
+        const test = {
+            iLike: this.state.ILike,
+            iWish: this.state.IWish,
+            iQuest: this.state.Quest,
+            iDea: this.state.Idea,
+        };
+        const data = {
+            virtualMoney: this.state.storeVirtualMoney,
+            comments: test,
+            idProject: arr[arr.length - 1],
+        };
+        console.log(data);
+        var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
+        if (findVirtualMoney) {
+            var calculate =
+                Number(window.localStorage.guestVirtualMoney) -
+                Number(this.state.storeVirtualMoney);
+            if (calculate >= 0) {
+                //not over
+                Swire.fire({
+                    title: "Give Virtual Money Successfully",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                }).then(() => {
+                    axios
+                        .post("http://localhost:5000/feedback/add", data)
+                        .then(() => console.log("Success."))
+                        .catch((err) => console.log("Error: " + err));
+                    window.localStorage.guestVirtualMoney =
+                        Number(window.localStorage.guestVirtualMoney) -
+                        this.state.storeVirtualMoney;
+                    this.setState({
+                        feedBacks: [...this.state.feedBacks, data],
+                        virtualMoney: "",
+                        ILike: "",
+                        IWish: "",
+                        Quest: "",
+                        Idea: "",
+                    });
+                });
+            } else {
+                //it over
+                Swire.fire({
+                    title: `Not enough Virtual Money : You have ${window.localStorage.guestVirtualMoney}`,
+                    icon: "error",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
+                }
+                ).then(() => {
+                    this.setState({
+                        storeVirtualMoney: "",
+                        ILike: "",
+                        IWish: "",
+                        Quest: "",
+                        Idea: "",
+                    });
+                    //   window.location = "";
+                });
+            }
+        } else {
+            //it not login
+        }
+        // let getCookies = document.cookie.split("=");
+        // let calculate = Number(getCookies[getCookies.length-1])-Number(this.state.storeVirtualMoney)
+        // if(calculate<0){
+        //     this.setState({
+        //         storeVirtualMoney:"",
+        //         ILike:"",
+        //         IWish:"",
+        //         Quest:"",
+        //         Idea:"",
+        //     })
+        // }else{
+        //     document.cookie = `virtualmoney=${calculate}`
+        // }
+    }
 
-              <div className="pb-4">
-                <p className="text-20px text-navy bold pb-4">● Members</p>
-                <div className="flex text-navy ml-4">{this.showMembers()}</div>
-
-                {/* member */}
-                {/* <div className="mt-6 ml-2">
-                                    <p className="text-18px bold py-4">Member : </p>
-                                    <div className="ml-6">
-                                        {this.showMembers()}
-                                    </div>
-                                </div> */}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <Feedback />
-
-        <div>
-          {/* {this.showButton(window.localStorage.PresenterEmail, this.buttonEdit())}
-                    {this.showButton(window.localStorage.PresenterEmail, this.buttonDelete())} */}
-
-          <div className="items-center justify-center pb-12">
-            <form onSubmit={this.onSubmitAction}>
-              {/* topic */}
-              <div className="w-9/12 mx-auto items-center justify-center py-9">
-                <p className="text-30px text-navy">Give Feedbacks</p>
-              </div>
-
-              <div className="flex w-9/12 mx-auto text-navy pb-8">
-                <p className="text-20px text-left w-1/4 mr-4 pt-1 bold">
-                  ● Give Virtual Money
-                </p>
-
-                <div className="items-center w-full">
-                  <input
-                    className="input"
-                    // id="projectName"
-                    // name="projectName"
-                    type="number"
-                    value={this.state.virtualMoney}
-                    onChange={(e) => this.virtualMoneyOnChange(e.target.value)}
-                    placeholder="Enter Virtual Money"
-                    min="0"
-                  />
+    showMembers() {
+        return this.state.members.map((x) => {
+            return (
+                <div className="flex text-16px bold">
+                    <p className="text-red-it mx-4">|</p>
+                    <div className="">{x.name}</div>
+                    <p className="mx-1">—</p>
+                    <div>{x.email}</div>
                 </div>
-              </div>
+            );
+        });
+    }
 
-              <div className="w-9/12 mx-auto text-navy">
-                <div className="text-20px bold">● Give Comments</div>
+    render() {
+        return (
+            <main>
+                <header>
+                    <Navbar name={window.localStorage.getItem("guestName")} />
+                </header>
 
-                <input
-                  // required
-                  className="input mt-4 mb-8 w-full"
-                  id="ILike"
-                  name="ILike"
-                  type="text"
-                  value={this.state.ILike}
-                  onChange={this.commentILikeOnChange}
-                  placeholder="What do you like about this project?"
-                />
-                <input
-                  // required
-                  className="input mt-4 mb-8 w-full"
-                  id="IWish"
-                  name="IWish"
-                  type="text"
-                  value={this.state.IWish}
-                  onChange={this.commentIWishOnChange}
-                  placeholder="What do you wish about this project?"
-                />
-
-                <input
-                  // required
-                  className="input mt-4 mb-8 w-full"
-                  id="Question"
-                  name="Question"
-                  type="text"
-                  value={this.state.Quest}
-                  onChange={this.commentQuestionOnChange}
-                  placeholder="What questions would you like to ask about the project?"
-                />
-
-                <input
-                  // required
-                  className="input mt-4 mb-8 w-full"
-                  id="Ideas"
-                  name="Ideas"
-                  type="text"
-                  value={this.state.Idea}
-                  onChange={this.commentIdeaOnChange}
-                  placeholder="What ideas would you like to share about the project?"
-                />
-
-                <div className="container justify-end mx-auto pt-4 pb-12">
-                  <input
-                    type="submit"
-                    value="Submit"
-                    className="button red p-2 w-48"
-                  />
+                {/* topic */}
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to={"/presenterActivityId/" + window.localStorage.idActivity} className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Project Details
+                    </p>
                 </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </main>
-    )}
-  }
 
+                <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
+
+                    <div className="p-8">
+
+                        {/* topic */}
+                        <div className="pb-4">
+                            <p className="text-30px text-red-it">{this.state.projectName}</p>
+                        </div>
+
+                        {/* members */}
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-4">● Members</p>
+                            <div className="text-navy ml-4">
+                                {this.showMembers()}
+                            </div>
+                        </div>
+
+                        {/* description */}
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-1">● Description</p>
+                            <div className="text-16px text-navy mx-auto overflow"
+                                dangerouslySetInnerHTML={{
+                                    __html: this.state.description,
+                                }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <Feedback />
+
+                <div className="items-center justify-center">
+                    <form onSubmit={this.onSubmitAction}>
+                        {/* topic */}
+                        <div className="w-9/12 mx-auto items-center justify-center pb-9">
+                            <p className="text-30px text-navy">Give Feedbacks</p>
+                        </div>
+
+                        <div className="flex w-9/12 mx-auto text-navy pb-8">
+                            <p className="text-20px text-left w-1/4 mr-4 pt-1 bold">
+                                ● Give Virtual Money
+                            </p>
+
+                            <div className="items-center w-full">
+                                <input
+                                    className="input"
+                                    // id="projectName"
+                                    // name="projectName"
+                                    type="number"
+                                    value={this.state.virtualMoney}
+                                    onChange={(e) => this.virtualMoneyOnChange(e.target.value)}
+                                    placeholder="Enter Virtual Money"
+                                    min="0"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="w-9/12 mx-auto text-navy">
+                            <div className="text-20px bold">● Give Comments</div>
+
+                            <input
+                                required
+                                className="input mt-4 mb-8 w-full"
+                                id="ILike"
+                                name="ILike"
+                                type="text"
+                                value={this.state.ILike}
+                                onChange={this.commentILikeOnChange}
+                                placeholder="What do you like about this project?"
+                            />
+                            <input
+                                required
+                                className="input mt-4 mb-8 w-full"
+                                id="IWish"
+                                name="IWish"
+                                type="text"
+                                value={this.state.IWish}
+                                onChange={this.commentIWishOnChange}
+                                placeholder="What do you wish about this project?"
+                            />
+
+                            <input
+                                required
+                                className="input mt-4 mb-8 w-full"
+                                id="Question"
+                                name="Question"
+                                type="text"
+                                value={this.state.Quest}
+                                onChange={this.commentQuestionOnChange}
+                                placeholder="What questions would you like to ask about the project?"
+                            />
+
+                            <input
+                                required
+                                className="input mt-4 mb-8 w-full"
+                                id="Ideas"
+                                name="Ideas"
+                                type="text"
+                                value={this.state.Idea}
+                                onChange={this.commentIdeaOnChange}
+                                placeholder="What ideas would you like to share about the project?"
+                            />
+
+                            <div className="flex container justify-end mx-auto pt-4 pb-12">
+                                <input
+                                    type="submit"
+                                    value="Submit"
+                                    className="button red p-2 w-48"
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        );
+    }
+}
 
 const TaskComment = (props) => {
-  return (
-    <div>
-      <div className="grid grid-cols-2 p-8 w-full">
-        {/* col1 */}
+    return (
         <div>
-          <div className="mb-4">
-            <p>What do you like about the project?</p>
-            <div className="flex">
-              <img src={like} alt="like" className="images-20px mr-4" />
-              <div className="text-16px bold">{props.letComments.iLike}</div>
-            </div>
-          </div>
+            <div className="grid grid-cols-2 p-8 w-full">
+                {/* col1 */}
+                <div>
+                    <div className="mb-4">
+                        <p>What do you like about the project?</p>
+                        <div className="flex">
+                            <img src={like} alt="like" className="images-20px mr-4" />
+                            <div className="text-16px bold">{props.letComments.iLike}</div>
+                        </div>
+                    </div>
 
-          <div className="">
-            <p>What do you wish about the project?</p>
-            <div className="flex">
-              <img src={wish} alt="wish" className="images-20px mr-4" />
-              <div className="text-16px bold">{props.letComments.iWish}</div>
+                    <div className="">
+                        <p>What do you wish about the project?</p>
+                        <div className="flex">
+                            <img src={wish} alt="wish" className="images-20px mr-4" />
+                            <div className="text-16px bold">{props.letComments.iWish}</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* col 2 */}
+                <div>
+                    <div className="mb-4">
+                        <p>What questions do you have about this project?</p>
+                        <div className="flex">
+                            <img src={ques} alt="like" className="images-20px mr-4" />
+                            <div className="text-16px bold">{props.letComments.iQuest}</div>
+                        </div>
+                    </div>
+
+                    <div className="">
+                        <p>What ideas do you have for this project?</p>
+                        <div className="flex">
+                            <img src={idea} alt="wish" className="images-20px mr-4" />
+                            <div className="text-16px bold">{props.letComments.iDea}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div className="line-horizon w-full" />
         </div>
-
-        {/* col 2 */}
-        <div>
-          <div className="mb-4">
-            <p>What questions do you have about this project?</p>
-            <div className="flex">
-              <img src={ques} alt="like" className="images-20px mr-4" />
-              <div className="text-16px bold">{props.letComments.iQuest}</div>
-            </div>
-          </div>
-
-          <div className="">
-            <p>What ideas do you have for this project?</p>
-            <div className="flex">
-              <img src={idea} alt="wish" className="images-20px mr-4" />
-              <div className="text-16px bold">{props.letComments.iDea}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="line-horizon w-full" />
-    </div>
-  );
+    );
 };
 
 class Feedback extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      feedBacks: [],
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            feedBacks: [],
+        };
+    }
 
-  componentDidMount() {
-    const arr = window.location.href.split("/");
-    axios
-      .get("http://localhost:5000/feedback/project/" + arr[arr.length - 1])
-      .then((resp) => {
-        this.setState({ feedBacks: resp.data });
-      })
-      .catch((err) => console.log("Error: " + err));
-  }
+    componentDidMount() {
+        const arr = window.location.href.split("/");
+        axios
+            .get("http://localhost:5000/feedback/project/" + arr[arr.length - 1])
+            .then((resp) => {
+                this.setState({ feedBacks: resp.data });
+            })
+            .catch((err) => console.log("Error: " + err));
+    }
 
-  showCalculateVirtual() {
-    let total = this.state.feedBacks.reduce(
-      (corr, data) => corr + Number(data.virtualMoney),
-      0
-    );
+    showCalculateVirtual() {
+        let total = this.state.feedBacks.reduce(
+            (corr, data) => corr + Number(data.virtualMoney),
+            0
+        );
 
-    return total;
-  }
+        return total;
+    }
 
-  componentDidUpdate() {
-    const arr = window.location.href.split("/");
-    axios
-      .post(
-        "http://localhost:5000/project/updateTotalVirtualMoney/" +
-          arr[arr.length - 1],
-        { totalVirtualMoney: this.showCalculateVirtual() }
-      )
-      .then((res) => console.log("Update total VP :", res.data))
-      .catch((err) => console.log("Error: " + err));
+    componentDidUpdate() {
+        const arr = window.location.href.split("/");
+        axios
+            .post(
+                "http://localhost:5000/project/updateTotalVirtualMoney/" +
+                arr[arr.length - 1],
+                { totalVirtualMoney: this.showCalculateVirtual() }
+            )
+            .then((res) => console.log("Update total VP :", res.data))
+            .catch((err) => console.log("Error: " + err));
 
-    console.log(this.showCalculateVirtual());
-    console.log("id :", arr[arr.length - 1]);
-  }
+        console.log(this.showCalculateVirtual());
+        console.log("id :", arr[arr.length - 1]);
+    }
 
-  showLengthOfList() {
-    return this.state.feedBacks.map((data, index) => {
-      return (
-        <TaskComment letComments={data.comments} moneyVir={data.virtualMoney} />
-      );
-    });
-    // const arr2 =  arr.then((data)=>data.map((fete)=>fete))
-    // const sum =  moneyAll.reduce((correct,data)=>correct + Number(data),0)
-  }
+    showLengthOfList() {
+        return this.state.feedBacks.map((data, index) => {
+            return (
+                <TaskComment letComments={data.comments} moneyVir={data.virtualMoney} />
+            );
+        });
+        // const arr2 =  arr.then((data)=>data.map((fete)=>fete))
+        // const sum =  moneyAll.reduce((correct,data)=>correct + Number(data),0)
+    }
 
-  render() {
-    return (
-      <div className="items-center justify-center pb-12">
-        {/* topic */}
-        <div className="w-9/12 mx-auto items-center justify-center py-9">
-          <p className="text-30px text-navy ">Feedbacks</p>
-        </div>
+    render() {
+        return (
+            <div className="items-center justify-center pb-12">
+                {/* topic */}
+                <div className="w-9/12 mx-auto items-center justify-center py-9">
+                    <p className="text-30px text-navy ">Feedbacks</p>
+                </div>
 
-        <div className="flex w-9/12 mx-auto text-navy pb-4">
-          <p className="text-20px text-left mr-2 bold">
-            ● Total Virtual Money :{" "}
-          </p>
+                <div className="flex w-9/12 mx-auto text-navy pb-8">
+                    <p className="text-20px text-left mr-2 bold">
+                        ● Total Virtual Money :{" "}
+                    </p>
 
-          <div className="text-20px text-red-it mr-2">
-            {this.showCalculateVirtual()}
-          </div>
-          <p className="text-20px text-left">credits</p>
-        </div>
+                    <div className="text-20px text-red-it mr-2">
+                        {this.showCalculateVirtual()}
+                    </div>
+                    <p className="text-20px text-left">credits</p>
+                </div>
 
-        <div className="w-9/12 mx-auto text-navy">
-          <div className="text-20px bold">● Comments</div>
+                <div className="w-9/12 mx-auto text-navy">
+                    <div className="text-20px bold">● Comments</div>
 
-          <div className="text-16px text-navy mx-auto overflow">
-            {this.showLengthOfList()}
-          </div>
-        </div>
-      </div>
-    );
-  }
+                    <div className="text-16px text-navy mx-auto overflow">
+                        {this.showLengthOfList()}
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }

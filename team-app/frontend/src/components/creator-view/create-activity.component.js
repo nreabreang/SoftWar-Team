@@ -49,22 +49,22 @@ export default class CreateActivity extends Component {
 
     modules = {
         toolbar: [
-          [{ header: [1, 2, false] }],
-          ["bold", "italic", "underline", "strike", "blockquote"],
-          [
-            { list: "ordered" },
-            { list: "bullet" },
-            { indent: "-1" },
-            { indent: "+1" },
-          ],
-    
-          [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-          [{ font: [] }],
-          [{ align: [] }],
-          ["link", "image"],
-          ['clean']     
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline", "strike", "blockquote"],
+            [
+                { list: "ordered" },
+                { list: "bullet" },
+                { indent: "-1" },
+                { indent: "+1" },
+            ],
+
+            [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+            [{ font: [] }],
+            [{ align: [] }],
+            ["link", "image"],
+            ['clean']
         ],
-      };
+    };
 
     componentDidMount() {
         // this.setState({actName:"test"});
@@ -180,10 +180,6 @@ export default class CreateActivity extends Component {
                     </p>
                 </div>
 
-                {/* <div className="p-8">
-                    <p className="text-30px text-navy text-center"></p>
-                </div> */}
-
                 <form onSubmit={this.onSubmit}>
                     <div className="grid gap-0 w-9/12 mx-auto text-navy
 										lg:grid-cols-2
@@ -191,6 +187,7 @@ export default class CreateActivity extends Component {
                                     ">
                         {/* col1 */}
                         <div className="justify-center">
+
                             {/* input activity name */}
                             <div className="w-full">
                                 {/* <label className="text-18px bold">Activity Name</label> */}
@@ -210,8 +207,8 @@ export default class CreateActivity extends Component {
 
                             {/* bullet point for choose virtual money */}
                             <div className="pb-6 text-16px bold">
-                                <ul className="flex items-center w-3/4">
-                                    <li className="w-full">
+                                <div className="flex items-center w-full">
+                                    <div className="w-full">
                                         <div className="flex items-center">
                                             <input
                                                 id="horizontal-list-radio-license"
@@ -224,11 +221,8 @@ export default class CreateActivity extends Component {
                                                     unitMoney: "unit"
                                                 })}
                                             />
-                                            <label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Default VM</label>
-                                        </div>
-                                    </li>
-                                    <li className="w-full">
-                                        <div className="flex items-center">
+                                            <label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Default Virtual Money</label>
+
                                             <input
                                                 id="horizontal-list-radio-license"
                                                 type="radio"
@@ -240,22 +234,29 @@ export default class CreateActivity extends Component {
                                                     unitMoney: ""
                                                 })}
                                             />
-                                            <label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Customize VM</label>
+                                            <label for="horizontal-list-radio-license" className="w-full pl-3 pt-1">Customize Virtual Money</label>
                                         </div>
-                                    </li>
-                                </ul>
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* input virtual money and unit grid*/}
-                            <div className="grid gap-0
-                                            lg:grid-cols-2
-                                            lg:gap-16">
+                            {/* input activity name */}
+                            <div className="w-full">
 
-                                {/* virtual money container */}
-                                <div className="w-full">
+                                {/* grid1 */}
+                                <div className="grid grid-cols-2 gap-2">
                                     <label className="text-20px text-navy bold">
                                         Virtual Money / Guest
                                     </label>
+
+                                    <label className="text-20px text-navy bold" for="grid-last-name">
+                                        Unit
+                                    </label>
+                                </div>
+
+                                {/* grid2 */}
+                                <div className="grid grid-cols-2 gap-2">
+
                                     {/* virtual money container */}
                                     <div className="flex w-full">
                                         <input
@@ -267,16 +268,7 @@ export default class CreateActivity extends Component {
                                             onChange={this.onChangeVirtualMoney}
                                             placeholder="Enter Virtual Money"
                                         />
-
                                     </div>
-
-                                </div>
-
-                                {/* unit container */}
-                                <div className="w-full">
-                                    <label className="text-20px bold text-navy" for="grid-last-name">
-                                        Unit
-                                    </label>
 
                                     {/* unit container */}
                                     <div class="w-full">
