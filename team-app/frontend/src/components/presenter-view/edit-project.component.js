@@ -179,13 +179,11 @@ export default class EditProject extends Component {
 
         if (this.state.members.length === 0) {
             Swal.fire({
-              title: "Update Project Successfully",
+              title: "Please, input 1 or more Project Members.",
               showConfirmButton: true,
             }).then((result) => {
               if (result.isConfirmed) {
-                window.location =
-                  "http://localhost:3000/presenterActivityId/" +
-                  window.localStorage.idActivity;
+                window.location ='/'
               }
             });
         } else {
@@ -202,8 +200,8 @@ export default class EditProject extends Component {
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 window.location =
-                                    "http://localhost:3000/creatorprojectList/" +
-                                    arr[arr.length - 1];
+                                "http://localhost:3000/presenterActivityId/" +
+                                window.localStorage.idActivity;
                             }
                         });
                     }
