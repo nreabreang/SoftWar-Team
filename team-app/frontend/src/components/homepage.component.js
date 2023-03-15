@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./homepage.component.css";
 import rightarrowpink from "./images/right-arrow-pink.png";
+import welcome from "./images/welcom-png.png";
+// import welcomePng from "./images/welcompng.png"
 import qr from "./images/qr-code - 1.png";
 import "./homepage.component.css";
 import "./Styles.css";
@@ -239,7 +241,9 @@ export default class homepage extends Component {
 
 					</div>
 					{/* presenter and guest side */}
-					<div className="banner-container right justify-center">
+					<div className="banner-container right flex justify-center">
+					<img src={welcome} />
+ 
 					</div>
 				</div>
 			</main>

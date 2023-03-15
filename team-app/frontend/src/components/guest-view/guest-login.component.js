@@ -65,7 +65,10 @@ export default class guestLogin extends Component {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Please use your correct username",
+        text: "Incorrect Username !",
+        timer:4000,
+        timerProgressBar: true,
+        showConfirmButton:false,
       });
     } else {
       axios
