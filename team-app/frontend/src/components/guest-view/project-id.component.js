@@ -119,89 +119,13 @@ export default class projectID extends Component {
             Quest: "",
             Idea: "",
           });
+          window.location.reload()
         });
+      }
     }
-
-    commentIdeaOnChange(texts) {
-        this.setState({
-            Idea: texts.target.value,
-        });
-    }
-
-    onSubmitAction(e) {
-        e.preventDefault();
-        const arr = window.location.href.split("/");
-        const test = {
-            iLike: this.state.ILike,
-            iWish: this.state.IWish,
-            iQuest: this.state.Quest,
-            iDea: this.state.Idea,
-        };
-        const data = {
-            virtualMoney: this.state.storeVirtualMoney,
-            comments: test,
-            idProject: arr[arr.length - 1],
-        };
-        console.log(data);
-        var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
-        if (findVirtualMoney) {
-            var calculate =
-                Number(window.localStorage.guestVirtualMoney) -
-                Number(this.state.storeVirtualMoney);
-            if (calculate >= 0) {
-                //not over
-                Swire.fire("Done !").then(() => {
-                    // axios.post("http://localhost:5000/feedback/add", data)
-                    // .then(() => console.log("Success"))
-                    // .catch((err) => console.log("Error: " + err));
-                    axios
-                        .post("http://localhost:5000/feedback/add", data)
-                        .then(() => console.log("Success."))
-                        .catch((err) => console.log("Error: " + err));
-                    window.localStorage.guestVirtualMoney =
-                        Number(window.localStorage.guestVirtualMoney) -
-                        this.state.storeVirtualMoney;
-                    this.setState({
-                        feedBacks: [...this.state.feedBacks, data]
-                    })
-                    // window.location.reload()
-                });
-            } else {
-                //it over
-                Swire.fire(
-                    `Cannot You have ${window.localStorage.guestVirtualMoney}`
-                ).then(() => {
-                    this.setState({
-                        storeVirtualMoney: "",
-                        ILike: "",
-                        IWish: "",
-                        Quest: "",
-                        Idea: "",
-                    });
-                    window.location = "";
-                });
-            }
-        } else {
-            //it not login
-        
-      //it not login
-    }
-    // let getCookies = document.cookie.split("=");
-    // let calculate = Number(getCookies[getCookies.length-1])-Number(this.state.storeVirtualMoney)
-    // if(calculate<0){
-    //     this.setState({
-    //         storeVirtualMoney:"",
-    //         ILike:"",
-    //         IWish:"",
-    //         Quest:"",
-    //         Idea:"",
-    //     })
-    // }else{
-    //     document.cookie = `virtualmoney=${calculate}`
-    // }
   }
 
-  showMembers() {
+  showMembers(){
     return this.state.members.map((x) => {
       return (
         <div className="flex text-16px bold">
@@ -225,7 +149,7 @@ export default class projectID extends Component {
         <div className="px-12 py-12 mx-12 items-center justify-center ">
           <div className="items-center justify-center">
             <p className="text-30px text-center text-navy pb-10">
-              <Link to="/" className="flex">
+              <Link to={"/guestActivityList/"+window.localStorage.ActId} className="flex">
                 <img
                   src={leftarrow}
                   alt="left arrow"
@@ -308,7 +232,7 @@ export default class projectID extends Component {
                 <div className="text-20px bold">● Give Comments</div>
 
                 <input
-                  required
+                  // required
                   className="input mt-4 mb-8 w-full"
                   id="ILike"
                   name="ILike"
@@ -318,7 +242,7 @@ export default class projectID extends Component {
                   placeholder="What do you like about this project?"
                 />
                 <input
-                  required
+                  // required
                   className="input mt-4 mb-8 w-full"
                   id="IWish"
                   name="IWish"
@@ -329,7 +253,7 @@ export default class projectID extends Component {
                 />
 
                 <input
-                  required
+                  // required
                   className="input mt-4 mb-8 w-full"
                   id="Question"
                   name="Question"
@@ -340,7 +264,7 @@ export default class projectID extends Component {
                 />
 
                 <input
-                  required
+                  // required
                   className="input mt-4 mb-8 w-full"
                   id="Ideas"
                   name="Ideas"
@@ -362,9 +286,9 @@ export default class projectID extends Component {
           </div>
         </div>
       </main>
-    );
+    )}
   }
-}
+
 
 const TaskComment = (props) => {
   return (

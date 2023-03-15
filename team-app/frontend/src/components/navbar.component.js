@@ -30,10 +30,10 @@ export default class navbar extends Component {
                                 <div class="absolute right-0 w-56 mt-2 rounded-lg bg-pink">
 
                                     <div class="py-1">
-                                        <button href="#" class="flex justify-between w-full px-4 py-2 text-14px text-navy bold"
+                                        <button class="flex justify-between w-full px-4 py-2 text-14px text-navy bold"
                                             onClick={(e) => {
                                             localStorage.clear()
-                                            window.history.back()
+                                            window.location = "/"
                                         }}>
                                             Log out |
                                         </button>
