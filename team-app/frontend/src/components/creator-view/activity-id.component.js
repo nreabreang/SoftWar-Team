@@ -133,7 +133,7 @@ export default class creatorActivityId extends Component {
 
                     {/* topic */}
                     <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
-                        <Link to={"/presenterActivityId/"+window.localStorage.idAct} className="">
+                        <Link to={"/activitylist/"} className="">
                             
                             <img src={leftarrow} alt="left arrow" className="images-18px" />
                         </Link>
