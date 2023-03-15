@@ -29,7 +29,7 @@ export default class access extends Component {
                         <p className="text-48px text-navy py-4">PRESENTER</p>
                         <p className="text-20px bold">add your Project to Activity and get your feedbacks back!</p>
 
-                        <a href="/presenterLogin" className="container justify-left pt-8">
+                        <a href="/presenterLogin" className="flex container justify-left pt-8">
                             <p className="button red light p-2 w-60">Sign-In as PRESENTER</p>
                         </a>
                     </div>
@@ -40,7 +40,7 @@ export default class access extends Component {
                         <p className="text-48px text-red-it bold py-4">GUEST</p>
                         <p className="text-20px text-navy bold">give Virtual Money and express your opinion on the Project!</p>
 
-                        <a href="/guestLogin" className="container justify-left pt-8">
+                        <a href="/guestLogin" className="flex container justify-left pt-8">
                             <p className="button red light p-2 w-60">Sign-In as GUEST</p>
                         </a>
                     </div>

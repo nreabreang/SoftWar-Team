@@ -96,6 +96,14 @@ export default class projectID extends Component {
                             <p className="text-30px text-red-it">{this.state.projectName}</p>
                         </div>
 
+                        {/* members */}
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-4">● Members</p>
+                            <div className="text-navy ml-4">
+                                {this.renderMember()}
+                            </div>
+                        </div>
+
                         {/* description */}
                         <div className="pb-4">
                             <p className="text-20px text-navy bold pb-1">● Description</p>
@@ -104,19 +112,11 @@ export default class projectID extends Component {
                             </div>
                         </div>
 
-                        <div className="pb-4">
-                            <p className="text-20px text-navy bold pb-4">● Members</p>
-                            <div className="text-navy ml-4">
-                                {this.renderMember()}
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 {/* {this.showButton(window.localStorage.PresenterEmail, this.buttonEdit())}
                 {this.showButton(window.localStorage.PresenterEmail, this.buttonDelete())} */}
-
-
 
                 <Feedback />
             </main>
@@ -172,7 +172,6 @@ const TaskComment = (props) => {
 
             <div className="line-horizon w-full my-8" />
         </div>
-
     );
 };
 
@@ -243,7 +242,7 @@ class Feedback extends Component {
                     <p className="text-30px text-navy ">Feedbacks</p>
                 </div>
 
-                <div className="flex w-9/12 mx-auto text-navy pb-4">
+                <div className="flex w-9/12 mx-auto text-navy pb-8">
                     <p className="text-20px text-left bold mr-2">● Total Virtual Money : </p>
 
                     <div className="text-20px text-red-it mr-2">

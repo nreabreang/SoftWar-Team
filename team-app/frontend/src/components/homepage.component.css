@@ -6,9 +6,8 @@
 }
 
 .banner-container {
-    display: block;
     align-items: center;
-    padding: 0rem 3rem 3rem 3rem;
+    padding: 0rem 3rem 0rem 3rem;
 }
 
 .banner-container.left {

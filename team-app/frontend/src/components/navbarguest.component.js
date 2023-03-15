@@ -34,17 +34,6 @@ export default class navbar extends Component {
                                         <p className="text-16px text-red-it bold text-center">{window.localStorage.guestVirtualMoney}</p>
                                     </div>
 
-                                    <div className="line-horizon mx-4 border-navy"></div>
-
-                                    <div className="py-1">
-                                        <button href="#" class="flex justify-between w-full px-4 py-2 text-14px text-navy bold"
-                                            onClick={(e) => {
-                                                localStorage.clear()
-                                                window.history.back()
-                                            }}>
-                                            Log out |
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>

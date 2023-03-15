@@ -9,6 +9,7 @@ import del from "../images/bin.png";
 import edit from "../images/edit-2.png";
 import Swal from "sweetalert2";
 import Navbar from "../navbar.component"
+import leftarrow from "../images/left-arrow.png";
 
 // const encodeNumber = (str) => {
 // 	const code = Buffer.from(str, "utf-8")
@@ -167,7 +168,12 @@ export default class ActivityList extends Component {
 
 				<div className="grid grid-cols-2 px-12 py-8 items-center">
 
-					<p className="text-30px text-left text-navy">Activity Dashboard</p>
+					<Link to="/" className="flex">
+						<div className="pt-1 pr-2">
+							<img src={leftarrow} alt="left arrow" className="images-18px" />
+						</div>
+						<p className="text-30px text-left text-navy">Activity Dashboard</p>
+					</Link>
 
 					<div className="flex container justify-end">
 						<a href="/createActivity" className="button red px-4 py-2 w-48 text-18x">

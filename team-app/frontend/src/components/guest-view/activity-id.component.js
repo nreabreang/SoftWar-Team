@@ -31,15 +31,7 @@ const ActivityInformation = (props) => {
                     <p className="text-30px text-red-it">{props.actName}</p>
                 </div>
 
-                {/* description */}
-                <div className="pb-4">
-                    <p className="text-20px text-navy bold pb-1">● Description</p>
-                    <div
-                        className="text-16px text-navy mx-auto overflow"
-                        dangerouslySetInnerHTML={{ __html: props.descript }}
-                    ></div>
-                </div>
-
+                {/* date */}
                 <div className="pb-4">
                     <p className="text-20px text-navy bold pb-4">● Date</p>
 
@@ -60,6 +52,15 @@ const ActivityInformation = (props) => {
                             </p>
                         </div>
                     </div>
+                </div>
+
+                {/* description */}
+                <div className="pb-4">
+                    <p className="text-20px text-navy bold pb-1">● Description</p>
+                    <div
+                        className="text-16px text-navy mx-auto overflow"
+                        dangerouslySetInnerHTML={{ __html: props.descript }}
+                    ></div>
                 </div>
             </div>
         </div>
