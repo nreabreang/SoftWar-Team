@@ -1,6 +1,4 @@
 .banner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     text-align: left;
     height: 100vh;
 }
@@ -23,14 +21,11 @@
     border: none;
     appearance: auto;
     outline: none;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    border-radius: 1rem;
     text-transform: uppercase;
     vertical-align: middle;
     text-align: left;
     cursor: pointer;
-    padding: 10px 30px;
-    margin: 10px 0px 10px 10px;
     background-color: #DB4D4B;
 }
 
@@ -41,18 +36,3 @@
 .input-code:focus::placeholder {
     color: transparent;
 }
-
-.icon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10.5px 10px;
-    margin: 0px 10px 0px 0px;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    width: max-content;
-    height: max-content;
-    background-color: #DB4D4B;
-}
-
-

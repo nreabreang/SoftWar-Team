@@ -166,7 +166,8 @@ export default class ActivityList extends Component {
 					<Navbar name={this.state.name} />
 				</header>
 
-				<div className="grid grid-cols-2 px-12 py-8 items-center">
+				<div className="grid px-12 py-8 items-center
+								sm:grid-cols-2">
 
 					<Link to="/" className="flex">
 						<div className="pt-1 pr-2">
@@ -175,7 +176,10 @@ export default class ActivityList extends Component {
 						<p className="text-30px text-left text-navy">Activity Dashboard</p>
 					</Link>
 
-					<div className="flex container justify-end">
+					<div className="flex container justify-center pt-4
+									sm:justify-end
+									sm:pt-0
+					">
 						<a href="/createActivity" className="button red px-4 py-2 w-48 text-18x">
 							Add Activity +
 						</a>
@@ -184,12 +188,11 @@ export default class ActivityList extends Component {
 
 				<div className="flex w-full mx-auto">
 					<div className="show-container mx-auto
-									xs:grid-cols-2
 									sm:grid-cols-2
-									md:grid-cols-4
-									lg:grid-cols-4
+									md:grid-cols-2
+									lg:grid-cols-3
 									xl:grid-cols-4
-									2xl:grid-cols-4">
+									2xl:grid-cols-5">
 
 						{/* show list of activity */}
 						{this.activityList()}
