@@ -17,7 +17,7 @@ export default class creatorLogin extends Component {
         e.preventDefault();
 
         const { email, password } = this.state;
-        console.log('handleSubmit email=' + email + ' password=' + password);
+        // console.log('handleSubmit email=' + email + ' password=' + password);
         if (window.localStorage.getItem("activityEmail")) { // check email in localstorage
             window.localStorage.removeItem("activityEmail"); // remove old email
             window.localStorage.setItem("activityEmail", email)
@@ -40,7 +40,7 @@ export default class creatorLogin extends Component {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data, "creatorReg");
+                // console.log(data, "creatorReg");
                 if (data.status === "ok") {
                     Swal.fire({
                         title: "Login Successfully",
@@ -50,19 +50,8 @@ export default class creatorLogin extends Component {
                             window.localStorage.setItem("token", data.data);
 
                             window.location = "/activitylist/";
-                            var code = window.localStorage.getItem("ActCode");
-                            console.log("Codell : ", code);
-                            // axios.get("http://localhost:5000/activity/").then((res) => {
-                            //   let i;
-                            //   for (i = 0; i < res.data.length; i++) {
-                            //     if (code === encodeNumber(res.data[i].actName)) {
-                            //       // window.location = "/creatorActivityId/" + res.data[i]._id;
-                            //       break;
-                            //     } else {
-                            //     }
-                            //   }
-                            // });
-                            // console.log(window.localStorage.getItem("token"));
+                            // var code = window.localStorage.getItem("ActCode");
+                            // console.log("Codell : ", code);
                         }
                     });
                 } else if (data.status === "error") {

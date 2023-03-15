@@ -123,7 +123,6 @@ export default class CreateActivity extends Component {
     onSubmit(e) {
         e.preventDefault();
         const emails = window.localStorage.activityEmail;
-        console.log(this.state.startTime)
         if (new Date(this.state.startTime).getTime() >= new Date(this.state.endTime).getTime()) {
             Swal.fire({
                 title: "Connot use date.",

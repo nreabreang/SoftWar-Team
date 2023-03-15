@@ -72,6 +72,7 @@ export default class EditProject extends Component {
         axios
             .get("http://localhost:5000/project/" + arr[arr.length - 1])
             .then((res) => {
+              // console.log(res.data.projectName);
                 this.setState({
                     idProj: arr[arr.length - 1],
                     projectName: res.data.projectName,
@@ -94,6 +95,7 @@ export default class EditProject extends Component {
     }
 
     onChangeProjectName(data) {
+      // console.log(this.state.projectName);
         this.setState({
             projectName: data.target.value,
         });
@@ -167,8 +169,8 @@ export default class EditProject extends Component {
 
     onAddEvent(e) {
         e.preventDefault();
-        const arr = window.location.href.split("/");
-        console.log(this.state.members);
+        // const arr = window.location.href.split("/");
+        // console.log(this.state.members);
         const dataReq = {
             projectName: this.state.projectName,
             description: this.state.projectDescript,
@@ -177,8 +179,12 @@ export default class EditProject extends Component {
 
         if (this.state.members.length === 0) {
             Swal.fire({
-                title: "You should be add 1 Member.",
-                showConfirmButton: true,
+              title: "Please, input 1 or more Project Members.",
+              showConfirmButton: true,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location ='/'
+              }
             });
         } else {
             axios
@@ -194,8 +200,8 @@ export default class EditProject extends Component {
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 window.location =
-                                    "http://localhost:3000/creatorprojectList/" +
-                                    arr[arr.length - 1];
+                                "http://localhost:3000/presenterActivityId/" +
+                                window.localStorage.idActivity;
                             }
                         });
                     }
@@ -212,7 +218,7 @@ export default class EditProject extends Component {
 
                 {/* topic */}
                 <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
-                    <Link to="/ActivityList" className="">
+                    <Link to={"/presenterActivityId/"+window.localStorage.idActivity} className="">
                         <img src={leftarrow} alt="left arrow" className="images-18px" />
                     </Link>
                     <p className="flex text-30px justify-center">
@@ -220,22 +226,22 @@ export default class EditProject extends Component {
                     </p>
                 </div>
 
-                <form onSubmit={this.onAddEvent}>
-                    <div className="mx-auto w-9/12 jusstify-center text-navy">
-                        <div className="justify-center">
-                            {/* input activity name */}
-                            <div className="w-full">
-                                <label className="text-20px bold">Project Name</label>
-                                <input
-                                    className="input mt-4 mb-8 w-full"
-                                    id="projectName"
-                                    name="projectName"
-                                    type="text"
-                                    value={this.state.projectName}
-                                    onChange={this.onchangeProjectName}
-                                    placeholder="Enter your Project Name"
-                                />
-                            </div>
+        <form onSubmit={this.onAddEvent}>
+          <div className="mx-auto w-9/12 jusstify-center text-navy">
+            <div className="justify-center">
+              {/* input activity name */}
+              <div className="w-full">
+                <label className="text-20px bold">Project Name</label>
+                <input
+                  className="input mt-4 mb-8 w-full"
+                  id="projectName"
+                  name="projectName"
+                  type="text"
+                  value={this.state.projectName}
+                  onChange={this.onChangeProjectName}
+                  placeholder="Enter your Project Name"
+                />
+              </div>
 
                             {/* input activity name */}
                             <div className="w-full">

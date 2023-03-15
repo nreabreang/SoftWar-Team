@@ -1,5 +1,5 @@
 import axios from "axios";
-import CreatorProjectLists from "../creator-view/project-list.component";
+import PresenterProjectList from "./project-list.component";
 import Navbar from "../navbar.component"
 import leftarrow from "../images/left-arrow.png";
 import { Link } from "react-router-dom";
@@ -49,7 +49,7 @@ const ActivityInfo = (props) => {
     );
 };
 
-export default class creatorActivityId extends Component {
+export default class presenterActivityId extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -106,6 +106,7 @@ export default class creatorActivityId extends Component {
                     endTime: new Date(response.data.endTime),
                 });
                 // console.log("res :",response.data.actName);
+                window.localStorage.setItem("endTime",response.data.endTime)
             })
             .catch(function (error) {
                 console.log(error);
@@ -164,7 +165,8 @@ export default class creatorActivityId extends Component {
                         {this.showButtonAdd()}
                     </div>
                     
-                    <CreatorProjectLists />
+                    {/* <CreatorProjectLists /> */}
+                    <PresenterProjectList />
 
                 </div>
             </main>

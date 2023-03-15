@@ -99,7 +99,7 @@ export default class creatorActivityId extends Component {
         const arr = window.location.href.split("/");
         const access = arr[arr.length - 1];
         window.localStorage.setItem("idAct", access);
-        console.log("hh", window.localStorage.getItem("idAct"));
+        // console.log("hh", window.localStorage.getItem("idAct"));
         axios
             .get("http://localhost:5000/activity/" + access)
             .then((response) => {

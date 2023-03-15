@@ -1,13 +1,14 @@
+import { Component } from "react"
 import axios from "axios";
-import { Component } from "react";
 import { Link } from "react-router-dom";
-import "../Styles.css";
-import "../list.component.css"
-import rightarrow from "../images/right-arrow.png"
 import del from "../images/bin.png";
+import edit from "../images/edit-2.png";
 import Swal from "sweetalert2";
+import '../list.component.css';
+import '../Styles.css'
+import rightarrow from "../images/right-arrow.png"
 
-const Project = (props) => {
+const Project = (props) =>{
     const des = props.projectDescription
 
     return (
@@ -17,7 +18,8 @@ const Project = (props) => {
             <div className="list-header-container text-20px bold mt-4 mb-3 mx-6 ">
                 <div className="block ellipsis w-9/12 pt-2">{props.projectName}</div>
                 <div className="flex">
-                    {props.deleteProjectThis(props.projectID)}
+                    {props.projectShowButton(window.localStorage.PresenterEmail,props.editProject(props.projectID),props.projectMember)}
+                    {props.projectShowButton(window.localStorage.PresenterEmail,props.deleteProjectThis(props.projectID),props.projectMember)}
                 </div>
             </div>
 
@@ -32,7 +34,7 @@ const Project = (props) => {
 
                 {/* see project */}
                 <div className="enter-container justify-end mb-2 mx-2">
-                    <Link to={"/creatorprojectList/" + props.projectID}>
+                    <Link to={"/presenterProjectID/" + props.projectID}>
                         <div className="flex items-center justify-end pb-4">
                             <p className="text-14px underline bold mr-2">See Project</p>
                             <img src={rightarrow} alt="right arrow" className="images-14px" />
@@ -44,25 +46,24 @@ const Project = (props) => {
     )
 }
 
-export default class CreatorProjectLists extends Component {
-    constructor (props) {
+export default class presenterProjectList extends Component{
+    constructor(props){
         super(props)
 
-        // this.deleteProject = this.deleteProject.bind(this)
-        this.state = {
-            projects: [],
+        this.state={
+            projects:[],
         }
-    };
+    }
 
-    componentDidMount() {
+    componentDidMount(){
         const arr = window.location.href.split("/")
         axios.get("http://localhost:5000/project/activity/" + arr[arr.length - 1])
             .then((res) => {
                 this.setState({ projects: res.data })
             })
             .catch((err) => console.log(err))
-    };
 
+    }
 
     deleteProject(id) {
         axios.delete('http://localhost:5000/project/delete/' + id)
@@ -72,9 +73,20 @@ export default class CreatorProjectLists extends Component {
         })
     };
 
-    updateProject(id, data) {
-        axios.post("http://localhost:5000/project/update/" + id, data)
+    showButton(email, func , member){
+        if(member.find(data=> data.email === email)){
+            return func;
+        }else{
+            return;
+        }
+    }
 
+    buttonEdit(id) {
+        return (
+            <Link to={"/editProj/" + id}>
+                <img src={edit} alt="edit" className="images-16px mx-2" />
+            </Link>
+        )
     }
 
     buttonDelete(id) {
@@ -99,22 +111,25 @@ export default class CreatorProjectLists extends Component {
         )
     }
 
-    showProjectList() {
-        return this.state.projects.map((resdata, index) => {
-            return (
-                <Project
-                    projectID={resdata._id}
-                    projectName={resdata.projectName}
-                    projectDescription={resdata.description}
-                    projectMember={resdata.members}
-                    deleteProjectThis={this.buttonDelete}
+    showProjectList(){
+        return this.state.projects.map((resdata)=>{
+            return(
+                <Project 
+                projectID={resdata._id}
+                projectName={resdata.projectName}
+                projectDescription={resdata.description}
+                projectMember={resdata.members}
+                projectShowButton={this.showButton}
+                deleteProjectThis={this.buttonDelete}
+                editProject={this.buttonEdit}
+                // updateProject={this.updateProject}
                 />
             )
         })
     }
 
-    render() {
-        return (
+    render(){
+        return(
             <main>
 
                 <div className="flex w-9/12 mx-auto">
@@ -131,6 +146,6 @@ export default class CreatorProjectLists extends Component {
                     </div>
                 </div>
             </main>
-        )
+        );
     }
-};
+}

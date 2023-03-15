@@ -25,7 +25,7 @@ import CreatorLogin from "./components/creator-view/creator-login.component";
 import GuestProjectID from "./components/guest-view/project-id.component";
 import CreatorResult from "./components/creator-view/result.component";
 import EditProject from "./components/presenter-view/edit-project.component";
-
+import PresenterProjectId from './components/presenter-view/project-id.component';
 import ResultTable from "./components/creator-view/result-table.component";
 function App() {
   return (
@@ -83,6 +83,7 @@ function App() {
           <Route path="/creatorLogin" element={<CreatorLogin />}></Route>
           <Route path="/CreatorResult" element={<CreatorResult />}></Route>
           <Route path="/ResultTable" element={<ResultTable />}></Route>
+          <Route path="/presenterProjectID/:id" element={<PresenterProjectId />}></Route>
         </Routes>
       </div>
       {/* <Footer /> */}
