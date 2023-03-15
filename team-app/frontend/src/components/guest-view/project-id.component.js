@@ -76,99 +76,7 @@ export default class projectID extends Component {
   }
 
 
-    componentDidMount() {
-        const arr = window.location.href.split("/");
-        axios
-            .get("http://localhost:5000/project/" + arr[arr.length - 1])
-            .then((res) => {
-                this.setState({
-                    projectName: res.data.projectName,
-                    description: res.data.description,
-                    members: res.data.members,
-                });
-            });
-    }
-
-    virtualMoneyOnChange(number) {
-        this.setState({
-            storeVirtualMoney: number,
-        });
-    }
-
-    commentILikeOnChange(texts) {
-        this.setState({
-            ILike: texts.target.value,
-        });
-    }
-
-    commentIWishOnChange(texts) {
-        this.setState({
-            IWish: texts.target.value,
-        });
-    }
-
-    commentQuestionOnChange(texts) {
-        this.setState({
-            Quest: texts.target.value,
-        });
-    }
-
-    commentIdeaOnChange(texts) {
-        this.setState({
-            Idea: texts.target.value,
-        });
-    }
-
-    onSubmitAction(e) {
-        e.preventDefault();
-        const arr = window.location.href.split("/");
-        const test = {
-            iLike: this.state.ILike,
-            iWish: this.state.IWish,
-            iQuest: this.state.Quest,
-            iDea: this.state.Idea,
-        };
-        const data = {
-            virtualMoney: this.state.storeVirtualMoney,
-            comments: test,
-            idProject: arr[arr.length - 1],
-        };
-        console.log(data);
-        var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
-        if (findVirtualMoney) {
-            var calculate =
-                Number(window.localStorage.guestVirtualMoney) -
-                Number(this.state.storeVirtualMoney);
-            if (calculate >= 0) {
-                //not over
-                Swire.fire({
-                    title: "Give Virtual Money Successfully",
-                    icon: "success",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                }).then(() => {
-                    axios
-                        .post("http://localhost:5000/feedback/add", data)
-                        .then(() => console.log("Success."))
-                        .catch((err) => console.log("Error: " + err));
-                    window.localStorage.guestVirtualMoney =
-                        Number(window.localStorage.guestVirtualMoney) -
-                        this.state.storeVirtualMoney;
-                    this.setState({
-                        feedBacks: [...this.state.feedBacks, data],
-                        virtualMoney: "",
-                        ILike: "",
-                        IWish: "",
-                        Quest: "",
-                        Idea: "",
-                    });
-                    window.location.reload()
-                });
-            }
-        }
-    }
-
+    
     showMembers() {
         return this.state.members.map((x) => {
             return (
@@ -306,7 +214,7 @@ export default class projectID extends Component {
 
                             <div className="flex">
                                 <div className="pt-6 mr-4">
-                                    <img src={like} className="images-20px" />
+                                    <img src={like} alt="" className="images-20px" />
                                 </div>
 
                                 <input
@@ -323,7 +231,7 @@ export default class projectID extends Component {
 
                             <div className="flex">
                                 <div className="pt-6 mr-4">
-                                    <img src={wish} className="images-20px" />
+                                    <img src={wish} alt="" className="images-20px" />
                                 </div>
 
                                 <input
@@ -340,7 +248,7 @@ export default class projectID extends Component {
 
                             <div className="flex">
                                 <div className="pt-6 mr-4">
-                                    <img src={ques} className="images-20px" />
+                                    <img src={ques} alt="" className="images-20px" />
                                 </div>
 
                                 <input
@@ -357,7 +265,7 @@ export default class projectID extends Component {
 
                             <div className="flex">
                                 <div className="pt-6 mr-4">
-                                    <img src={idea} className="images-20px" />
+                                    <img src={idea} alt="" className="images-20px" />
                                 </div>
 
                                 <input

@@ -282,7 +282,7 @@ export default class homepage extends Component {
 					</div>
 					{/* presenter and guest side */}
 					<div className="banner-container right flex justify-center">
-						<img src={welcome} />
+						<img src={welcome} alt=""/>
 					</div>
 				</div>
 			</main>
