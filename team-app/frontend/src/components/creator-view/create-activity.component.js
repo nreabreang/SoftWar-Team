@@ -185,20 +185,16 @@ export default class CreateActivity extends Component {
                 </div> */}
 
                 <form onSubmit={this.onSubmit}>
-                    <div className="grid grid-cols-2 w-9/12 gap-16 mx-auto text-navy
-										xs:grid-cols-1
-										sm:grid-cols-1
-										md:grid-cols-1
+                    <div className="grid gap-0 w-9/12 mx-auto text-navy
 										lg:grid-cols-2
-										xl:grid-cols-2
-										2xl:grid-cols-2"
-                    >
+                                        lg:gap-16
+                                    ">
                         {/* col1 */}
                         <div className="justify-center">
                             {/* input activity name */}
                             <div className="w-full">
                                 {/* <label className="text-18px bold">Activity Name</label> */}
-                                <label className="text-18px text-navy bold">
+                                <label className="text-20px text-navy bold">
                                     Activity Name
                                 </label>
                                 <input
@@ -251,11 +247,13 @@ export default class CreateActivity extends Component {
                             </div>
 
                             {/* input virtual money and unit grid*/}
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid gap-0
+                                            lg:grid-cols-2
+                                            lg:gap-16">
 
                                 {/* virtual money container */}
                                 <div className="w-full">
-                                    <label className="text-18px text-navy bold">
+                                    <label className="text-20px text-navy bold">
                                         Virtual Money / Guest
                                     </label>
                                     {/* virtual money container */}
@@ -276,7 +274,7 @@ export default class CreateActivity extends Component {
 
                                 {/* unit container */}
                                 <div className="w-full">
-                                    <label className="text-18px bold text-navy" for="grid-last-name">
+                                    <label className="text-20px bold text-navy" for="grid-last-name">
                                         Unit
                                     </label>
 
@@ -301,7 +299,7 @@ export default class CreateActivity extends Component {
                         <div className="justify-center">
 
                             <div className="pb-8">
-                                <label className="text-18px bold text-navy">Date and Time</label>
+                                <label className="text-20px bold text-navy">Date and Time</label>
                             </div>
 
 
@@ -330,7 +328,7 @@ export default class CreateActivity extends Component {
 
                     {/* description */}
                     <div className="justify-center w-9/12 mx-auto">
-                        <label className="text-18px bold text-navy">Description</label>
+                        <label className="text-20px bold text-navy">Description</label>
                         <ReactQuill
                             theme="snow"
                             className="mt-4 mb-8"
@@ -344,7 +342,7 @@ export default class CreateActivity extends Component {
                         />
                     </div>
 
-                    <div className="container justify-end my-8 mx-auto w-9/12">
+                    <div className="flex container justify-end my-8 mx-auto w-9/12">
                         <input
                             type="submit"
                             value="Create Activity"

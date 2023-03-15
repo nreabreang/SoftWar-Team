@@ -193,15 +193,15 @@ export default class createProject extends Component {
           <Navbar name={window.localStorage.getItem("name")} />
         </header>
 
-        {/* topic */}
-        <div className="px-12 py-8 items-center">
-          <p className="flex text-30px text-left text-navy">
-            <Link to="/ActivityList" className="flex">
-              <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
-              Create Project
-            </Link>
-          </p>
-        </div>
+                {/* topic */}
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to="/ActivityList" className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Create Project
+                    </p>
+                </div>
 
         <form onSubmit={this.sendForm}>
           <div className="mx-auto w-9/12 jusstify-center text-navy">
@@ -253,92 +253,92 @@ export default class createProject extends Component {
                     />
                   </div>
 
-                  <div className="col-span-1 justify-center mx-auto pt-4">
-                    <input
-                      type="submit"
-                      value="Add"
-                      className="button red p-1 w-20"
-                      onClick={this.onAddEvent}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+                                    <div className="col-span-1 justify-center mx-auto pt-4">
+                                        <input
+                                            type="submit"
+                                            value="Add"
+                                            className="button red p-1 w-20"
+                                            onClick={this.onAddEvent}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div >
 
-            {/* col2 */}
-            <div className="justify-center">
-              <div className="justify-center w-full mx-auto">
-                <label className="text-20px bold text-navy">
-                  Project Description
-                </label>
-                <ReactQuill
-                  theme="snow"
-                  className="mt-4 mb-8"
-                  value={this.state.description}
-                  onChange={this.onchangeDescription}
-                  modules={this.modules}
-                  formats={this.formats}
-                  placeholder="Enter your Project Description "
-                />
-              </div>
-            </div>
-          </div>
+                        {/* col2 */}
+                        < div className="justify-center" >
+                            <div className="justify-center w-full mx-auto">
+                                <label className="text-20px bold text-navy">
+                                    Project Description
+                                </label>
+                                <ReactQuill
+                                    theme="snow"
+                                    className="mt-4 mb-8"
+                                    value={this.state.description}
+                                    onChange={this.onchangeDescription}
+                                    modules={this.modules}
+                                    formats={this.formats}
+                                    placeholder="Enter your Project Description "
+                                />
+                            </div>
+                        </div >
+                    </div >
 
-          <div className="container justify-end my-8 mx-auto w-9/12">
-            <input
-              type="submit"
-              value="Submit"
-              className="button red p-2 w-48"
-            />
-          </div>
-        </form>
-      </main>
-      // <div className="flex justify-center">
-      //   <form onSubmit={this.sendForm}>
-      //     <div className="text-base font-semibold text-black my-2">
-      //       <div className="my-4">
-      //         <label className="text-[24px]">Project Name.</label>
-      //         <div>
-      //           <input
-      //           className="mt-2 italic p-2 border rounded-lg"
-      //             type="text"
-      //             required
-      //             id="projectName"
-      //             name="projectName"
-      //             placeholder="Put your Project Name"
-      //             value={this.state.projectName}
-      //             onChange={this.onchangeProjectName}
-      //           />
-      //         </div>
-      //       </div>
+                    <div className="flex container justify-end my-8 mx-auto w-9/12">
+                        <input
+                            type="submit"
+                            value="Submit"
+                            className="button red p-2 w-48"
+                        />
+                    </div>
+                </form >
+            </main >
+            // <div className="flex justify-center">
+            //   <form onSubmit={this.sendForm}>
+            //     <div className="text-base font-semibold text-black my-2">
+            //       <div className="my-4">
+            //         <label className="text-[24px]">Project Name.</label>
+            //         <div>
+            //           <input
+            //           className="mt-2 italic p-2 border rounded-lg"
+            //             type="text"
+            //             required
+            //             id="projectName"
+            //             name="projectName"
+            //             placeholder="Put your Project Name"
+            //             value={this.state.projectName}
+            //             onChange={this.onchangeProjectName}
+            //           />
+            //         </div>
+            //       </div>
 
-      //       <div className="my-4">
-      //         <label>Project Description</label>
-      //         <div className="">
-      //           <ReactQuill
-      //             theme="snow"
-      //             className="my-2 bg-gray-100 border-red-500 "
-      //             value={this.state.description}
-      //             onChange={this.onchangeDescription}
-      //             modules={this.modules}
-      //             formats={this.formats}
-      //             placeholder="Put your Project Description here"
+            //       <div className="my-4">
+            //         <label>Project Description</label>
+            //         <div className="">
+            //           <ReactQuill
+            //             theme="snow"
+            //             className="my-2 bg-gray-100 border-red-500 "
+            //             value={this.state.description}
+            //             onChange={this.onchangeDescription}
+            //             modules={this.modules}
+            //             formats={this.formats}
+            //             placeholder="Put your Project Description here"
 
-      //           />
-      //         </div>
-      //       </div>
+            //           />
+            //         </div>
+            //       </div>
 
-      //       <div className="">
-      //         <input
-      //           type="submit"
-      //           value="Submit"
-      //           className="p-2 rounded-md bg-red-400"
-      //         />
-      //       </div>
-      //     </div>
-      //   </form>
+            //       <div className="">
+            //         <input
+            //           type="submit"
+            //           value="Submit"
+            //           className="p-2 rounded-md bg-red-400"
+            //         />
+            //       </div>
+            //     </div>
+            //   </form>
 
-      // </div>
-    );
-  }
+            // </div>
+        );
+    }
 }

@@ -169,7 +169,7 @@ export default class ActivityList extends Component {
 
 					<p className="text-30px text-left text-navy">Activity Dashboard</p>
 
-					<div className="container justify-end">
+					<div className="flex container justify-end">
 						<a href="/createActivity" className="button red px-4 py-2 w-48 text-18x">
 							Add Activity +
 						</a>

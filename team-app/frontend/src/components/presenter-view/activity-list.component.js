@@ -115,7 +115,7 @@ export default class creatorActivityId extends Component {
 
     showButtonAdd(){
         if(new Date().getTime() <= new Date(this.state.endTime).getTime()){
-            return(<div className="container justify-end">
+            return(<div className="flex container justify-end">
             <a href="/createProject" className="button red px-4 py-2 w-48 text-18x ">
                 Add Project +
             </a>
