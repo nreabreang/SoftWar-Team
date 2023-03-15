@@ -218,7 +218,7 @@ export default class projectID extends Component {
                                 </div>
 
                                 <input
-                                    required
+                                    // required
                                     className="input mt-4 mb-8 w-full"
                                     id="ILike"
                                     name="ILike"
@@ -235,7 +235,7 @@ export default class projectID extends Component {
                                 </div>
 
                                 <input
-                                    required
+                                    // required
                                     className="input mt-4 mb-8 w-full"
                                     id="IWish"
                                     name="IWish"
@@ -252,7 +252,7 @@ export default class projectID extends Component {
                                 </div>
 
                                 <input
-                                    required
+                                    // required
                                     className="input mt-4 mb-8 w-full"
                                     id="Question"
                                     name="Question"
@@ -269,7 +269,7 @@ export default class projectID extends Component {
                                 </div>
 
                                 <input
-                                    required
+                                    // required
                                     className="input mt-4 mb-8 w-full"
                                     id="Ideas"
                                     name="Ideas"
