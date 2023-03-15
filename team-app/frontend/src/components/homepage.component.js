@@ -4,7 +4,7 @@ import "./homepage.component.css";
 import rightarrowpink from "./images/right-arrow-pink.png";
 import welcome from "./images/welcom-png.png";
 // import welcomePng from "./images/welcompng.png"
-import qr from "./images/qr-code - 1.png";
+import qr from "./images/qr-code-pink.png";
 import "./homepage.component.css";
 import "./Styles.css";
 import axios from "axios";
@@ -139,25 +139,12 @@ export default class homepage extends Component {
 	render() {
 		return (
 			<main>
-				{/* <div className="navbar-container right gap-2">
-					<Link to="/createActivity" className="text-16px bold">
-						Create Activity
-					</Link>
-					<Link to="/activityList" className="text-16px bold">
-						Creator Activity View
-					</Link>
-					<Link to="/guestActivityList" className="text-16px bold">
-						Guest Activity View
-					</Link>
-					<Link to="/createProject" className="text-16px">
-						Presenter View
-					</Link>
-				</div> */}
+				<div className="grid banner
+								lg:grid-cols-2
+								">
 
-				<div className="banner">
 					{/* creator side */}
 					<div className="block banner-container left">
-
 
 						<div className="flex pt-12  mx-auto">
 							<a href="/"><p className="text-48px text-navy bold goback">GARLICWAK</p></a>
@@ -178,23 +165,83 @@ export default class homepage extends Component {
 								</Link>
 							</div>
 
-							<div className="text-right ">
+							<div className="text-right">
 								<p className="text-36px my-8 text-navy">Join Activity!</p>
-								<p className="text-18px text-navy pl-20 pb-6">
+								<p className="text-18px text-navy pl-20 pb-6 mx-auto">
 									Be a Presenter and add your project into Activity! or Be a guest, explore projects and give them feedbacks!
 								</p>
 
-								<div className="block container justify-end text-navy
-												xs:block
-												sm:block
-												md:block
-												lg:flex
-												xl:flex
-												2xl:flex">
+								<div className="flex container justify-end mt-4 mb-8
+												">
 
-									<form
+									<form onSubmit={this.onEnterCode} className="flex">
+										<div className="flex justify-end">
+											{/* col1 */}
+											<div class="flex relative w-full">
+												<input
+													onChange={this.onChangeCode}
+													type="text"
+													placeholder="Enter Code"
+													maxLength="8"
+													autoComplete="off"
+													className="input-code text-light-pink h-11 w-72 px-6"
+												/>
+
+												<button type="submit" class="absolute top-0 right-0 p-2.5">
+													<img
+														alt=""
+														type="submit"
+														src={rightarrowpink}
+														className="images-20px" />
+												</button>
+											</div>
+										</div>
+
+										{/* col2 */}
+										<div className="flex items-center text-navy">
+											<p className="text-18px bold mx-3">OR</p>
+
+											<Link to="/scanner">
+												<div className="bg-red-it p-1.5 rounded-lg">
+													<img src={qr} className="images-25px" alt="" />
+												</div>
+											</Link>
+										</div>
+
+
+									</form>
+
+
+
+
+
+									{/* <form onSubmit={this.onEnterCode}>
+										<input
+											onChange={this.onChangeCode}
+											type="text"
+											placeholder="Enter Code"
+											maxLength="8"
+											autoComplete="off"
+											className="inputcode text-light-pink"
+										></input>
+
+										<button type="submit">
+											<img
+												alt=""
+												src={rightarrowpink}
+												className="images-20px"
+												// onClick={this.onEnterCode}
+												type="submit"
+											/>
+										</button>
+									</form> */}
+
+
+
+
+									{/* <form
 										onSubmit={this.onEnterCode}
-										className="flex items-center justify-center">
+										className="absolute flex items-center justify-center">
 										<input
 											onChange={this.onChangeCode}
 											type="text"
@@ -216,24 +263,17 @@ export default class homepage extends Component {
 											</button>
 										</div>
 
-										{/* <div className="line-vertical" /> */}
+									
+										
+									</form> */}
+								</div>
+
+								<div className="flex container justify-center text-navy 
+												lg:justify-end">
 
 
 
-									</form>
-									<div className="flex justify-center items-center
-													xs:justify-center
-													sm:justify-center
-													md:justify-center
-													lg:justify-start
-													xl:justify-start
-													2xl:justify-start">
-										<p className="text-20px bold mx-4">OR</p>
 
-										<Link to="/scanner">
-											<img src={qr} className="images-20px ml-2.5" alt="" />
-										</Link>
-									</div>
 								</div>
 							</div>
 						</div>

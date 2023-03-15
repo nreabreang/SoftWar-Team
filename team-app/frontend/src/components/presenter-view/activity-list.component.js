@@ -167,17 +167,6 @@ export default class creatorActivityId extends Component {
                     <CreatorProjectLists />
 
                 </div>
-
-                {/* <div className="px-12 pb-12 flex w-full">
-                    <div className="show-container mx-auto
-									xs:grid-cols-2
-									sm:grid-cols-2
-									md:grid-cols-2
-									lg:grid-cols-3
-									xl:grid-cols-4
-									2xl:grid-cols-4">
-                    </div>
-                </div> */}
             </main>
         );
     }
