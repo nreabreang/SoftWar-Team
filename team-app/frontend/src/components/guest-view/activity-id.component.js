@@ -5,23 +5,6 @@ import leftarrow from "../images/left-arrow.png";
 import { Link } from "react-router-dom";
 const { Component } = require("react");
 
-// const ActivityList = (props) => (
-//   <div class="m-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-//     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-//       {props.activity.actName}
-//     </h5>
-
-//     <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
-//       <h5 className="font-bold">Description</h5>
-//       {props.activity.actDescription}
-//     </p>
-//     <h5 className="font-bold">Date</h5>
-//     <p class="mb-3 font-medium text-gray-700 dark:text-gray-400">
-//       {props.activity.date.substring(0, 10)}
-//     </p>
-//   </div>
-// );
-
 const ActivityInformation = (props) => {
     return (
         <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
@@ -96,7 +79,7 @@ export default class activityId extends Component {
                     startTime: new Date(response.data.startTime),
                     endTime: new Date(response.data.endTime),
                 });
-
+                window.localStorage.setItem("endAct",response.data.endTime)
                 // console.log(window.localStorage.getItem("guestVirtualMoney").length);
 
                 if (window.localStorage.getItem("guestVirtualMoney")) {

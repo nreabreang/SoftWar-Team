@@ -75,55 +75,6 @@ export default class projectID extends Component {
     });
   }
 
-//   onSubmitAction(e) {
-//     e.preventDefault();
-//     const arr = window.location.href.split("/");
-//     const test = {
-//       iLike: this.state.ILike,
-//       iWish: this.state.IWish,
-//       iQuest: this.state.Quest,
-//       iDea: this.state.Idea,
-//     };
-//     const data = {
-//       virtualMoney: this.state.storeVirtualMoney,
-//       comments: test,
-//       idProject: arr[arr.length - 1],
-//     };
-//     console.log(data);
-//     var findVirtualMoney = window.localStorage.getItem("guestVirtualMoney");
-//     if (findVirtualMoney) {
-//       var calculate =
-//         Number(window.localStorage.guestVirtualMoney) -
-//         Number(this.state.storeVirtualMoney);
-//       if (calculate >= 0) {
-//         //not over
-//         Swire.fire({
-//           title: "Give Virtual Money Successfully",
-//           icon: "success",
-//           showConfirmButton: false,
-//           timer: 3000,
-//           timerProgressBar: true,
-//         }).then(() => {
-//           axios
-//             .post("http://localhost:5000/feedback/add", data)
-//             .then(() => console.log("Success."))
-//             .catch((err) => console.log("Error: " + err));
-//           window.localStorage.guestVirtualMoney =
-//             Number(window.localStorage.guestVirtualMoney) -
-//             this.state.storeVirtualMoney;
-//           this.setState({
-//             feedBacks: [...this.state.feedBacks, data],
-//             virtualMoney: "",
-//             ILike: "",
-//             IWish: "",
-//             Quest: "",
-//             Idea: "",
-//           });
-//           window.location.reload()
-//         });
-//       }
-//     }
-//   }
 
   showMembers(){
     return this.state.members.map((x) => {
@@ -221,54 +172,16 @@ export default class projectID extends Component {
         // }
     }
 
-    render() {
-        return (
-            <main>
-                <header>
-                    <Navbar name={window.localStorage.getItem("guestName")} />
-                </header>
-
-                {/* topic */}
-                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
-                    <Link to={"/presenterActivityId/" + window.localStorage.idActivity} className="">
-                        <img src={leftarrow} alt="left arrow" className="images-18px" />
-                    </Link>
-                    <p className="flex text-30px justify-center">
-                        Project Details
-                    </p>
+    showFormFeedback(){
+        console.log(new Date(window.localStorage.endAct))
+        if(new Date().getTime() >= new Date(window.localStorage.endAct)){
+            return(
+                <div>
+                    EndTime
                 </div>
-
-                <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
-
-                    <div className="p-8">
-
-                        {/* topic */}
-                        <div className="pb-4">
-                            <p className="text-30px text-red-it">{this.state.projectName}</p>
-                        </div>
-
-                        {/* members */}
-                        <div className="pb-4">
-                            <p className="text-20px text-navy bold pb-4">● Members</p>
-                            <div className="text-navy ml-4">
-                                {this.showMembers()}
-                            </div>
-                        </div>
-
-                        {/* description */}
-                        <div className="pb-4">
-                            <p className="text-20px text-navy bold pb-1">● Description</p>
-                            <div className="text-16px text-navy mx-auto overflow"
-                                dangerouslySetInnerHTML={{
-                                    __html: this.state.description,
-                                }}>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <Feedback />
-
+            )
+        }else{
+            return(
                 <div className="items-center justify-center">
                     <form onSubmit={this.onSubmitAction}>
                         {/* topic */}
@@ -351,6 +264,58 @@ export default class projectID extends Component {
                         </div>
                     </form>
                 </div>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <main>
+                <header>
+                    <Navbar name={window.localStorage.getItem("guestName")} />
+                </header>
+
+                {/* topic */}
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to={"/presenterActivityId/" + window.localStorage.ActId} className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Project Details
+                    </p>
+                </div>
+
+                <div className="w-9/12 mx-auto bg-pink rounded-lg shadow">
+
+                    <div className="p-8">
+
+                        {/* topic */}
+                        <div className="pb-4">
+                            <p className="text-30px text-red-it">{this.state.projectName}</p>
+                        </div>
+
+                        {/* members */}
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-4">● Members</p>
+                            <div className="text-navy ml-4">
+                                {this.showMembers()}
+                            </div>
+                        </div>
+
+                        {/* description */}
+                        <div className="pb-4">
+                            <p className="text-20px text-navy bold pb-1">● Description</p>
+                            <div className="text-16px text-navy mx-auto overflow"
+                                dangerouslySetInnerHTML={{
+                                    __html: this.state.description,
+                                }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <Feedback />
+                {this.showFormFeedback()}
             </main>
         );
     }
