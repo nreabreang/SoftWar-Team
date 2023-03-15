@@ -8,7 +8,7 @@ import leftarrow from "../images/left-arrow.png";
 import cross from "../images/cross.png";
 
 export default class EditProject extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
         this.onChangeProjectDescript = this.onChangeProjectDescript.bind(this);
         this.onChangeProjectName = this.onChangeProjectName.bind(this);
@@ -41,15 +41,15 @@ export default class EditProject extends Component {
         })
     }
 
-    onChangeName(data){
+    onChangeName(data) {
         this.setState({
-            name:data.target.value
+            name: data.target.value
         })
     }
 
-    onChangeEmail(data){
+    onChangeEmail(data) {
         this.setState({
-            email:data.target.value
+            email: data.target.value
         })
     }
 
@@ -59,7 +59,7 @@ export default class EditProject extends Component {
         })
     }
 
-    onChangeProjectDescript(content,delta,source,editor) {
+    onChangeProjectDescript(content, delta, source, editor) {
         console.log(editor.getHTML())
         this.setState({
             projectDescript: editor.getHTML()
@@ -88,13 +88,13 @@ export default class EditProject extends Component {
                         <img src={cross} alt="" className="images-16px" onClick={(e) => this.deleteMember(x)} />
                     </div>
                 </div>
-            // <div>
-            //     <p>{x.name}</p>
-            //     <p>{x.email}</p>
-            //     <button onClick={(e) => {
-            //         this.deleteMember(x)
-            //     }}>Dele</button>
-            // </div>
+                // <div>
+                //     <p>{x.name}</p>
+                //     <p>{x.email}</p>
+                //     <button onClick={(e) => {
+                //         this.deleteMember(x)
+                //     }}>Dele</button>
+                // </div>
             )
         })
     }
@@ -111,7 +111,7 @@ export default class EditProject extends Component {
                 name: "",
                 email: ""
             })
-        } else{
+        } else {
             Swal.fire({
                 title: "Cannot add this email & username",
                 showConfirmButton: true,
@@ -142,7 +142,7 @@ export default class EditProject extends Component {
                         showConfirmButton: true,
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location = "http://localhost:3000/creatorprojectList/"+arr[arr.length - 1]
+                            window.location = "http://localhost:3000/creatorprojectList/" + arr[arr.length - 1]
                         }
                     });
                 }
@@ -158,14 +158,12 @@ export default class EditProject extends Component {
                 </header>
 
                 {/* topic */}
-                <div className="px-12 py-8 items-center">
-
-                    <p className="flex text-30px text-left text-navy">
-                        <Link to="/ActivityList" className="flex">
-                            <img src={leftarrow} alt="" className="images-18px mr-2 mt-1.5" />
-                            Edit Project
-                        </Link>
-
+                <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
+                    <Link to="/ActivityList" className="">
+                        <img src={leftarrow} alt="left arrow" className="images-18px" />
+                    </Link>
+                    <p className="flex text-30px justify-center">
+                        Edit Project
                     </p>
                 </div>
 
@@ -245,7 +243,7 @@ export default class EditProject extends Component {
 
                     </div>
 
-                    <div className="container justify-end my-8 mx-auto w-9/12">
+                    <div className="flex container justify-end my-8 mx-auto w-9/12">
                         <input type="submit" value="Submit" className="button red p-2 w-48" />
                     </div>
 
