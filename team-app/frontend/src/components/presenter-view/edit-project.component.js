@@ -194,8 +194,8 @@ export default class EditProject extends Component {
             }).then((result) => {
               if (result.isConfirmed) {
                 window.location =
-                  "http://localhost:3000/creatorprojectList/" +
-                  arr[arr.length - 1];
+                  "http://localhost:3000/presenterActivityId/" +
+                  window.localStorage.idActivity;
               }
             });
           }
@@ -232,7 +232,7 @@ export default class EditProject extends Component {
                   name="projectName"
                   type="text"
                   value={this.state.projectName}
-                  onChange={this.onchangeProjectName}
+                  onChange={this.onChangeProjectName}
                   placeholder="Enter your Project Name"
                 />
               </div>
