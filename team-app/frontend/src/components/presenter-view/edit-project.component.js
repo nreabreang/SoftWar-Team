@@ -72,6 +72,7 @@ export default class EditProject extends Component {
         axios
             .get("http://localhost:5000/project/" + arr[arr.length - 1])
             .then((res) => {
+              // console.log(res.data.projectName);
                 this.setState({
                     idProj: arr[arr.length - 1],
                     projectName: res.data.projectName,
@@ -94,6 +95,7 @@ export default class EditProject extends Component {
     }
 
     onChangeProjectName(data) {
+      // console.log(this.state.projectName);
         this.setState({
             projectName: data.target.value,
         });
@@ -168,7 +170,7 @@ export default class EditProject extends Component {
     onAddEvent(e) {
         e.preventDefault();
         const arr = window.location.href.split("/");
-        console.log(this.state.members);
+        // console.log(this.state.members);
         const dataReq = {
             projectName: this.state.projectName,
             description: this.state.projectDescript,
@@ -232,7 +234,7 @@ export default class EditProject extends Component {
                                     name="projectName"
                                     type="text"
                                     value={this.state.projectName}
-                                    onChange={this.onchangeProjectName}
+                                    onChange={this.onChangeProjectName}
                                     placeholder="Enter your Project Name"
                                 />
                             </div>
