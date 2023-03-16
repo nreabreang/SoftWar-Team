@@ -134,6 +134,7 @@ export default class projectID extends Component {
                         Quest: "",
                         Idea: "",
                     });
+                    window.location.reload()
                 });
             } else {
                 //it over
@@ -152,7 +153,6 @@ export default class projectID extends Component {
                         Quest: "",
                         Idea: "",
                     });
-                    window.location.reload()
                 });
             }
         } else {

@@ -190,12 +190,12 @@ export default class createProject extends Component {
         return (
             <main>
                 <header>
-                    <Navbar name={window.localStorage.getItem("name")} />
+                    <Navbar name={window.localStorage.PresenterFirstName + " " + window.localStorage.PresenterLastName} />
                 </header>
 
                 {/* topic */}
                 <div className="grid grid-cols-3 px-12 py-8 items-center text-navy">
-                    <Link to="/ActivityList" className="">
+                    <Link to={"/presenterActivityId/"+window.localStorage.idActivity} className="">
                         <img src={leftarrow} alt="left arrow" className="images-18px" />
                     </Link>
                     <p className="flex text-30px justify-center">

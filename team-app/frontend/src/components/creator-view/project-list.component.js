@@ -82,8 +82,8 @@ export default class CreatorProjectLists extends Component {
             <button
                 onClick={(e) => {
                     Swal.fire({
-                        title: "Do you want delete it?",
-                        confirmButtonText: "Yes,delete it",
+                        title: "Do you want to delete this project?",
+                        confirmButtonText: "Yes",
                         showCancelButton: true
                     }).then((result) => {
                         if (result.isConfirmed) {

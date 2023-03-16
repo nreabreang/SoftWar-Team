@@ -38,7 +38,7 @@ const Activity = (props) => {
 						href="#"
 						onClick={() => {
 							Swal.fire({
-								title: "Do you want to delete the Activity?",
+								title: "Do you want to delete this Activity?",
 								showCancelButton: true,
 								confirmButtonText: "Confirm",
 							}).then((result) => {

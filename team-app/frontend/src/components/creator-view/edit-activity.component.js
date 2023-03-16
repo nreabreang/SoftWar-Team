@@ -155,7 +155,7 @@ export default class EditActivity extends Component {
                 )
                 .then((res) => {
                     Swal.fire({
-                        title: "Added",
+                        title: "Updated",
                         showConfirmButton: true,
                     }).then(() => {
                         window.location = "/activityList"; //relocation to homepage
@@ -338,7 +338,7 @@ export default class EditActivity extends Component {
                     <div className="flex container justify-end my-8 mx-auto w-9/12">
                         <input
                             type="submit"
-                            value="Create Activity"
+                            value="Edit Activity"
                             className="button red p-2 w-48"
                         />
                     </div>
