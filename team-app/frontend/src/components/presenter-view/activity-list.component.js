@@ -106,24 +106,27 @@ export default class presenterActivityId extends Component {
                     endTime: new Date(response.data.endTime),
                 });
                 // console.log("res :",response.data.actName);
-                window.localStorage.setItem("endTime",response.data.endTime)
+                window.localStorage.setItem("endTime", response.data.endTime)
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 
-    showButtonAdd(){
-        if(new Date().getTime() <= new Date(this.state.endTime).getTime()){
-            return(<div className="flex container justify-end">
-            <a href="/createProject" className="button red px-4 py-2 w-48 text-18x ">
-                Add Project +
-            </a>
-        </div>)
-        }else{
-            return(<div>
-                <p className="text-18x">Time Out</p>
-            </div>);
+    showButtonAdd() {
+        if (new Date().getTime() <= new Date(this.state.endTime).getTime()) {
+            return (
+                <div className="flex container justify-end">
+                    <a href="/createProject" className="button red px-4 py-2 w-48 text-18x ">
+                        Add Project +
+                    </a>
+                </div>)
+        } else {
+            return (
+                <div className="flex container justify-end">
+                    <p className="button red px-4 py-2 w-48 text-18x cursor-not-allowed">Time Out</p>
+                </div>
+            );
         }
     }
 
@@ -164,7 +167,7 @@ export default class presenterActivityId extends Component {
                         <p className="text-30px text-navy ">Project List</p>
                         {this.showButtonAdd()}
                     </div>
-                    
+
                     {/* <CreatorProjectLists /> */}
                     <PresenterProjectList />
 
