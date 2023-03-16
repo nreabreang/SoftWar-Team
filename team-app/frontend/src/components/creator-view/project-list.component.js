@@ -27,7 +27,7 @@ const Project = (props) => {
             <div className="mt-3">
                 <div className="text-left px-4 m-2 my-4">
                     <p className="text-16px bold py-1">Description</p>
-                    <div className="text-16px italic ml-4 block ellipsis" dangerouslySetInnerHTML={{ __html: des }}></div>
+                    <div className="text-16px italic block ellipsis-des" dangerouslySetInnerHTML={{ __html: des }}></div>
                 </div>
 
                 {/* see project */}

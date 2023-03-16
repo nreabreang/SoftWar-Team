@@ -360,6 +360,14 @@ footer {
   text-overflow: ellipsis;
 }
 
+.ellipsis-des {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 25px;
+}
+
 .overflow {
   /* background-color: #fed9ff; */
   width: 90%;
