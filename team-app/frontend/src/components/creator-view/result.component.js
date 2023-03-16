@@ -40,8 +40,14 @@ export default class result extends Component {
 
         // console.log(dataAsArray);
         for (let i = 0; i < dataAsArray.length; i++) {
-          virtualMoneyArr.push(dataAsArray[i].totalVirtualMoney); // Replace "propertyName" with the actual name of the property you want to store
-          projectNameArr.push(dataAsArray[i].projectName);
+          if(dataAsArray[i].totalVirtualMoney === undefined){
+            virtualMoneyArr.push(0)
+            projectNameArr.push(dataAsArray[i].projectName);
+          }else{
+            virtualMoneyArr.push(dataAsArray[i].totalVirtualMoney); // Replace "propertyName" with the actual name of the property you want to store
+            projectNameArr.push(dataAsArray[i].projectName);
+          }
+          // console.log(dataAsArray[i].totalVirtualMoney)
         }
 
         const nestedArray = projectNameArr.map((item, index) => [
@@ -49,7 +55,7 @@ export default class result extends Component {
           virtualMoneyArr[index],
         ]);
 
-        // console.log(nestedArray);
+        console.log(nestedArray);
         nestedArray.sort((a, b) => b[1] - a[1]);
         console.log(nestedArray);
         const vmArr = [];
