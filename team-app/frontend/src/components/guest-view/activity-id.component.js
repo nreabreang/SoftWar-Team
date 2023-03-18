@@ -3,7 +3,7 @@ import ProjectLists from "./projects-list.component";
 import Navbar from "../navbarguest.component";
 import leftarrow from "../images/left-arrow.png";
 import { Link } from "react-router-dom";
-const { Component } = require("react");
+import { Component } from "react";
 
 const ActivityInformation = (props) => {
     return (
