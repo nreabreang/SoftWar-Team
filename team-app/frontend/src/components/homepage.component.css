@@ -1,38 +1,44 @@
 .banner {
-    text-align: left;
-    height: 100vh;
+  text-align: left;
+  height: 100vh;
 }
 
 .banner-container {
-    align-items: center;
-    padding: 0rem 3rem 0rem 3rem;
+  align-items: center;
+  padding: 0rem 3rem 0rem 3rem;
 }
 
+.swal2-html-container a {
+  color: #fc8178; /* Set link color to red */
+  text-decoration: underline; /* Add underline to link */
+}
+  
+
 .banner-container.left {
-    background-color: #FFF2F2;
+  background-color: #fff2f2;
 }
 
 .banner-container.right {
-    background-color: #DB4D4B;
+  background-color: #db4d4b;
 }
 
 .input-code {
-    display: inline-block;
-    border: none;
-    appearance: auto;
-    outline: none;
-    border-radius: 1rem;
-    text-transform: uppercase;
-    vertical-align: middle;
-    text-align: left;
-    cursor: pointer;
-    background-color: #DB4D4B;
+  display: inline-block;
+  border: none;
+  appearance: auto;
+  outline: none;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-align: left;
+  cursor: pointer;
+  background-color: #db4d4b;
 }
 
 .input-code::placeholder {
-    color: #FCC5C0;
+  color: #fcc5c0;
 }
 
 .input-code:focus::placeholder {
-    color: transparent;
+  color: transparent;
 }

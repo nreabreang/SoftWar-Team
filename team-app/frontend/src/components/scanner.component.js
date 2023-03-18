@@ -1,5 +1,5 @@
 import React from "react";
-import { QrReader } from "react-qr-reader";
+// import { QrReader } from "react-qr-reader";
 import { Component } from "react";
 import leftarrow from "./images/left-arrow.png";
 import { Link } from "react-router-dom";
@@ -46,7 +46,7 @@ class QRScanner extends Component {
                     </div>
 
                     <div className="flex justify-center">
-                        <QrReader
+                        {/* <QrReader
                             className="bg-pink rounded-lg px-12"
                             videoStyle={{ with: "25%" }}
                             scanDelay={300}
@@ -63,7 +63,7 @@ class QRScanner extends Component {
                                 }
                             }}
                             containerStyle={{ width: "30%" }}
-                        />
+                        /> */}
                     </div>
 
                     <div className="justify-center pt-8">
